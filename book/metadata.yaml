@@ -1,0 +1,26 @@
+# Metadata for Physics 11 Deep Understanding Book PDF Build
+title: "VẬT LÍ 11 CHUYÊN SÂU"
+subtitle: "Học hiểu sâu từ Bản chất Vật lí và Nền tảng Toán học"
+author: "Ban Biên soạn Vật lí Chuyên sâu"
+date: "2026"
+lang: vi
+
+# Table of contents
+toc: true
+toc-depth: 3
+
+# Page and font configuration
+documentclass: report
+classoption:
+  - openany
+  - oneside
+
+geometry:
+  - a4paper
+  - top=25mm
+  - bottom=25mm
+  - left=28mm
+  - right=25mm
+
+fontsize: 11pt
+linestretch: 1.2
