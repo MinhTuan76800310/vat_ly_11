@@ -1,49 +1,54 @@
-# Pedagogy Harness — Tiêu Chuẩn Sư Phạm Sách Vật Lí 11 Chuyên Sâu
+# Pedagogy Harness — Chuẩn Mực Sư Phạm Dành Cho Học Sinh Lớp 11 Việt Nam
 
-Harness này quy định tầng **văn phong và phương pháp sư phạm** khi chấp bút các chương sách trong `book/`. Sách hướng đến học sinh chuyên Vật lý, sinh viên đại học năm nhất và người yêu thích khoa học muốn hiểu bản chất sâu sắc của tự nhiên.
-
----
-
-## 1. Tôn Chỉ Sư Phạm
-
-* **Bản chất trước, Công thức sau**: Không bao giờ đưa ra một công thức mà không xuất phát từ câu hỏi trực giác hoặc mô hình vật lý cụ thể.
-* **Toán học Giải tích là ngôn ngữ tự nhiên**: Sử dụng đạo hàm, tích phân, phương trình vi phân và số phức như công cụ tự nhiên để mô tả sự biến thiên của đại lượng, xóa bỏ hoàn toàn lối "học vẹt công thức".
-* **Soi chiếu cơ chế vi mô**: Luôn liên hệ định luật vĩ mô với hành vi của các hạt (nguyên tử, electron, va chạm tán xạ, thế liên kết Lennard-Jones,...).
+Tài liệu này là "bộ lọc sư phạm" kiểm soát văn phong và mức độ tiếp thu khi biên soạn các chương sách Vật Lí 11 Chuyên Sâu.
 
 ---
 
-## 2. Quy Tắc Chấp Bút Chi Tiết
+## 1. Tôn Chỉ Cốt Lõi: Đơn Giản Hóa Bản Chất, Không Đánh Đố Học Sinh
 
-### RULE 1 — Đồng bộ 5 tầng cấu trúc bài giảng
-Mỗi chuyên đề hoặc bài học lớn phải đi trọn vẹn qua 5 tầng:
-1. **Tầng 1 (Trực giác & Nghịch lý)**: Nêu hiện tượng thực tế gây tò mò, chỉ ra điểm nghẽn của cách hiểu trực giác thông thường.
-2. **Tầng 2 (Mô hình hóa)**: Xác lập hệ quy chiếu, bỏ qua các yếu tố nhiễu bậc cao, đưa về bài toán cơ học/điện động lực học cơ bản.
-3. **Tầng 3 (Giải tích toán học)**: Thiết lập phương trình vi phân bằng định luật Newton / định luật bảo toàn. Giải tường minh phương trình.
-4. **Tầng 4 (Cơ chế năng lượng & vi mô)**: Khảo sát quá trình chuyển hóa động năng - thế năng, tiêu tán năng lượng, giải thích dưới góc nhìn vi mô.
-5. **Tầng 5 (Thí nghiệm tư duy & Phản biện)**: Thử nghiệm các giới hạn biên, phân tích thứ nguyên, đối chiếu với công thức SGK đại trà (chỉ ra SGK xấp xỉ điều kiện nào).
+> **Quy tắc vàng**: *"Một nhà vật lý giỏi là người có thể giải thích bản chất sâu xa nhất của vũ trụ cho một học sinh trung học phổ thông hiểu mà không cần núp bóng sau những phương trình phức tạp."*
 
-### RULE 2 — Minh bạch biến số và chuẩn hóa ký hiệu Toán học
-* Mọi đại lượng vật lý ($A, \omega, \varphi, k, m, \gamma, Q, \dots$) đều phải được gọi tên bản chất và gắn đơn vị chuẩn SI khi xuất hiện lần đầu.
-* Sử dụng chuẩn KaTeX / Typst rõ ràng:
-  - Đạo hàm theo thời gian: $\dot{x} = \frac{dx}{dt}$, $\ddot{x} = \frac{d^2x}{dt^2}$.
-  - Giá trị trung bình: $\langle E \rangle$ hoặc $\bar{E}$.
-  - Vectơ: $\vec{F}, \vec{v}, \vec{E}$.
-
-### RULE 3 — Tích hợp Đồ thị & Không gian Pha (Phase Space)
-* Với mọi chuyển động dao động, không chỉ vẽ đồ thị li độ theo thời gian $x(t)$, mà **bắt buộc** phải khảo sát quỹ đạo trong không gian pha $(x, v/\omega)$.
-* Với bài toán thế năng, luôn gắn liền với đồ thị giếng thế $V(x)$ và phép khai triển Taylor bậc 2 quanh vị trí cân bằng bền.
-
-### RULE 4 — Văn phong và Giọng điệu (Tone of Voice)
-* Khách quan, sắc sảo, truyền cảm hứng khám phá bản chất tự nhiên.
-* Không dùng văn phong đao to búa lớn hoặc liệt kê khô khan; dẫn dắt người đọc như một nhà vật lý thực thụ đang đồng hành khám phá.
+Mục tiêu của sách không phải là "khoe kiến thức đại học", mà là:
+1. Giúp học sinh lớp 11 **hiểu tận gốc**: Tại sao công thức SGK lại có dạng như vậy?
+2. Dùng công cụ **Toán học lớp 11** (chủ đạo là Đạo hàm và Đồ thị) để chứng minh và liên kết các hiện tượng.
+3. Liên hệ với các vật thể thực tế đời sống mà học sinh có thể sờ, thấy hoặc cảm nhận được (xe cộ, đàn guitar, xích đu, điện thoại thông minh).
 
 ---
 
-## 3. Checklist Tự Kiểm Định Trước Khi Hoàn Tất Bản Thảo
+## 2. Các Giới Hạn Sư Phạm Bắt Buộc
 
-Trước khi chốt nội dung hoặc biên dịch PDF, hãy trả lời 5 câu hỏi:
-1. *Bài viết đã có đủ 5 tầng sư phạm chưa, hay đang nhảy cóc thẳng vào công thức?*
-2. *Mọi công thức đã được dẫn xuất giải tích tường minh từ định luật gốc chưa?*
-3. *Đã phân tích thứ nguyên và kiểm tra các trường hợp giới hạn cực trị chưa?*
-4. *Các hình vẽ minh họa tương ứng trong `book/figures/` đã được tạo và render sắc nét chưa?*
-5. *Lệnh `python scripts/build_book.py` có biên dịch ra PDF hoàn chỉnh không có lỗi Typst/Pandoc nào không?*
+### Giới hạn 1: Bộ Công Cụ Toán Học Chuẩn Lớp 11
+* **Được dùng tự nhiên**:
+  - Đạo hàm: Định nghĩa $v(t) = x'(t)$ là tốc độ biến thiên của li độ; $a(t) = v'(t)$ là tốc độ biến thiên của vận tốc.
+  - Công thức đạo hàm: $(\cos u)' = -u'\sin u$, $(\sin u)' = u'\cos u$.
+  - Công thức lượng giác lớp 10-11: $\cos(x + \pi/2) = -\sin x$, $\cos(x + \pi) = -\cos x$, $\sin^2 x + \cos^2 x = 1$.
+  - Đồ thị: Đồ thị hàm số bậc hai parabol, tiếp tuyến, diện tích dưới đồ thị đơn giản.
+* **Cấm đưa vào phần chính văn**:
+  - Không giải phương trình vi phân bằng phương trình đặc trưng nghiệm phức $r^2 + \omega^2 = 0 \implies r = \pm i\omega$. (Chỉ cần kiểm chứng: "Lấy đạo hàm bậc hai của $x(t) = A\cos(\omega t + \varphi)$ ta thu được ngay $x''(t) = -\omega^2 x(t)$").
+  - Không dùng số phức Euler $e^{i\theta}$.
+  - Không dùng công thức Taylor dạng chuỗi vô hạn với ký hiệu $\mathcal{O}(x^3)$. Thay vào đó, dùng hình ảnh trực quan: *"Xét một đoạn rất ngắn quanh đáy cân bằng, bất kỳ đường cong trơn nào cũng uốn cong như một parabol thế năng $W_t = \frac{1}{2}kx^2$"*.
+
+### Giới hạn 2: Xóa Bỏ Thuật Ngữ Hàn Lâm Bậc Đại Học
+* ❌ Cấm dùng: "Định lý Liouville", "Định lý Virial", "Điểm hút xoắn ốc (Spiral Attractor)", "Tích phân Elliptic", "Thế Morse".
+* ✅ Dùng cách diễn đạt thuần túy vật lý lớp 11:
+  - Thay vì "Định lý Liouville", hãy nói: *"Hệ thức độc lập thời gian giữa vị trí và vận tốc: $(x/A)^2 + (v/v_{\max})^2 = 1$ cho thấy quỹ đạo của trạng thái là một hình elip khép kín"*.
+  - Thay vì "Định lý Virial", hãy nói: *"Trong một chu kỳ, cơ năng liên tục đổi chỗ giữa động năng và thế năng, và giá trị trung bình của động năng đúng bằng giá trị trung bình của thế năng: $\bar{W}_d = \bar{W}_t = \frac{1}{2}W$"*.
+  - Thay vì "Thế Morse và khối lượng rút gọn", hãy dùng: *"Con lắc lò xo treo thẳng đứng, dao động của nhánh âm thoa kim loại, hay pít-tông động cơ ô tô"*.
+
+### Giới hạn 3: Cấu Trúc Mỗi Module
+Mỗi module bài học dài vừa vặn khoảng 1 giờ học (tương đương 4-6 trang in):
+1. **Hiện tượng & Mâu thuẫn trực giác**: Bắt đầu bằng câu hỏi đời sống.
+2. **Mô hình hóa trực quan**: Hình vẽ minh họa sắc nét, ẩn dụ gần gũi.
+3. **Toán học khai sáng**: Dẫn xuất từng bước bằng đạo hàm và lượng giác (không nhảy bước, chú thích rõ đơn vị SI).
+4. **Bản chất năng lượng & Thực tế**: Cơ năng, sự tiêu tán năng lượng, ứng dụng thực tế.
+5. **Ví dụ tính số & Cảnh báo lỗi thi**: Bài toán số liệu thực tế, chỉ ra bẫy đề thi trắc nghiệm/tự luận hay gặp.
+
+---
+
+## 3. Checklist Tự Kiểm Định Độ Phù Hợp Lớp 11 (Audience-Fit Gate)
+
+Trước khi xuất bản hoặc hoàn tất chương sách, tự đặt 4 câu hỏi:
+1. *Một học sinh lớp 11 nắm chắc SGK có hiểu được bài viết này mà không cần tra cứu giáo trình đại học không?*
+2. *Có công thức nào xuất hiện số phức, tích phân hay phương trình vi phân phức tạp không? (Nếu có $\rightarrow$ sửa ngay).*
+3. *Hình vẽ và ví dụ có bám sát đời sống thực tế không?*
+4. *Các ký hiệu có nhất quán với SGK GDPT 2018 không? (Dùng $x, v, a, W, W_d, W_t, \omega, f, T$).*
