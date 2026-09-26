@@ -1,399 +1,352 @@
-# CHƯƠNG 1: DAO ĐỘNG ĐIỀU HÒA – BẢN CHẤT VẬT LÍ, ĐẠO HÀM & HIỆN TƯỢNG ĐỜI SỐNG
+# CHƯƠNG 1: DAO ĐỘNG ĐIỀU HÒA
+## BẢN CHẤT VẬT LÍ, NỀN TẢNG TOÁN HỌC & ĐỐI CHIẾU SGK "KẾT NỐI TRI THỨC VỚI CUỘC SỐNG"
 
 ---
 
-> 📐 **HỘP CÔNG CỤ: TOÁN HỌC LỚP 11 CẦN THIẾT CHO CHƯƠNG 1**  
-> Để thấu suốt bản chất chuyển động thay vì học vẹt công thức, các em chỉ cần vận dụng 3 công cụ Toán học lớp 11 rất quen thuộc:  
+> 📚 **ĐỐI CHIẾU CHƯƠNG TRÌNH SGK KẾT NỐI TRI THỨC VỚI CUỘC SỐNG (VẬT LÍ 11):**  
+> Chương này được thiết kế như một tài liệu đồng hành chuyên sâu, soi sáng bản chất và giải mã toàn bộ các bài học trong **Chương 1: Dao động** của SGK Kết nối tri thức:  
+> * **Chủ đề 1 (Bài 1, 2, 3, 4 KNTT):** Mô tả dao động điều hòa, Động học giải tích ($x, v, a$), Độ lệch pha ($\Delta \varphi$) & Đồ thị trạng thái.  
+> * **Chủ đề 2 (Bài 1, 5, 7 KNTT):** Động lực học con lắc lò xo, con lắc đơn & Sự chuyển hóa năng lượng ($W_đ, W_t, W$).  
+> * **Chủ đề 3 (Bài 6 KNTT):** Dao động tắt dần, Dao động duy trì, Dao động cưỡng bức & Hiện tượng cộng hưởng.
+
+---
+
+> 📐 **HỘP CÔNG CỤ TOÁN 11 DÙNG TRONG CHƯƠNG:**  
 > 1. **Khái niệm Đạo hàm (Tốc độ biến thiên tức thời):**  
->    * Vận tốc là đạo hàm của li độ theo thời gian: $v(t) = x'(t) = \frac{dx}{dt}$.  
->    * Gia tốc là đạo hàm của vận tốc theo thời gian: $a(t) = v'(t) = \frac{dv}{dt}$.  
-> 2. **Đạo hàm của hàm số lượng giác cơ bản:**  
+>    * Vận tốc là đạo hàm của li độ theo thời gian: $v(t) = x'(t)$.  
+>    * Gia tốc là đạo hàm của vận tốc theo thời gian: $a(t) = v'(t) = x''(t)$.  
+> 2. **Đạo hàm hàm lượng giác cơ bản:**  
 >    $$\left[\cos(\omega t + \varphi)\right]' = -\omega \sin(\omega t + \varphi), \quad \left[\sin(\omega t + \varphi)\right]' = \omega \cos(\omega t + \varphi)$$  
-> 3. **Công thức Lượng giác & Hệ thức Độc lập Thời gian:**  
+> 3. **Công thức Lượng giác lớp 10 & 11:**  
 >    * Cung hơn kém $\pi/2$: $-\sin\alpha = \cos(\alpha + \pi/2)$.  
 >    * Cung hơn kém $\pi$: $-\cos\alpha = \cos(\alpha + \pi)$.  
 >    * Hệ thức cơ bản: $\sin^2\alpha + \cos^2\alpha = 1 \implies \left(\frac{x}{A}\right)^2 + \left(\frac{v}{\omega A}\right)^2 = 1$.
 
 ---
 
-# MODULE 1: ĐỘNG HỌC DAO ĐỘNG ĐIỀU HÒA & ĐỒ THỊ TRẠNG THÁI
-*(Kinematics of Simple Harmonic Motion & State Plots)*
+# PHẦN 1: MÔ TẢ DAO ĐỘNG ĐIỀU HÒA, ĐỘNG HỌC & ĐỘ LỆCH PHA
+*(Đối chiếu và giải mã chuyên sâu Bài 1, 2, 3, 4 SGK Kết nối tri thức)*
 
-### 1. Mục tiêu Cần đạt
-Sau khi học xong Module 1, các em sẽ:
-* Hiểu rõ vì sao dao động điều hòa là chuyển động thẳng có gia tốc biến đổi liên tục, không phải là "chuyển động tròn quay ngầm".
-* Tự mình dẫn xuất được công thức vận tốc, gia tốc và mối liên hệ pha ($\pi/2, \pi$) bằng phép lấy đạo hàm hàm lượng giác.
-* Vẽ và đọc hiểu đồ thị trạng thái $(x, v/\omega)$, biết cách xác định ngay trạng thái của vật tại các thời điểm quan trọng ($0, T/4, T/2, 3T/4$).
-* Tránh được bẫy đề thi trắc nghiệm kinh điển: *"khi vận tốc bằng 0 thì gia tốc bằng bao nhiêu?"*.
+### 1. Bản Chất của Dao Động Điều Hòa: Không Phải "Quay Tròn Ngầm"
 
----
+#### Quan sát thực tế & Định nghĩa SGK (Bài 1 KNTT)
+* Trong đời sống, ta thường bắt gặp những chuyển động lặp đi lặp lại quanh một vị trí cân bằng xác định: chiếc xích đu đu đưa, màng loa điện thoại rung động, dây đàn guitar sau khi gảy. Những chuyển động như vậy gọi là **dao động cơ học**.
+* **Định nghĩa SGK:** *Dao động điều hòa là dao động trong đó li độ của vật là một hàm cosin (hoặc sin) của thời gian*:
+  $$x = A\cos(\omega t + \varphi)$$
 
-### 2. Mâu thuẫn Sách Giáo Khoa & Câu Hỏi Khởi Phát
-* **Quan sát thực tế:** Một cành cây đu đưa trong gió, chiếc xích đu qua lại trên sân trường, hay màng loa điện thoại rung động phát ra âm thanh. Tất cả đều là những chuyển động **thẳng** (hoặc gần như thẳng), lặp đi lặp lại quanh một vị trí cân bằng.
-* **Mâu thuẫn thường gặp:** Sách giáo khoa thường mở đầu bài học bằng cách lấy bóng của một điểm chuyển động tròn đều chiếu xuống đường kính. Cách tiếp cận này rất tiện về mặt hình học, nhưng vô tình khiến nhiều học sinh lầm tưởng rằng: *"Muốn có dao động điều hòa hình cosin, bên trong vật thể chắc hẳn phải có cái gì đó đang quay tròn!"*.
-* **Bản chất vật lý:** Trong thực tế, chiếc màng loa hay quả lắc không hề quay tròn. Chuyển động của chúng có dạng hàm cosin là bởi vì **lực kéo vật về vị trí cân bằng luôn tỉ lệ thuận với độ lệch của vật**: lệch càng xa, lực kéo về càng mạnh. Chính quy luật này ép buộc gia tốc phải tỉ lệ ngược dấu với li độ:
+#### Giải mã bản chất: Vì sao lại có hàm cosin?
+* Trong SGK, để giúp học sinh lớp 11 làm quen với hàm cosin khi chưa học đạo hàm ở học kỳ 1, người ta thường dùng mô hình hình chiếu của một chất điểm chuyển động tròn đều lên trục toạ độ.
+* **Bản chất vật lý:** Trong thực tế, quả lắc hay chiếc màng loa không hề "quay tròn ngầm". Bản chất của dao động điều hòa bắt nguồn từ việc **lực tác dụng kéo vật về vị trí cân bằng luôn tỉ lệ thuận với khoảng cách lệch**: vật lệch càng xa, lực kéo về càng mạnh.
+* Quy luật lực này ép buộc gia tốc của vật luôn tỉ lệ ngược dấu với li độ:
   $$a(t) = -\omega^2 x(t)$$
-  Một chuyển động thẳng mà gia tốc luôn thỏa mãn biểu thức trên được gọi là **dao động điều hòa**.
+  Chỉ có hàm số dạng $\sin$ và $\cos$ mới có tính chất toán học đặc biệt: *lấy đạo hàm hai lần thì quay trở lại chính hàm ban đầu đổi dấu*.
 
 ---
 
-### 3. Mô hình Trực quan: Thanh truyền - Pít-tông trong Động cơ
-* **Hình ảnh liên tưởng:** Hãy quan sát bộ phận **Pít-tông và Trục khuỷu** trong động cơ xe máy. Khi trục khuỷu quay tròn đều với tốc độ góc $\omega$, thanh truyền nối với pít-tông làm pít-tông chuyển động tịnh tiến thẳng tới - lui trong lòng xi-lanh.
-* **Nhận xét chuyển động:**
-  - Ở hai đầu xi-lanh (gọi là hai điểm chết, tương ứng với hai **Biên độ** $x = \pm A$), pít-tông phải khựng lại để đổi chiều chuyển động, nên vận tốc tại đó tức thời bằng $0$.
-  - Khi lao qua điểm chính giữa (tương ứng với **Vị trí cân bằng** $x = 0$), pít-tông lao đi nhanh nhất, đạt vận tốc cực đại $v_{\max} = \omega A$.
+### 2. Các Đại Lượng Đặc Trưng (Bài 2 KNTT)
+
+Trong phương trình $x(t) = A\cos(\omega t + \varphi)$:
+* **Li độ $x$:** Độ lệch của vật khỏi vị trí cân bằng tại thời điểm $t$, có đơn vị là mét ($\text{m}$) hoặc xentimét ($\text{cm}$).
+* **Biên độ $A$:** Độ lệch cực đại của vật so với vị trí cân bằng, luôn có giá trị dương ($A > 0$). Quỹ đạo chuyển động của vật là một đoạn thẳng dài $L = 2A$.
+* **Chu kì $T$ (s):** Khoảng thời gian để vật thực hiện trọn vẹn một dao động toàn phần:
+  $$T = \frac{2\pi}{\omega}$$
+* **Tần số $f$ (Hz):** Số dao động toàn phần mà vật thực hiện được trong một giây:
+  $$f = \frac{1}{T} = \frac{\omega}{2\pi}$$
+* **Tần số góc $\omega$ ($\text{rad/s}$):** Tốc độ biến thiên của góc pha theo thời gian: $\omega = 2\pi f = \frac{2\pi}{T}$.
+* **Pha ban đầu $\varphi$ ($\text{rad}$):** Cho biết vị trí và chiều chuyển động của vật tại thời điểm xuất phát $t = 0$.
+* **Pha dao động $(\omega t + \varphi)$ ($\text{rad}$):** Cho biết trạng thái chuyển động (vị trí $x$ và chiều vận tốc $v$) của vật tại thời điểm $t$.
 
 ---
 
-### 4. Dẫn Xuất Bằng Đạo Hàm: Vận Tốc, Gia Tốc và Độ Lệch Pha
+### 3. Độ Lệch Pha Giữa Hai Dao Động (Trọng tâm Bài 2 & Bài 4 KNTT)
 
-Xét một vật dao động điều hòa dọc theo trục $Ox$ với phương trình li độ:
-$$x(t) = A\cos(\omega t + \varphi)$$
+Xét hai dao động điều hòa cùng tần số:
+$$x_1 = A_1 \cos(\omega t + \varphi_1), \quad x_2 = A_2 \cos(\omega t + \varphi_2)$$
 
-Trong đó:
-* $x(t)$: Li độ (vị trí của vật so với gốc $O$), đơn vị mét ($\text{m}$) hoặc xentimét ($\text{cm}$).
-* $A$: Biên độ dao động (độ lệch cực đại khỏi gốc $O$, luôn dương: $A > 0$).
-* $\omega$: Tần số góc, đơn vị radian trên giây ($\text{rad/s}$).
-* $\varphi$: Pha ban đầu tại thời điểm $t = 0$, đơn vị radian ($\text{rad}$).
-* $(\omega t + \varphi)$: Pha dao động tại thời điểm $t$, cho biết trạng thái chuyển động (vị trí và chiều chuyển động) của vật.
+**Độ lệch pha** giữa dao động 2 và dao động 1 là:
+$$\Delta \varphi = \varphi_2 - \varphi_1$$
 
-#### Bước 1: Tìm Vận tốc $v(t)$ bằng Đạo hàm Bậc Nhất
-Vận tốc là tốc độ thay đổi của tọa độ theo thời gian. Lấy đạo hàm của $x(t)$ theo biến $t$:
-$$v(t) = x'(t) = \left[A\cos(\omega t + \varphi)\right]' = -A\omega \sin(\omega t + \varphi)$$
+Tùy thuộc vào giá trị của $\Delta \varphi$, ta có 3 trường hợp kinh điển xuất hiện liên tục trong các đề thi:
 
-Dùng công thức lượng giác $-\sin\alpha = \cos(\alpha + \pi/2)$, ta viết lại:
+1. **Hai dao động cùng pha ($\Delta \varphi = 2k\pi$ với $k \in \mathbb{Z}$):**  
+   * Hai vật luôn cùng tăng, cùng giảm, cùng đạt cực đại và cùng qua vị trí cân bằng theo cùng một chiều tại cùng một thời điểm.  
+   * Tỉ số li độ luôn dương: $\frac{x_1}{A_1} = \frac{x_2}{A_2}$.
+2. **Hai dao động ngược pha ($\Delta \varphi = (2k+1)\pi$ với $k \in \mathbb{Z}$):**  
+   * Khi vật này ở biên dương thì vật kia ở biên âm; khi vật này qua VTCB theo chiều dương thì vật kia qua VTCB theo chiều âm.  
+   * Tỉ số li độ luôn đối dấu: $\frac{x_1}{A_1} = -\frac{x_2}{A_2}$.
+3. **Hai dao động vuông pha ($\Delta \varphi = (2k+1)\frac{\pi}{2}$ với $k \in \mathbb{Z}$):**  
+   * Khi một vật ở biên thì vật kia đang đi qua vị trí cân bằng.  
+   * Hai dao động thỏa mãn hệ thức độc lập dạng hình học elip:
+     $$\left(\frac{x_1}{A_1}\right)^2 + \left(\frac{x_2}{A_2}\right)^2 = 1$$
+   * *Ý nghĩa vật lý:* Vận tốc $v$ vuông pha với li độ $x$, và gia tốc $a$ vuông pha với vận tốc $v$!
+
+---
+
+### 4. Dẫn Xuất Toán Học: Vận Tốc, Gia Tốc và Mối Quan Hệ Pha (Bài 3 KNTT)
+
+#### Bước 1: Vận tốc $v(t)$ bằng Đạo hàm Li độ
+Vận tốc tức thời là đạo hàm của li độ theo thời gian:
+$$v(t) = x'(t) = \left[A\cos(\omega t + \varphi)\right]' = -\omega A \sin(\omega t + \varphi)$$
+
+Dùng công thức lượng giác $-\sin\alpha = \cos(\alpha + \pi/2)$:
 $$v(t) = \omega A \cos\left(\omega t + \varphi + \frac{\pi}{2}\right)$$
 
-> 💡 **Kết luận 1**: Vận tốc biến thiên điều hòa cùng tần số $\omega$ nhưng **sớm pha $\frac{\pi}{2}$** (tức là đi trước một phần tư chu kỳ $T/4$) so với li độ $x$.  
-> Vận tốc cực đại: $v_{\max} = \omega A$.
+* **Vận tốc cực đại:** $v_{\max} = \omega A$ (khi vật đi qua vị trí cân bằng $x = 0$ theo chiều dương).
+* **Độ lệch pha:** Vận tốc $v$ **sớm pha $\frac{\pi}{2}$** so với li độ $x$.
 
-#### Bước 2: Tìm Gia tốc $a(t)$ bằng Đạo hàm Bậc Hai
-Gia tốc là tốc độ thay đổi của vận tốc theo thời gian. Lấy đạo hàm của $v(t)$ theo biến $t$:
-$$a(t) = v'(t) = x''(t) = \left[-A\omega \sin(\omega t + \varphi)\right]' = -A\omega^2 \cos(\omega t + \varphi)$$
+#### Bước 2: Gia tốc $a(t)$ bằng Đạo hàm Vận tốc
+Gia tốc tức thời là đạo hàm của vận tốc theo thời gian:
+$$a(t) = v'(t) = x''(t) = \left[-\omega A \sin(\omega t + \varphi)\right]' = -\omega^2 A \cos(\omega t + \varphi)$$
 
-Dùng công thức lượng giác $-\cos\alpha = \cos(\alpha + \pi)$, ta viết lại:
+Dùng công thức lượng giác $-\cos\alpha = \cos(\alpha + \pi)$:
 $$a(t) = \omega^2 A \cos\left(\omega t + \varphi + \pi\right)$$
 
-Mặt khác, vì $x(t) = A\cos(\omega t + \varphi)$, ta nhận được hệ thức cốt lõi:
-$$a(t) = -\omega^2 x(t)$$
-
-> 💡 **Kết luận 2**: Gia tốc biến thiên điều hòa cùng tần số $\omega$, **ngược pha hoàn toàn ($\pi$)** so với li độ $x$, và luôn hướng về vị trí cân bằng (ngược dấu với $x$).  
-> Gia tốc cực đại: $a_{\max} = \omega^2 A$.
+* **Gia tốc cực đại:** $a_{\max} = \omega^2 A$ (khi vật ở biên âm $x = -A$).
+* **Mối liên hệ gia tốc và li độ:** Vì $x = A\cos(\omega t + \varphi)$ nên:
+  $$a(t) = -\omega^2 x(t)$$
+* **Độ lệch pha:** Gia tốc $a$ **ngược pha hoàn toàn ($\pi$)** so với li độ $x$, và **sớm pha $\frac{\pi}{2}$** so với vận tốc $v$.
 
 ---
 
 ![Đồ thị động học chuẩn hóa theo thời gian của dao động điều hòa: Li độ x(t), Vận tốc v(t), và Gia tốc a(t).](figures/fig1_1_kinematics.png)
 
 > 🔍 **DẪN DẮT MẮT ĐỌC (Hình 1.1):**  
-> * **Đồ thị trên cùng (Li độ $x/A$):** Lúc $t = 0$, vật ở biên dương $x = +A$. Sau $T/4$, vật về VTCB ($x = 0$). Sau $T/2$, vật tới biên âm ($x = -A$).  
-> * **Đồ thị ở giữa (Vận tốc $\frac{v}{\omega A}$):** Khi vật đang ở biên ($x = +A$ hoặc $-A$), đường nét đứt chiếu xuống cho thấy vận tốc bằng đúng $0$. Khi vật qua VTCB ($x = 0$ lúc $t = T/4$), vận tốc đạt giá trị âm cực đại $v = -\omega A$ (vật lao nhanh nhất theo chiều âm).  
-> * **Đồ thị dưới cùng (Gia tốc $\frac{a}{\omega^2 A}$):** Khi vật ở biên âm ($x = -A$ lúc $t = T/2$), gia tốc vọt lên cực đại dương $a = +\omega^2 A$ để kéo giật vật quay về gốc tọa độ. Hai đường $x(t)$ và $a(t)$ hoàn toàn uốn lượn đối xứng ngược chiều nhau!
+> * **Hãy quan sát sự lệch pha giữa các đồ thị:**  
+>   - Đồ thị li độ (màu xanh navy) đạt đỉnh tại $t = 0$.  
+>   - Nhưng đồ thị vận tốc (màu xanh lá) đã đạt giá trị $0$ tại $t = 0$, và đạt đỉnh âm tại $t = T/4$.  
+>   - Đồ thị gia tốc (màu đỏ thẫm) hoàn toàn uốn lượn ngược chiều so với đồ thị li độ: hễ $x$ dương thì $a$ âm, $x$ cực đại thì $a$ cực tiểu!
 
 ---
 
-### 5. Đồ Thị Trạng Thái $(x, v/\omega)$ & Hệ Thức Độc Lập Thời Gian
+### 5. Hệ Thức Độc Lập Thời Gian & Đồ Thị Trạng Thái $(x, v/\omega)$
 
-Từ hai phương trình li độ và vận tốc:
+Từ hai phương trình:
 $$\frac{x}{A} = \cos(\omega t + \varphi), \quad \frac{v}{\omega A} = -\sin(\omega t + \varphi)$$
 
-Bình phương hai vế và cộng lại, tận dụng $\cos^2\alpha + \sin^2\alpha = 1$:
-$$\left(\frac{x}{A}\right)^2 + \left(\frac{v}{\omega A}\right)^2 = 1 \iff x^2 + \frac{v^2}{\omega^2} = A^2$$
+Bình phương hai vế rồi cộng lại:
+$$\left(\frac{x}{A}\right)^2 + \left(\frac{v}{\omega A}\right)^2 = \cos^2(\omega t + \varphi) + \sin^2(\omega t + \varphi) = 1$$
+Hay viết gọn lại:
+$$x^2 + \frac{v^2}{\omega^2} = A^2 \iff a = -\omega^2 x \implies \left(\frac{a}{\omega^2 A}\right)^2 + \left(\frac{v}{\omega A}\right)^2 = 1$$
 
-Đây chính là **Hệ thức độc lập thời gian** vô cùng nổi tiếng trong các bài thi Vật lý 11!
-
-Nếu ta đặt trục hoành là li độ $x$, và trục tung là đại lượng vận tốc chuẩn hóa $y = \frac{v}{\omega}$, phương trình trên trở thành:
-$$x^2 + y^2 = A^2$$
-Đây chính là phương trình đường tròn tâm $O$ bán kính $A$!
+Đây là **hệ thức độc lập thời gian** cốt lõi giúp các em giải quyết hầu hết các bài toán tính nhanh khi không biết thời gian $t$.
 
 ![Đồ thị trạng thái (x, v/omega) biểu diễn quỹ đạo khép kín của dao động điều hòa theo chiều kim đồng hồ.](figures/fig1_2_phase_space.png)
 
 > 🔍 **DẪN DẮT MẮT ĐỌC (Hình 1.2):**  
-> * Điểm màu cam $S_0(t = 0)$ tại tọa độ $(+A, 0)$: Vật đang ở biên dương, đứng yên tức thời.  
-> * Khi thời gian trôi, điểm trạng thái chạy trên đường tròn **thuận chiều kim đồng hồ**:  
->   - Đến $S_1(t = T/4)$: Tọa độ là $(0, -\omega A)$, tức vật qua VTCB với vận tốc âm cực đại.  
->   - Đến $S_2(t = T/2)$: Tọa độ $(-A, 0)$, vật tới biên âm, vận tốc bằng 0.  
->   - Đến $S_3(t = 3T/4)$: Tọa độ $(0, +\omega A)$, vật qua VTCB theo chiều dương.  
-> * **Quy luật hình học**: Ở nửa trên mặt phẳng ($v > 0$), vật đi theo chiều dương nên $x$ phải tăng; ở nửa dưới ($v < 0$), vật đi theo chiều âm nên $x$ phải giảm. Vì vậy, mọi trạng thái dao động đều bắt buộc phải quay **thuận chiều kim đồng hồ**.
+> Nếu đặt trục hoành là li độ $x$ và trục tung là vận tốc chuẩn hóa $y = \frac{v}{\omega}$, hệ thức độc lập biến thành phương trình đường tròn $x^2 + y^2 = A^2$.  
+> Khi vật dao động, điểm trạng thái chạy trên đường tròn **thuận chiều kim đồng hồ**:  
+> * $S_0(t = 0)$: Vật ở biên dương $(+A, 0)$, vận tốc bằng $0$.  
+> * $S_1(t = T/4)$: Vật qua VTCB theo chiều âm $(0, -\omega A)$, vận tốc âm cực đại.  
+> * $S_2(t = T/2)$: Vật tới biên âm $(-A, 0)$, vận tốc bằng $0$.  
+> * $S_3(t = 3T/4)$: Vật qua VTCB theo chiều dương $(0, +\omega A)$, vận tốc dương cực đại.
 
 ---
 
-### 6. Bài Toán Tính Số Thực Tế 1.1
+### 6. Bài Toán Tính Số Thực Tế 1.1 (Theo Dạng Bài 4 KNTT)
 
-> **Bài toán:** Một màng loa của tai nghe điện thoại dao động điều hòa để tạo ra âm thanh có tần số $f = 440\text{ Hz}$ (nốt La chuẩn $A_4$). Biên độ rung của màng loa là $A = 0.5\text{ mm} = 0.5 \times 10^{-3}\text{ m}$.  
-> 1. Tính tần số góc $\omega$, chu kỳ dao động $T$.  
+> **Bài toán:** Một màng loa tai nghe điện thoại dao động điều hòa phát ra âm La ($440\text{ Hz}$) với biên độ rung $A = 0.5\text{ mm} = 0.5 \times 10^{-3}\text{ m}$.  
+> 1. Tính tần số góc $\omega$ và chu kì dao động $T$ của màng loa.  
 > 2. Tính tốc độ cực đại $v_{\max}$ và gia tốc cực đại $a_{\max}$ của màng loa.  
-> 3. Khi màng loa đang ở vị trí cách vị trí cân bằng $x = 0.3\text{ mm}$, tính tốc độ tức thời của màng loa.
+> 3. Khi màng loa đang ở vị trí $x = 0.3\text{ mm}$, hãy tính tốc độ tức thời của màng loa.
 > 
 > **Lời giải chi tiết:**  
-> 1. **Tính các thông số cơ bản:**  
->    * Tần số góc: $\omega = 2\pi f = 2\pi \times 440 \approx 2764.6\text{ rad/s}$.  
->    * Chu kỳ dao động: $T = \frac{1}{f} = \frac{1}{440} \approx 0.00227\text{ s} = 2.27\text{ ms}$.  
-> 2. **Tính tốc độ và gia tốc cực đại:**  
->    * Tốc độ cực đại:  
->      $$v_{\max} = \omega A = (2764.6\text{ rad/s}) \times (0.5 \times 10^{-3}\text{ m}) \approx 1.38\text{ m/s}$$  
->    * Gia tốc cực đại:  
->      $$a_{\max} = \omega^2 A = (2764.6\text{ rad/s})^2 \times (0.5 \times 10^{-3}\text{ m}) \approx 3821.5\text{ m/s}^2$$  
->      *(Gia tốc này gấp gần 390 lần gia tốc trọng trường Trái Đất $g \approx 9.8\text{ m/s}^2$! Dù màng loa rung rất khẽ chỉ nửa milimét, lực quán tính tác dụng lên vật liệu màng loa là cực kỳ khủng khiếp).*  
-> 3. **Tính tốc độ tức thời khi $x = 0.3\text{ mm}$:**  
+> 1. **Tần số góc và chu kì:**  
+>    * $\omega = 2\pi f = 2\pi \times 440 \approx 2764.6\text{ rad/s}$.  
+>    * $T = \frac{1}{f} = \frac{1}{440} \approx 0.00227\text{ s} = 2.27\text{ ms}$.  
+> 2. **Tốc độ cực đại và gia tốc cực đại:**  
+>    * $v_{\max} = \omega A = 2764.6 \times (0.5 \times 10^{-3}) \approx 1.38\text{ m/s}$.  
+>    * $a_{\max} = \omega^2 A = (2764.6)^2 \times (0.5 \times 10^{-3}) \approx 3821.5\text{ m/s}^2 \approx 390\text{ g}$.  
+> 3. **Tốc độ tức thời khi $x = 0.3\text{ mm}$:**  
 >    Áp dụng hệ thức độc lập thời gian:  
 >    $$x^2 + \frac{v^2}{\omega^2} = A^2 \implies |v| = \omega \sqrt{A^2 - x^2}$$  
->    Thay số (giữ nguyên đơn vị $\text{mm}$ cho $x$ và $A$):  
->    $$|v| = (2764.6) \times \sqrt{0.5^2 - 0.3^2} = 2764.6 \times 0.4 = 1105.8\text{ mm/s} \approx 1.11\text{ m/s}$$
+>    Thay số trực tiếp:  
+>    $$|v| = 2764.6 \times \sqrt{0.5^2 - 0.3^2} = 2764.6 \times 0.4 = 1105.8\text{ mm/s} \approx 1.11\text{ m/s}$$
 
 ---
 
-> ⚠️ **CẢNH BÁO LỖI PHỔ BIẾN TRONG ĐỀ THI:**  
-> Rất nhiều học sinh chọn nhầm đáp án khi gặp câu hỏi: *"Khi vật dừng lại ở biên thì gia tốc bằng bao nhiêu?"*.  
-> * **Sai lầm:** Nghĩ rằng "vật dừng lại ($v = 0$) thì không có gia tốc ($a = 0$)".  
-> * **Bản chất đúng:** Khi vật ở biên ($v = 0$), lò xo bị nén hoặc dãn mạnh nhất, nên lực kéo về đạt giá trị **lớn nhất**, dẫn tới gia tốc đạt **cực đại** ($a = \pm \omega^2 A$). Gia tốc chỉ bằng 0 khi vật đi qua vị trí cân bằng ($x = 0$), nơi vận tốc lại đạt giá trị cực đại!
+> ⚠️ **CẢNH BÁO BẪY ĐỀ THI:**  
+> * **Bẫy 1:** Nhầm lẫn *"ở biên vận tốc bằng 0 thì gia tốc cũng bằng 0"*.  
+>   $\rightarrow$ **Thực tế:** Ở biên, lò xo bị nén/dãn mạnh nhất nên lực hồi phục lớn nhất, gia tốc đạt **cực đại** ($a = \pm \omega^2 A$).  
+> * **Bẫy 2:** Nhầm lẫn *"qua VTCB gia tốc bằng 0 thì vận tốc cũng bằng 0"*.  
+>   $\rightarrow$ **Thực tế:** Qua VTCB, lực triệt tiêu nên $a = 0$, nhưng vận tốc lại đạt **cực đại** ($|v| = v_{\max} = \omega A$).
 
 ---
 
-# MODULE 2: ĐỘNG LỰC HỌC & BẢN CHẤT "ĐÁY CHẢO PARABOL"
-*(Dynamics of Oscillations & The Parabolic Potential Well)*
+# PHẦN 2: ĐỘNG LỰC HỌC & SỰ CHUYỂN HÓA NĂNG LƯỢNG
+*(Đối chiếu và giải mã chuyên sâu Bài 1, 5, 7 SGK Kết nối tri thức)*
 
-### 1. Mục tiêu Cần đạt
-Sau khi học xong Module 2, các em sẽ:
-* Giải thích được vì sao con lắc lò xo lại dao động điều hòa bằng cách kết hợp Định luật II Newton và Định luật Hooke.
-* Hiểu được bí mật lớn của tự nhiên: *Vì sao dao động nhỏ quanh bất kỳ vị trí cân bằng bền nào cũng đều là dao động điều hòa?* thông qua hình ảnh "đáy chảo parabol".
-* Hiểu điều kiện góc nhỏ ($\alpha \le 10^\circ$) của con lắc đơn và biết con lắc đơn sai lệch thế nào khi dao động ở góc lớn.
+### 1. Động Lực Học Con Lắc Lò Xo & Con Lắc Đơn
 
----
+#### Con lắc lò xo
+Xét quả cầu nhỏ khối lượng $m$ gắn vào lò xo có độ cứng $k$ trượt không ma sát.  
+* **Lực kéo về:** $F_{kv} = -kx$.  
+* **Định luật II Newton:** $F = ma \iff -kx = ma \implies a = -\frac{k}{m}x$.  
+* So sánh với $a = -\omega^2 x$, ta thu được công thức tần số góc và chu kì của con lắc lò xo:
+  $$\omega = \sqrt{\frac{k}{m}}, \quad T = 2\pi\sqrt{\frac{m}{k}}$$
 
-### 2. Mâu thuẫn & Câu Hỏi Khởi Phát
-* **Quan sát:** Trong phòng thí nghiệm, ta kéo dãn một lò xo rồi buông tay, quả nặng dao động điều hòa. Nhưng nếu gảy một sợi dây đàn guitar, hay ấn nhẹ đầu một chiếc thước kẻ kẹp trên mép bàn rồi buông ra, đầu thước kẻ cũng dao động điều hòa. Rõ ràng chiếc thước kẻ hay sợi dây đàn không có cái lò xo xoắn kim loại nào bên trong. Vậy lực đàn hồi $F = -kx$ từ đâu mà ra?
-* **Bản chất vật lý:** Mọi vật thể rắn xung quanh ta đều được cấu tạo từ các nguyên tử liên kết với nhau. Khi vật đứng yên ổn định, các nguyên tử nằm ở **vị trí cân bằng bền**, nơi lực hút và lực đẩy giữa chúng triệt tiêu nhau. Khi ta làm biến dạng nhẹ vật thể, các liên kết nguyên tử sẽ sinh ra lực hồi phục kéo các hạt trở lại vị trí ban đầu.
-
----
-
-### 3. Động Lực Học Con Lắc Lò Xo Theo Định Luật II Newton
-
-Xét một vật nhỏ khối lượng $m$ gắn vào đầu một lò xo nhẹ có độ cứng $k$, đặt trên mặt phẳng nằm ngang không ma sát. Chọn gốc tọa độ $O$ tại vị trí cân bằng (lò xo không biến dạng), chiều dương hướng theo chiều dãn của lò xo.
-
-1. **Xác định lực tác dụng:**  
-   Khi vật lệch khỏi vị trí cân bằng một đoạn $x$, lò xo bị biến dạng một lượng $\Delta \ell = x$.  
-   Lực đàn hồi do lò xo tác dụng lên vật đóng vai trò là **lực kéo về (lực hồi phục)**:
-   $$F_{kv} = -kx$$
-   *(Dấu trừ thể hiện: khi $x > 0$ thì $F < 0$ hướng về gốc $O$; khi $x < 0$ thì $F > 0$ cũng hướng về gốc $O$).*
-
-2. **Áp dụng Định luật II Newton:**
-   $$F = ma \iff -kx = ma \iff a = -\frac{k}{m}x$$
-
-3. **So sánh với định nghĩa dao động điều hòa:**  
-   Ở Module 1, ta đã biết dao động điều hòa luôn có quy luật gia tốc: $a = -\omega^2 x$.  
-   Đối chiếu hai phương trình:
-   $$\omega^2 = \frac{k}{m} \implies \omega = \sqrt{\frac{k}{m}}$$
-
-> 💡 **Kết luận:** Chuyển động của con lắc lò xo là **dao động điều hòa** với:
-> * Tần số góc riêng: $\omega_0 = \sqrt{\frac{k}{m}}\text{ (rad/s)}$.
-> * Chu kỳ dao động riêng: $T_0 = \frac{2\pi}{\omega_0} = 2\pi\sqrt{\frac{m}{k}}\text{ (s)}$.
-> * Tần số dao động riêng: $f_0 = \frac{1}{T_0} = \frac{1}{2\pi}\sqrt{\frac{k}{m}}\text{ (Hz)}$.
-> 
-> *Nhận xét quan trọng:* Chu kỳ $T$ chỉ phụ thuộc vào bản chất của hệ (khối lượng $m$ và độ cứng $k$), **hoàn toàn không phụ thuộc vào biên độ dao động $A$** hay cách kích thích ban đầu. Đây gọi là tính **đẳng thời** của dao động điều hòa.
+#### Con lắc đơn
+Xét sợi dây chiều dài $\ell$ treo vật nặng $m$. Khi góc lệch $\alpha$ nhỏ ($\alpha \le 10^\circ \approx 0.175\text{ rad}$), $\sin\alpha \approx \alpha = \frac{s}{\ell}$.  
+* **Lực kéo về:** $F_t = -mg\sin\alpha \approx -\left(\frac{mg}{\ell}\right)s$.  
+* Chu kì dao động điều hòa của con lắc đơn:
+  $$T = 2\pi\sqrt{\frac{\ell}{g}}$$
 
 ---
 
-### 4. Ẩn Dụ Đáy Chảo Parabol: Vì Sao Dao Động Điều Hòa Phổ Quát Trong Tự Nhiên?
+### 2. Ẩn Dụ Đáy Chảo Parabol: Nguồn Gốc Sâu Xa của Dao Động Điều Hòa
 
-Tại sao dao động điều hòa lại xuất hiện ở khắp mọi nơi trong vũ trụ, từ dao động phân tử, nguyên tử đến cầu cống, nhà cao tầng?
+Tại sao từ cành cây, dây đàn đến cầu treo hay nguyên tử đều dao động điều hòa?
 
-Hãy tưởng tượng một **hòn bi đặt trong lòng một chiếc chảo trũng**.
-1. **Tại điểm sâu nhất của đáy chảo ($x_0 = 0$):** Hòn bi nằm yên thăng bằng. Đây là **Vị trí cân bằng bền**. Tại đây, thế năng của hòn bi đạt giá trị cực tiểu.
-2. **Hình dáng đáy chảo:** Dù miệng chảo bên trên có méo mó hay bất đối xứng thế nào đi nữa, thì ngay tại vùng lân cận điểm đáy trũng nhất, bất kỳ một đường cong trơn nào cũng có thể áp vừa khít một đường cong **Parabol**:
-   $$W_t(x) \approx \frac{1}{2} k x^2$$
-3. **Xuất hiện lực hồi phục:** Khi hòn bi lăn lệch khỏi đáy một đoạn nhỏ $x$, sườn chảo dốc lên sẽ tạo ra phản lực có xu hướng đẩy hòn bi trượt trở về đáy. Vì thế năng có dạng parabol bậc hai, lực đẩy về sẽ tỉ lệ thuận với độ dời bậc nhất:
-   $$F = -kx$$
+* **Hình ảnh chiếc chảo:** Hãy hình dung một **hòn bi nằm dưới đáy một chiếc chảo trũng**.  
+  1. Điểm sâu nhất của đáy chảo ($x_0 = 0$) là **Vị trí cân bằng bền**, nơi thế năng của vật đạt giá trị cực tiểu.  
+  2. Gần đáy chảo, bất kỳ đường cong trơn nào cũng có thể áp vừa khít một đường cong **Parabol** bậc hai:
+     $$W_t(x) \approx \frac{1}{2}kx^2$$
+  3. Khi hòn bi lệch khỏi đáy một đoạn nhỏ $x$, phản lực dốc của thành chảo sẽ đẩy hòn bi trở về với lực tỉ lệ với độ dời: $F = -kx$.
 
 ![Bản chất hình học của đáy giếng thế năng: Dao động nhỏ quanh vị trí cân bằng bền luôn có thế năng dạng Parabol.](figures/fig1_3_potential_well.png)
 
 > 🔍 **DẪN DẮT MẮT ĐỌC (Hình 1.3):**  
-> * **Đường cong màu xanh đậm $W_t(x)$:** Đại diện cho năng lượng thực tế của một hệ vật lý (ví dụ liên kết phân tử), có dạng đáy trũng nhưng hai bên dốc không đều nhau.  
-> * **Đường nét đứt màu đỏ Parabol $W_t \approx \frac{1}{2}kx^2$:** Là đường parabol toán học lý tưởng.  
-> * **Vùng màu vàng nhạt (Biên độ nhỏ $|x| \le 0.35$):** Các em hãy nhìn kỹ vùng này — đường cong thực tế màu xanh và đường parabol màu đỏ **trùng khít lên nhau**! Điều này chứng minh: *Hầu như mọi dao động nhỏ quanh vị trí cân bằng bền trong vũ trụ đều là dao động điều hòa.*  
-> * **Mũi tên đỏ góc phải:** Nếu ta kéo vật lệch quá xa ra ngoài vùng vàng, thế năng thực tế không còn là parabol nữa, dao động sẽ bị méo và không còn là điều hòa đơn giản.
+> Trong vùng màu vàng nhạt ($|x| \le 0.35$), đường cong thế năng thực tế màu xanh và parabol màu đỏ **hoàn toàn trùng khít lên nhau**. Điều này giải thích chân lý: *Mọi dao động nhỏ quanh vị trí cân bằng bền trong vũ trụ đều là dao động điều hòa!*
 
 ---
 
-### 5. Con Lắc Đơn & Giới Hạn Góc Nhỏ
+### 3. Động Năng, Thế Năng & Cơ Năng (Bài 5 & 7 KNTT)
 
-Một con lắc đơn gồm sợi dây nhẹ không dãn chiều dài $\ell$, đầu dưới treo quả nặng khối lượng $m$. Kéo con lắc lệch góc $\alpha$ so với phương thẳng đứng rồi thả nhẹ.
+Theo chuẩn ký hiệu của SGK Kết nối tri thức:
 
-1. **Lực kéo về của con lắc đơn:**  
-   Trọng lực $\vec{P}$ phân tích thành hai thành phần. Thành phần tiếp tuyến với quỹ đạo cung tròn đóng vai trò lực hồi phục:
-   $$F_t = -mg \sin\alpha$$
-2. **Góc nhỏ ($\alpha \le 10^\circ \approx 0.175\text{ rad}$):**  
-   Khi góc $\alpha$ tính bằng radian rất nhỏ, theo hình học lượng giác ta có xấp xỉ: $\sin\alpha \approx \alpha$.  
-   Mặt khác, cung dịch chuyển $s = \ell \alpha \implies \alpha = \frac{s}{\ell}$.  
-   Thay vào biểu thức lực:
-   $$F_t \approx -mg \alpha = -\left(\frac{mg}{\ell}\right)s$$
-   Đặt độ cứng tương đương $k = \frac{mg}{\ell}$, biểu thức lực lại có đúng dạng $F = -ks$!
-3. **Chu kỳ con lắc đơn góc nhỏ:**
-   $$T_0 = 2\pi\sqrt{\frac{m}{k}} = 2\pi\sqrt{\frac{m}{mg/\ell}} = 2\pi\sqrt{\frac{\ell}{g}}$$
-
-> ⚡ **Lưu ý quan trọng:** Công thức $T = 2\pi\sqrt{\ell/g}$ chỉ đúng khi **góc lệch nhỏ ($\alpha_0 \le 10^\circ$)**. Nếu kéo con lắc ra góc lớn (như $60^\circ$ hoặc $90^\circ$), con lắc sẽ đi chậm lại ở gần biên, làm chu kỳ thực tế hơi dài hơn công thức trên một chút.
-
----
-
-### 6. Bài Toán Tính Số Thực Tế 1.2
-
-> **Bài toán:** Một con lắc lò xo treo thẳng đứng gồm quả cầu nhỏ khối lượng $m = 250\text{ g} = 0.25\text{ kg}$ gắn vào lò xo có độ cứng $k = 100\text{ N/m}$. Lấy $g = 9.8\text{ m/s}^2 \approx \pi^2$.  
-> 1. Tại vị trí cân bằng, lò xo dãn một đoạn $\Delta \ell_0$ bằng bao nhiêu?  
-> 2. Tính tần số góc $\omega$ và chu kỳ dao động $T$ của con lắc.  
-> 3. Nâng vật lên vị trí lò xo không biến dạng rồi buông nhẹ không vận tốc đầu. Chọn trục tọa độ thẳng đứng hướng xuống, gốc $O$ tại vị trí cân bằng. Viết phương trình dao động của vật.
-> 
-> **Lời giải chi tiết:**  
-> 1. **Độ dãn ở vị trí cân bằng:**  
->    Tại VTCB, lực đàn hồi cân bằng với trọng lực:  
->    $$F_{đh0} = P \iff k \Delta \ell_0 = mg \implies \Delta \ell_0 = \frac{mg}{k} = \frac{0.25 \times 9.8}{100} = 0.0245\text{ m} = 2.45\text{ cm}$$  
-> 2. **Tần số góc và chu kỳ:**  
->    * Tần số góc: $\omega = \sqrt{\frac{k}{m}} = \sqrt{\frac{100}{0.25}} = \sqrt{400} = 20\text{ rad/s}$.  
->    * Chu kỳ: $T = \frac{2\pi}{\omega} = \frac{2\pi}{20} = \frac{\pi}{10} \approx 0.314\text{ s}$.  
->    *(Mẹo tính nhanh cho con lắc treo thẳng đứng: $\omega = \sqrt{\frac{g}{\Delta \ell_0}}$).*  
-> 3. **Viết phương trình dao động:**  
->    * Gốc $O$ ở VTCB, chiều dương hướng xuống. Vị trí lò xo không biến dạng nằm phía trên VTCB một đoạn $\Delta \ell_0 = 2.45\text{ cm}$, tức là có tọa độ $x = -2.45\text{ cm}$.  
->    * Thả nhẹ ($v_0 = 0$) tại tọa độ này nên đây chính là biên âm: $A = 2.45\text{ cm}$.  
->    * Tại $t = 0$: $x(0) = -A = A\cos\varphi \implies \cos\varphi = -1 \implies \varphi = \pi\text{ rad}$.  
->    * Vậy phương trình dao động là:  
->      $$x(t) = 2.45\cos(20t + \pi)\text{ (cm)}$$
-
----
-
-# MODULE 3: NĂNG LƯỢNG, DAO ĐỘNG TẮT DẦN & HIỆN TƯỢNG CỘNG HƯỞNG
-*(Energy Conservation, Damped Oscillations & Resonance)*
-
-### 1. Mục tiêu Cần đạt
-Sau khi học xong Module 3, các em sẽ:
-* Chứng minh được định luật bảo toàn cơ năng trong dao động điều hòa và phân tích được sự luân chuyển năng lượng với chu kỳ $T/2$.
-* Nắm chắc vị trí mà động năng bằng thế năng ($x = \pm A/\sqrt{2}$) và giá trị trung bình của năng lượng.
-* Hiểu cơ chế vi mô của dao động tắt dần (ma sát sinh nhiệt) và phân biệt 3 chế độ tắt dần trong kỹ thuật đời sống.
-* Giải thích được hiện tượng cộng hưởng cơ học, phân biệt mặt lợi và mặt hại của cộng hưởng.
-
----
-
-### 2. Sự Biến Đổi & Bảo Toàn Năng Lượng
-
-Một vật dao động điều hòa có li độ $x = A\cos(\omega t + \varphi)$ và vận tốc $v = -\omega A\sin(\omega t + \varphi)$.
-
-1. **Động năng $W_d$:**  
-   $$W_d = \frac{1}{2}mv^2 = \frac{1}{2}m \omega^2 A^2 \sin^2(\omega t + \varphi) = \frac{1}{2}kA^2 \sin^2(\omega t + \varphi)$$
-   *(vì $k = m\omega^2$).*
-
-2. **Thế năng $W_t$:**  
+1. **Động năng $W_đ$:**
+   $$W_đ = \frac{1}{2}mv^2 = \frac{1}{2}m\omega^2 A^2 \sin^2(\omega t + \varphi) = \frac{1}{2}kA^2 \sin^2(\omega t + \varphi)$$
+2. **Thế năng $W_t$:**
    $$W_t = \frac{1}{2}kx^2 = \frac{1}{2}kA^2 \cos^2(\omega t + \varphi)$$
+3. **Cơ năng toàn phần $W$:**
+   $$W = W_đ + W_t = \frac{1}{2}kA^2 \left[\sin^2(\omega t + \varphi) + \cos^2(\omega t + \varphi)\right] = \frac{1}{2}kA^2 = \frac{1}{2}m v_{\max}^2 = \text{const}$$
 
-3. **Cơ năng toàn phần $W$:**  
-   Cộng động năng và thế năng tại mọi thời điểm:
-   $$W = W_d + W_t = \frac{1}{2}kA^2 \left[\sin^2(\omega t + \varphi) + \cos^2(\omega t + \varphi)\right] = \frac{1}{2}kA^2 = \text{const}$$
+> 💡 **Quy luật bảo toàn (Bài 5 KNTT):** Khi bỏ qua ma sát, cơ năng của vật dao động điều hòa được bảo toàn tuyệt đối, tỉ lệ thuận với bình phương biên độ dao động ($W \propto A^2$).
 
-> 💡 **Kết luận 1**: Khi không có ma sát, cơ năng của vật dao động điều hòa **được bảo toàn tuyệt đối** và tỉ lệ thuận với bình phương biên độ dao động ($W \propto A^2$).  
-> Cơ năng bằng động năng cực đại (khi qua VTCB) và bằng thế năng cực đại (khi ở biên):
-> $$W = W_{d\max} = W_{t\max} = \frac{1}{2}kA^2 = \frac{1}{2}m v_{\max}^2$$
-
-#### Chu kỳ Biến thiên của Động năng và Thế năng
-Áp dụng công thức hạ bậc lượng giác:
+#### Chu kì biến thiên của Động năng và Thế năng
+Dùng công thức hạ bậc lượng giác:
 $$\sin^2\alpha = \frac{1 - \cos 2\alpha}{2}, \quad \cos^2\alpha = \frac{1 + \cos 2\alpha}{2}$$
-Ta thấy động năng và thế năng biến thiên tuần hoàn theo thời gian với **tần số góc gấp đôi ($2\omega$)**, tức là **chu kỳ bằng một nửa chu kỳ dao động ($T' = T/2$)** và **tần số gấp đôi ($f' = 2f$)**.
+* Động năng và thế năng biến thiên tuần hoàn với **tần số góc gấp đôi ($2\omega$)**, **chu kì bằng một nửa ($T' = T/2$)** và **tần số gấp đôi ($f' = 2f$)** so với dao động điều hòa của li độ $x$.
 
-![Động năng và thế năng chuyển hóa tuần hoàn theo thời gian và phân bố theo li độ.](figures/fig1_4_energy.png)
+![Động năng W_đ và Thế năng W_t chuyển hóa tuần hoàn theo thời gian và phân bố theo li độ x.](figures/fig1_4_energy.png)
 
 > 🔍 **DẪN DẮT MẮT ĐỌC (Hình 1.4):**  
-> * **Đồ thị (a) - Năng lượng theo thời gian:** Đường liền nét màu xanh lá (Động năng) và đường nét đứt màu xanh navy (Thế năng) liên tục nhấp nhô đổi chỗ cho nhau. Khi một bên đạt đỉnh thì bên kia chạm đáy. Nhưng đường thẳng đỏ trên cùng (Cơ năng tổng) nằm ngang tuyệt đối không hề suy suyển!  
-> * **Đường chấm xám ở giữa:** Giá trị trung bình theo thời gian của động năng đúng bằng thế năng: $\bar{W}_d = \bar{W}_t = \frac{1}{2}W$.  
-> * **Đồ thị (b) - Năng lượng theo li độ:** Thế năng là một parabol úp ngửa, động năng là parabol úp ngược. Điểm giao nhau màu cam chính là vị trí $x = \pm \frac{A}{\sqrt{2}} \approx \pm 0.707A$, nơi động năng bằng thế năng!
+> * **Đồ thị (a):** Đường màu xanh lá ($W_đ$) và đường màu xanh navy ($W_t$) liên tục đổi chỗ cho nhau nhưng tổng của chúng luôn nằm trên đường thẳng đỏ $W$. Đường chấm xám ở giữa thể hiện giá trị trung bình theo thời gian: $\bar{W}_đ = \bar{W}_t = \frac{1}{2}W$.  
+> * **Đồ thị (b):** Vị trí hai parabol cắt nhau ứng với điểm **Động năng bằng Thế năng**:  
+>   $$W_đ = W_t \implies W_t = \frac{W}{2} \iff \frac{1}{2}kx^2 = \frac{1}{2}\left(\frac{1}{2}kA^2\right) \implies x = \pm \frac{A}{\sqrt{2}}$$
 
 ---
 
-### 3. Dao Động Tắt Dần: Bản Chất Vi Mô & 3 Chế Độ Thực Tế
+### 4. Bài Toán Tính Số Thực Tế 1.2 (Theo Dạng Bài 7 KNTT)
 
-Trong thực tế đời sống, không có con lắc nào dao động vĩnh viễn nếu không được tiếp thêm năng lượng. Chiếc xích đu sau vài nhịp sẽ dừng lại, cành cây sẽ ngừng lay.
-
-#### Cơ chế Vi mô: Năng lượng Đã Đi Đâu?
-Khi vật chuyển động trong môi trường (như không khí hay dầu), bề mặt của vật liên tục va chạm với hàng triệu phân tử môi trường:
-* Lực cản môi trường cản trở chuyển động của vật, sinh công âm ($A_c < 0$).
-* Cơ năng của vật không mất đi mà chuyển hóa thành nhiệt năng làm nóng vật và môi trường xung quanh: $\Delta W = Q_{nhiệt}$.
-* Vì cơ năng $W = \frac{1}{2}kA^2$ giảm dần theo thời gian, nên **biên độ $A$ bắt buộc phải giảm dần**. Hiện tượng này gọi là **dao động tắt dần**.
-
-#### Ba Chế Độ Chuyển Động Thực Tế Khi Có Lực Cản
-
-![Ba chế độ chuyển động khi có lực cản môi trường và quỹ đạo xoắn ốc trạng thái.](figures/fig1_5_damped.png)
-
-1. **Lực cản nhỏ (Dao động tắt dần - Underdamped):**  
-   * Vật vẫn dao động qua lại quanh VTCB nhiều lần với biên độ nhỏ dần theo thời gian (đường màu xanh navy).  
-   * *Ví dụ:* Con lắc đơn đung đưa trong không khí, chiếc xích đu.
-2. **Lực cản tới hạn (Critically Damped):**  
-   * Vật trở về vị trí cân bằng **nhanh nhất** mà không hề bị dao động lắc qua phía bên kia (đường nét đứt màu xanh lá).  
-   * *Ứng dụng kỹ thuật đắt giá:* **Bộ giảm xóc (phuộc nhún) xe máy và ô tô**. Khi xe đi qua ổ gà, lò xo bị nén lại, piston ngâm trong xi-lanh dầu tạo ra lực cản tới hạn giúp khung xe dập tắt chấn động ngay lập tức, người ngồi không bị say sóng do nhấp nhô liên tục.
-3. **Lực cản quá lớn (Overdamped):**  
-   * Vật chuyển động rất chậm chạp, ì ạch trở về vị trí cân bằng (đường màu đỏ thẫm).  
-   * *Ứng dụng:* **Tay co thủy lực đóng cửa tự động**. Khi ta thả cửa, dầu bên trong hãm cửa lại, khiến cửa khép vào từ từ êm ái mà không bị giật đập mạnh làm vỡ kính.
+> **Bài toán:** Một con lắc lò xo gồm vật nặng $m = 200\text{ g} = 0.2\text{ kg}$ gắn vào lò xo có độ cứng $k = 50\text{ N/m}$ dao động điều hòa với biên độ $A = 6\text{ cm} = 0.06\text{ m}$.  
+> 1. Tính cơ năng $W$ của con lắc.  
+> 2. Tính vận tốc cực đại $v_{\max}$ của vật.  
+> 3. Tìm li độ $x$ của vật khi động năng gấp 3 lần thế năng ($W_đ = 3W_t$).  
+> 
+> **Lời giải chi tiết:**  
+> 1. **Cơ năng của con lắc:**  
+>    $$W = \frac{1}{2}kA^2 = \frac{1}{2} \times 50 \times (0.06)^2 = 0.09\text{ J} = 90\text{ mJ}$$  
+> 2. **Vận tốc cực đại:**  
+>    $$W = \frac{1}{2}m v_{\max}^2 \implies v_{\max} = \sqrt{\frac{2W}{m}} = \sqrt{\frac{2 \times 0.09}{0.2}} = \sqrt{0.9} \approx 0.949\text{ m/s} = 94.9\text{ cm/s}$$  
+> 3. **Vị trí có $W_đ = 3W_t$:**  
+>    Áp dụng bảo toàn cơ năng:  
+>    $$W = W_đ + W_t = 3W_t + W_t = 4W_t$$  
+>    $$\frac{1}{2}kA^2 = 4\left(\frac{1}{2}kx^2\right) \implies x^2 = \frac{A^2}{4} \implies x = \pm \frac{A}{2} = \pm \frac{6}{2} = \pm 3\text{ cm}$$
 
 ---
 
-### 4. Dao Động Cưỡng Bức & Hiện Tượng Cộng Hưởng Cơ Học
+# PHẦN 3: DAO ĐỘNG TẮT DẦN, CƯỠNG BỨC & CỘNG HƯỞNG
+*(Đối chiếu và giải mã chuyên sâu Bài 6 SGK Kết nối tri thức)*
 
-Nếu muốn duy trì dao động cho chiếc xích đu hay con lắc đồng hồ, ta phải tác dụng vào nó một ngoại lực tuần hoàn $F(t) = F_0 \cos(\Omega t)$.
+### 1. Dao Động Tắt Dần & Sự Tiêu Tán Cơ Năng
 
-1. **Đặc điểm của Dao động Cưỡng bức:**  
-   * Sau giai đoạn quá độ ban đầu, hệ sẽ dao động ổn định với **tần số bằng đúng tần số $\Omega$ của ngoại lực**, không còn dao động với tần số riêng $\omega_0$ nữa.  
-   * Biên độ của dao động cưỡng bức phụ thuộc vào:  
-     - Biên độ ngoại lực $F_0$.  
-     - Lực cản của môi trường.  
-     - **Độ chênh lệch giữa tần số ngoại lực $\Omega$ và tần số riêng $\omega_0$:** Ngoại lực có tần số càng gần $\omega_0$ thì truyền năng lượng cho hệ càng hiệu quả, biên độ dao động càng lớn.
+* **Định nghĩa SGK (Bài 6 KNTT):** *Dao động tắt dần là dao động có biên độ và cơ năng giảm dần theo thời gian*.
+* **Cơ chế vi mô:** Do có lực ma sát hoặc lực cản môi trường, cơ năng của hệ liên tục sinh công âm và biến thành nhiệt năng ($Q_{nhiệt}$) tỏa ra môi trường. Vì cơ năng $W = \frac{1}{2}kA^2$ giảm liên tục, biên độ $A$ bắt buộc phải thu hẹp dần cho đến khi dừng hẳn.
 
-2. **Hiện Tượng Cộng Hưởng (Resonance):**  
-   Khi tần số ngoại lực xấp xỉ bằng tần số dao động riêng của hệ:
-   $$\Omega \approx \omega_0$$
-   Biên độ của dao động cưỡng bức đạt giá trị **cực đại**. Hiện tượng này gọi là **hiện tượng cộng hưởng cơ học**.
+![Ba chế độ chuyển động khi có lực cản môi trường và đồ thị trạng thái xoắn ốc.](figures/fig1_5_damped.png)
 
-![Đường cong cộng hưởng biên độ: Biên độ vọt lên cực đại khi tần số ngoại lực trùng khớp với tần số riêng của hệ.](figures/fig1_6_resonance.png)
+#### Ba Chế Độ Cản Trong Đời Sống Thực Tế
+1. **Lực cản nhỏ (Dao động tắt dần):** Vật vẫn dao động qua lại quanh VTCB nhiều lần trước khi dừng hẳn (như con lắc đung đưa trong không khí).
+2. **Lực cản tới hạn:** Vật trở về VTCB **nhanh nhất** mà không hề bị vọt lố hay lắc qua lắc lại.  
+   * **Ứng dụng đắt giá:** **Bộ giảm xóc (phuộc nhún) xe máy và ô tô**. Khi bánh xe đập vào ổ gà, lò xo bị nén; dầu giảm chấn trong xi-lanh dập tắt dao động ngay lập tức trong nhịp đầu tiên, giúp xe giữ thăng bằng và êm ái.
+3. **Lực cản quá lớn:** Vật chuyển động rất ì ạch, chậm chạp trở về VTCB.  
+   * **Ứng dụng:** **Tay co thủy lực đóng cửa tự động**, giữ cửa khép từ từ, tránh va đập mạnh làm vỡ kính.
+
+---
+
+### 2. Dao Động Duy Trì (Con Lắc Đồng Hồ)
+
+* Để một hệ dao động mãi với tần số riêng $\omega_0$ mà không bị tắt dần, ta phải cung cấp năng lượng cho hệ trong mỗi chu kì để bù đắp đúng bằng phần năng lượng tiêu hao do ma sát.
+* **Đặc điểm:** Tần số dao động duy trì vẫn bằng đúng tần số dao động riêng $\omega_0$ của hệ.
+* **Ví dụ:** Đồng hồ quả lắc dùng quả tạ hoặc dây cót truyền lực đẩy khẽ vào con lắc qua cơ cấu bánh cóc (ngựa đồng hồ) mỗi khi con lắc đi qua vị trí cân bằng.
+
+---
+
+### 3. Dao Động Cưỡng Bức & Hiện Tượng Cộng Hưởng
+
+Nếu ta tác dụng vào hệ một ngoại lực tuần hoàn $F(t) = F_0 \cos(\Omega t)$:
+
+1. **Đặc điểm của Dao động Cưỡng bức:**
+   * Hệ sẽ dao động với **tần số bằng tần số $\Omega$ của ngoại lực**, không còn giữ tần số riêng $\omega_0$.
+   * Biên độ dao động cưỡng bức phụ thuộc vào biên độ ngoại lực $F_0$, lực cản môi trường và đặc biệt là **khoảng cách giữa tần số ngoại lực $\Omega$ và tần số riêng $\omega_0$**.
+
+2. **Hiện Tượng Cộng Hưởng (Resonance):**
+   * Khi tần số ngoại lực xấp xỉ bằng tần số dao động riêng của hệ:
+     $$\Omega \approx \omega_0$$
+     Biên độ của dao động cưỡng bức vọt lên đạt giá trị **cực đại**. Hiện tượng này gọi là **hiện tượng cộng hưởng**.
+
+![Đường cong cộng hưởng biên độ đạt đỉnh khi tần số ngoại lực trùng khớp với tần số riêng.](figures/fig1_6_resonance.png)
 
 > 🔍 **DẪN DẮT MẮT ĐỌC (Hình 1.6):**  
-> * Tại vị trí $\Omega/\omega_0 = 1.0$ (trục dọc đứt nét ở giữa): Mọi đường cong biên độ đều đạt đỉnh nhọn cực đại.  
-> * **Đường màu đỏ (Lực cản rất nhỏ):** Đỉnh cộng hưởng vọt lên rất cao và nhọn hoắt. Hệ hấp thụ năng lượng mãnh liệt.  
-> * **Đường màu xanh navy (Lực cản lớn):** Đỉnh thoai thoải, biên độ không tăng vọt quá nhiều.
+> * Trục đứng tại vị trí $\Omega/\omega_0 = 1.0$ là vị trí cộng hưởng.  
+> * Đường màu đỏ (lực cản nhỏ) có đỉnh cộng hưởng nhọn hoắt và biên độ vọt lên rất cao.  
+> * Đường màu xanh navy (lực cản lớn) có đỉnh thoai thoải, biên độ không tăng vọt nguy hiểm.
 
-#### Lợi Ích & Tác Hại của Cộng Hưởng Trong Đời Sống
-* **Mặt có lợi:**  
-  - Hộp đàn guitar, violin được thiết kế để cộng hưởng với các nốt nhạc từ dây đàn, làm âm thanh phát ra to, ấm và vang xa.  
-  - Hiện tượng chọn sóng trong đài radio, máy thu thanh: chỉnh núm xoay để tần số riêng của mạch dao động trùng với tần số đài phát cần nghe.
-* **Mặt có hại (Hiểm họa công trình):**  
-  - Nếu một đoàn quân bước đều qua cầu, tần số bước chân tình cờ trùng với tần số rung riêng của cây cầu, cầu có thể rung lắc dữ dội và gãy sập (tai nạn sập cầu treo Broughton năm 1831). Do đó, quân đội luôn có lệnh *"phải đi bước tự do khi qua cầu"*.  
-  - Gió bão thổi tạo ra các luồng xoáy khí có tần số khớp với tần số xoắn của cây cầu Tacoma Narrows (Mỹ, năm 1940) đã khiến cây cầu thép khổng lồ uốn éo như dải lụa rồi đổ sụp hoàn toàn xuống biển.
+#### Ứng Dụng & Tác Hại của Cộng Hưởng
+* **Ứng dụng có lợi:**
+  - Hộp cộng hưởng của đàn guitar, violin, đàn bầu giúp khuếch đại âm thanh phát ra to và vang.
+  - Chỉnh núm xoay mạch thu sóng radio để tần số riêng của máy trùng với tần số của đài phát cần nghe.
+* **Tác hại cần tránh:**
+  - Binh lính bước đều qua cầu làm tần số bước chân trùng tần số dao động của cầu gây sập cầu (lệnh quân sự bắt buộc: *bước tự do khi qua cầu*).
+  - Gió bão thổi tạo luồng khí xoáy trùng tần số rung làm sập cầu Tacoma Narrows năm 1940.
+  - Máy giặt khi vắt ở tốc độ cao nếu tần số quay của lồng giặt trùng với tần số riêng của vỏ máy sẽ làm máy rung lắc dữ dội và kêu ầm ĩ.
 
 ---
 
-### 5. Bài Toán Tính Số Thực Tế 1.3
+### 4. Bài Toán Tính Số Thực Tế 1.3 (Bài Toán Gờ Giảm Tốc KNTT)
 
-> **Bài toán:** Một người có khối lượng $M = 60\text{ kg}$ ngồi trên một chiếc xe máy đi qua một đoạn đường mấp mô có các gờ giảm tốc cách đều nhau những khoảng $d = 8.0\text{ m}$. Toàn bộ khối lượng của người và xe đè lên hệ thống lò xo giảm xóc là $m_{tổng} = 160\text{ kg}$. Hệ thống lò xo có độ cứng tương đương $k = 40,000\text{ N/m}$.  
-> 1. Tính tần số dao động riêng $f_0$ của hệ thống xe và người.  
-> 2. Người lái xe chạy với vận tốc $v$ bằng bao nhiêu thì xe bị xóc nảy mạnh nhất (hiện tượng cộng hưởng)?
+> **Bài toán:** Một chiếc xe máy chở người có tổng khối lượng $m = 160\text{ kg}$. Hệ thống giảm xóc có độ cứng tương đương $k = 40,000\text{ N/m}$. Xe chạy trên một đoạn đường có các gờ giảm tốc cách đều nhau một khoảng $d = 8.0\text{ m}$.  
+> 1. Tính tần số dao động riêng $f_0$ của khung xe máy.  
+> 2. Người lái xe chạy với tốc độ $v$ bằng bao nhiêu thì xe bị rung lắc nảy lên dữ dội nhất?
 > 
 > **Lời giải chi tiết:**  
 > 1. **Tần số dao động riêng của xe:**  
 >    * Tần số góc riêng:  
->      $$\omega_0 = \sqrt{\frac{k}{m_{tổng}}} = \sqrt{\frac{40000}{160}} = \sqrt{250} \approx 15.81\text{ rad/s}$$  
+>      $$\omega_0 = \sqrt{\frac{k}{m}} = \sqrt{\frac{40000}{160}} = \sqrt{250} \approx 15.81\text{ rad/s}$$  
 >    * Tần số riêng:  
 >      $$f_0 = \frac{\omega_0}{2\pi} = \frac{15.81}{2\pi} \approx 2.52\text{ Hz}$$  
-> 2. **Tìm vận tốc gây cộng hưởng mạnh nhất:**  
->    * Khi xe chạy với vận tốc $v$ qua các gờ cách nhau khoảng $d$, thời gian giữa hai lần xe va vào gờ liên tiếp là chu kỳ kích thích của ngoại lực:  
->      $$T_{ngoại lực} = \frac{d}{v}$$  
->    * Tần số kích thích của ngoại lực tác dụng lên xe:  
->      $$f_{ngoại lực} = \frac{1}{T_{ngoại lực}} = \frac{v}{d}$$  
->    * Hiện tượng cộng hưởng xảy ra mạnh nhất khi tần số va đập bằng tần số dao động riêng của xe:  
->      $$f_{ngoại lực} = f_0 \iff \frac{v}{d} = f_0 \implies v = d \cdot f_0$$  
->    * Thay số:  
->      $$v = 8.0\text{ m} \times 2.52\text{ Hz} = 20.16\text{ m/s}$$  
->      Đổi sang $\text{km/h}$:  
+> 2. **Tốc độ gây rung nảy mạnh nhất (Cộng hưởng):**  
+>    * Thời gian xe chạy qua hai gờ liên tiếp là chu kì kích thích của ngoại lực: $T = \frac{d}{v}$.  
+>    * Tần số kích thích của các gờ giảm tốc: $f = \frac{1}{T} = \frac{v}{d}$.  
+>    * Xe rung lắc mạnh nhất khi xảy ra hiện tượng cộng hưởng: $f = f_0$.  
+>      $$\frac{v}{d} = f_0 \implies v = d \cdot f_0 = 8.0\text{ m} \times 2.52\text{ Hz} = 20.16\text{ m/s}$$  
+>    * Đổi sang $\text{km/h}$:  
 >      $$v = 20.16 \times 3.6 \approx 72.6\text{ km/h}$$  
->    * *Bài học thực tế:* Nếu chạy xe máy ở tốc độ khoảng $70 - 75\text{ km/h}$ qua đoạn đường có các gờ này, xe sẽ bị chấn động dữ dội và mất lái nguy hiểm do cộng hưởng. Để an toàn, người lái xe phải giảm tốc độ xuống dưới $30\text{ km/h}$ hoặc vượt hẳn ra ngoài dải tốc độ nguy hiểm trên.
+>    * *Bài học thực tế:* Người lái xe cần tránh chạy ở dải tốc độ nguy hiểm khoảng $70 - 75\text{ km/h}$ khi đi qua đoạn đường này; nên giảm tốc độ xuống dưới $30\text{ km/h}$ để bảo đảm an toàn.
 
 ---
 
-## TỔNG KẾT BẢN CHẤT CHƯƠNG 1 (Takeaway Map)
+## BẢNG TỔNG KẾT BẢN CHẤT CHƯƠNG 1 (THEO CHUẨN KNTT)
 
-1. **Phương trình dao động:** $x = A\cos(\omega t + \varphi)$.
-2. **Mối quan hệ đạo hàm:** $v = x'$ (sớm pha $\pi/2$), $a = v' = -\omega^2 x$ (ngược pha $\pi$).
-3. **Hệ thức độc lập:** $\left(\frac{x}{A}\right)^2 + \left(\frac{v}{\omega A}\right)^2 = 1 \iff x^2 + \frac{v^2}{\omega^2} = A^2$.
-4. **Nguồn gốc lực:** Lực hồi phục $F = -kx$ luôn hướng về vị trí cân bằng, giải thích bản chất vì sao đáy chảo trũng sinh ra dao động điều hòa.
-5. **Cơ năng bảo toàn:** $W = W_d + W_t = \frac{1}{2}kA^2 = \text{const}$. Động năng và thế năng chuyển hóa cho nhau với tần số góc $2\omega$.
-6. **Thực tế:** Ma sát làm dao động tắt dần (biên độ giảm dần do sinh nhiệt). Ngoại lực tuần hoàn gây ra dao động cưỡng bức, biên độ đạt đỉnh khi có cộng hưởng ($\Omega \approx \omega_0$).
+| Đại lượng / Hiện tượng | Công thức cốt lõi | Ý nghĩa bản chất & Lưu ý kiểm tra |
+| :--- | :--- | :--- |
+| **Li độ** | $x = A\cos(\omega t + \varphi)$ | Tọa độ của vật so với VTCB tại thời điểm $t$. |
+| **Vận tốc** | $v = x'(t) = \omega A\cos(\omega t + \varphi + \pi/2)$ | Vận tốc sớm pha $\pi/2$ so với li độ; $v_{\max} = \omega A$ tại VTCB. |
+| **Gia tốc** | $a = v'(t) = -\omega^2 x$ | Gia tốc ngược pha $\pi$ so với li độ; luôn hướng về VTCB; $a_{\max} = \omega^2 A$ ở biên. |
+| **Hệ thức độc lập** | $x^2 + \frac{v^2}{\omega^2} = A^2$ | Tính nhanh không qua thời gian $t$; liên hệ giữa vị trí và vận tốc. |
+| **Độ lệch pha** | $\Delta \varphi = \varphi_2 - \varphi_1$ | Cùng pha ($2k\pi$), ngược pha ($(2k+1)\pi$), vuông pha ($(2k+1)\pi/2$). |
+| **Động năng** | $W_đ = \frac{1}{2}mv^2$ | Biến thiên tuần hoàn với tần số góc $2\omega$, chu kì $T/2$. |
+| **Thế năng** | $W_t = \frac{1}{2}kx^2 = \frac{1}{2}m\omega^2 x^2$ | Đạt cực đại ở biên; bằng 0 ở vị trí cân bằng. |
+| **Cơ năng** | $W = W_đ + W_t = \frac{1}{2}kA^2 = \text{const}$ | Bảo toàn tuyệt đối khi không ma sát; tỉ lệ thuận với $A^2$. |
+| **Vị trí $W_đ = W_t$** | $x = \pm \frac{A}{\sqrt{2}}$ | Vị trí động năng bằng một nửa cơ năng ($W_đ = W/2$). |
+| **Cộng hưởng** | $\Omega \approx \omega_0$ | Biên độ dao động cưỡng bức vọt lên cực đại. |

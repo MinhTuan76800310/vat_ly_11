@@ -219,9 +219,9 @@ def plot_fig1_energy():
 
     # Left: Energy vs Time
     ax1.plot(t, E_p, color='#1B365D', linestyle='--', label=r'Thế năng $W_t(t) = \frac{1}{2}kx^2$')
-    ax1.plot(t, E_k, color='#1E6B52', linestyle='-', label=r'Động năng $W_d(t) = \frac{1}{2}mv^2$')
-    ax1.axhline(E_tot, color='#A6192E', linewidth=1.8, label=r'Cơ năng bảo toàn $W = W_d + W_t$')
-    ax1.axhline(E_tot/2, color='#475569', linestyle=':', lw=1.5, label=r'Giá trị trung bình $\bar{W}_d = \bar{W}_t = \frac{1}{2}W$')
+    ax1.plot(t, E_k, color='#1E6B52', linestyle='-', label=r'Động năng $W_{đ}(t) = \frac{1}{2}mv^2$')
+    ax1.axhline(E_tot, color='#A6192E', linewidth=1.8, label=r'Cơ năng bảo toàn $W = W_{đ} + W_t$')
+    ax1.axhline(E_tot/2, color='#475569', linestyle=':', lw=1.5, label=r'Giá trị trung bình $\bar{W}_{đ} = \bar{W}_t = \frac{1}{2}W$')
     
     # Energy exchange arrow
     ax1.annotate('Chuyển hóa liên tục\nĐộng năng ' + r'$\leftrightarrow$' + ' Thế năng',
@@ -241,13 +241,13 @@ def plot_fig1_energy():
     Ep_x = E_tot * x**2
     Ek_x = E_tot * (1 - x**2)
     ax2.plot(x, Ep_x, color='#1B365D', linestyle='--', label=r'$W_t(x) = \frac{1}{2}kx^2$')
-    ax2.plot(x, Ek_x, color='#1E6B52', linestyle='-', label=r'$W_d(x) = W - \frac{1}{2}kx^2$')
+    ax2.plot(x, Ek_x, color='#1E6B52', linestyle='-', label=r'$W_{đ}(x) = W - \frac{1}{2}kx^2$')
     ax2.axhline(E_tot, color='#A6192E', linewidth=1.8, label=r'Cơ năng $W$')
     
     # Mark intersection x = +/- A / sqrt(2)
     x_cross = 1 / np.sqrt(2)
     ax2.scatter([x_cross, -x_cross], [E_tot/2, E_tot/2], color='#D97706', s=45, zorder=5)
-    ax2.annotate(r'$x = \pm \frac{A}{\sqrt{2}} \Rightarrow W_d = W_t = \frac{W}{2}$', 
+    ax2.annotate(r'$x = \pm \frac{A}{\sqrt{2}} \Rightarrow W_{đ} = W_t = \frac{W}{2}$', 
                  xy=(x_cross, E_tot/2), xytext=(-0.15, 0.22),
                  arrowprops=dict(arrowstyle='->', color='#D97706', lw=1.2),
                  fontsize=9.2, fontweight='bold',
