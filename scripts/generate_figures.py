@@ -116,9 +116,12 @@ def plot_fig1_0b_omega_derivative():
     ax1.scatter([0], [1], color='#2563EB', s=80, zorder=6)
     t_tan1 = np.linspace(0, 0.9, 50)
     ax1.plot(t_tan1, np.ones_like(t_tan1), color='#2563EB', linestyle=':', lw=2.4)
-    ax1.annotate('[TT1] Đỉnh đồi\n' + r'Dốc $= 0 \Rightarrow v = 0$' + '\n' + r'$(\cos 0)^\prime = -\sin 0 = 0$',
-                 xy=(0, 1), xytext=(0.15, 1.15),
-                 fontsize=8.8, color='#1E40AF', fontweight='bold',
+    ax1.annotate('[TT1] Đỉnh đồi (t = 0)\n' + 
+                 r'Dốc $= 0 \Rightarrow x^\prime(0) = 0$' + '\n' + 
+                 'Hàm triệt tiêu tại 0: ' + r'$\sin(0) = 0$' + '\n' +
+                 r'(Chưa rõ dấu: $+\sin$ hay $-\sin$?)',
+                 xy=(0, 1), xytext=(0.12, 1.15),
+                 fontsize=8.5, color='#1E40AF', fontweight='bold',
                  bbox=dict(boxstyle='round,pad=0.25', facecolor='#EFF6FF', edgecolor='#2563EB', alpha=0.95))
 
     # Trạng thái 2: Đang đổ dốc qua VTCB (t = pi/2, x = 0)
@@ -126,18 +129,23 @@ def plot_fig1_0b_omega_derivative():
     ax1.scatter([t_mid1], [0], color='#DC2626', s=80, zorder=6)
     t_tan2 = np.linspace(t_mid1 - 0.7, t_mid1 + 0.7, 50)
     ax1.plot(t_tan2, -1 * (t_tan2 - t_mid1), color='#DC2626', linestyle=':', lw=2.5)
-    ax1.annotate('[TT2] VTCB lao dốc\n' + r'Dốc cực đại âm $= -1$' + '\n' + r'$(\cos\frac{\pi}{2})^\prime = -\sin\frac{\pi}{2} = -1$',
-                 xy=(t_mid1, 0), xytext=(t_mid1 - 0.75, -0.65),
-                 fontsize=8.8, color='#991B1B', fontweight='bold',
+    ax1.annotate(r'[TT2] Đang đổ dốc qua VTCB ($t = \frac{\pi}{2}$)' + '\n' + 
+                 'Xe lao dốc cắm đầu: Dốc ' + r'$= -1$' + ' (Âm!)\n' +
+                 r'Lật mở: $+\sin(\frac{\pi}{2}) = +1$ (sai dấu)' + '\n' + 
+                 r'$\Rightarrow$ Bắt buộc: $[\cos(t)]^\prime = -\sin(t)$',
+                 xy=(t_mid1, 0), xytext=(t_mid1 - 1.1, -0.95),
+                 fontsize=8.5, color='#991B1B', fontweight='bold',
                  bbox=dict(boxstyle='round,pad=0.25', facecolor='#FEF2F2', edgecolor='#DC2626', alpha=0.95))
 
     # Trạng thái 3: Đáy vực (t = pi, x = -1)
     ax1.scatter([np.pi], [-1], color='#D97706', s=80, zorder=6)
     t_tan3 = np.linspace(np.pi - 0.5, np.pi + 0.5, 50)
     ax1.plot(t_tan3, -np.ones_like(t_tan3), color='#D97706', linestyle=':', lw=2.4)
-    ax1.annotate('[TT3] Đáy vực\n' + r'Dốc $= 0 \Rightarrow v = 0$' + '\n' + r'$(\cos\pi)^\prime = -\sin\pi = 0$',
-                 xy=(np.pi, -1), xytext=(np.pi - 0.5, -1.45),
-                 fontsize=8.8, color='#92400E', fontweight='bold',
+    ax1.annotate(r'[TT3] Đáy vực ($t = \pi$)' + '\n' + 
+                 r'Dốc $= 0 \Rightarrow -\sin(\pi) = 0$' + '\n' +
+                 '(Tiếp tuyến phẳng, đổi chiều leo lên)',
+                 xy=(np.pi, -1), xytext=(np.pi - 0.6, -1.55),
+                 fontsize=8.5, color='#92400E', fontweight='bold',
                  bbox=dict(boxstyle='round,pad=0.25', facecolor='#FFFBEB', edgecolor='#D97706', alpha=0.95))
 
     # Trạng thái 4: Vọt lên qua VTCB (t = 3pi/2, x = 0)
@@ -145,17 +153,19 @@ def plot_fig1_0b_omega_derivative():
     ax1.scatter([t_mid3], [0], color='#16A34A', s=80, zorder=6)
     t_tan4 = np.linspace(t_mid3 - 0.7, t_mid3 + 0.7, 50)
     ax1.plot(t_tan4, +1 * (t_tan4 - t_mid3), color='#16A34A', linestyle=':', lw=2.5)
-    ax1.annotate('[TT4] VTCB leo dốc\n' + r'Dốc cực đại dương $= +1$' + '\n' + r'$(\cos\frac{3\pi}{2})^\prime = -\sin\frac{3\pi}{2} = +1$',
-                 xy=(t_mid3, 0), xytext=(t_mid3 - 0.85, 0.5),
-                 fontsize=8.8, color='#166534', fontweight='bold',
+    ax1.annotate(r'[TT4] Leo dốc qua VTCB ($t = \frac{3\pi}{2}$)' + '\n' + 
+                 'Xe vọt lên trời: Dốc ' + r'$= +1$' + ' (Dương!)\n' + 
+                 r'Kiểm chứng: $-\sin(\frac{3\pi}{2}) = -(-1) = +1$',
+                 xy=(t_mid3, 0), xytext=(t_mid3 - 1.15, 0.55),
+                 fontsize=8.5, color='#166534', fontweight='bold',
                  bbox=dict(boxstyle='round,pad=0.25', facecolor='#F0FDF4', edgecolor='#16A34A', alpha=0.95))
 
     ax1.set_xticks([0, np.pi/2, np.pi, 3*np.pi/2, 2*np.pi])
     ax1.set_xticklabels([r'$0$', r'$\frac{\pi}{2}$', r'$\pi$', r'$\frac{3\pi}{2}$', r'$2\pi$'], fontsize=11)
     ax1.set_xlabel(r'Thời gian $t$ (rad hoặc s)', fontsize=11.5)
     ax1.set_ylabel(r'Li độ $x(t)$ (m)', fontsize=11.5)
-    ax1.set_title(r'(a) 4 Trạng thái tàu lượn: Giải mã $(\cos t)^\prime = -\sin t$', fontsize=11.5, fontweight='bold')
-    ax1.set_ylim(-1.6, 1.6)
+    ax1.set_title(r'(a) Hành trình khám phá đạo hàm $[\cos(t)]^\prime = -\sin(t)$', fontsize=11.5, fontweight='bold')
+    ax1.set_ylim(-1.8, 1.8)
 
     # --- Subplot (b): Cỗ máy nén thời gian omega ---
     t_b = np.linspace(0, np.pi, 400)
