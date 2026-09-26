@@ -11,16 +11,71 @@
 
 ---
 
-> 📐 **HỘP CÔNG CỤ TOÁN 11 DÙNG TRONG CHƯƠNG:**  
-> 1. **Khái niệm Đạo hàm (Tốc độ biến thiên tức thời):**  
->    * Vận tốc là đạo hàm của li độ theo thời gian: $v(t) = x'(t)$.  
->    * Gia tốc là đạo hàm của vận tốc theo thời gian: $a(t) = v'(t) = x''(t)$.  
-> 2. **Đạo hàm hàm lượng giác cơ bản:**  
->    $$\left[\cos(\omega t + \varphi)\right]' = -\omega \sin(\omega t + \varphi), \quad \left[\sin(\omega t + \varphi)\right]' = \omega \cos(\omega t + \varphi)$$  
-> 3. **Công thức Lượng giác lớp 10 & 11:**  
->    * Cung hơn kém $\pi/2$: $-\sin\alpha = \cos(\alpha + \pi/2)$.  
->    * Cung hơn kém $\pi$: $-\cos\alpha = \cos(\alpha + \pi)$.  
->    * Hệ thức cơ bản: $\sin^2\alpha + \cos^2\alpha = 1 \implies \left(\frac{x}{A}\right)^2 + \left(\frac{v}{\omega A}\right)^2 = 1$.
+> 📐 **HỘP CÔNG CỤ TOÁN 11 DÙNG TRONG CHƯƠNG: BẢN CHẤT ĐẠO HÀM & LƯỢNG GIÁC TRỰC QUAN**  
+> 
+> Để không bị rơi vào lối học vẹt công thức, các em cần hiểu rõ bản chất của công cụ Toán học lớp 11 mà các nhà vật lý sử dụng để mô tả thế giới:
+> 
+> ### 1. Đạo hàm thực chất là gì? (Tốc độ thay đổi của một đại lượng theo thời gian)
+> * **Từ tốc độ trung bình đến tốc độ tức thời:**  
+>   Khi một vật di chuyển trên quãng đường $s$ trong khoảng thời gian $\Delta t$, đại lượng thể hiện **quãng đường thay đổi theo thời gian** là tốc độ trung bình:
+>   $$v_{tb} = \frac{\Delta s}{\Delta t}$$
+>   Nhưng nếu chiếc xe máy tăng ga vọt lên, vận tốc tại đúng thời khắc các em liếc nhìn vào đồng hồ đo tốc độ (vận tốc tức thời) là bao nhiêu?  
+>   Ta cho khoảng thời gian $\Delta t$ co lại cực ngắn ($\Delta t \to 0$). Khi đó, tỉ số $\frac{\Delta s}{\Delta t}$ tiến dần tới một giá trị giới hạn xác định, gọi là **Đạo hàm của quãng đường theo thời gian**:
+>   $$v(t) = \lim_{\Delta t \to 0} \frac{\Delta s}{\Delta t} = s'(t) = \frac{ds}{dt}$$
+>   *Ý nghĩa hình học (Hình 1.0a):* Vận tốc tức thời $v(t)$ chính là **độ dốc (hệ số góc $\tan\theta$) của tiếp tuyến** với đồ thị quãng đường - thời gian tại thời điểm đó! Đồ thị càng dốc đứng, vật chạy càng nhanh; đồ thị nằm ngang, vật đứng yên tức thời.
+> 
+> * **Gia tốc $a$ — Tốc độ thay đổi của vận tốc:**  
+>   Tương tự, vận tốc cũng có thể tăng nhanh hoặc giảm chậm theo thời gian. Đại lượng thể hiện **vận tốc thay đổi theo thời gian** chính là gia tốc:
+>   $$a(t) = \lim_{\Delta t \to 0} \frac{\Delta v}{\Delta t} = v'(t) = s''(t) = \frac{dv}{dt}$$
+>   Gia tốc chính là đạo hàm của vận tốc (hoặc đạo hàm cấp hai của quãng đường / li độ).
+> 
+> * **Bảng giải mã nguồn gốc các ký hiệu viết tắt quốc tế:**  
+>   Các ký hiệu trong sách giáo khoa không phải ngẫu nhiên, mà bắt nguồn từ các từ tiếng Anh và tiếng Latinh:
+>   * **$t$** = **Time** *(Thời gian)*.  
+>   * **$s$** = **Spatium** *(Tiếng Latinh nghĩa là khoảng cách, không gian; tiếng Anh: Space / Distance)*.  
+>   * **$x$** = **Coordinate** *(Tọa độ / Li độ dọc theo trục $Ox$)*.  
+>   * **$v$** = **Velocity** *(Vận tốc - tốc độ đổi vị trí theo thời gian)*.  
+>   * **$a$** = **Acceleration** *(Gia tốc - tốc độ đổi vận tốc theo thời gian)*.  
+>   * **$m$** = **Mass** *(Khối lượng)*.  
+>   * **$F$** = **Force** *(Lực)*.  
+>   * **$A$** = **Amplitude** *(Biên độ dao động - độ dời cực đại)*.  
+>   * **$\omega$** = Chữ cái Hy Lạp **Omega** *(Tần số góc - tốc độ quét góc pha)*.  
+>   * **$T$** = **Time Period** *(Chu kì dao động)*.  
+>   * **$f$** = **Frequency** *(Tần số)*.  
+>   * **$W$** = **Work / Energy** *(Công, năng lượng; $W_đ$: Động năng, $W_t$: Thế năng, $W$: Cơ năng)*.
+> 
+> ### 2. Bản chất Đạo hàm lượng giác & Sự xuất hiện của nhân tử $\omega$ (Hình 1.0c)
+> * **Vì sao $(\cos t)' = -\sin t$?**  
+>   Hãy quan sát đồ thị hàm cosin (Hình 1.0c):  
+>   - Tại đỉnh cao nhất ($t = 0$), đồ thị nằm ngang, tiếp tuyến phẳng lì $\implies$ độ dốc bằng $0$ (khớp với $-\sin 0 = 0$).  
+>   - Khi đồ thị lao dốc đi xuống qua vị trí $0$, nó dốc nhất theo chiều âm $\implies$ độ dốc bằng $-1$ (khớp với $-\sin(\pi/2) = -1$).  
+> * **Vì sao $[\cos(\omega t)]' = -\omega \sin(\omega t)$ lại xuất hiện nhân tử $\omega$?**  
+>   Đại lượng $\omega$ (tần số góc) cho biết trong 1 giây góc pha tăng thêm bao nhiêu radian.  
+>   - Nếu $\omega = 1$, sóng uốn lượn thong thả.  
+>   - Nếu $\omega = 2$, trong cùng 1 giây sóng bị ép co hẹp lại gấp đôi, làm cho sườn đồ thị dốc gấp 2 lần!  
+>   - Do đó, độ dốc (tốc độ biến thiên) phải nhân thêm một hệ số khuếch đại đúng bằng $\omega$:
+>     $$[\cos(\omega t + \varphi)]' = -\omega \sin(\omega t + \varphi)$$
+>     $$[\sin(\omega t + \varphi)]' = \omega \cos(\omega t + \varphi)$$
+> 
+> ### 3. Bản chất hình học của Công thức Lượng giác trên Đường tròn (Hình 1.0b)
+> Thay vì học vẹt công thức biến đổi lượng giác, hãy nhìn lên **Đường tròn lượng giác bán kính $R = 1$**:
+> * **Cung hơn kém $\pi/2$ (Phép quay góc vuông $+90^\circ$):**  
+>   Khi véc-tơ quay thêm một góc $90^\circ$ ($\pi/2$), hình chiếu của véc-tơ từ trục đứng (sin) nhảy sang trục ngang (cos), nhưng vì quay ngược chiều kim đồng hồ nên nằm ở phần âm của trục hoành:
+>   $$\cos\left(\alpha + \frac{\pi}{2}\right) = -\sin\alpha$$
+>   *Đây chính là lý do vì sao vận tốc $v = -\omega A \sin(\omega t + \varphi) = \omega A \cos(\omega t + \varphi + \pi/2)$ lại sớm pha $\pi/2$ so với li độ $x$!*
+> * **Cung hơn kém $\pi$ (Phép quay nửa vòng tròn $+180^\circ$):**  
+>   Quay thêm $180^\circ$ đưa véc-tơ sang vị trí đối xứng hoàn toàn qua gốc tọa độ, hoành độ bị đổi dấu âm:
+>   $$\cos(\alpha + \pi) = -\cos\alpha$$
+>   *Đây là lý do vì sao gia tốc $a = -\omega^2 A \cos(\omega t + \varphi) = \omega^2 A \cos(\omega t + \varphi + \pi)$ lại ngược pha $\pi$ so với li độ $x$!*
+> * **Hệ thức độc lập thời gian:**  
+>   Trong tam giác vuông tạo bởi hình chiếu lên hai trục, theo định lý Pythagoras:
+>   $$\text{cạnh kề}^2 + \text{cạnh đối}^2 = \text{cạnh huyền}^2 \implies \cos^2\alpha + \sin^2\alpha = 1$$
+>   Thay $\cos\alpha = \frac{x}{A}$ và $\sin\alpha = -\frac{v}{\omega A}$ vào, ta thu được ngay:
+>   $$\left(\frac{x}{A}\right)^2 + \left(-\frac{v}{\omega A}\right)^2 = 1 \iff \left(\frac{x}{A}\right)^2 + \left(\frac{v}{\omega A}\right)^2 = 1$$
+
+---
+
+![Hình 1.0: Bản chất công cụ Toán học lớp 11: (a) Đạo hàm và vận tốc tức thời, (b) Đường tròn lượng giác giải mã các cung góc, (c) Đạo hàm hàm cosin và nhân tử omega.](figures/fig1_0_math_tools.png)
 
 ---
 
