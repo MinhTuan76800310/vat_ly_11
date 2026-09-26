@@ -31,26 +31,25 @@ plt.rcParams.update({
     'axes.spines.right': False,
 })
 
-FIG_DIR = os.path.join(os.path.dirname(__file__), '..', 'book', 'figures')
+FIG_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'book', 'figures'))
 os.makedirs(FIG_DIR, exist_ok=True)
 
 # -------------------------------------------------------------
-# Figure 1.0: Math Tools (Derivatives, Unit Circle, Omega factor)
+# Figure 1.0a: Derivative Essence (Tangent slope & Instantaneous Velocity)
 # -------------------------------------------------------------
-def plot_fig1_math_tools():
-    fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(15.0, 4.8))
+def plot_fig1_0a_derivative():
+    fig, ax = plt.subplots(figsize=(8.0, 5.2))
 
-    # --- Panel 1: Geometric meaning of derivative: s(t) and tangent line ---
     t = np.linspace(0, 4.5, 400)
     s = 0.5 * t**2 + 0.2 * t
-    ax1.plot(t, s, color='#1B365D', lw=2.2, label=r'Đồ thị quãng đường $s(t)$')
+    ax.plot(t, s, color='#1B365D', lw=2.4, label=r'Đồ thị quãng đường theo thời gian $s(t)$')
 
     t0 = 1.8
     s0 = 0.5 * t0**2 + 0.2 * t0
-    v0 = t0 + 0.2  # derivative s'(t) = t + 0.2
+    v0 = t0 + 0.2  # s'(t) = t + 0.2 -> v(1.8) = 2.0
     
     # Secant point Q
-    dt = 1.8
+    dt = 1.6
     t1 = t0 + dt
     s1 = 0.5 * t1**2 + 0.2 * t1
     v_sec = (s1 - s0) / dt
@@ -58,137 +57,170 @@ def plot_fig1_math_tools():
     # Draw secant line
     t_sec = np.linspace(0.8, 4.2, 100)
     s_sec_line = s0 + v_sec * (t_sec - t0)
-    ax1.plot(t_sec, s_sec_line, color='#D97706', linestyle='--', lw=1.6, 
-             label=r'Cát tuyến: $v_{tb} = \frac{\Delta s}{\Delta t}$')
+    ax.plot(t_sec, s_sec_line, color='#D97706', linestyle='--', lw=1.8, 
+            label=r'Cát tuyến $PQ$: Tốc độ trung bình $v_{tb} = \frac{\Delta s}{\Delta t}$')
     
     # Draw tangent line at t0
-    t_tan = np.linspace(0.5, 3.5, 100)
+    t_tan = np.linspace(0.4, 3.6, 100)
     s_tan_line = s0 + v0 * (t_tan - t0)
-    ax1.plot(t_tan, s_tan_line, color='#1E6B52', lw=2.0,
-             label=r'Tiếp tuyến: $v(t) = s^\prime(t) = \tan\theta$')
+    ax.plot(t_tan, s_tan_line, color='#1E6B52', lw=2.2,
+            label=r'Tiếp tuyến tại $P$: Vận tốc tức thời $v(t_0) = s^\prime(t_0) = \tan\theta$')
 
     # Scatter points P and Q
-    ax1.scatter([t0, t1], [s0, s1], color='#A6192E', s=50, zorder=6)
-    ax1.annotate(r'$P(t_0, s_0)$', xy=(t0, s0), xytext=(t0 - 0.7, s0 + 0.6),
-                 fontsize=9.5, fontweight='bold', color='#1B365D')
-    ax1.annotate(r'$Q(t_0+\Delta t, s_0+\Delta s)$', xy=(t1, s1), xytext=(t1 - 1.6, s1 + 0.5),
-                 fontsize=9.5, fontweight='bold', color='#D97706')
+    ax.scatter([t0, t1], [s0, s1], color='#A6192E', s=60, zorder=6)
+    ax.annotate(r'$P(t_0, s_0)$', xy=(t0, s0), xytext=(t0 - 0.75, s0 + 0.6),
+                fontsize=10.5, fontweight='bold', color='#1B365D')
+    ax.annotate(r'$Q(t_0+\Delta t, s_0+\Delta s)$', xy=(t1, s1), xytext=(t1 - 1.5, s1 + 0.6),
+                fontsize=10.5, fontweight='bold', color='#D97706')
 
     # Δt and Δs brackets/lines
-    ax1.plot([t0, t1], [s0, s0], color='#64748B', linestyle=':', lw=1.2)
-    ax1.plot([t1, t1], [s0, s1], color='#64748B', linestyle=':', lw=1.2)
-    ax1.text(t0 + dt/2, s0 - 0.6, r'$\Delta t$', fontsize=9.5, ha='center', color='#475569')
-    ax1.text(t1 + 0.15, s0 + (s1 - s0)/2, r'$\Delta s$', fontsize=9.5, va='center', color='#475569')
+    ax.plot([t0, t1], [s0, s0], color='#64748B', linestyle=':', lw=1.4)
+    ax.plot([t1, t1], [s0, s1], color='#64748B', linestyle=':', lw=1.4)
+    ax.text(t0 + dt/2, s0 - 0.6, r'$\Delta t$', fontsize=10.5, ha='center', color='#475569', fontweight='bold')
+    ax.text(t1 + 0.15, s0 + (s1 - s0)/2, r'$\Delta s$', fontsize=10.5, va='center', color='#475569', fontweight='bold')
 
-    ax1.set_xlabel(r'Thời gian $t$ (s)')
-    ax1.set_ylabel(r'Quãng đường $s$ (m)')
-    ax1.set_title(r'(a) Đạo hàm: Vận tốc tức thời $v = s^\prime(t)$')
-    ax1.legend(loc='upper left', fontsize=8.8, framealpha=0.92)
-    ax1.set_ylim(-0.5, 12.0)
-    ax1.set_xlim(0, 4.5)
+    # Explain limit
+    ax.annotate(r'Khi $\Delta t \to 0$, điểm $Q \to P$' + '\n' +
+                r'Cát tuyến $PQ \to$ Tiếp tuyến tại $P$' + '\n' +
+                r'$\Rightarrow v(t) = \lim_{\Delta t \to 0} \frac{\Delta s}{\Delta t} = s^\prime(t)$',
+                xy=(1.0, 7.5), xytext=(0.4, 7.2),
+                fontsize=9.5, color='#1E6B52', fontweight='bold',
+                bbox=dict(boxstyle='round,pad=0.4', facecolor='#F0FDF4', alpha=0.95, edgecolor='#1E6B52'))
 
-    # --- Panel 2: Unit Circle & Angle Shifts (Trigonometric Circle) ---
+    ax.set_xlabel(r'Thời gian $t$ (s)', fontsize=12)
+    ax.set_ylabel(r'Quãng đường $s$ (m)', fontsize=12)
+    ax.set_title(r'Hình 1.0a: Bản chất Đạo hàm — Vận tốc tức thời là độ dốc của tiếp tuyến', fontsize=12.5)
+    ax.legend(loc='upper left', fontsize=9.2, framealpha=0.92)
+    ax.set_ylim(-0.5, 12.0)
+    ax.set_xlim(0, 4.5)
+
+    plt.tight_layout()
+    fig.savefig(os.path.join(FIG_DIR, 'fig1_0a_derivative.png'), dpi=300)
+    fig.savefig(os.path.join(FIG_DIR, 'fig1_0a_derivative.pdf'))
+    plt.close()
+    print("Generated: fig1_0a_derivative")
+
+# -------------------------------------------------------------
+# Figure 1.0b: Trigonometric Derivative & Angular Frequency Omega
+# -------------------------------------------------------------
+def plot_fig1_0b_omega_derivative():
+    fig, ax = plt.subplots(figsize=(8.5, 4.8))
+
+    t_trig = np.linspace(0, 2*np.pi, 500)
+    x_w1 = np.cos(t_trig)
+    x_w2 = np.cos(2 * t_trig)
+
+    ax.plot(t_trig, x_w1, color='#1B365D', lw=2.2, label=r'$x_1(t) = \cos(t)$ ($\omega = 1\text{ rad/s}$)')
+    ax.plot(t_trig, x_w2, color='#A6192E', linestyle='--', lw=2.2, label=r'$x_2(t) = \cos(2t)$ ($\omega = 2\text{ rad/s}$)')
+    ax.axhline(0, color='gray', lw=0.8, linestyle='--')
+
+    # Tangent at zero-crossing: t = pi/2 for w=1 -> slope = -1
+    t_mid1 = np.pi/2
+    tan1 = -1 * (t_trig - t_mid1)
+    mask1 = (t_trig >= t_mid1 - 0.7) & (t_trig <= t_mid1 + 0.7)
+    ax.plot(t_trig[mask1], tan1[mask1], color='#1B365D', linestyle=':', lw=2.4)
+    ax.scatter([t_mid1], [0], color='#1B365D', s=55, zorder=5)
+    ax.text(t_mid1 + 0.1, 0.45, r'Độ dốc $= -1$', fontsize=10, color='#1B365D', fontweight='bold')
+
+    # Tangent at zero-crossing: t = pi/4 for w=2 -> slope = -2
+    t_mid2 = np.pi/4
+    tan2 = -2 * (t_trig - t_mid2)
+    mask2 = (t_trig >= t_mid2 - 0.5) & (t_trig <= t_mid2 + 0.5)
+    ax.plot(t_trig[mask2], tan2[mask2], color='#A6192E', linestyle=':', lw=2.4)
+    ax.scatter([t_mid2], [0], color='#A6192E', s=55, zorder=5)
+    ax.text(t_mid2 + 0.15, -0.65, r'Độ dốc $= -2$', fontsize=10, color='#A6192E', fontweight='bold')
+
+    # Explanatory annotation
+    ax.annotate(r'Khi $\omega$ tăng 2 lần, đồ thị bị ép co hẹp lại 2 lần' + '\n' +
+                r'$\Rightarrow$ Độ dốc (tốc độ biến thiên) tăng gấp 2 lần!' + '\n' +
+                r'$\Rightarrow [\cos(\omega t)]^\prime = -\omega\sin(\omega t)$',
+                xy=(3.4, 0.4), xytext=(2.2, 0.75),
+                fontsize=9.5, color='#1E6B52', fontweight='bold',
+                bbox=dict(boxstyle='round,pad=0.4', facecolor='#F0FDF4', alpha=0.95, edgecolor='#1E6B52'))
+
+    ax.set_xticks([0, np.pi/2, np.pi, 3*np.pi/2, 2*np.pi])
+    ax.set_xticklabels([r'$0$', r'$\frac{\pi}{2}$', r'$\pi$', r'$\frac{3\pi}{2}$', r'$2\pi$'], fontsize=11)
+    ax.set_xlabel(r'Thời gian $t$ (s)', fontsize=12)
+    ax.set_ylabel(r'Li độ $x$', fontsize=12)
+    ax.set_title(r'Hình 1.0b: Vì sao xuất hiện nhân tử $\omega$ khi lấy đạo hàm hàm lượng giác?', fontsize=12.5)
+    ax.legend(loc='lower left', fontsize=9.5, framealpha=0.92)
+    ax.set_ylim(-1.5, 1.8)
+
+    plt.tight_layout()
+    fig.savefig(os.path.join(FIG_DIR, 'fig1_0b_omega_derivative.png'), dpi=300)
+    fig.savefig(os.path.join(FIG_DIR, 'fig1_0b_omega_derivative.pdf'))
+    plt.close()
+    print("Generated: fig1_0b_omega_derivative")
+
+# -------------------------------------------------------------
+# Figure 1.0c: Trigonometric Circle & Angle Shifts
+# -------------------------------------------------------------
+def plot_fig1_0c_trig_circle():
+    fig, ax = plt.subplots(figsize=(6.8, 6.5))
+
     theta_circ = np.linspace(0, 2*np.pi, 400)
-    ax2.plot(np.cos(theta_circ), np.sin(theta_circ), color='#94A3B8', lw=1.5, linestyle=':')
-    ax2.axhline(0, color='gray', lw=0.8, linestyle='--')
-    ax2.axvline(0, color='gray', lw=0.8, linestyle='--')
+    ax.plot(np.cos(theta_circ), np.sin(theta_circ), color='#94A3B8', lw=1.6, linestyle=':')
+    ax.axhline(0, color='gray', lw=0.8, linestyle='--')
+    ax.axvline(0, color='gray', lw=0.8, linestyle='--')
 
     alpha = np.radians(35)
+    
     # Vector alpha
     x_a = np.cos(alpha)
     y_a = np.sin(alpha)
-    ax2.annotate('', xy=(x_a, y_a), xytext=(0, 0),
-                 arrowprops=dict(arrowstyle='->', color='#1B365D', lw=2.2))
+    ax.annotate('', xy=(x_a, y_a), xytext=(0, 0),
+                arrowprops=dict(arrowstyle='->', color='#1B365D', lw=2.4))
     # Right triangle for alpha
-    ax2.plot([x_a, x_a], [0, y_a], color='#1B365D', linestyle='--', lw=1.0)
-    ax2.fill_between([0, x_a], [0, 0], [0, y_a], color='#1B365D', alpha=0.1)
-    ax2.text(x_a + 0.05, y_a + 0.05, r'$\vec{u}_1 (\alpha)$', fontsize=10, fontweight='bold', color='#1B365D')
-    ax2.text(x_a / 2, -0.15, r'$\cos\alpha$', fontsize=9, color='#1B365D', ha='center')
-    ax2.text(x_a + 0.08, y_a / 2, r'$\sin\alpha$', fontsize=9, color='#1B365D', va='center')
+    ax.plot([x_a, x_a], [0, y_a], color='#1B365D', linestyle='--', lw=1.2)
+    ax.fill_between([0, x_a], [0, 0], [0, y_a], color='#1B365D', alpha=0.12)
+    ax.text(x_a + 0.05, y_a + 0.05, r'$\vec{u}_1 (\alpha)$', fontsize=11, fontweight='bold', color='#1B365D')
+    ax.text(x_a / 2, -0.16, r'$\cos\alpha$', fontsize=10.5, color='#1B365D', ha='center', fontweight='bold')
+    ax.text(x_a + 0.08, y_a / 2, r'$\sin\alpha$', fontsize=10.5, color='#1B365D', va='center', fontweight='bold')
 
     # Vector alpha + pi/2 (rotate 90 deg)
     alpha_pi2 = alpha + np.pi/2
     x_p = np.cos(alpha_pi2)
     y_p = np.sin(alpha_pi2)
-    ax2.annotate('', xy=(x_p, y_p), xytext=(0, 0),
-                 arrowprops=dict(arrowstyle='->', color='#1E6B52', lw=2.2))
-    ax2.plot([x_p, x_p], [0, y_p], color='#1E6B52', linestyle='--', lw=1.0)
-    ax2.text(x_p - 0.2, y_p + 0.08, r'$\vec{u}_2 (\alpha + \frac{\pi}{2})$', fontsize=10, fontweight='bold', color='#1E6B52')
-    ax2.annotate(r'$\cos(\alpha + \frac{\pi}{2}) = -\sin\alpha$', xy=(x_p, 0), xytext=(x_p - 0.65, -0.45),
-                 arrowprops=dict(arrowstyle='->', color='#1E6B52', lw=1.2),
-                 fontsize=8.8, fontweight='bold', color='#1E6B52',
-                 bbox=dict(boxstyle='round,pad=0.2', facecolor='white', alpha=0.9, edgecolor='#1E6B52'))
+    ax.annotate('', xy=(x_p, y_p), xytext=(0, 0),
+                arrowprops=dict(arrowstyle='->', color='#1E6B52', lw=2.4))
+    ax.plot([x_p, x_p], [0, y_p], color='#1E6B52', linestyle='--', lw=1.2)
+    ax.text(x_p - 0.22, y_p + 0.08, r'$\vec{u}_2 (\alpha + \frac{\pi}{2})$', fontsize=11, fontweight='bold', color='#1E6B52')
+    ax.annotate(r'$\cos(\alpha + \frac{\pi}{2}) = -\sin\alpha$' + '\n' + r'(Hoành độ mang giá trị âm)',
+                xy=(x_p, 0), xytext=(x_p - 0.55, -0.45),
+                arrowprops=dict(arrowstyle='->', color='#1E6B52', lw=1.4),
+                fontsize=9.2, fontweight='bold', color='#1E6B52',
+                bbox=dict(boxstyle='round,pad=0.3', facecolor='white', alpha=0.92, edgecolor='#1E6B52'))
 
     # Vector alpha + pi (rotate 180 deg)
     alpha_pi = alpha + np.pi
     x_pi = np.cos(alpha_pi)
     y_pi = np.sin(alpha_pi)
-    ax2.annotate('', xy=(x_pi, y_pi), xytext=(0, 0),
-                 arrowprops=dict(arrowstyle='->', color='#A6192E', lw=2.0))
-    ax2.text(x_pi - 0.35, y_pi - 0.15, r'$\vec{u}_3 (\alpha + \pi)$', fontsize=9.5, fontweight='bold', color='#A6192E')
-    ax2.annotate(r'$\cos(\alpha + \pi) = -\cos\alpha$', xy=(x_pi, 0), xytext=(x_pi - 0.3, 0.35),
-                 arrowprops=dict(arrowstyle='->', color='#A6192E', lw=1.2),
-                 fontsize=8.8, fontweight='bold', color='#A6192E',
-                 bbox=dict(boxstyle='round,pad=0.2', facecolor='white', alpha=0.9, edgecolor='#A6192E'))
+    ax.annotate('', xy=(x_pi, y_pi), xytext=(0, 0),
+                arrowprops=dict(arrowstyle='->', color='#A6192E', lw=2.2))
+    ax.text(x_pi - 0.38, y_pi - 0.15, r'$\vec{u}_3 (\alpha + \pi)$', fontsize=11, fontweight='bold', color='#A6192E')
+    ax.annotate(r'$\cos(\alpha + \pi) = -\cos\alpha$' + '\n' + r'(Đối xứng hoàn toàn qua gốc $O$)',
+                xy=(x_pi, 0), xytext=(x_pi - 0.3, 0.4),
+                arrowprops=dict(arrowstyle='->', color='#A6192E', lw=1.4),
+                fontsize=9.2, fontweight='bold', color='#A6192E',
+                bbox=dict(boxstyle='round,pad=0.3', facecolor='white', alpha=0.92, edgecolor='#A6192E'))
 
     # Rotation arc for +pi/2
     arc_theta = np.linspace(alpha, alpha_pi2, 50)
-    ax2.plot(0.35 * np.cos(arc_theta), 0.35 * np.sin(arc_theta), color='#D97706', lw=1.5)
-    ax2.text(0.18, 0.42, r'$+90^\circ$', fontsize=8.5, color='#D97706', fontweight='bold')
+    ax.plot(0.35 * np.cos(arc_theta), 0.35 * np.sin(arc_theta), color='#D97706', lw=1.6)
+    ax.text(0.18, 0.42, r'$+90^\circ$', fontsize=9.5, color='#D97706', fontweight='bold')
 
-    ax2.set_aspect('equal')
-    ax2.set_xlim(-1.45, 1.45)
-    ax2.set_ylim(-1.45, 1.45)
-    ax2.set_xlabel(r'Trục Hoành $\cos$')
-    ax2.set_ylabel(r'Trục Tung $\sin$')
-    ax2.set_title(r'(b) Đường tròn Lượng giác & Cung hơn kém')
-
-    # --- Panel 3: Trigonometric Derivative & Angular Frequency Omega ---
-    t_trig = np.linspace(0, 2*np.pi, 500)
-    x_w1 = np.cos(t_trig)
-    x_w2 = np.cos(2 * t_trig)
-
-    ax3.plot(t_trig, x_w1, color='#1B365D', lw=1.8, label=r'$x_1(t) = \cos(t)$ ($\omega = 1$)')
-    ax3.plot(t_trig, x_w2, color='#A6192E', linestyle='--', lw=2.0, label=r'$x_2(t) = \cos(2t)$ ($\omega = 2$)')
-    ax3.axhline(0, color='gray', lw=0.8, linestyle='--')
-
-    # Tangent at zero-crossing: t = pi/2 for w=1 -> slope = -1
-    t_mid1 = np.pi/2
-    tan1 = -1 * (t_trig - t_mid1)
-    mask1 = (t_trig >= t_mid1 - 0.8) & (t_trig <= t_mid1 + 0.8)
-    ax3.plot(t_trig[mask1], tan1[mask1], color='#1B365D', linestyle=':', lw=2.0)
-    ax3.scatter([t_mid1], [0], color='#1B365D', s=40, zorder=5)
-    ax3.text(t_mid1 + 0.1, 0.45, r'Độ dốc $= -1$', fontsize=8.8, color='#1B365D')
-
-    # Tangent at zero-crossing: t = pi/4 for w=2 -> slope = -2
-    t_mid2 = np.pi/4
-    tan2 = -2 * (t_trig - t_mid2)
-    mask2 = (t_trig >= t_mid2 - 0.6) & (t_trig <= t_mid2 + 0.6)
-    ax3.plot(t_trig[mask2], tan2[mask2], color='#A6192E', linestyle=':', lw=2.0)
-    ax3.scatter([t_mid2], [0], color='#A6192E', s=40, zorder=5)
-    ax3.text(t_mid2 + 0.15, -0.65, r'Độ dốc $= -2$', fontsize=8.8, color='#A6192E')
-
-    # Explanatory annotation
-    ax3.annotate(r'Khi $\omega$ tăng 2 lần, đồ thị bị ép hẹp lại 2 lần' + '\n' +
-                 r'$\Rightarrow$ Độ dốc (tốc độ biến thiên) tăng 2 lần!' + '\n' +
-                 r'$\Rightarrow [\cos(\omega t)]^\prime = -\omega\sin(\omega t)$',
-                 xy=(3.5, 0.5), xytext=(2.0, 0.85),
-                 fontsize=8.5, color='#1E6B52', fontweight='bold',
-                 bbox=dict(boxstyle='round,pad=0.3', facecolor='#F0FDF4', alpha=0.95, edgecolor='#1E6B52'))
-
-    ax3.set_xticks([0, np.pi/2, np.pi, 3*np.pi/2, 2*np.pi])
-    ax3.set_xticklabels([r'$0$', r'$\frac{\pi}{2}$', r'$\pi$', r'$\frac{3\pi}{2}$', r'$2\pi$'])
-    ax3.set_xlabel(r'Thời gian $t$ (s)')
-    ax3.set_ylabel(r'Li độ $x$')
-    ax3.set_title(r'(c) Vì sao xuất hiện nhân tử $\omega$ khi lấy đạo hàm?')
-    ax3.legend(loc='lower left', fontsize=8.5, framealpha=0.92)
-    ax3.set_ylim(-1.5, 1.8)
+    ax.set_aspect('equal')
+    ax.set_xlim(-1.45, 1.45)
+    ax.set_ylim(-1.45, 1.45)
+    ax.set_xlabel(r'Trục Hoành $\cos$', fontsize=12)
+    ax.set_ylabel(r'Trục Tung $\sin$', fontsize=12)
+    ax.set_title(r'Hình 1.0c: Đường tròn Lượng giác giải mã cung hơn kém $\frac{\pi}{2}$, $\pi$ & Pythagoras', fontsize=12)
 
     plt.tight_layout()
-    fig.savefig(os.path.join(FIG_DIR, 'fig1_0_math_tools.png'), dpi=300)
-    fig.savefig(os.path.join(FIG_DIR, 'fig1_0_math_tools.pdf'))
+    fig.savefig(os.path.join(FIG_DIR, 'fig1_0c_trig_circle.png'), dpi=300)
+    fig.savefig(os.path.join(FIG_DIR, 'fig1_0c_trig_circle.pdf'))
     plt.close()
-    print("Generated: fig1_0_math_tools")
+    print("Generated: fig1_0c_trig_circle")
 
 # -------------------------------------------------------------
 # Figure 1.1: Kinematics of Harmonic Motion (x, v, a)
@@ -548,7 +580,9 @@ def plot_fig1_resonance():
 
 if __name__ == '__main__':
     print("Rendering updated research-grade figures for 11th-grade physics...")
-    plot_fig1_math_tools()
+    plot_fig1_0a_derivative()
+    plot_fig1_0b_omega_derivative()
+    plot_fig1_0c_trig_circle()
     plot_fig1_kinematics()
     plot_fig1_phase_space()
     plot_fig1_potential_well()
