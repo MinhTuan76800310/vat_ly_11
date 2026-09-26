@@ -1,336 +1,508 @@
-# CHƯƠNG 1: DAO ĐỘNG ĐIỀU HÒA – BẢN CHẤT ĐỘNG LỰC HỌC VÀ KHÔNG GIAN PHA
+# CHƯƠNG 1: DAO ĐỘNG ĐIỀU HÒA – BẢN CHẤT ĐỘNG LỰC HỌC, KHÔNG GIAN PHA & BÀI TOÁN ĐÁNH ĐỔI KỸ THUẬT
 
 ---
 
-> ### 📌 Hộp công cụ: Toán học tối thiểu cho Chương 1
-> Trước khi đi sâu vào bản chất vật lý của các dao động, người đọc cần nắm vững các công cụ giải tích toán học nền tảng sau:
-> 1. **Đạo hàm hàm hợp theo thời gian:**
->    $$\frac{d}{dt}\cos(\omega t + \varphi) = -\omega \sin(\omega t + \varphi), \quad \frac{d}{dt}\sin(\omega t + \varphi) = \omega \cos(\omega t + \varphi)$$
-> 2. **Khai triển chuỗi Taylor (Taylor Series):** Xấp xỉ một hàm số khả vi $f(x)$ quanh điểm lân cận $x_0$:
->    $$f(x) = f(x_0) + f'(x_0)(x - x_0) + \frac{1}{2!}f''(x_0)(x - x_0)^2 + \frac{1}{3!}f'''(x_0)(x - x_0)^3 + \dots$$
-> 3. **Phương trình vi phân tuyến tính cấp hai hệ số hằng:** Dạng thuần nhất $\ddot{x} + \omega_0^2 x = 0$ có phương trình đặc trưng $r^2 + \omega_0^2 = 0 \Rightarrow r = \pm i\omega_0$, dẫn tới nghiệm thực dao động $x(t) = A\cos(\omega_0 t + \varphi)$.
-> 4. **Công thức Euler về số phức:** $e^{i\theta} = \cos\theta + i\sin\theta$. Phép nhân với đơn vị ảo $i = e^{i\pi/2}$ tương đương hình học với một phép quay góc $\pi/2$ ngược chiều kim đồng hồ trên mặt phẳng phức.
+> 📐 **HỘP CÔNG CỤ: TOÁN HỌC TỐI THIỂU CHO CHƯƠNG 1 (Mathematical Prerequisites)**  
+> Trước khi đi vào động học và động lực học, người học cần nắm chắc 4 công cụ giải tích nền tảng:  
+> 1. **Đạo hàm hàm hợp theo thời gian *(Time Derivatives)*:**  
+>    $$\frac{d}{dt}\cos(\omega t + \varphi) = -\omega \sin(\omega t + \varphi), \quad \frac{d}{dt}\sin(\omega t + \varphi) = \omega \cos(\omega t + \varphi)$$  
+> 2. **Khai triển chuỗi Taylor *(Taylor Series Expansion)*:** Xấp xỉ hàm khả vi $f(x)$ quanh điểm cực tiểu $x_0$:  
+>    $$f(x) = f(x_0) + f'(x_0)(x - x_0) + \frac{1}{2!}f''(x_0)(x - x_0)^2 + \mathcal{O}((x - x_0)^3)$$  
+> 3. **Phương trình vi phân tuyến tính cấp hai hệ số hằng *(Second-Order Linear ODE)*:**  
+>    $$\ddot{x} + \omega_0^2 x = 0 \implies r^2 + \omega_0^2 = 0 \implies r = \pm i\omega_0 \implies x(t) = A\cos(\omega_0 t + \varphi)$$  
+> 4. **Hàm mũ phức Euler *(Euler's Complex Formula)*:** $e^{i\theta} = \cos\theta + i\sin\theta$. Nhân với số ảo $i = e^{i\pi/2}$ tương đương một phép quay góc $\pi/2$ ngược chiều kim đồng hồ trên mặt phẳng phức.
 
 ---
 
-## 1. ĐỘNG HỌC DAO ĐỘNG: TỪ PHÉP ĐẠO HÀM ĐẾN KHÔNG GIAN PHA
+# MODULE 1 (1 GIỜ): ĐỘNG HỌC DAO ĐỘNG ĐIỀU HÒA & KHÔNG GIAN PHA
+*(Kinematics of Simple Harmonic Motion & Phase Space Dynamics)*
 
-### 1.1. Giới hạn của cách tiếp cận trong Sách giáo khoa hiện hành
+### 1. Mục tiêu Đầu ra (Learning Objectives)
+Sau khi hoàn thành Module 1, người học có khả năng:
+* Giải thích được vì sao dao động điều hòa là một chuyển động gia tốc biến đổi liên tục chứ không phải "chuyển động tròn đều ngầm".
+* Dẫn xuất tường minh mối quan hệ pha giữa li độ, vận tốc và gia tốc bằng phép toán vi phân.
+* Dựng chân dung pha *(Phase Portrait)*, giải thích quỹ đạo elip khép kín và tính bảo toàn trạng thái theo Định lý Liouville.
+* Ứng dụng quan hệ không gian pha để xác định trạng thái tức thời của một hệ cơ học.
 
-Trong các bộ sách giáo khoa Vật lí 11 hiện hành (Kết nối tri thức, Cánh Diều, Chân trời sáng tạo), phương trình dao động điều hòa:
+---
+
+### 2. Mâu thuẫn Sách giáo khoa & Cơ chế Ngầm (The Conflict & Underlying Mechanism)
+* **Mâu thuẫn (The Conflict):** Trong sách giáo khoa hiện hành, phương trình dao động $x = A\cos(\omega t + \varphi)$ thường được áp đặt bằng cách chiếu chuyển động của một chất điểm trên đường tròn tưởng tượng xuống một trục tọa độ. Điều này khiến người học lầm tưởng rằng một quả lắc hay một phân tử muốn dao động điều hòa thì phải "quay ngầm" trong một quỹ đạo tròn bí ẩn nào đó.
+* **Cơ chế ngầm (Underlying Mechanism):** Trong tự nhiên, không có đường tròn nào cả. Một vật dao động điều hòa hoàn toàn do **lực hồi phục *(Restoring Force)*** luôn kéo vật trở về vị trí cân bằng, tạo ra một gia tốc luôn tỉ lệ thuận nhưng ngược chiều với độ dời:
+  $$a(t) = -\omega^2 x(t)$$
+  Chính quy luật động lực học tuyến tính này ép buộc nghiệm của phương trình chuyển động phải là hàm sin/cos.
+
+---
+
+### 3. Mô hình Tư duy & Giới hạn Ẩn dụ (Grounded Mental Model)
+* **Ẩn dụ chuẩn xác (The Metaphor):** Hãy hình dung cơ cấu **Thanh truyền - Piston *(Piston-Crankshaft Mechanism)*** trong động cơ ô tô. Khi trục khuỷu quay tròn đều với tốc độ góc $\omega$, đầu thanh truyền nối với piston bị giam hãm trong xi-lanh thẳng tắp. Piston không quay; nó chỉ tịnh tiến qua lại. Tốc độ của piston bị hãm về $0$ ở hai điểm chết (biên độ), và lao vút qua điểm chính giữa với vận tốc cực đại.
+* ⚠️ **Giới hạn của ẩn dụ (Analogy Boundary):** Piston cơ học bị ràng buộc cơ học cứng bởi thanh truyền thép. Trong dao động điều hòa tự do của con lắc lò xo hay phân tử, không có thanh truyền cứng; sự ràng buộc chỉ đến từ **trường thế năng đàn hồi mềm** của các liên kết nguyên tử. Nếu biên độ kéo quá lớn, lò xo sẽ bị dão hoặc phân tử sẽ bị bẻ gãy liên kết (phân ly).
+
+---
+
+### 4. Dẫn xuất Toán học: Vận tốc, Gia tốc và Độ lệch pha
+
+Ta định nghĩa chuyển động dao động bằng tọa độ li độ *(Displacement)* $x(t)$ theo thời gian $t$:
 $$x(t) = A\cos(\omega t + \varphi)$$
-thường được giới thiệu như một **tiên đề thừa nhận** hoặc suy ra từ hình chiếu của một chất điểm chuyển động tròn đều lên một trục tọa độ. 
 
-Cách tiếp cận hình học này mang lại trực giác trực quan ban đầu, nhưng lại tạo ra một ngộ nhận tai hại: *Học sinh tưởng rằng dao động điều hòa xảy ra vì vật đang "quay ngầm" trong một đường tròn tưởng tượng nào đó.*
+> 📐 **DẪN XUẤT TOÁN HỌC (Mathematical Proof): Đạo hàm Vận tốc và Gia tốc**  
+> Áp dụng quy tắc đạo hàm hàm hợp theo thời gian:
+> 
+> 1. **Vận tốc tức thời *(Instantaneous Velocity)* $v(t)$:**
+>    $$v(t) = \dot{x}(t) = \frac{dx}{dt} = -A\omega \sin(\omega t + \varphi)$$
+>    Biến đổi lượng giác bằng công thức $-\sin\theta = \cos(\theta + \pi/2)$:
+>    $$v(t) = \omega A \cos\left(\omega t + \varphi + \frac{\pi}{2}\right)$$
+> 2. **Gia tốc tức thời *(Instantaneous Acceleration)* $a(t)$:**
+>    $$a(t) = \dot{v}(t) = \ddot{x}(t) = \frac{d^2x}{dt^2} = -A\omega^2 \cos(\omega t + \varphi)$$
+>    Biến đổi lượng giác bằng công thức $-\cos\theta = \cos(\theta + \pi)$:
+>    $$a(t) = \omega^2 A \cos(\omega t + \varphi + \pi)$$
+> 
+> **Ý nghĩa biến số và đơn vị chuẩn SI:**
+> * $x(t)$: Li độ tức thời, đơn vị mét ($\text{m}$).
+> * $A$: Biên độ dao động (độ dời cực đại), đơn vị mét ($\text{m}$).
+> * $\omega$: Tần số góc *(Angular Frequency)*, đơn vị radian trên giây ($\text{rad/s}$).
+> * $\varphi$: Pha ban đầu tại thời điểm $t = 0$, đơn vị radian ($\text{rad}$).
+> * $v(t)$: Vận tốc tức thời, đơn vị mét trên giây ($\text{m/s}$). Vận tốc cực đại $v_{\max} = \omega A$.
+> * $a(t)$: Gia tốc tức thời, đơn vị mét trên giây bình phương ($\text{m/s}^2$). Gia tốc cực đại $a_{\max} = \omega^2 A$.
 
-Về mặt bản chất tự nhiên, một hệ vật lý không hề biết đến "vòng tròn tưởng tượng". Nó dao động điều hòa chỉ bởi vì **định luật động lực học chi phối nó tạo ra một gia tốc luôn tỉ lệ thuận nhưng ngược hướng với li độ**:
-$$a(t) = -\omega^2 x(t)$$
+![Đồ thị động học chuẩn hóa theo thời gian của dao động điều hòa: Li độ $x(t)$, Vận tốc $v(t)/\omega$, và Gia tốc $a(t)/\omega^2$.](figures/fig1_1_kinematics.png)
 
-### 1.2. Dẫn xuất giải tích: Vận tốc, Gia tốc và Độ lệch pha
+> 🔬 **BẢN CHẤT VẬT LÝ & DẪN DẮT MẮT ĐỌC (Hình 1.1):**  
+> * **Hãy nhìn vào đường màu xanh navy ở đồ thị trên cùng (Li độ $x/A$):** Tại thời điểm $t_0 = 0$, vật ở biên dương $P_0(x = +A)$. Khi trôi qua $t_1 = T/4$, vật về vị trí cân bằng $P_1(x = 0)$, và tới $t_2 = T/2$, vật chạm biên âm $P_2(x = -A)$.  
+> * **Di chuyển mắt xuống đồ thị giữa màu xanh lá cây (Vận tốc $\frac{v}{\omega A}$):** Khi vật đang lao qua vị trí cân bằng ($x = 0$ tại $t_1 = T/4$), vận tốc đạt giá trị âm cực đại $v = -\omega A$. Vận tốc **sớm pha $\pi/2$** so với li độ, nghĩa là mọi biến cố của vận tốc đều diễn ra trước li độ một phần tư chu kỳ ($T/4$).  
+> * **Nhìn vào đồ thị dưới cùng màu đỏ thẫm (Gia tốc $\frac{a}{\omega^2 A}$):** Tại $t_2 = T/2$, khi vật ở tận cùng biên âm ($x = -A$), gia tốc vọt lên cực đại dương $a = +\omega^2 A$ để kéo giật vật quay trở lại. Gia tốc **ngược pha hoàn toàn ($\pi$)** với li độ ($a = -\omega^2 x$).
 
-Để mô tả chuyển động một cách chuẩn tắc, ta sử dụng phép vi phân theo thời gian $t$. Ký hiệu đạo hàm cấp một là $\dot{x} \equiv \frac{dx}{dt}$ và đạo hàm cấp hai là $\ddot{x} \equiv \frac{d^2x}{dt^2}$.
+---
 
-1. **Li độ (Displacement):** 
-   $$x(t) = A\cos(\omega t + \varphi)$$
-   trong đó $A > 0$ là biên độ dao động, $\omega > 0$ là tần số góc, và $\varphi$ là pha ban đầu tại $t = 0$.
+### 5. Khái niệm Không gian Pha (Phase Space) & Chân dung Pha
 
-2. **Vận tốc (Velocity):** Tốc độ biến thiên tức thời của vị trí theo thời gian:
-   $$v(t) = \dot{x}(t) = \frac{d}{dt}[A\cos(\omega t + \varphi)] = -\omega A \sin(\omega t + \varphi)$$
-   Dùng tính chất lượng giác $\cos(\alpha + \pi/2) = -\sin\alpha$, ta viết lại:
-   $$v(t) = \omega A \cos\left(\omega t + \varphi + \frac{\pi}{2}\right)$$
-   *Ý nghĩa vật lý:* Vận tốc đạt giá trị cực đại $v_{\max} = \omega A$ khi vật đi qua vị trí cân bằng ($x = 0$) và **sớm pha hơn li độ một góc $\pi/2$**.
+Trong cơ học, nếu chỉ biết vị trí $x$, ta không biết được hệ đang tiến hay lùi. Trạng thái cơ học đầy đủ đòi hỏi cặp biến độc lập: **(Vị trí $x$, Vận tốc $v$)**. 
 
-3. **Gia tốc (Acceleration):** Tốc độ biến thiên tức thời của vận tốc theo thời gian:
-   $$a(t) = \dot{v}(t) = \ddot{x}(t) = \frac{d}{dt}[-\omega A \sin(\omega t + \varphi)] = -\omega^2 A \cos(\omega t + \varphi)$$
-   Dùng tính chất lượng giác $\cos(\alpha + \pi) = -\cos\alpha$, ta viết lại:
-   $$a(t) = \omega^2 A \cos(\omega t + \varphi + \pi)$$
-   *Ý nghĩa vật lý:* Gia tốc đạt độ lớn cực đại $a_{\max} = \omega^2 A$ tại hai biên ($x = \pm A$), luôn hướng về vị trí cân bằng và **ngược pha hoàn toàn ($\pi$) so với li độ**.
-
-![Đồ thị động học chuẩn hóa của dao động điều hòa theo một chu kỳ thời gian: Li độ $x(t)$, Vận tốc $v(t)/\omega$, và Gia tốc $a(t)/\omega^2$.](figures/fig1_1_kinematics.png)
-
-*Phân tích Hình 1.1:* Đồ thị trên biểu diễn diễn tiến ba đại lượng chuẩn hóa theo một chu kỳ $T = 2\pi/\omega$. Quan sát các đường gióng dọc đứt nét:
-- Tại $t = T/4$: Li độ bằng $0$ (vật qua VTCB theo chiều âm), vận tốc đạt cực tiểu đại số $v = -\omega A$, và gia tốc bằng $0$.
-- Tại $t = T/2$: Li độ đạt cực tiểu $x = -A$, vận tốc bằng $0$ (vật đổi chiều chuyển động), gia tốc đạt cực đại dương $a = +\omega^2 A$ kéo vật trở lại VTCB.
-
-### 1.3. Khái niệm Trạng thái Vật lý và Không gian Pha (Phase Space)
-
-Trong cơ học cổ điển, nếu ta chỉ biết vị trí $x$ của một chất điểm tại thời điểm $t$, ta **không thể** dự đoán được tương lai của chất điểm đó. Để xác định hoàn toàn trạng thái động lực học tức thời của một hệ cơ học có 1 bậc tự do, ta cần một cặp biến độc lập: **(Vị trí $x$, Vận tốc $v$)** (hoặc xung lượng $p = mv$).
-
-Không gian hai chiều với hai trục tọa độ $(x, v)$ được gọi là **Không gian Pha (Phase Space)**.
-
-Từ hai phương trình động học:
+Chia phương trình li độ và vận tốc cho biên độ cực đại tương ứng:
 $$\frac{x}{A} = \cos(\omega t + \varphi), \quad \frac{v}{\omega A} = -\sin(\omega t + \varphi)$$
-Bình phương hai vế và cộng lại, ta triệt tiêu hoàn toàn biến thời gian $t$:
+Bình phương và cộng hai vế:
 $$\left(\frac{x}{A}\right)^2 + \left(\frac{v}{\omega A}\right)^2 = \cos^2(\omega t + \varphi) + \sin^2(\omega t + \varphi) = 1$$
 
-Đây chính là phương trình chính tắc của một đường **Ellipse** trên mặt phẳng $(x, v)$, hoặc một đường **Tròn** nếu ta chuẩn hóa trục tung thành biến vận tốc rút gọn $y = v/\omega$:
-$$x^2 + \left(\frac{v}{\omega}\right)^2 = A^2$$
+Đặt biến vận tốc chuẩn hóa $y = \frac{v}{\omega}$, ta có phương trình đường tròn chính tắc:
+$$x^2 + y^2 = A^2$$
 
-![Chân dung pha (Phase Portrait) của dao động điều hòa ứng với các mức năng lượng tăng dần. Chiều mũi tên biểu diễn sự tiến hóa thời gian theo chiều kim đồng hồ.](figures/fig1_2_phase_space.png)
+![Chân dung pha (Phase Portrait) của dao động điều hòa với các mức năng lượng khác nhau và chiều dòng trạng thái thuận chiều kim đồng hồ.](figures/fig1_2_phase_space.png)
 
-*Phân tích Hình 1.2:*
-1. **Quỹ đạo khép kín (Closed Orbit):** Mỗi đường tròn đồng tâm ứng với một mức năng lượng xác định. Quỹ đạo khép kín phản ánh tính chất tuần hoàn: hệ lặp lại trạng thái sau mỗi chu kỳ $T$.
-2. **Chiều tiến hóa duy nhất:** Vì ở nửa mặt phẳng trên ($v > 0$), li độ $x$ bắt buộc phải tăng ($\dot{x} > 0$), còn ở nửa mặt phẳng dưới ($v < 0$), li độ $x$ bắt buộc phải giảm ($\dot{x} < 0$), nên trạng thái hệ luôn chuyển động theo **chiều kim đồng hồ**.
-3. **Tính không cắt nhau của các đường pha:** Hai quỹ đạo pha ứng với hai mức năng lượng khác nhau không bao giờ cắt nhau. Nếu chúng cắt nhau tại một điểm, điều đó có nghĩa là từ cùng một trạng thái ban đầu $(x_0, v_0)$ có thể phân nhánh thành hai tương lai khác nhau – điều vi phạm tính tất định của cơ học Newton!
-
-> 🖊 **Tự kiểm tra 1.1:** *Tại sao diện tích hình elip trong không gian pha $(x, p)$ với $p = mv$ lại tỉ lệ thuận với cơ năng $E$ của hệ? Hãy thử tính tích phân diện tích $\oint p \, dx$ của một chu kỳ.*
+> 🔬 **BẢN CHẤT VẬT LÝ & DẪN DẮT MẮT ĐỌC (Hình 1.2):**  
+> * **Hãy quan sát quỹ đạo elip màu xanh navy ứng với mức năng lượng $E_2$:**  
+>   - Điểm màu cam $S_0(t = 0): (+A, 0)$ là trạng thái thả vật tại biên dương (vận tốc bằng 0).  
+>   - Khi thời gian trôi, điểm làm việc trượt theo chiều kim đồng hồ tới $S_1(t = T/4): (0, -\omega A)$, nơi thế năng đã giải phóng hoàn toàn thành động năng âm cực đại.  
+>   - Tiếp tục trượt qua $S_2(t = T/2): (-A, 0)$ và $S_3(t = 3T/4): (0, +\omega A)$.  
+> * **Quy luật bất biến:** Ở nửa trên trục hoành ($v > 0$), li độ buộc phải tăng ($\dot{x} > 0$); ở nửa dưới ($v < 0$), li độ buộc phải giảm ($\dot{x} < 0$). Do đó, **mọi hệ tự nhiên trong không gian pha đều quay thuận chiều kim đồng hồ**.  
+> * **Định lý Liouville:** Diện tích bao bởi đường cong pha $\mathcal{A} = \pi A (A\omega) \propto E$ không đổi theo thời gian. Hai quỹ đạo ứng với hai mức năng lượng khác nhau không bao giờ cắt nhau.
 
 ---
 
-## 2. ĐỘNG LỰC HỌC: BẢN CHẤT GIẾNG THẾ NĂNG VÀ KHAI TRIỂN TAYLOR
+### 6. Bài toán Tính số Thực tế (Worked Numerical Example 1.1)
 
-### 2.1. Phương trình vi phân Newton của con lắc lò xo
+> **Đề bài:** Một cảm biến đo gia tốc vi cơ điện tử *(MEMS Accelerometer)* có khối lượng con lắc vi mô $m = 2 \times 10^{-9}\text{ kg}$ (2 microgam), dao động điều hòa với tần số $f = 2.5\text{ kHz}$ và biên độ dịch chuyển tối đa $A = 4.0\text{ }\mu\text{m}$.  
+> 1. Tính tần số góc $\omega$, vận tốc cực đại $v_{\max}$ và gia tốc cực đại $a_{\max}$ tác dụng lên cấu trúc vi cơ.  
+> 2. Xác định bán trục của quỹ đạo trong không gian pha $(x, v)$ và $(x, v/\omega)$.
+> 
+> **Lời giải từng bước:**  
+> 1. **Tính các thông số động học:**  
+>    * Tần số góc: $\omega = 2\pi f = 2\pi \times 2500\text{ Hz} \approx 15,708\text{ rad/s}$.  
+>    * Vận tốc cực đại:  
+>      $$v_{\max} = \omega A = (15,708\text{ rad/s}) \times (4.0 \times 10^{-6}\text{ m}) \approx 0.0628\text{ m/s} = 62.8\text{ mm/s}$$  
+>    * Gia tốc cực đại:  
+>      $$a_{\max} = \omega^2 A = (15,708\text{ rad/s})^2 \times (4.0 \times 10^{-6}\text{ m}) \approx 987\text{ m/s}^2 \approx 100.6\text{ g}$$  
+>      *(với $g = 9.8\text{ m/s}^2$, con lắc chịu tải gia tốc gấp hơn 100 lần trọng trường Trái Đất!)*  
+> 2. **Xác định chân dung pha:**  
+>    * Trong không gian $(x, v)$, quỹ đạo là hình elip với bán trục theo $x$ là $A = 4.0\text{ }\mu\text{m}$ và bán trục theo $v$ là $v_{\max} = 0.0628\text{ m/s}$.  
+>    * Trong không gian chuẩn hóa $(x, v/\omega)$, quỹ đạo là đường tròn bán kính $R = A = 4.0\text{ }\mu\text{m}$.
 
-Xét một vật có khối lượng $m$ gắn vào lò xo có độ cứng $k$, chuyển động trên mặt phẳng ngang không ma sát. Theo định luật Hooke, lực hồi phục đàn hồi là:
-$$F = -kx$$
-Áp dụng Định luật II Newton: $\sum F = m a = m \ddot{x}$. Ta có:
-$$m \ddot{x} = -kx \iff m \ddot{x} + kx = 0 \iff \ddot{x} + \frac{k}{m}x = 0$$
+---
 
-Đặt $\omega_0^2 = \frac{k}{m}$ (với $\omega_0 > 0$), ta thu được **phương trình vi phân dao động điều hòa tự do**:
-$$\ddot{x} + \omega_0^2 x = 0$$
+> ⚡ **GÓC NHÌN KỸ SƯ & BÀI TOÁN ĐÁNH ĐỔI (Engineering Takeaway 1.1):**  
+> * **Bài toán Đánh đổi giữa Độ nhạy *(Sensitivity)* và Dải đo *(Dynamic Range)* trong cảm biến MEMS:**  
+>   Li độ $x = \frac{a_{ext}}{\omega^2}$. Để cảm biến nhạy với các gia tốc nhỏ (tăng độ dời $x$ để mạch đo điện dung dễ phát hiện), kỹ sư phải giảm tần số riêng $\omega$ (làm lò xo vi mô mềm hơn). Tuy nhiên, giảm $\omega$ làm giảm tần số đáp ứng của cảm biến (cảm biến phản ứng chậm, không đo được dao động tần số cao). Kỹ sư bắt buộc phải đánh đổi giữa **Độ nhạy đo lường** và **Băng thông hoạt động**.
 
-**Giải tích tìm nghiệm:**
-Giả sử nghiệm có dạng hàm mũ $x(t) = C e^{rt}$. Thay vào phương trình vi phân:
-$$C r^2 e^{rt} + \omega_0^2 C e^{rt} = 0 \iff (r^2 + \omega_0^2) C e^{rt} = 0$$
-Vì nghiệm không tầm thường đòi hỏi $C \neq 0$ và $e^{rt} \neq 0$, ta có phương trình đặc trưng:
-$$r^2 + \omega_0^2 = 0 \Rightarrow r = \pm i\omega_0$$
-Nghiệm tổng quát là tổ hợp tuyến tính của hai nghiệm cơ sở:
-$$x(t) = C_1 e^{i\omega_0 t} + C_2 e^{-i\omega_0 t}$$
-Để $x(t)$ là một đại lượng vật lý thực, hai hằng số phải liên hợp phức $C_2 = C_1^*$. Đặt $C_1 = \frac{A}{2}e^{i\varphi}$, áp dụng công thức Euler:
-$$x(t) = \frac{A}{2}e^{i(\omega_0 t + \varphi)} + \frac{A}{2}e^{-i(\omega_0 t + \varphi)} = A \cos(\omega_0 t + \varphi)$$
-Toán học đã chứng minh độc lập: *Nghiệm của định luật Newton cho lực đàn hồi chỉ có thể là hàm điều hòa.*
+> ⚠️ **CẢNH BÁO LỖI PHỔ BIẾN (Common Pitfall 1.1):**  
+> Nhiều học sinh nhầm lẫn rằng: *"Khi vận tốc bằng 0 thì gia tốc cũng bằng 0"*. Thực tế hoàn toàn ngược lại: Khi vật ở biên ($v = 0$), lò xo bị kéo giãn cực đại nên lực hồi phục và gia tốc đạt giá trị **cực đại** ($a = \pm \omega^2 A$). Gia tốc chỉ bằng 0 khi vật đi qua vị trí cân bằng ($x = 0$), nơi vận tốc lại đạt cực đại!
 
-### 2.2. Câu hỏi tối hậu: Vì sao Dao động Điều hòa lại phổ quát trong Tự nhiên?
+---
 
-Trong vũ trụ, các liên kết nguyên tử trong phân tử, dao động của màng trống, dao động của cầu treo, chuyển động của nguyên tử trong mạng tinh thể... đều không có chiếc lò xo cơ học nào bên trong. Vậy tại sao gần như mọi hệ cơ học khi bị kích động nhẹ đều dao động điều hòa?
+# MODULE 2 (1 GIỜ): ĐỘNG LỰC HỌC & BẢN CHẤT GIẾNG THẾ NĂNG TAYLOR
+*(Dynamics, Harmonic Approximations & Potential Wells)*
 
-Câu trả lời nằm ở **Hình học của Giếng Thế Năng (Potential Well)** và **Khai triển Taylor**.
+### 1. Mục tiêu Đầu ra (Learning Objectives)
+Sau khi hoàn thành Module 2, người học có khả năng:
+* Thiết lập và giải phương trình vi phân dao động con lắc lò xo từ Định luật II Newton.
+* Giải thích được câu hỏi bản chất: *Vì sao dao động điều hòa xuất hiện ở khắp mọi nơi trong tự nhiên?* bằng khai triển chuỗi Taylor quanh đáy giếng thế năng.
+* Xác định độ cứng hiệu dụng $k_{eff} = V''(x_0)$ và tần số góc của một hệ vật lý bất kỳ khi biết hàm thế năng $V(x)$.
+* Phân biệt vùng xấp xỉ tuyến tính và vùng phi tuyến tính trong con lắc đơn góc lớn.
 
-Xét một chất điểm chuyển động trong một trường thế một chiều bất kỳ có thế năng $V(x)$. Lực tác dụng lên chất điểm liên hệ với thế năng qua gradient:
+---
+
+### 2. Mâu thuẫn & Cơ chế Ngầm (The Conflict & Underlying Mechanism)
+* **Mâu thuẫn (The Conflict):** Học sinh thường nghĩ chỉ có lò xo cơ học bằng kim loại mới có lực đàn hồi $F = -kx$. Nhưng liên kết giữa hai nguyên tử trong phân tử khí $H_2$, hay dao động của cây cầu treo, con tàu lắc lư trên sóng nước đều biểu hiện dao động điều hòa. Không hề có cái lò xo nào gắn giữa hai nguyên tử hydro!
+* **Cơ chế ngầm (Underlying Mechanism):** Bản chất của lực hồi phục không nằm ở lò xo, mà nằm ở **hình học đáy của giếng thế năng *(Potential Well)***. Mọi trạng thái cân bằng bền trong vũ trụ đều tương ứng với một điểm cực tiểu của năng lượng thế. 
+
+---
+
+### 3. Mô hình Tư duy & Giới hạn Ẩn dụ (Grounded Mental Model)
+* **Ẩn dụ chuẩn xác (The Metaphor):** Hãy tưởng tượng một **hòn bi đặt trong lòng chiếc chảo tròn trũng đáy**. Dù hình dáng mép trên của chiếc chảo có méo mó, bất đối xứng đến đâu, thì ngay tại điểm trũng nhất (đáy chảo), bất kỳ một đoạn cong vi mô trơn nào cũng có thể áp vừa khít một đường cong parabol $y = cx^2$. Khi ta đẩy nhẹ hòn bi ra khỏi đáy, sườn chảo cong dốc lên tác dụng phản lực đẩy hòn bi lăn trượt trở về đáy.
+* ⚠️ **Giới hạn của ẩn dụ (Analogy Boundary):** Ẩn dụ hòn bi trong chảo chỉ đúng khi biên độ dịch chuyển nhỏ ($|x| \ll 1$). Nếu ta truyền cho hòn bi một cú hích cực mạnh, hòn bi sẽ bay vọt qua thành chảo và rơi ra ngoài. Trong vật lý phân tử, điều này tương đương với hiện tượng **phân ly liên kết hóa học *(Molecular Dissociation)*** khi năng lượng kích thích vượt qua năng lượng liên kết.
+
+---
+
+### 4. Dẫn xuất Toán học: Định luật Newton & Khai triển Taylor
+
+> 📐 **DẪN XUẤT TOÁN HỌC (Mathematical Proof): Phương trình Vi phân Newton**  
+> Xét vật khối lượng $m$ gắn lò xo độ cứng $k$ trượt không ma sát.  
+> Lực kéo về theo định luật Hooke: $F = -kx$. Áp dụng Định luật II Newton $\Sigma F = m\ddot{x}$:
+> $$m\ddot{x} = -kx \iff m\ddot{x} + kx = 0 \iff \ddot{x} + \frac{k}{m}x = 0$$
+> Đặt $\omega_0^2 = \frac{k}{m}$ (với $\omega_0 > 0$), phương trình có dạng chuẩn tắc:
+> $$\ddot{x} + \omega_0^2 x = 0$$
+> Phương trình đặc trưng tương ứng: $r^2 + \omega_0^2 = 0 \implies r = \pm i\omega_0$.  
+> Nghiệm thực là tổ hợp tuyến tính của hai nghiệm cơ sở:
+> $$x(t) = A\cos(\omega_0 t + \varphi)$$
+> với tần số góc riêng $\omega_0 = \sqrt{\frac{k}{m}}\text{ (rad/s)}$ và chu kỳ riêng $T_0 = 2\pi\sqrt{\frac{m}{k}}\text{ (s)}$.
+
+---
+
+### 5. Khai triển Taylor & Lời Giải Thích Bản Chất Phổ Quát của Dao Động Điều Hòa
+
+Xét một hệ vật lý chuyển động trong một trường thế năng một chiều tổng quát $V(x)$. Lực tác dụng lên hạt liên hệ với thế năng qua đạo hàm:
 $$F(x) = -\frac{dV}{dx}$$
 
-Một vị trí $x_0$ được gọi là **Vị trí Cân bằng (VTCB)** khi tổng lực tác dụng bằng $0$:
+Vị trí $x_0$ là **Vị trí Cân bằng (VTCB)** khi lực tổng hợp triệt tiêu:
 $$F(x_0) = 0 \iff V'(x_0) = \left.\frac{dV}{dx}\right|_{x = x_0} = 0$$
 
 Ta khai triển hàm thế năng $V(x)$ thành chuỗi Taylor xung quanh vị trí cân bằng $x_0$:
-$$V(x) = V(x_0) + V'(x_0)(x - x_0) + \frac{1}{2!}V''(x_0)(x - x_0)^2 + \frac{1}{3!}V'''(x_0)(x - x_0)^3 + \mathcal{O}((x - x_0)^4)$$
+$$V(x) = V(x_0) + V'(x_0)(x - x_0) + \frac{1}{2!}V''(x_0)(x - x_0)^2 + \frac{1}{3!}V'''(x_0)(x - x_0)^3 + \dots$$
 
-Phân tích từng số hạng:
-1. Số hạng $V(x_0)$: Là một hằng số, đóng vai trò chọn mốc thế năng. Ta luôn có thể chọn mốc thế năng tại $x_0$ sao cho $V(x_0) = 0$.
-2. Số hạng $V'(x_0)(x - x_0)$: Bằng $0$ vì $x_0$ là vị trí cân bằng ($V'(x_0) = 0$).
-3. **Số hạng bậc hai:** Nếu $x_0$ là một **vị trí cân bằng bền**, thì thế năng tại đó phải đạt cực tiểu địa phương, nghĩa là đạo hàm cấp hai phải dương:
+1. Chọn mốc thế năng tại đáy giếng: $V(x_0) = 0$.
+2. Tại VTCB: $V'(x_0) = 0$ (đạo hàm bậc nhất triệt tiêu).
+3. Vì $x_0$ là vị trí cân bằng bền, thế năng đạt cực tiểu, nên đạo hàm bậc hai phải dương:
    $$k_{eff} \equiv V''(x_0) = \left.\frac{d^2V}{dx^2}\right|_{x = x_0} > 0$$
-4. Các số hạng bậc cao $\mathcal{O}((x - x_0)^3)$: Khi dao động có biên độ nhỏ, tức độ dời $\Delta x = |x - x_0| \ll 1$, các lũy thừa $(\Delta x)^3, (\Delta x)^4$ trở nên cực kỳ bé và hoàn toàn có thể bỏ qua.
+4. Khi độ dời rất nhỏ ($|x - x_0| \ll 1$), các số hạng bậc cao $(x - x_0)^3, (x - x_0)^4 \approx 0$.
 
-Do đó, với mọi dao động nhỏ, thế năng thực tế luôn được xấp xỉ hoàn hảo bởi một **hàm Parabol**:
+Do đó, thế năng thực tế thu hẹp về dạng parabol:
 $$V(x) \approx \frac{1}{2} k_{eff} (x - x_0)^2$$
-
-Lực hồi phục tương ứng là:
+Lực hồi phục tương ứng:
 $$F(x) = -\frac{dV}{dx} \approx -k_{eff}(x - x_0)$$
 
-![Khai triển Taylor của giếng thế năng thực tế bất kỳ quanh vị trí cân bằng bền. Vùng màu vàng thể hiện phạm vi biên độ nhỏ nơi thế năng thực tế hoàn toàn trùng khớp với parabol điều hòa.](figures/fig1_3_potential_well.png)
+![Khai triển Taylor của giếng thế năng bất kỳ quanh vị trí cân bằng bền. Vùng màu vàng là miền dao động nhỏ nơi mô hình điều hòa chính xác tuyệt đối.](figures/fig1_3_potential_well.png)
 
-*Kết luận mang tính nguyên lý:*
-> **Bản chất vật lý cốt lõi:** Đáy của bất kỳ giếng thế năng trơn nào đều có dạng một đường cong parabol. Do đó, **mọi dao động nhỏ xung quanh một vị trí cân bằng bền bất kỳ trong tự nhiên đều là dao động điều hoà**, với độ cứng hiệu dụng $k_{eff} = V''(x_0)$ và tần số góc riêng:
-> $$\omega_0 = \sqrt{\frac{V''(x_0)}{m}}$$
-
-### 2.3. Con lắc Đơn: Ví dụ về Giới hạn Tuyến tính và Tính Phi tuyến
-
-Xét một con lắc đơn gồm dây nhẹ không dãn chiều dài $\ell$, vật nặng khối lượng $m$.
-Phương trình động lực học chính xác theo phương tiếp tuyến là:
-$$F_t = -mg\sin\theta = m a_t = m \ell \ddot{\theta} \iff \ddot{\theta} + \frac{g}{\ell}\sin\theta = 0$$
-
-Khai triển Taylor của hàm $\sin\theta$:
-$$\sin\theta = \theta - \frac{\theta^3}{6} + \frac{\theta^5}{120} - \dots$$
-
-* **Khi góc lệch bé ($\theta \ll 1\text{ rad}$, xấp xỉ $\theta < 10^\circ$):**
-  Ta chỉ giữ lại số hạng bậc nhất $\sin\theta \approx \theta$. Phương trình trở thành tuyến tính:
-  $$\ddot{\theta} + \omega_0^2 \theta = 0 \quad \text{với } \omega_0 = \sqrt{\frac{g}{\ell}}$$
-  Hệ dao động điều hòa với chu kỳ độc lập với biên độ (tính đẳng thời).
-
-* **Khi góc lệch lớn:** 
-  Số hạng phi tuyến $-\frac{\theta^3}{6}$ bắt đầu phát huy tác dụng. Lực kéo về thực tế nhỏ hơn lực tuyến tính $\theta$, khiến con lắc chuyển động chậm hơn khi ra xa VTCB. Chu kỳ thực tế sẽ tăng theo biên độ góc $\theta_0$ theo công thức Borda:
-  $$T \approx 2\pi\sqrt{\frac{\ell}{g}} \left(1 + \frac{\theta_0^2}{16}\right)$$
-
-> 🖊 **Tự kiểm tra 1.2:** *Nếu đặt một chất điểm ở đỉnh một ngọn đồi có thế năng $V(x) = -c x^2$ ($c > 0$), phương trình chuyển động của chất điểm sẽ như thế nào? Nghiệm của nó có dao động không?*
+> 🔬 **BẢN CHẤT VẬT LÝ & DẪN DẮT MẮT ĐỌC (Hình 1.3):**  
+> * **Hãy nhìn vào đường cong màu xanh navy đậm $V(x)$:** Đây là thế năng liên kết phân tử thực tế, có dạng bất đối xứng (dốc đứng ở bên trái do lực đẩy đẩy Coulomb giữa các lõi nguyên tử, và là là ở bên phải khi kéo giãn phân tử).  
+> * **Quan sát đường parabol nét đứt màu đỏ thẫm $V \approx \frac{1}{2}k_{eff}x^2$:** Đây là phép xấp xỉ Taylor bậc hai.  
+> * **Hãy nhìn vào vùng phủ màu vàng nhạt ($|x| \le 0.35$):** Trong phạm vi biên độ nhỏ này, đường parabol đỏ và đường thực tế xanh **hoàn toàn trùng khít lên nhau**! Hạt vật lý màu cam chịu lực hồi phục $\vec{F} = -\frac{dV}{dx}\hat{i}$ hướng thẳng về đáy $x_0$.  
+> * **Quan sát mũi tên đỏ ở góc phải:** Khi biên độ dạt ra ngoài vùng vàng ($x > 0.8$), đường cong thực tế tách rời khỏi parabol. Mô hình dao động điều hòa bị phá vỡ, tính phi tuyến tính xuất hiện!
 
 ---
 
-## 3. NĂNG LƯỢNG: ĐỊNH LUẬT BẢO TOÀN VÀ ĐỊNH LÝ VIRIAL
+### 6. Con lắc Đơn: Ví dụ về Giới hạn Góc Nhỏ
 
-### 3.1. Dẫn xuất Định luật Bảo toàn Cơ năng bằng Giải tích
-
-Cơ năng toàn phần của một dao động điều hòa là tổng của động năng và thế năng đàn hồi:
-$$E = E_d + E_t = \frac{1}{2}mv^2 + \frac{1}{2}kx^2$$
-
-Ta chứng minh tính bảo toàn bằng cách lấy đạo hàm của cơ năng $E$ theo biến thời gian $t$:
-$$\frac{dE}{dt} = \frac{d}{dt}\left(\frac{1}{2}mv^2 + \frac{1}{2}kx^2\right) = m v \frac{dv}{dt} + k x \frac{dx}{dt}$$
-Vì $\frac{dv}{dt} = a = \ddot{x}$ và $\frac{dx}{dt} = v$, ta nhóm nhân tử chung $v$:
-$$\frac{dE}{dt} = v (m \ddot{x} + kx)$$
-Nhưng từ phương trình vi phân chuyển động, $m \ddot{x} + kx \equiv 0$ tại mọi thời điểm! Do đó:
-$$\frac{dE}{dt} = 0 \iff E(t) = \text{const}$$
-Cơ năng được bảo toàn tuyệt đối theo thời gian.
-
-Thay nghiệm $x(t) = A\cos(\omega t + \varphi)$ và $v(t) = -\omega A\sin(\omega t + \varphi)$ với $\omega^2 = k/m$:
-$$E_t(t) = \frac{1}{2}kA^2 \cos^2(\omega t + \varphi)$$
-$$E_d(t) = \frac{1}{2}m (\omega A)^2 \sin^2(\omega t + \varphi) = \frac{1}{2}kA^2 \sin^2(\omega t + \varphi)$$
-Cộng lại:
-$$E = E_t(t) + E_d(t) = \frac{1}{2}kA^2 [\cos^2(\omega t + \varphi) + \sin^2(\omega t + \varphi)] = \frac{1}{2}kA^2$$
-
-![Bản chất luân chuyển năng lượng trong dao động điều hòa: (a) Luân chuyển tuần hoàn theo thời gian; (b) Phân bố năng lượng theo li độ không gian.](figures/fig1_4_energy.png)
-
-### 3.2. Chu kỳ Biến thiên và Giá trị Trung bình (Định lý Virial)
-
-1. **Chu kỳ biến thiên của năng lượng:**
-   Sử dụng công thức hạ bậc:
-   $$\cos^2(\omega t) = \frac{1 + \cos(2\omega t)}{2}, \quad \sin^2(\omega t) = \frac{1 - \cos(2\omega t)}{2}$$
-   Cả động năng và thế năng đều dao động tuần hoàn với **tần số góc gấp đôi $2\omega$**, tức chu kỳ biến thiên năng lượng chỉ bằng một nửa chu kỳ dao động:
-   $$T_E = \frac{T}{2}$$
-
-2. **Giá trị trung bình thời gian và Định lý Virial:**
-   Tính tích phân trung bình của động năng trong một chu kỳ dao động $T$:
-   $$\langle E_d \rangle = \frac{1}{T}\int_0^T E_d(t) dt = \frac{1}{T} \int_0^T \frac{1}{2}kA^2 \sin^2(\omega t + \varphi) dt$$
-   Vì giá trị trung bình của hàm $\sin^2$ trong một chu kỳ luôn bằng $1/2$:
-   $$\langle E_d \rangle = \frac{1}{2} \left(\frac{1}{2}kA^2\right) = \frac{E}{2}$$
-   Tương tự đối với thế năng:
-   $$\langle E_t \rangle = \frac{1}{2} \left(\frac{1}{2}kA^2\right) = \frac{E}{2}$$
-   Do đó:
-   $$\langle E_d \rangle = \langle E_t \rangle = \frac{1}{2}E$$
-   Đây là một trường hợp riêng của **Định lý Virial** trong cơ học lý thuyết: Đối với mọi thế năng bậc hai $V(x) \propto x^2$, giá trị trung bình của động năng luôn luôn bằng giá trị trung bình của thế năng.
+Phương trình động lực học chính xác của con lắc đơn chiều dài $\ell$, vật nặng $m$:
+$$\ddot{\theta} + \frac{g}{\ell}\sin\theta = 0$$
+Khai triển Taylor của $\sin\theta = \theta - \frac{\theta^3}{6} + \frac{\theta^5}{120} - \dots$
+* **Khi góc nhỏ ($\theta \ll 1\text{ rad}$, thường lấy $\theta \le 10^\circ \approx 0.175\text{ rad}$):** Ta bỏ qua số hạng bậc ba $\theta^3/6$, phương trình trở thành tuyến tính điều hòa:
+  $$\ddot{\theta} + \omega_0^2 \theta = 0 \implies \omega_0 = \sqrt{\frac{g}{\ell}}, \quad T_0 = 2\pi\sqrt{\frac{\ell}{g}}$$
+* **Khi góc lớn ($\theta_0 > 10^\circ$):** Số hạng phi tuyến $-\theta^3/6$ làm giảm lực kéo về thực tế so với xấp xỉ tuyến tính. Con lắc đi chậm hơn ở biên, làm chu kỳ dao động bị kéo dài ra theo công thức hiệu chỉnh Borda:
+  $$T \approx T_0 \left(1 + \frac{\theta_0^2}{16}\right)$$
 
 ---
 
-## 4. DAO ĐỘNG TẮT DẦN: CƠ CHẾ TIÊU TÁN NĂNG LƯỢNG VI MÔ
+### 7. Bài toán Tính số Thực tế (Worked Numerical Example 1.2)
 
-### 4.1. Cơ chế Vi mô của Lực Cản Nhớt
-
-Trong thế giới vĩ mô thực tế, không có dao động nào duy trì mãi mãi nếu không được cấp năng lượng. Khi một vật dao động trong môi trường (không khí, dầu nhớt), nó liên tục va chạm với hàng tỷ phân tử môi trường xung quanh. 
-
-Mỗi va chạm truyền một phần động năng có trật tự của con lắc thành động năng nhiệt chuyển động hỗn loạn của các phân tử chất lưu. Quá trình này không thể đảo ngược (theo Định luật II Nhiệt động lực học), dẫn tới sự tiêu tán năng lượng từ hệ dao động ra môi trường nhiệt xung quanh.
-
-Ở tốc độ chuyển động nhỏ, lực cản nhớt tỉ lệ thuận với vận tốc và ngược chiều chuyển động:
-$$\vec{F}_c = -b \vec{v} \quad (b > 0 \text{ là hệ số cản})$$
-
-### 4.2. Phương trình Vi phân có Cản và Ba Chế độ Động học
-
-Áp dụng Định luật II Newton:
-$$m \ddot{x} = -kx - b \dot{x} \iff m \ddot{x} + b \dot{x} + kx = 0$$
-Chia hai vế cho $m$, ta đưa về dạng chuẩn tắc:
-$$\ddot{x} + 2\gamma \dot{x} + \omega_0^2 x = 0$$
-trong đó $\omega_0 = \sqrt{k/m}$ là tần số góc tự nhiên, và $\gamma = \frac{b}{2m}$ là **hệ số tắt dần**.
-
-Phương trình đặc trưng tương ứng:
-$$r^2 + 2\gamma r + \omega_0^2 = 0 \Rightarrow r_{1,2} = -\gamma \pm \sqrt{\gamma^2 - \omega_0^2}$$
-
-Tùy thuộc vào mối tương quan giữa độ lớn lực cản $\gamma$ và lực hồi phục $\omega_0$, tự nhiên phân nhánh thành **3 chế độ vật lý**:
-
-1. **Chế độ Tắt dần dưới hạn (Underdamped: $\gamma < \omega_0$):**
-   Biểu thức dưới căn âm: $\sqrt{\gamma^2 - \omega_0^2} = i \omega_d$ với $\omega_d = \sqrt{\omega_0^2 - \gamma^2}$ là tần số góc dao động tắt dần.
-   Nghiệm của phương trình:
-   $$x(t) = A_0 e^{-\gamma t} \cos(\omega_d t + \varphi)$$
-   - Biên độ suy giảm theo hàm mũ $A(t) = A_0 e^{-\gamma t}$.
-   - Tần số dao động $\omega_d$ luôn nhỏ hơn tần số tự nhiên $\omega_0$.
-   - Giảm lượng loga (Logarithmic decrement): $\delta = \ln\frac{x(t)}{x(t + T_d)} = \gamma T_d$.
-
-2. **Chế độ Tới hạn (Critically Damped: $\gamma = \omega_0$):**
-   Phương trình đặc trưng có nghiệm kép $r_1 = r_2 = -\gamma$.
-   Nghiệm tổng quát:
-   $$x(t) = (C_1 + C_2 t) e^{-\gamma t}$$
-   Hệ không còn dao động nữa mà trở về vị trí cân bằng trong **thời gian ngắn nhất mà không bị vọt lố (overshoot)**. Đây là chế độ lý tưởng được ứng dụng để thiết kế bộ giảm xóc xe hơi, cửa đóng tự động, hoặc kim hiển thị của đồng hồ đo điện cơ khí.
-
-3. **Chế độ Quá hạn (Overdamped: $\gamma > \omega_0$):**
-   Hai nghiệm thực phân biệt $r_1, r_2 < 0$. Nghiệm là tổng của hai hàm suy giảm mũ:
-   $$x(t) = C_1 e^{r_1 t} + C_2 e^{r_2 t}$$
-   Lực cản quá lớn khiến hệ chuyển động ì ạch, mất rất nhiều thời gian mới bò dần về vị trí cân bằng.
-
-![Ba chế độ động học của dao động tắt dần theo thời gian (a) và chân dung pha điểm hút xoắn ốc (Spiral Attractor) (b).](figures/fig1_5_damped.png)
-
-*Phân tích Chân dung pha (Hình 1.5b):* Khi có lực cản, quỹ đạo trong không gian pha không còn là đường cong khép kín nữa. Thay vào đó, nó xoắn ốc liên tục hướng vào gốc tọa độ $(0, 0)$. Điểm gốc $(0,0)$ đóng vai trò là một **Điểm hút (Attractor)**. Diện tích giới hạn bởi quỹ đạo pha co lại theo thời gian, phản ánh sự mất mát cơ năng liên tục của hệ.
+> **Đề bài:** Một phân tử khí gồm hai nguyên tử có tương tác thế năng được mô tả gần đúng bởi thế Morse:
+> $$V(r) = D_e \left[1 - e^{-a(r - r_0)}\right]^2$$
+> Cho biết năng lượng liên kết $D_e = 7.0 \times 10^{-19}\text{ J}$, hằng số độ rộng $a = 2.0 \times 10^{10}\text{ m}^{-1}$, khoảng cách cân bằng $r_0 = 0.12\text{ nm} = 1.2 \times 10^{-10}\text{ m}$, và khối lượng rút gọn của phân tử $\mu = 1.5 \times 10^{-26}\text{ kg}$.  
+> 1. Tính độ cứng hiệu dụng $k_{eff}$ của liên kết phân tử khi dao động nhỏ quanh $r_0$.  
+> 2. Tính tần số dao động tự nhiên $f_0$ của phân tử.
+> 
+> **Lời giải từng bước:**  
+> 1. **Tính độ cứng hiệu dụng bằng đạo hàm cấp 2:**  
+>    * Đạo hàm cấp 1:  
+>      $$V'(r) = 2 D_e \left[1 - e^{-a(r - r_0)}\right] \cdot \left[a e^{-a(r - r_0)}\right] = 2 a D_e \left[e^{-a(r - r_0)} - e^{-2a(r - r_0)}\right]$$  
+>      Tại $r = r_0$, $V'(r_0) = 0$ (đúng là VTCB).  
+>    * Đạo hàm cấp 2:  
+>      $$V''(r) = 2 a D_e \left[-a e^{-a(r - r_0)} + 2a e^{-2a(r - r_0)}\right] = 2 a^2 D_e \left[2 e^{-2a(r - r_0)} - e^{-a(r - r_0)}\right]$$  
+>      Thay $r = r_0$:  
+>      $$k_{eff} = V''(r_0) = 2 a^2 D_e [2(1) - 1] = 2 a^2 D_e$$  
+>    * Thay số thực tế:  
+>      $$k_{eff} = 2 \times (2.0 \times 10^{10}\text{ m}^{-1})^2 \times (7.0 \times 10^{-19}\text{ J}) = 560\text{ N/m}$$  
+> 2. **Tính tần số dao động:**  
+>    * Tần số góc: $\omega_0 = \sqrt{\frac{k_{eff}}{\mu}} = \sqrt{\frac{560}{1.5 \times 10^{-26}}} \approx 6.11 \times 10^{13}\text{ rad/s}$.  
+>    * Tần số dao động: $f_0 = \frac{\omega_0}{2\pi} \approx 9.72 \times 10^{12}\text{ Hz} = 9.72\text{ THz}$ (nằm trong vùng phổ hồng ngoại).
 
 ---
 
-## 5. DAO ĐỘNG CƯỠNG BỨC: BẢN CHẤT CỘNG HƯỞNG VÀ HỆ SỐ PHẨM CHẤT Q
+> ⚡ **GÓC NHÌN KỸ SƯ & BÀI TOÁN ĐÁNH ĐỔI (Engineering Takeaway 1.2):**  
+> * **Bài toán Thiết kế Cầu treo & Hệ thống Chống Rung:**  
+>   Mọi kết cấu công trình dân dụng (cầu treo, dầm nhà, chân đế turbine) chỉ hoạt động ổn định khi dao động nằm trong vùng tuyến tính của khai triển Taylor ($|x| \ll x_{linear}$). Khi biên độ dao động do gió bão vượt quá vùng tuyến tính, các hiệu ứng phi tuyến xuất hiện làm suy giảm độ cứng $k_{eff}$, gây ra hiện tượng mỏi kim loại *(Metal Fatigue)* hoặc sụp đổ cấu trúc dẻo. Kỹ sư phải thiết kế hệ số an toàn sao cho biên độ cực đại không bao giờ chạm đến ngưỡng phi tuyến.
 
-### 5.1. Thiết lập Phương trình Vi phân Cưỡng bức
+> ⚠️ **CẢNH BÁO LỖI PHỔ BIẾN (Common Pitfall 1.2):**  
+> Rất nhiều học sinh áp dụng công thức chu kỳ con lắc đơn $T = 2\pi\sqrt{\ell/g}$ cho góc lệch bất kỳ (ví dụ góc $60^\circ$ hoặc $90^\circ$). Ở góc $60^\circ$ ($\theta_0 \approx 1.047\text{ rad}$), sai số của công thức này lên tới hơn $7\%$. Công thức SGK chỉ là một **nghiệm xấp xỉ tuyến tính bậc nhất**, không phải chân lý tuyệt đối!
 
-Để bù đắp năng lượng tiêu tán do ma sát, ta tác dụng vào hệ một ngoại lực biến thiên tuần hoàn:
-$$F_{ext}(t) = F_0 \cos(\Omega t)$$
-trong đó $F_0$ là biên độ lực kích thích và $\Omega$ là tần số góc kích thích.
+---
 
-Phương trình vi phân tổng quát chi phối dao động:
-$$\ddot{x} + 2\gamma \dot{x} + \omega_0^2 x = \frac{F_0}{m}\cos(\Omega t)$$
+# MODULE 3 (1 GIỜ): NĂNG LƯỢNG BẢO TOÀN, ĐỊNH LÝ VIRIAL & TIÊU TÁN VI MÔ TẮT DẦN
+*(Energy Conservation, Virial Theorem & Microscopic Dissipation)*
 
-Nghiệm tổng quát gồm hai phần: $x(t) = x_{trans}(t) + x_{ss}(t)$.
-- Nghiệm chuyển tiếp $x_{trans}(t) \propto e^{-\gamma t}$: Bị dập tắt sau một khoảng thời gian ngắn.
-- Nghiệm xác lập (Steady-state solution) $x_{ss}(t)$: Tồn tại lâu dài với tần số góc bằng đúng tần số $\Omega$ của ngoại lực:
-  $$x_{ss}(t) = A(\Omega) \cos(\Omega t - \delta)$$
+### 1. Mục tiêu Đầu ra (Learning Objectives)
+Sau khi hoàn thành Module 3, người học có khả năng:
+* Chứng minh định luật bảo toàn cơ năng bằng phép đạo hàm theo thời gian $\frac{dE}{dt} = 0$.
+* Phân tích sự luân chuyển năng lượng với tần số gấp đôi $2\omega$ và chứng minh Định lý Virial $\langle E_d \rangle = \langle E_t \rangle = \frac{1}{2}E$.
+* Giải thích cơ chế tiêu tán vi mô của lực cản nhớt và giải phương trình vi phân có cản.
+* Phân biệt rõ ràng 3 chế độ vật lý: Dưới hạn *(Underdamped)*, Tới hạn *(Critically Damped)*, và Quá hạn *(Overdamped)*.
 
-Sử dụng phương pháp số phức hoặc vectơ quay Fresnel, ta tìm được biên độ $A(\Omega)$ và góc trễ pha $\delta(\Omega)$:
-$$A(\Omega) = \frac{F_0/m}{\sqrt{(\omega_0^2 - \Omega^2)^2 + 4\gamma^2\Omega^2}}$$
-$$\tan\delta = \frac{2\gamma\Omega}{\omega_0^2 - \Omega^2}$$
+---
 
-![Hiện tượng cộng hưởng: (a) Đường cong đáp ứng biên độ với các hệ số phẩm chất Q khác nhau; (b) Bước nhảy pha qua vùng cộng hưởng.](figures/fig1_6_resonance.png)
+### 2. Mâu thuẫn & Cơ chế Ngầm (The Conflict & Underlying Mechanism)
+* **Mâu thuẫn (The Conflict):** Mô hình cơ học lý tưởng bảo toàn năng lượng vĩnh cửu. Tuy nhiên, trong thực tế, không có con lắc nào dao động mãi mãi nếu không được cấp năng lượng. Năng lượng cơ học đã biến đi đâu?
+* **Cơ chế ngầm (Underlying Mechanism):** Khi vật chuyển động trong không khí hoặc chất lỏng, bề mặt vật liên tục đâm sầm vào hàng tỷ phân tử chất lưu ngẫu nhiên. Mỗi va chạm truyền một phần động năng có trật tự của vật vĩ mô thành động năng chuyển động nhiệt hỗn loạn của các phân tử môi trường. Quá trình này tuân theo Định luật II Nhiệt động lực học: Năng lượng có trật tự (cơ năng) bị suy biến một chiều thành năng lượng hỗn loạn (nhiệt năng).
 
-### 5.2. Giải mã Bản chất Vật lý Tối thượng của Hiện tượng Cộng hưởng
+---
 
-Tại sao khi tần số ngoại lực $\Omega$ xấp xỉ tần số riêng $\omega_0$ thì biên độ dao động lại vọt lên một giá trị khổng lồ?
+### 3. Mô hình Tư duy & Giới hạn Ẩn dụ (Grounded Mental Model)
+* **Ẩn dụ chuẩn xác (The Metaphor):** Hãy hình dung năng lượng của hệ như **nước luân chuyển giữa hai bình thông nhau** (bình Động năng và bình Thế năng). Mỗi chu kỳ, nước chảy từ bình này sang bình kia hai lần. Khi có ma sát nhớt, đáy ống nối bị rò rỉ một lỗ nhỏ: mỗi lần nước chảy qua chảy lại, một lượng nước bị rỉ ra ngoài (nhiệt tiêu tán) cho đến khi hai bình cạn khô.
+* ⚠️ **Giới hạn của ẩn dụ (Analogy Boundary):** Ẩn dụ lực cản nhớt tuyến tính $F_c = -bv$ chỉ đúng khi dòng chảy quanh vật là dòng chảy tầng *(Laminar Flow)* ở số Reynolds nhỏ ($Re < 1$). Khi vật chuyển động rất nhanh, dòng xoáy hỗn loạn *(Turbulent Flow)* xuất hiện, lực cản sẽ nhảy vọt lên tỉ lệ với bình phương vận tốc $F_c \propto v^2$, khiến tốc độ tiêu tán năng lượng nhanh hơn rất nhiều.
 
-Hầu hết học sinh chỉ nhìn vào mẫu số toán học triệt tiêu khi $\Omega \to \omega_0$. Nhưng **bản chất vật lý nằm ở tốc độ truyền công suất từ ngoại lực vào hệ dao động**.
+---
 
-Công suất tức thời mà ngoại lực sinh ra trên vật là:
+### 4. Dẫn xuất Toán học: Bảo toàn Cơ năng & Định lý Virial
+
+Cơ năng toàn phần của hệ dao động:
+$$E = E_d + E_t = \frac{1}{2}m v^2 + \frac{1}{2}k x^2$$
+
+> 📐 **DẪN XUẤT TOÁN HỌC (Mathematical Proof): Đạo hàm Thời gian của Cơ năng**  
+> Lấy đạo hàm hai vế của $E$ theo thời gian $t$:
+> $$\frac{dE}{dt} = \frac{d}{dt}\left(\frac{1}{2}m v^2\right) + \frac{d}{dt}\left(\frac{1}{2}k x^2\right) = m v \frac{dv}{dt} + k x \frac{dx}{dt}$$
+> Nhận thấy $\frac{dv}{dt} = \ddot{x}$ và $\frac{dx}{dt} = v$, đặt thừa số chung $v$:
+> $$\frac{dE}{dt} = v(m\ddot{x} + kx)$$
+> Nhưng từ phương trình vi phân chuyển động Newton, $m\ddot{x} + kx \equiv 0$ tại mọi thời điểm!  
+> Do đó:
+> $$\frac{dE}{dt} = 0 \iff E(t) = \text{const} = \frac{1}{2}kA^2 = \frac{1}{2}m\omega^2 A^2$$
+> Cơ năng được bảo toàn tuyệt đối.
+
+Thay $x = A\cos(\omega t + \varphi)$ và $v = -\omega A\sin(\omega t + \varphi)$:
+$$E_t(t) = \frac{1}{2}kA^2 \cos^2(\omega t + \varphi) = \frac{1}{4}kA^2 [1 + \cos(2\omega t + 2\varphi)]$$
+$$E_d(t) = \frac{1}{2}kA^2 \sin^2(\omega t + \varphi) = \frac{1}{4}kA^2 [1 - \cos(2\omega t + 2\varphi)]$$
+
+* **Tần số biến thiên:** Cả động năng và thế năng đều dao động tuần hoàn với tần số góc $\omega_E = 2\omega$ và chu kỳ $T_E = T/2$.
+* **Định lý Virial:** Lấy tích phân trung bình theo một chu kỳ thời gian $T$:
+  $$\langle E_d \rangle = \frac{1}{T}\int_0^T E_d(t) dt = \frac{1}{4}kA^2 = \frac{1}{2}E, \quad \langle E_t \rangle = \frac{1}{4}kA^2 = \frac{1}{2}E \implies \langle E_d \rangle = \langle E_t \rangle = \frac{1}{2}E$$
+
+![Dòng năng lượng trong dao động điều hòa: (a) Luân chuyển tuần hoàn theo thời gian; (b) Phân bố không gian theo li độ.](figures/fig1_4_energy.png)
+
+> 🔬 **BẢN CHẤT VẬT LÝ & DẪN DẮT MẮT ĐỌC (Hình 1.4):**  
+> * **Hãy nhìn vào đồ thị bên trái (a):** Đường nét đứt màu xanh navy $E_t(t)$ và đường liền màu xanh lá $E_d(t)$ dao động bù trừ nhau hoàn hảo dưới đường cơ năng bảo toàn màu đỏ $E = \text{const}$. Đường chấm màu xám nằm ngang chính xác tại $0.5E$ là giá trị trung bình thời gian theo Định lý Virial.  
+> * **Di chuyển mắt sang đồ thị bên phải (b):** Đường parabol ngửa là thế năng $E_t(x)$, đường parabol úp là động năng $E_d(x)$.  
+> * **Quan sát hai điểm màu cam tại $x = \pm A/\sqrt{2}$:** Đây là tọa độ duy nhất mà hai đường cong giao nhau, nghĩa là tại đó động năng bằng đúng thế năng: $E_d = E_t = E/2$.
+
+---
+
+### 5. Dao động Tắt dần & Ba Chế độ Vật lý
+
+Khi có lực cản nhớt $\vec{F}_c = -b\vec{v}$ ($b > 0$, đơn vị $\text{N}\cdot\text{s/m}$ hay $\text{kg/s}$):
+$$m\ddot{x} + b\dot{x} + kx = 0 \iff \ddot{x} + 2\gamma\dot{x} + \omega_0^2 x = 0$$
+trong đó $\omega_0 = \sqrt{k/m}$ và $\gamma = \frac{b}{2m}$ là **hệ số tắt dần *(Damping Factor)***.
+
+Phương trình đặc trưng: $r^2 + 2\gamma r + \omega_0^2 = 0 \implies r_{1,2} = -\gamma \pm \sqrt{\gamma^2 - \omega_0^2}$. Tự nhiên phân nhánh thành **3 chế độ**:
+
+1. **Chế độ Dưới hạn *(Underdamped: $\gamma < \omega_0$)***:  
+   $$x(t) = A_0 e^{-\gamma t}\cos(\omega_d t + \varphi) \quad \text{với } \omega_d = \sqrt{\omega_0^2 - \gamma^2}$$
+   Hệ dao động với biên độ suy giảm theo hàm mũ bao quanh $A(t) = A_0 e^{-\gamma t}$.
+2. **Chế độ Tới hạn *(Critically Damped: $\gamma = \omega_0$)***:  
+   $$x(t) = (C_1 + C_2 t)e^{-\gamma t}$$
+   Hệ trở về vị trí cân bằng trong **thời gian ngắn nhất mà không bị vọt lố *(No Overshoot)***.
+3. **Chế độ Quá hạn *(Overdamped: $\gamma > \omega_0$)***:  
+   $$x(t) = C_1 e^{r_1 t} + C_2 e^{r_2 t} \quad (r_1, r_2 < 0)$$
+   Lực cản quá mạnh khiến hệ chuyển động chậm chạp, ì ạch bò về vị trí cân bằng.
+
+![Ba chế độ động học của dao động cản (a) và chân dung pha điểm hút xoắn ốc (Spiral Attractor) (b).](figures/fig1_5_damped.png)
+
+> 🔬 **BẢN CHẤT VẬT LÝ & DẪN DẮT MẮT ĐỌC (Hình 1.5):**  
+> * **Hãy quan sát đường liền nét màu xanh lá ở đồ thị (a):** Đây là chế độ tới hạn ($\gamma = \omega_0$). Đường dốc lao thẳng xuống 0 nhanh nhất mà không hề cắt qua trục hoành.  
+> * **Nhìn vào đường màu đỏ gạch chấm gạch:** Chế độ quá hạn mất rất nhiều thời gian mới bò dần về 0.  
+> * **Quan sát chân dung pha bên phải (b):** Quỹ đạo màu xanh bắt đầu từ điểm đỏ $S_0(x_0, 0)$ xoắn ốc cuộn tròn dần vào gốc tọa độ $(0, 0)$ (điểm chữ X màu xanh lá). Gốc tọa độ đóng vai trò là một **Điểm hút xoắn ốc *(Spiral Attractor)***. Năng lượng cơ học bị triệt tiêu hoàn toàn.
+
+---
+
+### 6. Bài toán Tính số Thực tế (Worked Numerical Example 1.3)
+
+> **Đề bài:** Một cụm giảm xóc của bánh xe ô tô có khối lượng tải hiệu dụng đè lên $m = 250\text{ kg}$, độ cứng lò xo $k = 40,000\text{ N/m}$.  
+> 1. Tính hệ số cản tới hạn $b_c$ của ống nhún dầu thủy lực để hệ triệt tiêu dao động nhanh nhất mà không vọt lố.  
+> 2. Nếu sau một thời gian sử dụng, dầu giảm xóc bị rò rỉ khiến hệ số cản thực tế tụt xuống chỉ còn $b = 1,200\text{ N}\cdot\text{s/m}$:  
+>    a) Tính tần số góc tự nhiên $\omega_0$, hệ số tắt dần $\gamma$ và tần số dao động thực tế $\omega_d$.  
+>    b) Tính độ giảm lượng loga $\delta$ và tỷ số biên độ giữa hai đỉnh dao động liên tiếp cách nhau một chu kỳ.
+> 
+> **Lời giải từng bước:**  
+> 1. **Tính hệ số cản tới hạn:**  
+>    * Tần số góc tự nhiên: $\omega_0 = \sqrt{\frac{k}{m}} = \sqrt{\frac{40,000}{250}} = \sqrt{160} \approx 12.65\text{ rad/s}$.  
+>    * Điều kiện cản tới hạn: $\gamma_c = \omega_0 \implies \frac{b_c}{2m} = \omega_0$.  
+>    * Suy ra:  
+>      $$b_c = 2m\omega_0 = 2 \times 250\text{ kg} \times 12.65\text{ rad/s} \approx 6,325\text{ N}\cdot\text{s/m}$$  
+> 2. **Khi bị rò rỉ dầu ($b = 1,200\text{ N}\cdot\text{s/m} < b_c$):**  
+>    * Hệ số tắt dần: $\gamma = \frac{b}{2m} = \frac{1,200}{2 \times 250} = 2.40\text{ s}^{-1}$.  
+>    * Tần số dao động thực tế:  
+>      $$\omega_d = \sqrt{\omega_0^2 - \gamma^2} = \sqrt{160 - 2.4^2} = \sqrt{160 - 5.76} = \sqrt{154.24} \approx 12.42\text{ rad/s}$$  
+>    * Chu kỳ dao động: $T_d = \frac{2\pi}{\omega_d} = \frac{2\pi}{12.42} \approx 0.506\text{ s}$.  
+>    * Độ giảm lượng loga *(Logarithmic Decrement)*:  
+>      $$\delta = \gamma T_d = (2.40\text{ s}^{-1}) \times (0.506\text{ s}) \approx 1.214$$  
+>    * Tỷ số suy giảm biên độ giữa hai đỉnh liên tiếp:  
+>      $$\frac{A(t)}{A(t + T_d)} = e^{\delta} = e^{1.214} \approx 3.37$$  
+>      *(Nghĩa là sau mỗi lần nhún nảy 0.5 giây, biên độ dao động của xe chỉ giảm được khoảng 3.37 lần, xe sẽ bị bồng bềnh lắc lư vài nhịp trước khi dừng hẳn!)*
+
+---
+
+> ⚡ **GÓC NHÌN KỸ SƯ & BÀI TOÁN ĐÁNH ĐỔI (Engineering Takeaway 1.3):**  
+> * **Bài toán Đánh đổi Thiết kế Hệ thống Treo Ô tô *(Suspension Design Trade-off)*:**  
+>   Lý thuyết điều khiển chỉ ra rằng chế độ cản tới hạn ($\gamma = \omega_0$) dập tắt dao động nhanh nhất không vọt lố. Nhưng trong kỹ nghệ ô tô thực tế, các kỹ sư thường cố tình chọn chế độ **hơi dưới hạn một chút** ($\zeta = \frac{\gamma}{\omega_0} \approx 0.6 - 0.7$).  
+>   * *Vì sao?* Nếu thiết lập $\gamma = \omega_0$, giảm xóc quá cứng, khi bánh xe va vào ổ gà dốc đứng, lực cản nhớt cực lớn $F_c = bv$ sẽ truyền thẳng xung lực va đập lên sàn xe, làm hành khách bị dằn xóc đau lưng. Chấp nhận cho xe nhún nhẹ 1 nhịp ($\zeta \approx 0.7$) là **sự đánh đổi tối ưu giữa Độ êm ái *(Passenger Comfort)* và Thời gian ổn định xe *(Settling Time)***.
+
+> ⚠️ **CẢNH BÁO LỖI PHỔ BIẾN (Common Pitfall 1.3):**  
+> Học sinh thường nghĩ chu kỳ dao động tắt dần $T_d = 2\pi/\sqrt{\omega_0^2 - \gamma^2}$ bằng chu kỳ riêng $T_0$. Thực tế, **lực cản luôn luôn làm chu kỳ dao động kéo dài ra** ($T_d > T_0$). Khi lực cản tăng đến mức $\gamma \to \omega_0$, chu kỳ $T_d \to \infty$, hệ hoàn toàn ngừng dao động!
+
+---
+
+# MODULE 4 (1 GIỜ): DAO ĐỘNG CƯỠNG BỨC, CỘNG HƯỞNG & ĐÁNH ĐỔI HỆ SỐ Q
+*(Forced Oscillations, Resonance & Q-Factor Trade-offs)*
+
+### 1. Mục tiêu Đầu ra (Learning Objectives)
+Sau khi hoàn thành Module 4, người học có khả năng:
+* Thiết lập phương trình vi phân dao động cưỡng bức và tìm nghiệm xác lập.
+* Giải thích bản chất vật lý cốt lõi của hiện tượng cộng hưởng thông qua góc nhìn **bơm công suất tức thời cực đại** ($\vec{F}_{ext} \parallel \vec{v}$).
+* Phân tích ý nghĩa vật lý của Hệ số phẩm chất $Q$ *(Quality Factor)*.
+* Giải quyết bài toán đánh đổi kỹ thuật giữa Độ nhạy chọn lọc tần số và Băng thông đáp ứng trong các bộ lọc cơ học và mạch điện tử.
+
+---
+
+### 2. Mâu thuẫn & Cơ chế Ngầm (The Conflict & Underlying Mechanism)
+* **Mâu thuẫn (The Conflict):** Khi ta đẩy một chiếc xích đu với lực rất nhỏ, tại sao chỉ cần chọn đúng nhịp thì chiếc xích đu có thể bay lên rất cao, nhưng nếu đẩy quá nhanh hoặc quá chậm thì xích đu gần như đứng yên? 
+* **Cơ chế ngầm (Underlying Mechanism):** Đa số người học chỉ nhìn vào mẫu số toán học triệt tiêu khi tần số kích thích bằng tần số riêng $\Omega \to \omega_0$. Nhưng cơ chế ngầm thực sự nằm ở **sự ăn khớp về pha giữa Lực và Vận tốc**. Khi xảy ra cộng hưởng, góc trễ pha giữa li độ và ngoại lực đạt đúng $\pi/2$, điều này khiến cho **ngoại lực luôn luôn cùng hướng với vận tốc chuyển động** tại mọi thời điểm vi mô, đảm bảo tốc độ bơm công năng vào hệ đạt cực đại dương liên tục.
+
+---
+
+### 3. Mô hình Tư duy & Giới hạn Ẩn dụ (Grounded Mental Model)
+* **Ẩn dụ chuẩn xác (The Metaphor):** Hãy hình dung bạn đang **đẩy một người ngồi trên xích đu**. Nếu bạn đẩy tới khi xích đu đang lao ngược về phía bạn, lực của bạn sẽ hãm xích đu lại (công âm). Nếu bạn đẩy khi xích đu đã lên tới đỉnh và bắt đầu rơi xuống, cú đẩy của bạn tiếp thêm động năng. Khi bạn căn đúng nhịp: cứ mỗi khi xích đu vừa đổi chiều và lao về phía trước, tay bạn đẩy đúng theo hướng nó đang chuyển động, mỗi cú đẩy đều cộng dồn năng lượng trọn vẹn vào hệ!
+* ⚠️ **Giới hạn của ẩn dụ (Analogy Boundary):** Ẩn dụ xích đu là kích thích dạng xung rời rạc. Trong dao động cưỡng bức tuyến tính liên tục, lực tác dụng là sóng sin liên tục $F_0\cos(\Omega t)$. Nếu hệ có lực cản rất nhỏ ($Q \to \infty$), biên độ cộng hưởng trên lý thuyết sẽ tiến tới vô cùng, dẫn tới phá hủy kết cấu giòn (như hiện tượng vỡ ly thủy tinh khi gặp sóng âm đúng tần số).
+
+---
+
+### 4. Dẫn xuất Toán học: Nghiệm Xác lập & Công suất Bơm Năng lượng
+
+Phương trình vi phân có ngoại lực tuần hoàn:
+$$\ddot{x} + 2\gamma\dot{x} + \omega_0^2 x = \frac{F_0}{m}\cos(\Omega t)$$
+trong đó $F_0$ là biên độ ngoại lực ($\text{N}$), $\Omega$ là tần số góc kích thích ($\text{rad/s}$).
+
+Nghiệm xác lập lâu dài *(Steady-state Solution)* có dạng:
+$$x_{ss}(t) = A(\Omega)\cos(\Omega t - \delta)$$
+
+> 📐 **DẪN XUẤT TOÁN HỌC (Mathematical Proof): Biên độ và Độ trễ pha**  
+> Dùng phương pháp biểu diễn số phức: Li độ $z = A e^{i(\Omega t - \delta)}$, ngoại lực $\mathcal{F} = \frac{F_0}{m}e^{i\Omega t}$.  
+> Đạo hàm: $\dot{z} = i\Omega z$, $\ddot{z} = -\Omega^2 z$. Thay vào phương trình vi phân:
+> $$(-\Omega^2 + 2i\gamma\Omega + \omega_0^2) A e^{i(\Omega t - \delta)} = \frac{F_0}{m}e^{i\Omega t} \implies [(\omega_0^2 - \Omega^2) + 2i\gamma\Omega] A e^{-i\delta} = \frac{F_0}{m}$$
+> Lấy môđun hai vế:
+> $$A(\Omega) = \frac{F_0/m}{\sqrt{(\omega_0^2 - \Omega^2)^2 + 4\gamma^2\Omega^2}}$$
+> Lấy acgumen suy ra độ trễ pha $\delta$:
+> $$\tan\delta = \frac{2\gamma\Omega}{\omega_0^2 - \Omega^2} \quad (0 \le \delta \le \pi)$$
+
+![Đường cong cộng hưởng biên độ với các hệ số phẩm chất Q (a) và bước nhảy pha qua vùng cộng hưởng (b).](figures/fig1_6_resonance.png)
+
+---
+
+### 5. Giải mã Bản chất: Tốc độ Bơm Công suất Tức thời
+
+Công suất tức thời mà ngoại lực truyền cho vật dao động:
 $$P(t) = \vec{F}_{ext}(t) \cdot \vec{v}(t) = [F_0 \cos(\Omega t)] \cdot [-\Omega A \sin(\Omega t - \delta)]$$
-Biến đổi lượng giác:
+Dùng công thức tích thành tổng:
 $$P(t) = F_0 \Omega A \cos(\Omega t) \sin(\delta - \Omega t) = F_0 \Omega A [\sin\delta \cos^2(\Omega t) - \cos\delta \sin(\Omega t)\cos(\Omega t)]$$
 
-Lấy giá trị trung bình của công suất qua một chu kỳ $T = 2\pi/\Omega$:
-$$\langle \cos^2(\Omega t) \rangle = \frac{1}{2}, \quad \langle \sin(\Omega t)\cos(\Omega t) \rangle = 0$$
-Ta thu được công suất trung bình được bơm vào hệ:
+Lấy trung bình theo một chu kỳ kích thích $T = 2\pi/\Omega$:
 $$\langle P \rangle = \frac{1}{2} F_0 \Omega A(\Omega) \sin\delta$$
 
-Quan sát biểu thức: Công suất bơm vào hệ tỉ lệ thuận với $\sin\delta$!
-1. **Khi kích thích rất chậm ($\Omega \ll \omega_0$):** $\delta \approx 0 \Rightarrow \sin\delta \approx 0 \Rightarrow \langle P \rangle \approx 0$. Ngoại lực và li độ cùng pha, nhưng ngoại lực vuông pha với vận tốc. Ngoại lực kéo vật trong nửa chu kỳ rồi lại bị vật kéo lại trong nửa chu kỳ sau, công suất ròng đưa vào hệ xấp xỉ bằng $0$.
-2. **Khi xảy ra cộng hưởng ($\Omega \approx \omega_0$):**
-   Từ công thức trễ pha, khi $\Omega = \omega_0$, mẫu số bằng $0 \Rightarrow \tan\delta \to +\infty \Rightarrow \delta = \frac{\pi}{2}$.
-   Khi đó:
-   $$\sin\delta = \sin(\pi/2) = 1 \quad (\text{CỰC ĐẠI TUYỆT ĐỐI!})$$
-   Đồng thời:
-   $$v(t) = \Omega A \cos(\Omega t - \delta + \pi/2) = \Omega A \cos(\Omega t)$$
-   *Ý nghĩa sâu sắc nhất:* Khi $\Omega = \omega_0$, ngoại lực vuông pha với li độ nhưng **hoàn toàn đồng pha với vận tốc** tại mọi thời điểm ($\vec{F}_{ext}$ luôn cùng hướng với $\vec{v}$). 
-   
-   Bất cứ khi nào con lắc chuyển động sang phải, lực đẩy sang phải; khi con lắc chuyển động sang trái, lực đẩy sang trái. Ngoại lực **không bao giờ hãm vật lại**, tốc độ bơm năng lượng đạt giá trị cực đại dương $\langle P \rangle_{\max}$, khiến biên độ tích lũy đạt tới đỉnh cực đại!
-
-### 5.3. Hệ số Phẩm chất Q (Quality Factor)
-
-Hệ số phẩm chất $Q$ đặc trưng cho khả năng tích trữ năng lượng của một hệ dao động so với năng lượng tiêu tán mỗi chu kỳ:
-$$Q \equiv 2\pi \frac{\text{Năng lượng tích trữ}}{\text{Năng lượng tiêu hao trong 1 chu kỳ}} = \frac{\omega_0}{2\gamma}$$
-
-- Hệ có $Q$ cao (lực cản rất bé): Đỉnh cộng hưởng rất cao và nhọn (Hình 1.6a). Hệ phản ứng cực kỳ nhạy với đúng tần số riêng $\omega_0$ và bỏ qua các tần số khác. Đây là nguyên lý chọn đài của mạch thu sóng radio (mạch cộng hưởng LC) hoặc chén thủy tinh vỡ khi gặp giọng hát đúng tần số.
-- Hệ có $Q$ thấp (lực cản lớn): Đỉnh cộng hưởng thấp, tù và dịch chuyển nhẹ về phía tần số thấp $\Omega_R = \sqrt{\omega_0^2 - 2\gamma^2}$.
+> 🔬 **BẢN CHẤT VẬT LÝ & DẪN DẮT MẮT ĐỌC (Hình 1.6):**  
+> * **Hãy nhìn vào đồ thị bên phải (b) tại vị trí $\Omega = \omega_0$:** Đường màu cam đứt nét đánh dấu bước nhảy pha $\delta = \pi/2$.  
+>   - Khi $\delta = \pi/2$, $\sin\delta = 1$ (đạt cực đại tuyệt đối!).  
+>   - Vận tốc của vật: $v(t) = -\Omega A \sin(\Omega t - \pi/2) = \Omega A \cos(\Omega t)$.  
+>   - Ngoại lực: $F_{ext}(t) = F_0 \cos(\Omega t)$.  
+>   - $\implies \vec{F}_{ext}$ và $\vec{v}$ **cùng pha tuyệt đối tại mọi tích tắc thời gian**! Lực luôn luôn đẩy xuôi theo chiều chuyển động, bơm công suất vào hệ với hiệu suất 100%.  
+> * **Nhìn sang đồ thị bên trái (a):** Tại $\Omega \approx \omega_0$, biên độ vọt lên thành một đỉnh nhọn hoắt. Đỉnh càng cao và càng nhọn khi hệ số phẩm chất $Q$ càng lớn (đường đỏ $Q = 10$).  
+> * **Nhìn vào hai vùng rìa của Hình 1.6a:**  
+>   - Vùng tĩnh ($\Omega \ll \omega_0$): Biên độ thấp không đổi $A \approx \frac{F_0}{k}$.  
+>   - Vùng cách ly rung ($\Omega \gg \omega_0$): Biên độ suy giảm nhanh về 0 theo quy luật $A \propto 1/\Omega^2$ (nguyên lý của bệ chống rung cho kính hiển vi).
 
 ---
 
-## 6. BÀI TẬP VÀ THÍ NGHIỆM TƯ DUY PHẢN BIỆN
+### 6. Hệ số Phẩm chất Q (Quality Factor)
 
-### Thí nghiệm tư duy 1.1: Đường hầm xuyên tâm Trái Đất
-> Giả sử Trái Đất là một khối cầu đồng chất bán kính $R$ và khối lượng $M$. Người ta đào một đường hầm thẳng tắp xuyên qua tâm Trái Đất từ cực này sang cực kia. Thả một hòn sỏi khối lượng $m$ không vận tốc đầu vào miệng hầm (bỏ qua ma sát không khí).
+Hệ số phẩm chất $Q$ được định nghĩa bằng tỷ số giữa năng lượng tích trữ và năng lượng tiêu tán trong một radian dao động:
+$$Q \equiv 2\pi \frac{\text{Năng lượng tích trữ}}{\text{Năng lượng tiêu hao trong 1 chu kỳ}} = \frac{\omega_0}{2\gamma} = \frac{\sqrt{mk}}{b}$$
+
+* Độ rộng dải thông tại nửa công suất *(Half-power Bandwidth)*: $\Delta \omega \approx \frac{\omega_0}{Q}$.
+
+---
+
+### 7. Bài toán Tính số Thực tế (Worked Numerical Example 1.4)
+
+> **Đề bài:** Một bộ dao động tinh thể thạch anh *(Quartz Crystal Resonator)* trong đồng hồ điện tử có khối lượng hiệu dụng $m = 1.0 \times 10^{-6}\text{ kg}$, tần số dao động danh định $f_0 = 32.768\text{ kHz}$, và hệ số phẩm chất rất cao $Q = 100,000$.  
+> 1. Tính độ cứng hiệu dụng $k_{eff}$ và hệ số cản nội tại $b$ của tinh thể.  
+> 2. Tính độ rộng dải thông $\Delta f$ của bộ cộng hưởng. Giải thích ý nghĩa của con số này đối với độ chính xác của đồng hồ.
 > 
-> 1. Dùng Định luật Gauss cho trọng trường để chứng minh lực tác dụng lên hòn sỏi khi nó ở cách tâm Trái Đất khoảng $r$ tỉ lệ thuận với $r$: $F(r) = -\left(\frac{G M m}{R^3}\right) r$.
-> 2. Suy ra chuyển động của hòn sỏi là một dao động điều hòa xuyên tâm Trái Đất. Tính chu kỳ dao động $T$ và so sánh với chu kỳ quay của một vệ tinh bay sát mặt đất.
-
-### Thí nghiệm tư duy 1.2: Ma sát âm và Chu trình Giới hạn (Limit Cycle)
-> Một hệ dao động có phương trình vi phân dạng Van der Pol:
-> $$\ddot{x} - \alpha (1 - x^2)\dot{x} + \omega_0^2 x = 0 \quad (\alpha > 0)$$
-> 1. Hãy phân tích dấu của hệ số cản hiệu dụng $\gamma_{eff} = -\alpha(1 - x^2)$: Khi biên độ nhỏ ($|x| < 1$), hệ số cản mang dấu gì? Điều này bơm năng lượng hay tiêu tán năng lượng của hệ?
-> 2. Khi biên độ lớn ($|x| > 1$), điều gì sẽ xảy ra? Từ đó giải thích vì sao hệ tự động hội tụ về một biên độ dao động ổn định (Chu trình giới hạn - Limit Cycle) mà không cần ngoại lực tuần hoàn bên ngoài. Đây chính là bản chất của các bộ dao động đồng hồ và nhịp đập của quả tim người!
+> **Lời giải từng bước:**  
+> 1. **Tính độ cứng và hệ số cản:**  
+>    * Tần số góc riêng: $\omega_0 = 2\pi f_0 = 2\pi \times 32,768\text{ Hz} \approx 205,887\text{ rad/s}$.  
+>    * Độ cứng hiệu dụng:  
+>      $$k_{eff} = m\omega_0^2 = (1.0 \times 10^{-6}\text{ kg}) \times (205,887\text{ rad/s})^2 \approx 42,390\text{ N/m}$$  
+>    * Hệ số cản nội tại:  
+>      $$Q = \frac{m\omega_0}{b} \implies b = \frac{m\omega_0}{Q} = \frac{1.0 \times 10^{-6} \times 205,887}{100,000} \approx 2.06 \times 10^{-6}\text{ N}\cdot\text{s/m}$$  
+>      *(Lực cản tiêu tán nội tại vô cùng bé!)*  
+> 2. **Tính dải thông và độ chính xác:**  
+>    * Độ rộng dải thông:  
+>      $$\Delta f = \frac{f_0}{Q} = \frac{32,768\text{ Hz}}{100,000} \approx 0.328\text{ Hz}$$  
+>    * **Ý nghĩa:** Đường cong cộng hưởng của tinh thể cực kỳ sắc nhọn. Nếu có bất kỳ nhiễu loạn cơ học hoặc nhiệt độ nào lệch khỏi tần số $32,768\text{ Hz}$ quá $0.33\text{ Hz}$, tinh thể sẽ từ chối dao động. Điều này giúp đồng hồ chỉ sai số chưa tới 1 giây sau mỗi tháng hoạt động!
 
 ---
 
-## TỔNG KẾT BẢN CHẤT CHƯƠNG 1
+> ⚡ **GÓC NHÌN KỸ SƯ & BÀI TOÁN ĐÁNH ĐỔI (Engineering Takeaway 1.4):**  
+> * **Bài toán Đánh đổi giữa Độ chọn lọc *(Selectivity)* và Băng thông *(Bandwidth)*:**  
+>   $$\Delta \omega = \frac{\omega_0}{Q}$$  
+>   - **Khi thiết kế Bộ chọn đài Radio / Cảm biến tần số:** Kỹ sư muốn $Q$ cực lớn để dải thông $\Delta \omega$ thật hẹp, giúp lọc sạch kênh cần nghe mà không bị lẫn sóng từ đài phát lân cận.  
+>   - **Khi thiết kế Loa âm thanh / Cảm biến rung địa chấn:** Kỹ sư cần $Q$ thấp (khoảng $0.5 - 1.0$) để băng thông rộng, đảm bảo loa phát đều mọi nốt nhạc trầm bổng từ $20\text{ Hz}$ đến $20\text{ kHz}$ mà không bị "hét to" cục bộ ở một nốt cộng hưởng nào!
 
-| Hiện tượng | Tiếp cận hình thức SGK | Bản chất Vật lý & Toán học Giải tích |
-| :--- | :--- | :--- |
-| **Dao động điều hòa** | Thừa nhận $x = A\cos(\omega t + \varphi)$ | Nghiệm của phương trình vi phân $a = -\omega^2 x$. Mọi dao động nhỏ quanh cực tiểu giếng thế năng $V''(x_0) > 0$ đều là dao động điều hòa qua khai triển Taylor. |
-| **Không gian trạng thái** | Chỉ khảo sát đồ thị $x-t$ | Không gian pha $(x, v/\omega)$ với quỹ đạo elip khép kín, bảo toàn diện tích pha và tính tất định cơ học. |
-| **Bảo toàn năng lượng** | Ráp số $E = \frac{1}{2}mv^2 + \frac{1}{2}kx^2$ | Đạo hàm thời gian triệt tiêu $\frac{dE}{dt} = 0$. Cân bằng năng lượng Virial $\langle E_d \rangle = \langle E_t \rangle = \frac{1}{2}E$. |
-| **Tắt dần** | "Ma sát làm giảm biên độ" | Cơ chế vi mô tán xạ động năng thành nhiệt. Chân dung pha biến thành điểm hút xoắn ốc (Attractor). Ba chế độ: Dưới hạn, tới hạn, quá hạn. |
-| **Cộng hưởng** | "Biên độ cực đại khi $f = f_0$" | Ngoại lực đồng pha hoàn toàn với vận tốc ($\delta = \pi/2$), tốc độ bơm công suất $\langle P \rangle = \frac{1}{2}F_0 \Omega A \sin\delta$ đạt cực đại tuyệt đối. |
+> ⚠️ **CẢNH BÁO LỖI PHỔ BIẾN (Common Pitfall 1.4):**  
+> Nhiều tài liệu viết rằng: *"Tần số xảy ra cộng hưởng biên độ luôn bằng đúng tần số riêng $\omega_0$"*. Điều này chỉ đúng khi không có ma sát ($\gamma = 0$). Khi có lực cản, đỉnh cộng hưởng biên độ thực sự bị lệch về phía tần số thấp hơn một khoảng:
+> $$\Omega_R = \sqrt{\omega_0^2 - 2\gamma^2} = \omega_0\sqrt{1 - \frac{1}{2Q^2}}$$
+> Chỉ khi hệ có $Q \gg 1$ thì $\Omega_R \approx \omega_0$.
+
+---
+
+# BỘ CÂU HỎI PHẢN XẠ TÌNH HUỐNG THỰC CHIẾN (DIAGNOSTIC SCENARIO TESTING)
+
+### Tình huống 1: Thiết kế Giảm chấn Khối lượng cho Tòa nhà Chọc trời (Tuned Mass Damper - TMD)
+> Tòa tháp Taipei 101 (cao 508 m) tại Đài Loan chịu tải trọng gió bão cực mạnh khiến đỉnh tháp dao động với chu kỳ tự nhiên $T_1 \approx 7.0\text{ s}$. Để chống rung, các kỹ sư treo một quả cầu thép khổng lồ nặng 660 tấn ở tầng 87 đóng vai trò là một con lắc phụ.  
+> 1. Kỹ sư phải chọn chiều dài dây treo $\ell$ của quả cầu bằng bao nhiêu để quả cầu dao động đồng điệu với nhịp lắc của tòa nhà?  
+> 2. Hãy giải thích cơ chế năng lượng: Vì sao quả cầu lắc lư lại triệt tiêu được dao động của tòa tháp? Quả cầu hút năng lượng từ đâu và xả năng lượng đi đâu qua các piston thủy lực gắn quanh nó?
+
+### Tình huống 2: Đánh đổi trong Thiết kế Cảm biến Đo Rung Động (Seismometer vs Accelerometer)
+> Cùng một cấu trúc lò xo - khối nặng $m$ - vật cản $b$, nhưng:  
+> - Máy đo địa chấn *(Seismometer)* dùng để đo độ dời của vỏ Trái Đất.  
+> - Gia tốc kế *(Accelerometer)* dùng để đo gia tốc của xe hơi.  
+> Dựa vào đồ thị đáp ứng biên độ Hình 1.6a, hãy giải thích:  
+> 1. Vì sao máy đo địa chấn phải có tần số riêng $\omega_0$ rất bé (hoạt động ở vùng quán tính $\Omega \gg \omega_0$)?  
+> 2. Vì sao gia tốc kế phải có tần số riêng $\omega_0$ rất lớn (hoạt động ở vùng tĩnh $\Omega \ll \omega_0$)? Kỹ sư phải đánh đổi điều gì khi tăng $\omega_0$?
+
+### Tình huống 3: Bản chất Tự dao động của Nhịp tim và Đồng hồ Quả lắc (Van der Pol Oscillator)
+> Một con lắc đồng hồ quả lắc không bao giờ bị dừng lại dù có ma sát, nhưng cũng không cần cắm điện xoay chiều có tần số kích thích $\Omega$. Nó lấy năng lượng từ một quả tạ rơi chậm thông qua cơ cấu hồi chuyển *(Escapement mechanism)*.  
+> 1. Hãy phân tích cơ chế: Quả tạ rơi cung cấp năng lượng liên tục một chiều, tại sao cơ cấu hồi lại biến thành dao động tuần hoàn?  
+> 2. Trong không gian pha, tại sao hệ này không cuộn vào điểm hút $(0,0)$ như dao động tắt dần, mà lại tự ổn định trên một đường cong chu trình kín gọi là **Chu trình Giới hạn *(Limit Cycle)***?
+
+---
+
+## BẢNG ĐỐI SOÁT TỔNG KẾT NGUYÊN LÝ 3 TẦNG CHƯƠNG 1
+
+| Hiện tượng | Tầng 1: Bản chất Vật lý Vi mô | Tầng 2: Mô hình Toán & Lượng hóa | Tầng 3: Quyết định Thiết kế & Đánh đổi |
+| :--- | :--- | :--- | :--- |
+| **Dao động điều hòa** | Lực hồi phục kéo hạt về VTCB; thế năng parabol giam hãm. | $\ddot{x} + \omega_0^2 x = 0 \implies x = A\cos(\omega_0 t + \varphi)$. Khai triển Taylor đáy giếng: $k_{eff} = V''(x_0)$. | Đánh đổi giữa Độ nhạy $\propto 1/\omega_0^2$ và Băng thông đáp ứng $\omega_0$ trong cảm biến MEMS. |
+| **Không gian Pha** | Cặp biến trạng thái $(x, v)$ xác định tương lai tất định. | $x^2 + (v/\omega)^2 = A^2$. Định lý Liouville bảo toàn diện tích pha. | Kiểm soát quỹ đạo trạng thái trong các bộ chấp hành cơ điện tử. |
+| **Tắt dần** | Va chạm phân tử tán xạ động năng có trật tự thành nhiệt hỗn loạn. | $\ddot{x} + 2\gamma\dot{x} + \omega_0^2 x = 0$. Ba chế độ từ nghiệm đa thức đặc trưng. | Hệ thống treo xe hơi: chọn $\gamma \approx 0.7\omega_0$ để cân bằng giữa Thời gian dập tắt và Độ êm ái. |
+| **Cộng hưởng** | Ngoại lực đồng pha vận tốc ($\delta = \pi/2$), bơm công suất tức thời cực đại. | $A(\Omega) = \frac{F_0/m}{\sqrt{(\omega_0^2-\Omega^2)^2+4\gamma^2\Omega^2}}$, $\langle P \rangle = \frac{1}{2}F_0\Omega A \sin\delta$. | Bộ lọc/Cảm biến: Đánh đổi giữa Độ chọn lọc sắc nhọn ($Q$ cao) và Băng thông truyền dữ liệu ($Q$ thấp). |
