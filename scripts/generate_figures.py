@@ -101,50 +101,99 @@ def plot_fig1_0a_derivative():
     print("Generated: fig1_0a_derivative")
 
 # -------------------------------------------------------------
-# Figure 1.0b: Trigonometric Derivative & Angular Frequency Omega
+# Figure 1.0b: Storytelling: Roller Coaster States on Cosine Wave & Omega Compression
 # -------------------------------------------------------------
 def plot_fig1_0b_omega_derivative():
-    fig, ax = plt.subplots(figsize=(8.5, 4.8))
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(13.0, 5.2))
 
-    t_trig = np.linspace(0, 2*np.pi, 500)
-    x_w1 = np.cos(t_trig)
-    x_w2 = np.cos(2 * t_trig)
+    # --- Subplot (a): 4 Trạng thái trên chuyến tàu lượn Cosin ---
+    t = np.linspace(0, 2*np.pi, 600)
+    x = np.cos(t)
+    ax1.plot(t, x, color='#1B365D', lw=2.4, label=r'Đường ray tàu lượn: $x(t) = \cos(t)$')
+    ax1.axhline(0, color='#94A3B8', lw=1.0, linestyle='--')
 
-    ax.plot(t_trig, x_w1, color='#1B365D', lw=2.2, label=r'$x_1(t) = \cos(t)$ ($\omega = 1\text{ rad/s}$)')
-    ax.plot(t_trig, x_w2, color='#A6192E', linestyle='--', lw=2.2, label=r'$x_2(t) = \cos(2t)$ ($\omega = 2\text{ rad/s}$)')
-    ax.axhline(0, color='gray', lw=0.8, linestyle='--')
+    # Trạng thái 1: Đỉnh đồi (t = 0, x = 1)
+    ax1.scatter([0], [1], color='#2563EB', s=80, zorder=6)
+    t_tan1 = np.linspace(0, 0.9, 50)
+    ax1.plot(t_tan1, np.ones_like(t_tan1), color='#2563EB', linestyle=':', lw=2.4)
+    ax1.annotate('[TT1] Đỉnh đồi\n' + r'Dốc $= 0 \Rightarrow v = 0$' + '\n' + r'$(\cos 0)^\prime = -\sin 0 = 0$',
+                 xy=(0, 1), xytext=(0.15, 1.15),
+                 fontsize=8.8, color='#1E40AF', fontweight='bold',
+                 bbox=dict(boxstyle='round,pad=0.25', facecolor='#EFF6FF', edgecolor='#2563EB', alpha=0.95))
 
-    # Tangent at zero-crossing: t = pi/2 for w=1 -> slope = -1
+    # Trạng thái 2: Đang đổ dốc qua VTCB (t = pi/2, x = 0)
     t_mid1 = np.pi/2
-    tan1 = -1 * (t_trig - t_mid1)
-    mask1 = (t_trig >= t_mid1 - 0.7) & (t_trig <= t_mid1 + 0.7)
-    ax.plot(t_trig[mask1], tan1[mask1], color='#1B365D', linestyle=':', lw=2.4)
-    ax.scatter([t_mid1], [0], color='#1B365D', s=55, zorder=5)
-    ax.text(t_mid1 + 0.1, 0.45, r'Độ dốc $= -1$', fontsize=10, color='#1B365D', fontweight='bold')
+    ax1.scatter([t_mid1], [0], color='#DC2626', s=80, zorder=6)
+    t_tan2 = np.linspace(t_mid1 - 0.7, t_mid1 + 0.7, 50)
+    ax1.plot(t_tan2, -1 * (t_tan2 - t_mid1), color='#DC2626', linestyle=':', lw=2.5)
+    ax1.annotate('[TT2] VTCB lao dốc\n' + r'Dốc cực đại âm $= -1$' + '\n' + r'$(\cos\frac{\pi}{2})^\prime = -\sin\frac{\pi}{2} = -1$',
+                 xy=(t_mid1, 0), xytext=(t_mid1 - 0.75, -0.65),
+                 fontsize=8.8, color='#991B1B', fontweight='bold',
+                 bbox=dict(boxstyle='round,pad=0.25', facecolor='#FEF2F2', edgecolor='#DC2626', alpha=0.95))
 
-    # Tangent at zero-crossing: t = pi/4 for w=2 -> slope = -2
-    t_mid2 = np.pi/4
-    tan2 = -2 * (t_trig - t_mid2)
-    mask2 = (t_trig >= t_mid2 - 0.5) & (t_trig <= t_mid2 + 0.5)
-    ax.plot(t_trig[mask2], tan2[mask2], color='#A6192E', linestyle=':', lw=2.4)
-    ax.scatter([t_mid2], [0], color='#A6192E', s=55, zorder=5)
-    ax.text(t_mid2 + 0.15, -0.65, r'Độ dốc $= -2$', fontsize=10, color='#A6192E', fontweight='bold')
+    # Trạng thái 3: Đáy vực (t = pi, x = -1)
+    ax1.scatter([np.pi], [-1], color='#D97706', s=80, zorder=6)
+    t_tan3 = np.linspace(np.pi - 0.5, np.pi + 0.5, 50)
+    ax1.plot(t_tan3, -np.ones_like(t_tan3), color='#D97706', linestyle=':', lw=2.4)
+    ax1.annotate('[TT3] Đáy vực\n' + r'Dốc $= 0 \Rightarrow v = 0$' + '\n' + r'$(\cos\pi)^\prime = -\sin\pi = 0$',
+                 xy=(np.pi, -1), xytext=(np.pi - 0.5, -1.45),
+                 fontsize=8.8, color='#92400E', fontweight='bold',
+                 bbox=dict(boxstyle='round,pad=0.25', facecolor='#FFFBEB', edgecolor='#D97706', alpha=0.95))
 
-    # Explanatory annotation
-    ax.annotate(r'Khi $\omega$ tăng 2 lần, đồ thị bị ép co hẹp lại 2 lần' + '\n' +
-                r'$\Rightarrow$ Độ dốc (tốc độ biến thiên) tăng gấp 2 lần!' + '\n' +
-                r'$\Rightarrow [\cos(\omega t)]^\prime = -\omega\sin(\omega t)$',
-                xy=(3.4, 0.4), xytext=(2.2, 0.75),
-                fontsize=9.5, color='#1E6B52', fontweight='bold',
-                bbox=dict(boxstyle='round,pad=0.4', facecolor='#F0FDF4', alpha=0.95, edgecolor='#1E6B52'))
+    # Trạng thái 4: Vọt lên qua VTCB (t = 3pi/2, x = 0)
+    t_mid3 = 3*np.pi/2
+    ax1.scatter([t_mid3], [0], color='#16A34A', s=80, zorder=6)
+    t_tan4 = np.linspace(t_mid3 - 0.7, t_mid3 + 0.7, 50)
+    ax1.plot(t_tan4, +1 * (t_tan4 - t_mid3), color='#16A34A', linestyle=':', lw=2.5)
+    ax1.annotate('[TT4] VTCB leo dốc\n' + r'Dốc cực đại dương $= +1$' + '\n' + r'$(\cos\frac{3\pi}{2})^\prime = -\sin\frac{3\pi}{2} = +1$',
+                 xy=(t_mid3, 0), xytext=(t_mid3 - 0.85, 0.5),
+                 fontsize=8.8, color='#166534', fontweight='bold',
+                 bbox=dict(boxstyle='round,pad=0.25', facecolor='#F0FDF4', edgecolor='#16A34A', alpha=0.95))
 
-    ax.set_xticks([0, np.pi/2, np.pi, 3*np.pi/2, 2*np.pi])
-    ax.set_xticklabels([r'$0$', r'$\frac{\pi}{2}$', r'$\pi$', r'$\frac{3\pi}{2}$', r'$2\pi$'], fontsize=11)
-    ax.set_xlabel(r'Thời gian $t$ (s)', fontsize=12)
-    ax.set_ylabel(r'Li độ $x$', fontsize=12)
-    ax.set_title(r'Hình 1.0b: Vì sao xuất hiện nhân tử $\omega$ khi lấy đạo hàm hàm lượng giác?', fontsize=12.5)
-    ax.legend(loc='lower left', fontsize=9.5, framealpha=0.92)
-    ax.set_ylim(-1.5, 1.8)
+    ax1.set_xticks([0, np.pi/2, np.pi, 3*np.pi/2, 2*np.pi])
+    ax1.set_xticklabels([r'$0$', r'$\frac{\pi}{2}$', r'$\pi$', r'$\frac{3\pi}{2}$', r'$2\pi$'], fontsize=11)
+    ax1.set_xlabel(r'Thời gian $t$ (rad hoặc s)', fontsize=11.5)
+    ax1.set_ylabel(r'Li độ $x(t)$ (m)', fontsize=11.5)
+    ax1.set_title(r'(a) 4 Trạng thái tàu lượn: Giải mã $(\cos t)^\prime = -\sin t$', fontsize=11.5, fontweight='bold')
+    ax1.set_ylim(-1.6, 1.6)
+
+    # --- Subplot (b): Cỗ máy nén thời gian omega ---
+    t_b = np.linspace(0, np.pi, 400)
+    x1 = np.cos(t_b)
+    x2 = np.cos(2 * t_b)
+
+    ax2.plot(t_b, x1, color='#1B365D', lw=2.2, label=r'Chế độ chuẩn: $\omega = 1\text{ rad/s}$ ($T = 2\pi$)')
+    ax2.plot(t_b, x2, color='#A6192E', linestyle='--', lw=2.2, label=r'Tua nhanh gấp đôi: $\omega = 2\text{ rad/s}$ ($T = \pi$)')
+    ax2.axhline(0, color='#94A3B8', lw=1.0, linestyle='--')
+
+    # Dốc w=1 tại t=pi/2: dốc = -1
+    t_v1 = np.pi/2
+    ax2.scatter([t_v1], [0], color='#1B365D', s=60, zorder=5)
+    ax2.plot([t_v1-0.5, t_v1+0.5], [0.5, -0.5], color='#1B365D', linestyle=':', lw=2.2)
+    ax2.text(t_v1 + 0.1, 0.45, r'Độ dốc $= -1$', fontsize=9.5, color='#1B365D', fontweight='bold')
+
+    # Dốc w=2 tại t=pi/4: dốc = -2
+    t_v2 = np.pi/4
+    ax2.scatter([t_v2], [0], color='#A6192E', s=60, zorder=5)
+    ax2.plot([t_v2-0.35, t_v2+0.35], [0.7, -0.7], color='#A6192E', linestyle=':', lw=2.2)
+    ax2.text(t_v2 + 0.08, -0.7, r'Độ dốc $= -2$', fontsize=9.5, color='#A6192E', fontweight='bold')
+
+    # Box lý giải
+    ax2.annotate('Bí quyết nén thời gian ' + r'$\omega$:' + '\n' +
+                 'Cùng độ cao ' + r'$A$' + ', nhưng sóng bị nén' + '\n' +
+                 'co hẹp lại 1/2 ' + r'$\Rightarrow$' + ' Sườn đồi dốc gấp 2!' + '\n' +
+                 r'$\Rightarrow [\cos(\omega t)]^\prime = -\omega \sin(\omega t)$',
+                 xy=(1.8, 0.2), xytext=(1.45, 0.65),
+                 fontsize=9.2, color='#1E6B52', fontweight='bold',
+                 bbox=dict(boxstyle='round,pad=0.35', facecolor='#F0FDF4', edgecolor='#1E6B52', alpha=0.95))
+
+    ax2.set_xticks([0, np.pi/4, np.pi/2, 3*np.pi/4, np.pi])
+    ax2.set_xticklabels([r'$0$', r'$\frac{\pi}{4}$', r'$\frac{\pi}{2}$', r'$\frac{3\pi}{4}$', r'$\pi$'], fontsize=10.5)
+    ax2.set_xlabel(r'Thời gian $t$ (s)', fontsize=11.5)
+    ax2.set_ylabel(r'Li độ $x$', fontsize=11.5)
+    ax2.set_title(r'(b) Nén thời gian: Đồ thị dốc gấp $\omega$ lần', fontsize=11.5, fontweight='bold')
+    ax2.legend(loc='lower left', fontsize=9.0, framealpha=0.92)
+    ax2.set_ylim(-1.5, 1.5)
 
     plt.tight_layout()
     fig.savefig(os.path.join(FIG_DIR, 'fig1_0b_omega_derivative.png'), dpi=300)
@@ -153,68 +202,103 @@ def plot_fig1_0b_omega_derivative():
     print("Generated: fig1_0b_omega_derivative")
 
 # -------------------------------------------------------------
-# Figure 1.0c: Trigonometric Circle & Angle Shifts
+# Figure 1.0c: Storytelling: 3 Satellite States on the Unit Circle
 # -------------------------------------------------------------
 def plot_fig1_0c_trig_circle():
-    fig, ax = plt.subplots(figsize=(6.8, 6.5))
+    fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(14.2, 4.8))
 
-    theta_circ = np.linspace(0, 2*np.pi, 400)
-    ax.plot(np.cos(theta_circ), np.sin(theta_circ), color='#94A3B8', lw=1.6, linestyle=':')
-    ax.axhline(0, color='gray', lw=0.8, linestyle='--')
-    ax.axvline(0, color='gray', lw=0.8, linestyle='--')
-
+    theta_circ = np.linspace(0, 2*np.pi, 300)
     alpha = np.radians(35)
-    
-    # Vector alpha
     x_a = np.cos(alpha)
     y_a = np.sin(alpha)
-    ax.annotate('', xy=(x_a, y_a), xytext=(0, 0),
-                arrowprops=dict(arrowstyle='->', color='#1B365D', lw=2.4))
-    # Right triangle for alpha
-    ax.plot([x_a, x_a], [0, y_a], color='#1B365D', linestyle='--', lw=1.2)
-    ax.fill_between([0, x_a], [0, 0], [0, y_a], color='#1B365D', alpha=0.12)
-    ax.text(x_a + 0.05, y_a + 0.05, r'$\vec{u}_1 (\alpha)$', fontsize=11, fontweight='bold', color='#1B365D')
-    ax.text(x_a / 2, -0.16, r'$\cos\alpha$', fontsize=10.5, color='#1B365D', ha='center', fontweight='bold')
-    ax.text(x_a + 0.08, y_a / 2, r'$\sin\alpha$', fontsize=10.5, color='#1B365D', va='center', fontweight='bold')
 
-    # Vector alpha + pi/2 (rotate 90 deg)
+    for ax in (ax1, ax2, ax3):
+        ax.plot(np.cos(theta_circ), np.sin(theta_circ), color='#94A3B8', lw=1.4, linestyle=':')
+        ax.axhline(0, color='#64748B', lw=0.8, linestyle='--')
+        ax.axvline(0, color='#64748B', lw=0.8, linestyle='--')
+        ax.set_aspect('equal')
+        ax.set_xlim(-1.45, 1.45)
+        ax.set_ylim(-1.45, 1.45)
+        ax.set_xlabel(r'Trục hoành $\cos$', fontsize=11)
+        ax.set_ylabel(r'Trục tung $\sin$', fontsize=11)
+
+    # --- PANEL 1: Trạng thái 1: Vệ tinh Li độ u_1 & Hệ thức Pythagoras ---
+    ax1.annotate('', xy=(x_a, y_a), xytext=(0, 0),
+                 arrowprops=dict(arrowstyle='->', color='#1B365D', lw=2.4))
+    # Right triangle
+    ax1.plot([x_a, x_a], [0, y_a], color='#1B365D', linestyle='--', lw=1.3)
+    ax1.fill_between([0, x_a], [0, 0], [0, y_a], color='#1B365D', alpha=0.15)
+    ax1.text(x_a + 0.06, y_a + 0.05, r'$\vec{u}_1(\alpha)$', fontsize=11.5, fontweight='bold', color='#1B365D')
+    ax1.text(x_a / 2, -0.18, r'$\cos\alpha = \frac{x}{A}$', fontsize=9.5, color='#1B365D', ha='center', fontweight='bold')
+    ax1.text(x_a + 0.06, y_a / 2, r'$\sin\alpha = -\frac{v}{\omega A}$', fontsize=9.5, color='#1B365D', va='center', fontweight='bold')
+    ax1.text(x_a / 2 - 0.15, y_a / 2 + 0.15, r'$R=1$', fontsize=9.5, color='#1B365D', fontstyle='italic')
+
+    # Pythagoras badge
+    ax1.annotate('Định lý Pythagoras:\n' +
+                 r'$\cos^2\alpha + \sin^2\alpha = 1$' + '\n' +
+                 r'$\Rightarrow \left(\frac{x}{A}\right)^2 + \left(\frac{v}{\omega A}\right)^2 = 1$',
+                 xy=(0, -0.85), xytext=(-1.35, -1.35),
+                 fontsize=8.8, color='#1B365D', fontweight='bold',
+                 bbox=dict(boxstyle='round,pad=0.25', facecolor='#EFF6FF', edgecolor='#1B365D', alpha=0.95))
+    ax1.set_title(r'(a) Trạng thái 1: Vệ tinh Li độ $\vec{u}_1$' + '\n' + r'& Hệ thức độc lập Pythagoras', fontsize=10.5, fontweight='bold')
+
+    # --- PANEL 2: Trạng thái 2: Vệ tinh Vận tốc u_2 chạy trước +90 deg ---
+    # Draw ghost u_1
+    ax2.annotate('', xy=(x_a, y_a), xytext=(0, 0),
+                 arrowprops=dict(arrowstyle='->', color='#94A3B8', lw=1.5, linestyle=':'))
+    ax2.text(x_a + 0.05, y_a, r'$\vec{u}_1$', fontsize=10, color='#94A3B8')
+
+    # Vector u_2 at alpha + pi/2
     alpha_pi2 = alpha + np.pi/2
     x_p = np.cos(alpha_pi2)
     y_p = np.sin(alpha_pi2)
-    ax.annotate('', xy=(x_p, y_p), xytext=(0, 0),
-                arrowprops=dict(arrowstyle='->', color='#1E6B52', lw=2.4))
-    ax.plot([x_p, x_p], [0, y_p], color='#1E6B52', linestyle='--', lw=1.2)
-    ax.text(x_p - 0.22, y_p + 0.08, r'$\vec{u}_2 (\alpha + \frac{\pi}{2})$', fontsize=11, fontweight='bold', color='#1E6B52')
-    ax.annotate(r'$\cos(\alpha + \frac{\pi}{2}) = -\sin\alpha$' + '\n' + r'(Hoành độ mang giá trị âm)',
-                xy=(x_p, 0), xytext=(x_p - 0.55, -0.45),
-                arrowprops=dict(arrowstyle='->', color='#1E6B52', lw=1.4),
-                fontsize=9.2, fontweight='bold', color='#1E6B52',
-                bbox=dict(boxstyle='round,pad=0.3', facecolor='white', alpha=0.92, edgecolor='#1E6B52'))
+    ax2.annotate('', xy=(x_p, y_p), xytext=(0, 0),
+                 arrowprops=dict(arrowstyle='->', color='#1E6B52', lw=2.4))
+    ax2.plot([x_p, x_p], [0, y_p], color='#1E6B52', linestyle='--', lw=1.2)
+    ax2.text(x_p - 0.28, y_p + 0.08, r'$\vec{u}_2(\alpha + \frac{\pi}{2})$', fontsize=11, fontweight='bold', color='#1E6B52')
 
-    # Vector alpha + pi (rotate 180 deg)
+    # Rotation arc +90 deg
+    arc_theta = np.linspace(alpha, alpha_pi2, 40)
+    ax2.plot(0.35 * np.cos(arc_theta), 0.35 * np.sin(arc_theta), color='#D97706', lw=1.6)
+    ax2.text(0.12, 0.42, r'$+90^\circ$', fontsize=9.2, color='#D97706', fontweight='bold')
+
+    # Badge for u_2
+    ax2.annotate('Chạy trước góc vuông:\n' +
+                 r'$\cos(\alpha + \frac{\pi}{2}) = -\sin\alpha$' + '\n' +
+                 r'$\Rightarrow v$' + ' sớm pha ' + r'$\frac{\pi}{2}$' + ' so với ' + r'$x$',
+                 xy=(x_p, 0), xytext=(-1.35, -1.35),
+                 fontsize=8.8, color='#1E6B52', fontweight='bold',
+                 bbox=dict(boxstyle='round,pad=0.25', facecolor='#F0FDF4', edgecolor='#1E6B52', alpha=0.95))
+    ax2.set_title(r'(b) Trạng thái 2: Vệ tinh Vận tốc $\vec{u}_2$' + '\n' + r'Bứt phá trước $+90^\circ$ ($\pi/2$)', fontsize=10.5, fontweight='bold')
+
+    # --- PANEL 3: Trạng thái 3: Vệ tinh Gia tốc u_3 đối đầu +180 deg ---
+    # Draw ghost u_1
+    ax3.annotate('', xy=(x_a, y_a), xytext=(0, 0),
+                 arrowprops=dict(arrowstyle='->', color='#94A3B8', lw=1.5, linestyle=':'))
+    ax3.text(x_a + 0.05, y_a, r'$\vec{u}_1$', fontsize=10, color='#94A3B8')
+
+    # Vector u_3 at alpha + pi
     alpha_pi = alpha + np.pi
     x_pi = np.cos(alpha_pi)
     y_pi = np.sin(alpha_pi)
-    ax.annotate('', xy=(x_pi, y_pi), xytext=(0, 0),
-                arrowprops=dict(arrowstyle='->', color='#A6192E', lw=2.2))
-    ax.text(x_pi - 0.38, y_pi - 0.15, r'$\vec{u}_3 (\alpha + \pi)$', fontsize=11, fontweight='bold', color='#A6192E')
-    ax.annotate(r'$\cos(\alpha + \pi) = -\cos\alpha$' + '\n' + r'(Đối xứng hoàn toàn qua gốc $O$)',
-                xy=(x_pi, 0), xytext=(x_pi - 0.3, 0.4),
-                arrowprops=dict(arrowstyle='->', color='#A6192E', lw=1.4),
-                fontsize=9.2, fontweight='bold', color='#A6192E',
-                bbox=dict(boxstyle='round,pad=0.3', facecolor='white', alpha=0.92, edgecolor='#A6192E'))
+    ax3.annotate('', xy=(x_pi, y_pi), xytext=(0, 0),
+                 arrowprops=dict(arrowstyle='->', color='#A6192E', lw=2.4))
+    ax3.plot([x_pi, x_pi], [0, y_pi], color='#A6192E', linestyle='--', lw=1.2)
+    ax3.text(x_pi - 0.42, y_pi - 0.12, r'$\vec{u}_3(\alpha + \pi)$', fontsize=11, fontweight='bold', color='#A6192E')
 
-    # Rotation arc for +pi/2
-    arc_theta = np.linspace(alpha, alpha_pi2, 50)
-    ax.plot(0.35 * np.cos(arc_theta), 0.35 * np.sin(arc_theta), color='#D97706', lw=1.6)
-    ax.text(0.18, 0.42, r'$+90^\circ$', fontsize=9.5, color='#D97706', fontweight='bold')
+    # Rotation arc +180 deg
+    arc_pi = np.linspace(alpha, alpha_pi, 60)
+    ax3.plot(0.28 * np.cos(arc_pi), 0.28 * np.sin(arc_pi), color='#D97706', lw=1.6)
+    ax3.text(-0.25, 0.35, r'$+180^\circ$', fontsize=9.2, color='#D97706', fontweight='bold')
 
-    ax.set_aspect('equal')
-    ax.set_xlim(-1.45, 1.45)
-    ax.set_ylim(-1.45, 1.45)
-    ax.set_xlabel(r'Trục Hoành $\cos$', fontsize=12)
-    ax.set_ylabel(r'Trục Tung $\sin$', fontsize=12)
-    ax.set_title(r'Hình 1.0c: Đường tròn Lượng giác giải mã cung hơn kém $\frac{\pi}{2}$, $\pi$ & Pythagoras', fontsize=12)
+    # Badge for u_3
+    ax3.annotate('Đối xứng đối đầu:\n' +
+                 r'$\cos(\alpha + \pi) = -\cos\alpha$' + '\n' +
+                 r'$\Rightarrow a$' + ' ngược pha ' + r'$\pi$' + ' so với ' + r'$x$',
+                 xy=(x_pi, 0), xytext=(-1.35, -1.35),
+                 fontsize=8.8, color='#A6192E', fontweight='bold',
+                 bbox=dict(boxstyle='round,pad=0.25', facecolor='#FEF2F2', edgecolor='#A6192E', alpha=0.95))
+    ax3.set_title(r'(c) Trạng thái 3: Vệ tinh Gia tốc $\vec{u}_3$' + '\n' + r'Kéo giật lùi đối đầu $+180^\circ$ ($\pi$)', fontsize=10.5, fontweight='bold')
 
     plt.tight_layout()
     fig.savefig(os.path.join(FIG_DIR, 'fig1_0c_trig_circle.png'), dpi=300)

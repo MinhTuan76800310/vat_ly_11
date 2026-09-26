@@ -46,38 +46,78 @@
 
 ![Hình 1.0a: Bản chất hình học của đạo hàm: Cát tuyến $PQ$ thể hiện tốc độ trung bình, khi $\Delta t \to 0$ sẽ tiệm cận về tiếp tuyến tại $P$, có độ dốc $\tan\theta = s'(t_0)$ biểu diễn vận tốc tức thời.](figures/fig1_0a_derivative.png)
 
-### 2. Bản chất Đạo hàm lượng giác & Sự xuất hiện của nhân tử $\omega$
-* **Vì sao $(\cos t)' = -\sin t$?**  
-  Hãy quan sát đồ thị hàm cosin ở Hình 1.0b:  
-  - Tại đỉnh cao nhất ($t = 0$), đồ thị nằm ngang, tiếp tuyến phẳng lì $\implies$ độ dốc bằng $0$ (khớp với $-\sin 0 = 0$).  
-  - Khi đồ thị lao dốc đi xuống qua vị trí cân bằng ($t = \pi/2$), nó dốc nhất theo chiều âm $\implies$ độ dốc bằng $-1$ (khớp với $-\sin(\pi/2) = -1$).  
-* **Vì sao $[\cos(\omega t)]' = -\omega \sin(\omega t)$ lại xuất hiện nhân tử $\omega$?**  
-  Đại lượng $\omega$ (tần số góc) cho biết trong 1 giây góc pha tăng thêm bao nhiêu radian.  
-  - Nếu $\omega = 1$, sóng uốn lượn thong thả với chu kì $2\pi$.  
-  - Nếu $\omega = 2$, trong cùng khoảng thời gian sóng bị ép co hẹp lại gấp đôi, làm cho sườn dốc đồ thị dốc gấp 2 lần!  
-  - Do đó, độ dốc (tốc độ biến thiên) phải nhân thêm một hệ số khuếch đại đúng bằng $\omega$:
-    $$[\cos(\omega t + \varphi)]' = -\omega \sin(\omega t + \varphi)$$
-    $$[\sin(\omega t + \varphi)]' = \omega \cos(\omega t + \varphi)$$
+### 2. Chuyến Tàu Lượn Siêu Tốc Trên Sóng Cosin: Giải Mã Đạo Hàm Lượng Giác & Nhân Tử $\omega$
 
-![Hình 1.0b: Bản chất đạo hàm lượng giác: Tại đỉnh dốc bằng 0, tại VTCB dốc cực đại. Khi tần số góc $\omega$ tăng làm chu kỳ bị ép co hẹp lại, độ dốc tăng gấp $\omega$ lần, giải thích sự xuất hiện của nhân tử $\omega$.](figures/fig1_0b_omega_derivative.png)
+Các em hãy thử nhắm mắt lại và tưởng tượng mình đang ngồi trên một toa **tàu lượn siêu tốc**, lướt đi trên một đoạn đường ray uốn lượn hình sóng $x(t) = \cos(t)$. Đạo hàm của li độ theo thời gian chính là **vận tốc tức thời**, và về mặt hình học, nó chính là **độ dốc của đường ray** tại từng thời khắc. 
 
-### 3. Bản chất hình học của Công thức Lượng giác trên Đường tròn
-Thay vì học vẹt công thức biến đổi lượng giác, hãy nhìn lên **Đường tròn lượng giác bán kính $R = 1$** (Hình 1.0c):
-* **Cung hơn kém $\pi/2$ (Phép quay góc vuông $+90^\circ$):**  
-  Khi véc-tơ quay thêm một góc $90^\circ$ ($\pi/2$), hình chiếu của véc-tơ từ trục đứng (sin) nhảy sang trục ngang (cos), nhưng vì quay ngược chiều kim đồng hồ nên nằm ở phần âm của trục hoành:
-  $$\cos\left(\alpha + \frac{\pi}{2}\right) = -\sin\alpha$$
-  *Đây chính là lý do vì sao vận tốc $v = -\omega A \sin(\omega t + \varphi) = \omega A \cos\left(\omega t + \varphi + \frac{\pi}{2}\right)$ lại sớm pha $\frac{\pi}{2}$ so với li độ $x$!*
-* **Cung hơn kém $\pi$ (Phép quay nửa vòng tròn $+180^\circ$):**  
-  Quay thêm $180^\circ$ đưa véc-tơ sang vị trí đối xứng hoàn toàn qua gốc tọa độ, hoành độ bị đổi dấu âm:
-  $$\cos(\alpha + \pi) = -\cos\alpha$$
-  *Đây là lý do vì sao gia tốc $a = -\omega^2 A \cos(\omega t + \varphi) = \omega^2 A \cos(\omega t + \varphi + \pi)$ lại ngược pha $\pi$ so với li độ $x$!*
-* **Hệ thức độc lập thời gian:**  
-  Trong tam giác vuông tạo bởi hình chiếu lên hai trục, theo định lý Pythagoras:
-  $$\text{cạnh kề}^2 + \text{cạnh đối}^2 = \text{cạnh huyền}^2 \implies \cos^2\alpha + \sin^2\alpha = 1$$
-  Thay $\cos\alpha = \frac{x}{A}$ và $\sin\alpha = -\frac{v}{\omega A}$ vào, ta thu được ngay:
-  $$\left(\frac{x}{A}\right)^2 + \left(-\frac{v}{\omega A}\right)^2 = 1 \iff \left(\frac{x}{A}\right)^2 + \left(\frac{v}{\omega A}\right)^2 = 1$$
+Hãy quan sát **Hình 1.0b(a)** để đồng hành cùng 4 trạng thái thót tim trên chuyến tàu lượn này:
 
-![Hình 1.0c: Đường tròn lượng giác đơn vị $R=1$: Biểu diễn trực quan góc lệch sớm pha $\pi/2$ của vận tốc, ngược pha $\pi$ của gia tốc và tam giác vuông hình chiếu chứng minh hệ thức độc lập thời gian Pythagoras.](figures/fig1_0c_trig_circle.png)
+* **Trạng thái 1 — Đỉnh đồi cao nhất ($t = 0, x = +1$):**  
+  Toa tàu vừa leo lên đến chóp đỉnh cao nhất. Tại đúng tích tắc này, xe ngừng dâng cao và chuẩn bị đổi chiều lao xuống. Đường ray tại đỉnh nằm ngang tuyệt đối, tiếp tuyến phẳng lì $\implies$ **Độ dốc bằng $0$**.  
+  *Vật lý giải mã:* Tại biên dương, vận tốc tức thời triệt tiêu ($v = 0$).  
+  *Toán học kiểm chứng:* $(\cos 0)' = -\sin(0) = 0$. Khớp hoàn hảo!
+
+* **Trạng thái 2 — Đang đổ đèo qua Vị trí Cân bằng ($t = \pi/2, x = 0$):**  
+  Toa tàu lao dốc không phanh xuống thung lũng! Đúng thời khắc xe lao vụt qua mốc $0$, đường ray dốc đứng chúc mũi xuống với góc nghiêng $-45^\circ$ $\implies$ **Độ dốc đạt cực đại theo chiều âm: $-1$**.  
+  *Vật lý giải mã:* Xe đang lao theo chiều âm với tốc độ khủng khiếp nhất ($v = -v_{\max}$).  
+  *Toán học kiểm chứng:* $(\cos \frac{\pi}{2})' = -\sin(\frac{\pi}{2}) = -1$. Độ dốc âm giải thích nguồn gốc xuất hiện của dấu trừ!
+
+* **Trạng thái 3 — Dưới đáy vực sâu nhất ($t = \pi, x = -1$):**  
+  Toa tàu chạm tới đáy thung lũng uốn cong. Tại đáy, xe ngừng hạ độ cao và chuẩn bị vòng lên. Đường ray lại nằm ngang phẳng lì $\implies$ **Độ dốc bằng $0$**.  
+  *Vật lý giải mã:* Tại biên âm, vận tốc của xe lại tức thời triệt tiêu về $0$.  
+  *Toán học kiểm chứng:* $(\cos \pi)' = -\sin(\pi) = 0$.
+
+* **Trạng thái 4 — Vọt ngược lên qua Vị trí Cân bằng ($t = 3\pi/2, x = 0$):**  
+  Toa tàu lấy đà vút ngửa lên trời! Đúng thời khắc qua mốc $0$, đường ray dựng ngược lên dốc nhất $\implies$ **Độ dốc đạt cực đại theo chiều dương: $+1$**.  
+  *Vật lý giải mã:* Xe đang chạy nhanh nhất theo chiều dương ($v = +v_{\max}$).  
+  *Toán học kiểm chứng:* $(\cos \frac{3\pi}{2})' = -\sin(\frac{3\pi}{2}) = -(-1) = +1$.
+
+> 💡 **Kết luận 1:** Đạo hàm của hàm $\cos(t)$ chính là $-\sin(t)$ vì độ dốc của đường ray $\cos$ luôn biến thiên lệch pha và đảo dấu đúng theo hàm $\sin$!
+
+#### Bí mật "Cỗ máy nén thời gian": Vì sao lại xuất hiện nhân tử $\omega$?
+
+Bây giờ, hãy nhìn sang **Hình 1.0b(b)**. Điều gì sẽ xảy ra nếu một "cỗ máy thời gian" tua nhanh gấp đôi nhịp điệu chuyển động ($\omega = 2$ thay vì $\omega = 1$)?
+
+* Khi $\omega = 2$, trong cùng khoảng thời gian $1\text{ s}$, vật phải thực hiện số dao động nhiều gấp đôi. Toàn bộ con sóng bị **ép co hẹp lại theo trục thời gian** chỉ còn một nửa bề rộng chu kì ($T = \pi$ thay vì $2\pi$).
+* Nhưng hãy chú ý: **Độ cao của đỉnh đồi (biên độ $A$) vẫn giữ nguyên!**
+* Cùng một độ cao $1\text{ m}$, nếu em bước đi trên đoạn đường dài $2\text{ m}$ thì dốc thoai thoải; nhưng nếu bị ép phải vượt qua độ cao đó trên đoạn đường chỉ dài $1\text{ m}$, sườn đồi sẽ **dựng đứng gấp đôi**!
+* Do sườn đồ thị bị dốc gấp $\omega$ lần, tốc độ biến thiên tức thời (độ dốc tiếp tuyến) tại vị trí cân bằng vọt từ $-1$ lên thành $-\omega = -2$:
+  $$[\cos(\omega t + \varphi)]' = -\omega \sin(\omega t + \varphi)$$
+  $$[\sin(\omega t + \varphi)]' = \omega \cos(\omega t + \varphi)$$
+
+![Hình 1.0b: Storytelling Đạo hàm lượng giác: (a) 4 Trạng thái chuyển động của toa tàu lượn giải mã $(\cos t)' = -\sin t$; (b) Hiệu ứng nén thời gian của tần số góc $\omega$ làm sườn đồ thị dựng đứng gấp $\omega$ lần.](figures/fig1_0b_omega_derivative.png)
+
+### 3. Ba Vệ Tinh Trên Chiếc Đồng Hồ Vũ Trụ: Giải Mã Các Cung Lượng Giác & Hệ Thức Độc Lập
+
+Thay vì học vẹt những công thức biến đổi lượng giác khô khan, các em hãy cùng bước vào một câu chuyện thú vị: **"Cuộc rượt đuổi của 3 vệ tinh trên quỹ đạo đường tròn bán kính $R = 1$"** (quan sát lần lượt 3 khung hình ở **Hình 1.0c**):
+
+* **Trạng thái 1 (Hình 1.0c - Trái): Vệ tinh Li độ $\vec{u}_1$ & Bản giao hưởng Pythagoras**  
+  Một chiếc kim đồng hồ vũ trụ quay ngược chiều kim đồng hồ với góc quét $\alpha$. Véc-tơ này đại diện cho trạng thái của vật:
+  - Chiếu bóng của vệ tinh xuống mặt sàn (trục hoành $\cos$), ta bắt được **Li độ chuẩn hóa**: $\cos\alpha = \frac{x}{A}$.  
+  - Chiếu bóng lên vách tường (trục tung $\sin$), ta bắt được đại lượng tỉ lệ với **Vận tốc chuẩn hóa**: $\sin\alpha = -\frac{v}{\omega A}$.  
+  - Nhìn vào tam giác vuông màu xanh tạo bởi hai bóng chiếu: Cạnh kề là $\cos\alpha$, cạnh đối là $\sin\alpha$, cạnh huyền chính là bán kính $R = 1$.  
+  - Theo **Định lý Pythagoras** từ ngàn năm trước: $\text{cạnh kề}^2 + \text{cạnh đối}^2 = \text{cạnh huyền}^2$:
+    $$\cos^2\alpha + \sin^2\alpha = 1 \implies \left(\frac{x}{A}\right)^2 + \left(-\frac{v}{\omega A}\right)^2 = 1 \iff \left(\frac{x}{A}\right)^2 + \left(\frac{v}{\omega A}\right)^2 = 1$$
+    *Đây chính là **Hệ thức độc lập thời gian** kinh điển của SGK Kết nối tri thức — nó thực chất chỉ là định lý Pythagoras phản chiếu lên chuyển động!*
+
+* **Trạng thái 2 (Hình 1.0c - Giữa): Vệ tinh Vận tốc $\vec{u}_2$ bứt phá chạy trước đúng một góc vuông $+90^\circ$ ($\frac{\pi}{2}$)**  
+  Vận tốc là người dẫn đường dự báo vị trí tương lai, nên vệ tinh vận tốc $\vec{u}_2$ luôn chạy đón đầu trước $\vec{u}_1$ một góc vuông $+90^\circ$ ($\alpha + \frac{\pi}{2}$):  
+  - Khi quay một góc vuông $+90^\circ$, chiếc bóng đứng ban đầu ($\sin\alpha$) bị ngã ập xuống nằm ngang trên trục $\cos$.  
+  - Nhưng vì quay ngược chiều kim đồng hồ, bóng này rơi trúng vào nửa âm của trục hoành:
+    $$\cos\left(\alpha + \frac{\pi}{2}\right) = -\sin\alpha$$
+  - Ghép vào phương trình vận tốc:
+    $$v(t) = -\omega A \sin(\omega t + \varphi) = \omega A \cos\left(\omega t + \varphi + \frac{\pi}{2}\right)$$
+  - *Kết luận trực giác tuyệt đẹp:* Vận tốc $v$ luôn **sớm pha $\frac{\pi}{2}$** so với li độ $x$! Khi li độ đang ở vị trí cân bằng ($x = 0$), thì vận tốc đã sớm chạy tới giá trị cực đại ($v = v_{\max}$).
+
+* **Trạng thái 3 (Hình 1.0c - Phải): Vệ tinh Gia tốc $\vec{u}_3$ đối đầu đối diện trọn vẹn nửa vòng tròn $+180^\circ$ ($\pi$)**  
+  Gia tốc đại diện cho lực kéo về — một thế lực luôn luôn tìm cách kéo vật quay trở lại vị trí cân bằng, chống lại li độ. Do đó, vệ tinh gia tốc $\vec{u}_3$ vọt trước $\vec{u}_1$ trọn vẹn nửa vòng tròn $+180^\circ$ ($\alpha + \pi$):  
+  - Quay thêm $180^\circ$ đưa véc-tơ sang vị trí đối xứng xuyên tâm hoàn toàn qua gốc $O$. Chiếu xuống trục hoành, chiếc bóng bị lật ngược chiều 100%:
+    $$\cos(\alpha + \pi) = -\cos\alpha$$
+  - Ghép vào phương trình gia tốc:
+    $$a(t) = -\omega^2 A \cos(\omega t + \varphi) = \omega^2 A \cos(\omega t + \varphi + \pi) = -\omega^2 x(t)$$
+  - *Kết luận trực giác tuyệt đẹp:* Gia tốc $a$ luôn **ngược pha $\pi$** so với li độ $x$! Khi li độ kéo lệch sang bên phải ($x > 0$), gia tốc lập tức kéo ngược về bên trái ($a < 0$).
+
+![Hình 1.0c: Storytelling 3 Vệ tinh trên vòng tròn đơn vị: (a) Trạng thái 1: Vệ tinh Li độ $\vec{u}_1$ & Tam giác Pythagoras chứng minh hệ thức độc lập thời gian; (b) Trạng thái 2: Vệ tinh Vận tốc $\vec{u}_2$ bứt phá trước $+90^\circ$ ($\frac{\pi}{2}$); (c) Trạng thái 3: Vệ tinh Gia tốc $\vec{u}_3$ đối đầu $+180^\circ$ ($\pi$).](figures/fig1_0c_trig_circle.png)
 
 ---
 
