@@ -73,19 +73,29 @@ Tài liệu hướng dẫn quy chuẩn biên soạn và nghiên cứu khoa học
 
 ---
 
-## 4. Pipeline Biên Dịch (Build Pipeline)
+## 4. Pipeline Biên Dịch & Xuất Bản (Build & Publishing)
 
 ```bash
 # 1. Tạo hình vẽ vector PDF và PNG chuẩn KNTT
 python scripts/generate_figures.py
 
-# 2. Biên dịch sách qua Pandoc và Typst
+# 2. Biên dịch toàn bộ sách qua Pandoc và Typst
 python scripts/build_book.py
+
+# 3. Xuất bản tài liệu chuyên khảo / Handout PDF đẹp qua Typst Skill:
+# Tham chiếu: .agents/skills/typst-publication/SKILL.md
+typst compile book/math_tools_en.typ dist/math_tools_en.pdf
 ```
 
 ---
 
-## 5. Chế Độ Thực Thi Tự Trị (Autonomous Execution / YOLO Mode)
+## 5. Quy Chuẩn Tài Liệu Tiếng Anh (IELTS Band 6.5)
+- Khi viết hoặc chuyển ngữ các tài liệu chuyên sâu sang tiếng Anh, tuân thủ định chuẩn **IELTS Band 6.5** theo quy định tại `.agents/rules/pedagogy_harness.md` (từ vựng học thuật tự nhiên, lối hành văn kể chuyện mạch lạc, câu ghép/câu phức cân đối, không lạm dụng thuật ngữ cao cấp).
+
+---
+
+## 6. Chế Độ Thực Thi Tự Trị (Autonomous Execution / YOLO Mode)
 
 - Chế độ tự trị được kích hoạt: Agent chủ động thao tác file, cập nhật bản thảo, render đồ thị và biên dịch sách mà không làm gián đoạn người dùng bằng các câu hỏi xác nhận lặp lại không cần thiết.
 - Sau mỗi lần chỉnh sửa nội dung hoặc script, luôn chạy kiểm thử tạo hình và biên dịch PDF để đảm bảo không có lỗi trước khi báo cáo.
+

@@ -43,6 +43,31 @@ Mỗi module bài học dài vừa vặn khoảng 1 giờ học (tương đươn
 4. **Bản chất năng lượng & Thực tế**: Cơ năng, sự tiêu tán năng lượng, ứng dụng thực tế.
 5. **Ví dụ tính số & Cảnh báo lỗi thi**: Bài toán số liệu thực tế, chỉ ra bẫy đề thi trắc nghiệm/tự luận hay gặp.
 
+### Giới hạn 4: Nguyên Tắc Sư Phạm Suy Luận Khám Phá (Deductive Discovery)
+Khi dẫn xuất các công thức đạo hàm và động học:
+1. **Khám phá dấu đạo hàm lượng giác qua 4 trạng thái**:
+   - *Trạng thái 1 (Đỉnh đồi $t = 0$)*: Độ dốc bằng 0 ($x'(0) = 0$). Hàm ứng viên là $\sin(t)$ vì $\sin(0) = 0$. **Bắt buộc nhấn mạnh: vì $+\sin(0) = -\sin(0) = 0$, tại đỉnh đồi dấu của đạo hàm là CHƯA THỂ XÁC ĐỊNH!**
+   - *Trạng thái 2 (Lao dốc qua VTCB $t = \pi/2$)*: Xe lao dốc xuống $\implies$ tiếp tuyến dốc âm ($-1$). Lúc này mới lật mở: $+\sin(\pi/2) = +1$ (loại), $-\sin(\pi/2) = -1$ (khớp). Từ đó chứng minh dấu trừ $[\cos(t)]' = -\sin(t)$.
+   - *Trạng thái 3 & 4*: Dưới đáy vực (độ dốc 0) và vọt lên qua VTCB (độ dốc $+1$) để kiểm chứng.
+2. **Cơ chế nhân tử $\omega$ (Cỗ máy nén thời gian)**:
+   - Tần số tăng $\omega$ lần $\implies$ chu kì bị nén lại $1/\omega$.
+   - Biên độ $A$ giữ nguyên mà thời gian giảm một nửa $\implies$ sườn dốc phải dựng đứng gấp đôi $\implies$ đạo hàm nhân thêm $\omega$: $[\cos(\omega t)]' = -\omega\sin(\omega t)$.
+3. **Mô hình 3 Vệ tinh trên Vòng tròn Đơn vị (Đồng hồ vũ trụ)**:
+   - Vệ tinh $\vec{u}_1$ (Li độ): Hai hình chiếu vuông góc lên trục $\cos$ và $\sin$ tạo thành tam giác vuông Pythagoras $\implies$ chứng minh trực quan $(x/A)^2 + (v/\omega A)^2 = 1$.
+   - Vệ tinh $\vec{u}_2$ (Vận tốc): Bay trước $+90^\circ$ ($\pi/2$), chiếu lên trục $\cos$ cho $-\sin\alpha = \cos(\alpha + \pi/2) \implies$ vận tốc sớm pha $\pi/2$.
+   - Vệ tinh $\vec{u}_3$ (Gia tốc): Bay đối diện $+180^\circ$ ($\pi$), chiếu lên trục $\cos$ cho $-\cos\alpha = \cos(\alpha + \pi) \implies$ gia tốc ngược pha $\pi$.
+
+---
+
+### Giới hạn 5: Quy Chuẩn Bản Dịch / Tài Liệu Tiếng Anh (IELTS Band 6.5 Standard)
+Khi được yêu cầu viết hoặc chuyển ngữ sang tiếng Anh cho đối tượng học sinh THPT:
+1. **Định chuẩn độ đọc (Lexical & Syntactic Level)**: Tương đương **IELTS Band 6.5**.
+   - Dùng từ vựng học thuật tự nhiên, chính xác (*instantaneous rate of change, secant line, tangent line, steepness, crest, trough, time-compression, right-angled triangle, restoring force*).
+   - Tuyệt đối không dùng từ ngữ quá hàn lâm bậc đại học hoặc văn phong khô cứng, máy móc.
+2. **Cấu trúc câu & Cohesion**:
+   - Sử dụng đa dạng câu ghép, câu phức và các liên từ chuyển ý tự nhiên (*Consequently, In contrast, Specifically, At first glance, As a result*).
+   - Duy trì giọng văn kể chuyện (storytelling) sinh động, truyền cảm hứng và tôn trọng người đọc.
+
 ---
 
 ## 3. Checklist Tự Kiểm Định Độ Phù Hợp Lớp 11 (Audience-Fit Gate)
@@ -51,4 +76,5 @@ Trước khi xuất bản hoặc hoàn tất chương sách, tự đặt 4 câu 
 1. *Một học sinh lớp 11 nắm chắc SGK có hiểu được bài viết này mà không cần tra cứu giáo trình đại học không?*
 2. *Có công thức nào xuất hiện số phức, tích phân hay phương trình vi phân phức tạp không? (Nếu có $\rightarrow$ sửa ngay).*
 3. *Hình vẽ và ví dụ có bám sát đời sống thực tế không?*
-4. *Các ký hiệu có nhất quán với SGK GDPT 2018 không? (Dùng $x, v, a, W, W_d, W_t, \omega, f, T$).*
+4. *Các ký hiệu có nhất quán với SGK GDPT 2018 không? (Dùng $x, v, a, W, W_đ, W_t, \omega, f, T$).*
+
