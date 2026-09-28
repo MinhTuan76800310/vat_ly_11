@@ -154,150 +154,297 @@ Thay vì bắt trí não phải học vẹt những công thức khô khan này,
 ---
 
 # PHẦN 1: MÔ TẢ DAO ĐỘNG ĐIỀU HÒA, ĐỘNG HỌC & ĐỘ LỆCH PHA
-*(Đối chiếu và giải mã chuyên sâu Bài 1, 2, 3, 4 SGK Kết nối tri thức)*
-
-### 1. Bản Chất của Dao Động Điều Hòa: Không Phải "Quay Tròn Ngầm"
-
-#### Quan sát thực tế & Định nghĩa SGK (Bài 1 KNTT)
-* Trong đời sống, ta thường bắt gặp những chuyển động lặp đi lặp lại quanh một vị trí cân bằng xác định: chiếc xích đu đu đưa, màng loa điện thoại rung động, dây đàn guitar sau khi gảy. Những chuyển động như vậy gọi là **dao động cơ học**.
-* **Định nghĩa SGK:** *Dao động điều hòa là dao động trong đó li độ của vật là một hàm cosin (hoặc sin) của thời gian*:
-  $$x = A\cos(\omega t + \varphi)$$
-
-#### Giải mã bản chất: Vì sao lại có hàm cosin?
-* Trong SGK, để giúp học sinh lớp 11 làm quen với hàm cosin khi chưa học đạo hàm ở học kỳ 1, người ta thường dùng mô hình hình chiếu của một chất điểm chuyển động tròn đều lên trục toạ độ.
-* **Bản chất vật lý:** Trong thực tế, quả lắc hay chiếc màng loa không hề "quay tròn ngầm". Bản chất của dao động điều hòa bắt nguồn từ việc **lực tác dụng kéo vật về vị trí cân bằng luôn tỉ lệ thuận với khoảng cách lệch**: vật lệch càng xa, lực kéo về càng mạnh.
-* Quy luật lực này ép buộc gia tốc của vật luôn tỉ lệ ngược dấu với li độ:
-  $$a(t) = -\omega^2 x(t)$$
-  Chỉ có hàm số dạng $\sin$ và $\cos$ mới có tính chất toán học đặc biệt: *lấy đạo hàm hai lần thì quay trở lại chính hàm ban đầu đổi dấu*.
+*(Đối chiếu và giải mã chuyên sâu Bài 1, 2, 3, 4 SGK Kết nối tri thức với cuộc sống)*
 
 ---
 
-### 2. Các Đại Lượng Đặc Trưng (Bài 2 KNTT)
+### 1. Bí Ẩn Bản Chất: Tại Sao Chuyển Động Thẳng Qua Lại Lại Mang Dáng Dấp Hàm Cosin?
 
-Trong phương trình $x(t) = A\cos(\omega t + \varphi)$:
-* **Li độ $x$:** Độ lệch của vật khỏi vị trí cân bằng tại thời điểm $t$, có đơn vị là mét ($\text{m}$) hoặc xentimét ($\text{cm}$).
-* **Biên độ $A$:** Độ lệch cực đại của vật so với vị trí cân bằng, luôn có giá trị dương ($A > 0$). Quỹ đạo chuyển động của vật là một đoạn thẳng dài $L = 2A$.
-* **Chu kì $T$ (s):** Khoảng thời gian để vật thực hiện trọn vẹn một dao động toàn phần:
-  $$T = \frac{2\pi}{\omega}$$
-* **Tần số $f$ (Hz):** Số dao động toàn phần mà vật thực hiện được trong một giây:
-  $$f = \frac{1}{T} = \frac{\omega}{2\pi}$$
-* **Tần số góc $\omega$ ($\text{rad/s}$):** Tốc độ biến thiên của góc pha theo thời gian: $\omega = 2\pi f = \frac{2\pi}{T}$.
-* **Pha ban đầu $\varphi$ ($\text{rad}$):** Cho biết vị trí và chiều chuyển động của vật tại thời điểm xuất phát $t = 0$.
-* **Pha dao động $(\omega t + \varphi)$ ($\text{rad}$):** Cho biết trạng thái chuyển động (vị trí $x$ và chiều vận tốc $v$) của vật tại thời điểm $t$.
+#### Nghịch lý trực giác từ đời sống (Tầng 1 Sư phạm)
+Trong cuộc sống hàng ngày, chúng ta liên tục bắt gặp những chuyển động lặp đi lặp lại quanh một vị trí đứng yên:
+* Chiếc xích đu đung đưa nhịp nhàng dưới tán cây.
+* Màng loa điện thoại rung động bần bật để phát ra âm thanh bản nhạc yêu thích.
+* Chiếc phao câu cá dập dềnh lên xuống theo từng gợn sóng nước.
+* Nhánh âm thoa kim loại rung vo ve sau khi được gõ nhẹ.
+
+Những chuyển động có giới hạn trong không gian, lặp đi lặp lại nhiều lần quanh một **vị trí cân bằng** xác định như vậy được gọi là **dao động cơ học**. Nếu sau những khoảng thời gian bằng nhau vật lại trở về trạng thái chuyển động cũ, dao động đó là **dao động tuần hoàn**.
+
+Đến đây, SGK đưa ra một định nghĩa mang tính kinh điển:
+> **Định nghĩa SGK (Bài 1 KNTT):** *Dao động điều hòa là dao động trong đó li độ của vật là một hàm cosin (hoặc sin) của thời gian:*
+> $$x(t) = A\cos(\omega t + \varphi)$$
+
+**Một câu hỏi hóc búa được đặt ra:**  
+*Hãy nhìn vào chiếc màng loa điện thoại: nó chỉ chuyển động thụt thò tịnh tiến theo một đường thẳng! Chiếc xích đu cũng chỉ lắc tới lắc lui trên một đoạn cong hẹp. Chúng KHÔNG HỀ QUAY TRÒN! Vậy tại sao các nhà vật lý lại mô tả một chuyển động qua lại thẳng tắp bằng hàm $\cos(\omega t + \varphi)$ — một hàm số vốn sinh ra từ góc quay của đường tròn? Có phải vật đang "quay tròn ngầm" ở đâu đó không?*
 
 ---
 
-### 3. Độ Lệch Pha Giữa Hai Dao Động (Trọng tâm Bài 2 & Bài 4 KNTT)
+#### Tháo gỡ nghịch lý: Từ Lực kéo về đến "Siêu năng lực" của Đạo hàm (Tầng 2 & 3)
+Trong SGK lớp 11, để giúp các em làm quen với hàm cosin ngay từ đầu năm học khi **chưa học đạo hàm ở môn Toán**, các thầy cô tạm thời sử dụng mô hình: *"Li độ của dao động điều hòa giống như bóng của một điểm chuyển động tròn đều in xuống đường kính"*. Đây là một cách tiếp cận trực quan cơ học, nhưng nó chỉ là **hình ảnh phản chiếu**, chưa phải là **nguyên nhân vật lý gốc rễ**!
 
-Xét hai dao động điều hòa cùng tần số:
-$$x_1 = A_1 \cos(\omega t + \varphi_1), \quad x_2 = A_2 \cos(\omega t + \varphi_2)$$
+Bản chất vật lý đích thực không cần bất kỳ chuyển động tròn nào, mà bắt nguồn từ quy luật của **Lực kéo về (Lực hồi phục)**:
+1. Mỗi khi vật bị lệch khỏi vị trí cân bằng bền, môi trường xung quanh (lò xo, trọng lực, lực căng mặt ngoài) lập tức xuất hiện một lực kéo vật trở về.
+2. Vật càng lệch xa khỏi vị trí cân bằng, lực kéo về càng gồng mạnh lên để giằng vật lại. Lực này tỉ lệ thuận với độ lệch nhưng luôn ngược hướng lệch:
+   $$F_{kv} = -kx$$
+3. Theo **Định luật II Newton** ($F = ma$), lực này ép gia tốc của vật phải luôn trái dấu và tỉ lệ thuận với li độ:
+   $$a(t) = -\omega^2 x(t)$$
+4. Bây giờ, hãy mở lại **Hộp công cụ Toán (Mục 1 & 2)** mà chúng ta vừa trang bị: Gia tốc chính là đạo hàm cấp hai của li độ: $a(t) = x''(t)$. Như vậy, quy luật lực tự nhiên bắt buộc hàm số $x(t)$ phải thỏa mãn phương trình:
+   $$x''(t) = -\omega^2 x(t)$$
 
-**Độ lệch pha** giữa dao động 2 và dao động 1 là:
+> 🎯 **Lời giải cho bí ẩn:**  
+> Trong toàn bộ kho tàng các hàm số toán học (hàm đa thức, hàm mũ, hàm logarit), **chỉ có duy nhất hàm lượng giác $\cos$ và $\sin$ mới sở hữu "siêu năng lực": lấy đạo hàm hai lần thì quay trở lại đúng chính nó nhưng đổi dấu trừ!**  
+> Chính quy luật lực kéo về trong tự nhiên đã "chọn" hàm cosin để vẽ nên quỹ đạo của dao động điều hòa, chứ không hề có bàn tay ma thuật nào bắt vật phải "quay tròn ngầm"!
+
+---
+
+### 2. Giải Mã ADN Của Phương Trình Dao Động: $x(t) = A\cos(\omega t + \varphi)$
+*(Trọng tâm Bài 2 SGK Kết nối tri thức)*
+
+Để làm chủ phương trình động học $x(t) = A\cos(\omega t + \varphi)$, hãy xem mỗi đại lượng như một mảnh ghép trong bộ gen ADN định danh trạng thái chuyển động:
+
+* **1. Li độ $x(t)$ — "Tọa độ tức thời":**  
+  Là độ lệch (khoảng cách và hướng) của vật khỏi vị trí cân bằng tại đúng thời điểm $t$. Li độ có thể mang giá trị dương ($x > 0$), âm ($x < 0$) hoặc bằng $0$ (khi qua VTCB). Đơn vị chuẩn là mét ($\text{m}$) hoặc xentimét ($\text{cm}$).
+
+* **2. Biên độ $A$ — "Biên giới tận cùng":**  
+  Là độ lệch cực đại của vật so với vị trí cân bằng. Vì là khoảng cách lớn nhất, **$A$ luôn luôn là một hằng số dương ($A > 0$)**.  
+  Vật chỉ dao động qua lại giới hạn giữa hai mép biên: từ biên âm ($-A$) đến biên dương ($+A$). Do đó, **chiều dài quỹ đạo chuyển động của vật** là một đoạn thẳng có độ dài:
+  $$L = 2A$$
+
+* **3. Chu kì $T$ và Tần số $f$ — "Nhịp đập thời gian":**  
+  * **Chu kì $T$ (giây - $\text{s}$):** Là khoảng thời gian ngắn nhất để vật thực hiện trọn vẹn một dao động toàn phần (nghĩa là trở về đúng vị trí cũ theo đúng chiều chuyển động cũ).
+  * **Tần số $f$ ($\text{Hertz} - \text{Hz}$):** Là số dao động toàn phần mà vật thực hiện được trong đúng 1 giây:
+    $$f = \frac{1}{T}$$
+    *Ví dụ thực tế:* Nốt nhạc La chuẩn phát ra từ đàn piano có tần số $f = 440\text{ Hz}$, nghĩa là dây đàn và lớp không khí xung quanh rung đúng $440$ nhịp toàn phần trong mỗi giây tích tắc!
+
+* **4. Tần số góc $\omega$ — "Cỗ máy quét pha":**  
+  Được đo bằng radian trên giây ($\text{rad/s}$). Như ta đã thấy ở Hộp công cụ Toán (Mục 2 - Cỗ máy nén thời gian), $\omega$ cho biết góc pha quét được trong một đơn vị thời gian:
+  $$\omega = \frac{2\pi}{T} = 2\pi f$$
+  $\omega$ càng lớn, đồ thị dao động bị nén càng hẹp, sườn dốc càng dựng đứng, vật chuyển động đổi chiều càng chớp nhoáng.
+
+* **5. Pha ban đầu $\varphi$ — "Dấu chân xuất phát":**  
+  Là giá trị của pha tại thời điểm bấm giờ $t = 0$. Pha ban đầu $\varphi$ (thường chọn trong khoảng $(-\pi, \pi]$) cho ta biết vị trí xuất phát và chiều chuyển động đầu tiên của vật.
+
+* **6. Pha dao động $(\omega t + \varphi)$ — "Căn cước trạng thái toàn diện":**  
+  Tại bất kỳ thời điểm $t$ nào, chỉ cần biết giá trị của góc pha $(\omega t + \varphi)$, các em lập tức suy ra được toàn bộ thông tin: vật đang ở đâu (qua $\cos$) và đang lao theo chiều nào (qua dấu của $\sin$) mà không cần tận mắt nhìn thấy vật!
+
+---
+
+### 3. Cuộc Rượt Đuổi Pha Của Hai Dao Động: Cùng Pha, Ngược Pha & Vuông Pha
+*(Đối chiếu Bài 2 & Bài 4 KNTT)*
+
+Xét hai dao động điều hòa cùng tần số góc $\omega$ nhưng có thể xuất phát ở các vị trí khác nhau:
+$$x_1(t) = A_1 \cos(\omega t + \varphi_1), \quad x_2(t) = A_2 \cos(\omega t + \varphi_2)$$
+
+Khoảng cách góc giữa hai dao động được đo bằng **Độ lệch pha**:
 $$\Delta \varphi = \varphi_2 - \varphi_1$$
 
-Tùy thuộc vào giá trị của $\Delta \varphi$, ta có 3 trường hợp kinh điển xuất hiện liên tục trong các đề thi:
+Hãy hình dung cuộc đua giữa hai chiếc xích đu được đẩy cùng nhịp: tùy thuộc vào $\Delta\varphi$, chúng sẽ tạo nên 3 kịch bản chuyển động kinh điển thường xuyên xuất hiện trong các bài thi:
 
-1. **Hai dao động cùng pha ($\Delta \varphi = 2k\pi$ với $k \in \mathbb{Z}$):**  
-   * Hai vật luôn cùng tăng, cùng giảm, cùng đạt cực đại và cùng qua vị trí cân bằng theo cùng một chiều tại cùng một thời điểm.  
-   * Tỉ số li độ luôn dương: $\frac{x_1}{A_1} = \frac{x_2}{A_2}$.
-2. **Hai dao động ngược pha ($\Delta \varphi = (2k+1)\pi$ với $k \in \mathbb{Z}$):**  
-   * Khi vật này ở biên dương thì vật kia ở biên âm; khi vật này qua VTCB theo chiều dương thì vật kia qua VTCB theo chiều âm.  
-   * Tỉ số li độ luôn đối dấu: $\frac{x_1}{A_1} = -\frac{x_2}{A_2}$.
-3. **Hai dao động vuông pha ($\Delta \varphi = (2k+1)\frac{\pi}{2}$ với $k \in \mathbb{Z}$):**  
-   * Khi một vật ở biên thì vật kia đang đi qua vị trí cân bằng.  
-   * Hai dao động thỏa mãn hệ thức độc lập dạng hình học elip:
+```
+┌────────────────────────────────────────────────────────────────────────┐
+│ BẢNG SO SÁNH 3 TRẠNG THÁI LỆCH PHA KINH ĐIỂN                           │
+├─────────────────┬──────────────────────┬───────────────────────────────┤
+│ Trạng thái pha  │ Độ lệch pha Delta phi│ Ý nghĩa hình học & Hệ thức    │
+├─────────────────┼──────────────────────┼───────────────────────────────┤
+│ 1. CÙNG PHA     │ Delta phi = 2k pi    │ Cùng dâng lên đỉnh, cùng về 0 │
+│                 │                      │ x1 / A1 = x2 / A2             │
+├─────────────────┼──────────────────────┼───────────────────────────────┤
+│ 2. NGƯỢC PHA    │ Delta phi = (2k+1)pi │ Kẻ lên đỉnh, người cắm đáy    │
+│                 │                      │ x1 / A1 = - x2 / A2           │
+├─────────────────┼──────────────────────┼───────────────────────────────┤
+│ 3. VUÔNG PHA    │ Delta phi = (2k+1)pi/2│ Kẻ dừng ở biên, người phóng VTCB│
+│                 │                      │ (x1 / A1)^2 + (x2 / A2)^2 = 1 │
+└─────────────────┴──────────────────────┴───────────────────────────────┘
+```
+
+1. **Hai dao động CÙNG PHA ($\Delta \varphi = 2k\pi$ với $k \in \mathbb{Z}$):**  
+   * **Hình ảnh thực tế:** Hai bạn ngồi trên hai chiếc xích đu đu song song chuẩn xác từng li từng tí: cùng bay lên điểm cao nhất, cùng hạ xuống vị trí thấp nhất, cùng lao vút qua vị trí cân bằng theo cùng một hướng.  
+   * **Đặc trưng giải tích:** $\cos(\omega t + \varphi_2) = \cos(\omega t + \varphi_1) \implies$ Tỉ số li độ luôn luôn dương và bằng tỉ số biên độ:
+     $$\frac{x_1(t)}{A_1} = \frac{x_2(t)}{A_2} \implies x_2(t) = \left(\frac{A_2}{A_1}\right) x_1(t)$$
+   * Đồ thị biểu diễn mối liên hệ $x_1 - x_2$ là một **đoạn thẳng dốc lên** đi qua gốc tọa độ $O$ với hệ số góc dương!
+
+2. **Hai dao động NGƯỢC PHA ($\Delta \varphi = (2k+1)\pi$ với $k \in \mathbb{Z}$):**  
+   * **Hình ảnh thực tế:** Hai chiếc xích đu đối đầu triệt để: khi bạn thứ nhất bay lên đỉnh cao nhất phía trước ($x_1 = +A_1$), thì bạn thứ hai giật lùi về điểm sâu nhất phía sau ($x_2 = -A_2$). Khi bạn này qua VTCB theo chiều dương thì bạn kia quét qua VTCB theo chiều âm.  
+   * **Đặc trưng giải tích:** $\cos(\omega t + \varphi_2) = -\cos(\omega t + \varphi_1) \implies$ Li độ hai vật luôn trái dấu nhau:
+     $$\frac{x_1(t)}{A_1} = -\frac{x_2(t)}{A_2} \implies x_2(t) = -\left(\frac{A_2}{A_1}\right) x_1(t)$$
+   * Đồ thị biểu diễn $x_1 - x_2$ là một **đoạn thẳng dốc xuống** đi qua gốc tọa độ $O$ với hệ số góc âm.  
+   * *Ứng dụng công nghệ:* Đây chính là nguyên lý của tai nghe chống ồn chủ động (Active Noise Cancelling - ANC): micro thu tiếng ồn bên ngoài và loa tai nghe phát ra một sóng âm **ngược pha $180^\circ$ ($\pi$)** để triệt tiêu hoàn toàn tiếng ồn!
+
+3. **Hai dao động VUÔNG PHA ($\Delta \varphi = (2k+1)\frac{\pi}{2}$ với $k \in \mathbb{Z}$):**  
+   * **Hình ảnh thực tế:** Đây là kịch bản "kẻ dừng ở biên, người phóng qua đáy". Khi bạn thứ nhất vừa chạm đỉnh biên và khựng lại đổi chiều ($x_1 = \pm A_1, v_1 = 0$), thì bạn thứ hai đang bay vun vút qua vị trí cân bằng với tốc độ xé gió ($x_2 = 0, |v_2| = v_{2\max}$).  
+   * **Đặc trưng giải tích:** Do một bên là $\cos$, một bên là $\pm\sin$, áp dụng hằng đẳng thức Pythagoras $\cos^2\alpha + \sin^2\alpha = 1$:
      $$\left(\frac{x_1}{A_1}\right)^2 + \left(\frac{x_2}{A_2}\right)^2 = 1$$
-   * *Ý nghĩa vật lý:* Vận tốc $v$ vuông pha với li độ $x$, và gia tốc $a$ vuông pha với vận tốc $v$!
+   * Đồ thị biểu diễn mối quan hệ giữa $x_1$ và $x_2$ là một **đường Elip chuẩn mực** nhận gốc tọa độ $O$ làm tâm đối xứng!
+   * *Nối kết trực tiếp:* Như các em sẽ thấy ngay dưới đây, trong cùng một vật dao động, **vận tốc vuông pha với li độ**, và **gia tốc vuông pha với vận tốc**!
 
 ---
 
-### 4. Dẫn Xuất Toán Học: Vận Tốc, Gia Tốc và Mối Quan Hệ Pha (Bài 3 KNTT)
+### 4. Động Học Giải Tích: Dẫn Xuất Vận Tốc, Gia Tốc & 4 Trạng Thái Chuyển Động
+*(Đối chiếu và giải mã chuyên sâu Bài 3 KNTT)*
 
-#### Bước 1: Vận tốc $v(t)$ bằng Đạo hàm Li độ
-Vận tốc tức thời là đạo hàm của li độ theo thời gian:
-$$v(t) = x'(t) = \left[A\cos(\omega t + \varphi)\right]' = -\omega A \sin(\omega t + \varphi)$$
+Bây giờ, chúng ta sẽ vận dụng toàn bộ sức mạnh của **Hộp công cụ Toán (Mục 1, 2, 3)** để giải mã trọn vẹn bộ ba phương trình động học mô tả dao động điều hòa.
 
-Dùng công thức lượng giác $-\sin\alpha = \cos(\alpha + \pi/2)$:
+#### Bước 1: Dẫn xuất Vận tốc tức thời $v(t)$
+Theo định nghĩa ở Mục 1, vận tốc tức thời là đạo hàm của li độ theo thời gian:
+$$v(t) = x'(t) = [A\cos(\omega t + \varphi)]'$$
+Vận dụng quy tắc đạo hàm hàm hợp và phát hiện dấu trừ từ chuyến tàu lượn siêu tốc ở Mục 2:
+$$v(t) = -\omega A \sin(\omega t + \varphi)$$
+
+Để so sánh pha với li độ $x = A\cos(\omega t + \varphi)$, ta cần chuyển $-\sin$ về dạng chuẩn $\cos$. Nhờ mô hình Vệ tinh $\vec{u}_2$ bay trước một góc vuông $+90^\circ$ ($\frac{\pi}{2}$) trên đường tròn ở Mục 3, ta có ngay $-\sin\alpha = \cos(\alpha + \pi/2)$:
 $$v(t) = \omega A \cos\left(\omega t + \varphi + \frac{\pi}{2}\right)$$
 
-* **Vận tốc cực đại:** $v_{\max} = \omega A$ (khi vật đi qua vị trí cân bằng $x = 0$ theo chiều dương).
-* **Độ lệch pha:** Vận tốc $v$ **sớm pha $\frac{\pi}{2}$** so với li độ $x$.
+* **Tốc độ cực đại:** Đạt được khi vật đi qua vị trí cân bằng ($x = 0$):
+  $$v_{\max} = \omega A$$
+* **Mối quan hệ pha:** Vận tốc $v(t)$ **sớm pha $\frac{\pi}{2}$** (vuông pha) so với li độ $x(t)$.
 
-#### Bước 2: Gia tốc $a(t)$ bằng Đạo hàm Vận tốc
+#### Bước 2: Dẫn xuất Gia tốc tức thời $a(t)$
 Gia tốc tức thời là đạo hàm của vận tốc theo thời gian:
-$$a(t) = v'(t) = x''(t) = \left[-\omega A \sin(\omega t + \varphi)\right]' = -\omega^2 A \cos(\omega t + \varphi)$$
+$$a(t) = v'(t) = [-\omega A \sin(\omega t + \varphi)]'$$
+Lấy đạo hàm của hàm $\sin$, cỗ máy nén thời gian tiếp tục đưa thêm một nhân tử $\omega$ ra ngoài:
+$$a(t) = -\omega^2 A \cos(\omega t + \varphi)$$
 
-Dùng công thức lượng giác $-\cos\alpha = \cos(\alpha + \pi)$:
+Dùng mô hình Vệ tinh $\vec{u}_3$ đối đầu một nửa vòng tròn $+180^\circ$ ($\pi$) ở Mục 3, ta có $-\cos\alpha = \cos(\alpha + \pi)$:
 $$a(t) = \omega^2 A \cos\left(\omega t + \varphi + \pi\right)$$
+Mặt khác, vì $x(t) = A\cos(\omega t + \varphi)$, ta rút ra hệ thức động lực học kinh điển:
+$$a(t) = -\omega^2 x(t)$$
 
-* **Gia tốc cực đại:** $a_{\max} = \omega^2 A$ (khi vật ở biên âm $x = -A$).
-* **Mối liên hệ gia tốc và li độ:** Vì $x = A\cos(\omega t + \varphi)$ nên:
-  $$a(t) = -\omega^2 x(t)$$
-* **Độ lệch pha:** Gia tốc $a$ **ngược pha hoàn toàn ($\pi$)** so với li độ $x$, và **sớm pha $\frac{\pi}{2}$** so với vận tốc $v$.
+* **Độ lớn gia tốc cực đại:** Đạt được khi vật ở hai mép biên ($x = \pm A$):
+  $$a_{\max} = \omega^2 A$$
+* **Mối quan hệ pha:** Gia tốc $a(t)$ **ngược pha hoàn toàn ($\pi$)** so với li độ $x(t)$, và **sớm pha $\frac{\pi}{2}$** so với vận tốc $v(t)$.
 
 ---
 
-![Đồ thị động học chuẩn hóa theo thời gian của dao động điều hòa: Li độ x(t), Vận tốc v(t), và Gia tốc a(t).](figures/fig1_1_kinematics.png)
+#### Hành trình 4 Trạng thái Động học xuyên suốt một Chu kì (Hình 1.1)
 
-> 🔍 **DẪN DẮT MẮT ĐỌC (Hình 1.1):**  
-> * **Hãy quan sát sự lệch pha giữa các đồ thị:**  
->   - Đồ thị li độ (màu xanh navy) đạt đỉnh tại $t = 0$.  
->   - Nhưng đồ thị vận tốc (màu xanh lá) đã đạt giá trị $0$ tại $t = 0$, và đạt đỉnh âm tại $t = T/4$.  
->   - Đồ thị gia tốc (màu đỏ thẫm) hoàn toàn uốn lượn ngược chiều so với đồ thị li độ: hễ $x$ dương thì $a$ âm, $x$ cực đại thì $a$ cực tiểu!
+Hãy quan sát đồ thị động học 3 tầng chuẩn hóa trong **Hình 1.1**. Toàn bộ quá trình chuyển động của vật trong một chu kì $T$ được chia thành **4 chặng trạng thái then chốt**:
+
+![Hình 1.1: Đồ thị động học chuẩn hóa theo thời gian của dao động điều hòa: Li độ x(t) (xanh navy), Vận tốc v(t) (xanh lá), và Gia tốc a(t) (đỏ thẫm) qua 4 mốc thời gian kinh điển 0, T/4, T/2, 3T/4.](figures/fig1_1_kinematics.png)
+
+* **Trạng thái 1 ($t = 0$): Vật ở Biên Dương ($x = +A$)**  
+  * **Li độ:** Đạt cực đại dương ($x = +A$).
+  * **Vận tốc:** Tiếp tuyến của đồ thị $x(t)$ nằm ngang $\implies v = 0$ (vật khựng lại tức thời để chuẩn bị đổi chiều).
+  * **Gia tốc:** Đạt cực tiểu âm ($a = -\omega^2 A$). Lò xo bị kéo dãn dài nhất, tác dụng lực kéo giật ngược về phía âm với cường độ mạnh nhất!
+
+* **Trạng thái 2 ($t = \frac{T}{4}$): Lao dốc qua Vị trí Cân bằng theo chiều âm ($x = 0$)**  
+  * **Li độ:** $x = 0$ (vật đi qua vị trí cân bằng).
+  * **Vận tốc:** Tiếp tuyến của đồ thị $x(t)$ dốc xuống cắm đầu mạnh nhất $\implies$ Vận tốc đạt giá trị âm cực tiểu: $v = -\omega A$ (tốc độ đạt cực đại $|v| = v_{\max}$).
+  * **Gia tốc:** Lò xo không bị biến dạng $\implies$ Lực kéo về triệt tiêu $\implies a = 0$.
+
+* **Trạng thái 3 ($t = \frac{T}{2}$): Chạm đáy Biên Âm ($x = -A$)**  
+  * **Li độ:** Đạt cực tiểu âm ($x = -A$).
+  * **Vận tốc:** Tiếp tuyến của $x(t)$ lại nằm ngang phẳng lì $\implies v = 0$ (vật dừng lại đổi chiều lần hai).
+  * **Gia tốc:** Đạt cực đại dương ($a = +\omega^2 A$). Lò xo bị nén chặt nhất, bung lực đẩy cực mạnh hướng sang phải dọc theo chiều dương!
+
+* **Trạng thái 4 ($t = \frac{3T}{4}$): Vọt lên qua Vị trí Cân bằng theo chiều dương ($x = 0$)**  
+  * **Li độ:** $x = 0$.
+  * **Vận tốc:** Tiếp tuyến của $x(t)$ nghiêng dốc lên trời mạnh nhất $\implies v = +\omega A$ (vận tốc đạt giá trị dương cực đại).
+  * **Gia tốc:** Vật qua VTCB nên lực kéo về triệt tiêu $\implies a = 0$.
+
+Sau thời điểm $t = T$, vật trở lại đúng trạng thái ban đầu ở biên dương $x = +A$ với $v = 0$, khép lại trọn vẹn một vòng tuần hoàn kỳ diệu.
 
 ---
 
 ### 5. Hệ Thức Độc Lập Thời Gian & Đồ Thị Trạng Thái $(x, v/\omega)$
+*(Bài 3 & Bài 4 KNTT)*
 
-Từ hai phương trình:
+#### Khử biến thời gian $t$ bằng Định lý Pythagoras
+Trong các phòng thí nghiệm vật lý hiện đại, các cảm biến quang học hoặc siêu âm thường đo đồng thời li độ $x$ và vận tốc $v$ của một vật dao động tại một tọa độ xác định. Làm thế nào để tính toán đại lượng này khi biết đại lượng kia mà **không cần đo thời gian $t$**?
+
+Từ hai phương trình chuẩn hóa ở Hộp công cụ Toán (Mục 3):
 $$\frac{x}{A} = \cos(\omega t + \varphi), \quad \frac{v}{\omega A} = -\sin(\omega t + \varphi)$$
 
-Bình phương hai vế rồi cộng lại:
+Bình phương hai vế rồi cộng lại, tận dụng tính chất $\cos^2\alpha + \sin^2\alpha = 1$:
 $$\left(\frac{x}{A}\right)^2 + \left(\frac{v}{\omega A}\right)^2 = \cos^2(\omega t + \varphi) + \sin^2(\omega t + \varphi) = 1$$
-Hay viết gọn lại:
-$$x^2 + \frac{v^2}{\omega^2} = A^2 \iff a = -\omega^2 x \implies \left(\frac{a}{\omega^2 A}\right)^2 + \left(\frac{v}{\omega A}\right)^2 = 1$$
 
-Đây là **hệ thức độc lập thời gian** cốt lõi giúp các em giải quyết hầu hết các bài toán tính nhanh khi không biết thời gian $t$.
+Biến đổi đại số tương đương, ta thu được các dạng biểu diễn của **Hệ thức độc lập thời gian**:
+$$x^2 + \frac{v^2}{\omega^2} = A^2 \iff A = \sqrt{x^2 + \frac{v^2}{\omega^2}} \iff |v| = \omega\sqrt{A^2 - x^2}$$
 
-![Đồ thị trạng thái (x, v/omega) biểu diễn quỹ đạo khép kín của dao động điều hòa theo chiều kim đồng hồ.](figures/fig1_2_phase_space.png)
+Tương tự, vì gia tốc $a(t) = -\omega^2 x(t) \implies \frac{x}{A} = -\frac{a}{\omega^2 A}$, ta có hệ thức độc lập giữa gia tốc và vận tốc:
+$$\left(\frac{a}{\omega^2 A}\right)^2 + \left(\frac{v}{\omega A}\right)^2 = 1 \iff \frac{a^2}{\omega^4} + \frac{v^2}{\omega^2} = A^2$$
+
+---
+
+#### Đồ thị Trạng thái Phase Space $(x, v/\omega)$ (Hình 1.2)
+
+Hệ thức độc lập thời gian mở ra một góc nhìn hình học tuyệt đẹp trong vật lý hiện đại: **Không gian trạng thái (Phase Space)**.
+
+![Hình 1.2: Đồ thị không gian trạng thái (x, v/omega). Quỹ đạo của dao động điều hòa là một đường tròn bán kính A quay thuận chiều kim đồng hồ, quét qua 4 mốc động học S0, S1, S2, S3.](figures/fig1_2_phase_space.png)
 
 > 🔍 **DẪN DẮT MẮT ĐỌC (Hình 1.2):**  
-> Nếu đặt trục hoành là li độ $x$ và trục tung là vận tốc chuẩn hóa $y = \frac{v}{\omega}$, hệ thức độc lập biến thành phương trình đường tròn $x^2 + y^2 = A^2$.  
-> Khi vật dao động, điểm trạng thái chạy trên đường tròn **thuận chiều kim đồng hồ**:  
-> * $S_0(t = 0)$: Vật ở biên dương $(+A, 0)$, vận tốc bằng $0$.  
-> * $S_1(t = T/4)$: Vật qua VTCB theo chiều âm $(0, -\omega A)$, vận tốc âm cực đại.  
-> * $S_2(t = T/2)$: Vật tới biên âm $(-A, 0)$, vận tốc bằng $0$.  
-> * $S_3(t = 3T/4)$: Vật qua VTCB theo chiều dương $(0, +\omega A)$, vận tốc dương cực đại.
+> * Nếu chọn trục hoành là li độ $x$ và trục tung là vận tốc chuẩn hóa $y = \frac{v}{\omega}$, hệ thức độc lập $\left(\frac{x}{A}\right)^2 + \left(\frac{v}{\omega A}\right)^2 = 1$ trở thành phương trình đường tròn hoàn hảo:
+>   $$x^2 + y^2 = A^2$$
+> * Khi vật dao động qua lại trên đoạn thẳng $2A$ ngoài đời thực, thì trong không gian trạng thái, **điểm biểu diễn $(x, v/\omega)$ lại chạy đều đặn trên đường tròn thuận chiều kim đồng hồ**:
+>   * $S_0(t = 0)$: Vật ở biên dương $(+A, 0)$ $\implies$ Nằm trên trục hoành bên phải.
+>   * $S_1(t = T/4)$: Vật qua VTCB theo chiều âm $(0, -A)$ $\implies$ Rơi xuống cực đáy trục tung.
+>   * $S_2(t = T/2)$: Vật tới biên âm $(-A, 0)$ $\implies$ Nằm trên trục hoành bên trái.
+>   * $S_3(t = 3T/4)$: Vật qua VTCB theo chiều dương $(0, +A)$ $\implies$ Vọt lên đỉnh cao nhất trục tung.
+> * Các vòng tròn đồng tâm tương ứng với các mức năng lượng và biên độ khác nhau: biên độ càng lớn ($A_3 > A_2 > A_1$), quỹ đạo trạng thái càng mở rộng ra ngoài!
 
 ---
 
-### 6. Bài Toán Tính Số Thực Tế 1.1 (Theo Dạng Bài 4 KNTT)
+### 6. Bài Toán Tính Số Thực Tế 1.1: Màng Loa Điện Thoại & Gia Tốc Khổng Lồ
+*(Bài tập vận dụng thực tế theo chuẩn Bài 4 SGK Kết nối tri thức)*
 
-> **Bài toán:** Một màng loa tai nghe điện thoại dao động điều hòa phát ra âm La ($440\text{ Hz}$) với biên độ rung $A = 0.5\text{ mm} = 0.5 \times 10^{-3}\text{ m}$.  
+> 🎧 **BÀI TOÁN THỰC TẾ:**  
+> Một chiếc màng loa tai nghe in-ear dao động điều hòa phát ra nốt La chuẩn có tần số $f = 440\text{ Hz}$. Khi đo bằng thiết bị laser giao thoa, người ta ghi nhận biên độ rung của màng loa là $A = 0.5\text{ mm} = 0.5 \times 10^{-3}\text{ m}$.  
 > 1. Tính tần số góc $\omega$ và chu kì dao động $T$ của màng loa.  
-> 2. Tính tốc độ cực đại $v_{\max}$ và gia tốc cực đại $a_{\max}$ của màng loa.  
-> 3. Khi màng loa đang ở vị trí $x = 0.3\text{ mm}$, hãy tính tốc độ tức thời của màng loa.
+> 2. Tính tốc độ cực đại $v_{\max}$ và gia tốc cực đại $a_{\max}$ mà màng loa đạt được.  
+> 3. Khi màng loa đang ở li độ $x = 0.3\text{ mm}$, hãy tính tốc độ tức thời của màng loa.  
+> 4. Hãy so sánh gia tốc cực đại của màng loa với gia tốc trọng trường $g \approx 9.8\text{ m/s}^2$ và giải thích nghịch lý: vì sao màng loa mỏng manh lại chịu nổi gia tốc khủng khiếp như vậy?
 > 
-> **Lời giải chi tiết:**  
-> 1. **Tần số góc và chu kì:**  
+> ---
+> 
+> 📝 **HƯỚNG DẪN GIẢI CHI TIẾT:**  
+> 1. **Tần số góc $\omega$ và chu kì $T$:**  
 >    * $\omega = 2\pi f = 2\pi \times 440 \approx 2764.6\text{ rad/s}$.  
 >    * $T = \frac{1}{f} = \frac{1}{440} \approx 0.00227\text{ s} = 2.27\text{ ms}$.  
-> 2. **Tốc độ cực đại và gia tốc cực đại:**  
->    * $v_{\max} = \omega A = 2764.6 \times (0.5 \times 10^{-3}) \approx 1.38\text{ m/s}$.  
->    * $a_{\max} = \omega^2 A = (2764.6)^2 \times (0.5 \times 10^{-3}) \approx 3821.5\text{ m/s}^2 \approx 390\text{ g}$.  
+>    *(Mỗi nhịp rung toàn phần của màng loa diễn ra chỉ vỏn vẹn trong hơn 2 phần nghìn giây!)*  
+> 
+> 2. **Tốc độ cực đại $v_{\max}$ và gia tốc cực đại $a_{\max}$:**  
+>    * $v_{\max} = \omega A = 2764.6 \times (0.5 \times 10^{-3}) \approx 1.38\text{ m/s} \approx 5\text{ km/h}$.  
+>    * $a_{\max} = \omega^2 A = (2764.6)^2 \times (0.5 \times 10^{-3}) \approx 3821.5\text{ m/s}^2$.  
+> 
 > 3. **Tốc độ tức thời khi $x = 0.3\text{ mm}$:**  
->    Áp dụng hệ thức độc lập thời gian:  
+>    Áp dụng hệ thức độc lập thời gian Pythagoras:  
 >    $$x^2 + \frac{v^2}{\omega^2} = A^2 \implies |v| = \omega \sqrt{A^2 - x^2}$$  
->    Thay số trực tiếp:  
->    $$|v| = 2764.6 \times \sqrt{0.5^2 - 0.3^2} = 2764.6 \times 0.4 = 1105.8\text{ mm/s} \approx 1.11\text{ m/s}$$
+>    Thay số trực tiếp với đơn vị thống nhất ($\text{mm}$):  
+>    $$|v| = 2764.6 \times \sqrt{0.5^2 - 0.3^2} = 2764.6 \times 0.4 = 1105.8\text{ mm/s} \approx 1.11\text{ m/s}$$  
+> 
+> 4. **Giải mã nghịch lý gia tốc khổng lồ:**  
+>    * So sánh với gia tốc trọng trường: $\frac{a_{\max}}{g} = \frac{3821.5}{9.8} \approx 390\text{ g}$!  
+>    * *Nghịch lý:* Một phi hành gia trên tàu vũ trụ chỉ có thể chịu được gia tốc tối đa khoảng $9g - 10g$ trước khi bất tỉnh. Vậy tại sao chiếc màng loa mỏng dính như cánh ve lại chịu được gia tốc lên tới $390g$ mà không bị rách toạc?  
+>    * *Bản chất vật lý:* Theo định luật II Newton, lực tác dụng gây phá hủy vật liệu là $F = ma$. Màng loa tai nghe có khối lượng cực kỳ nhỏ (chỉ vài miligam: $m \sim 10^{-5}\text{ kg}$). Do đó, lực quán tính tác dụng lên nó chỉ cỡ $F \approx 10^{-5} \times 3820 \approx 0.038\text{ N}$ — một lực rất nhỏ bé, tương đương sức nặng của một mẩu giấy nhỏ, nên màng loa hoàn toàn bền vững!
 
 ---
 
-> ⚠️ **CẢNH BÁO BẪY ĐỀ THI:**  
-> * **Bẫy 1:** Nhầm lẫn *"ở biên vận tốc bằng 0 thì gia tốc cũng bằng 0"*.  
->   $\rightarrow$ **Thực tế:** Ở biên, lò xo bị nén/dãn mạnh nhất nên lực hồi phục lớn nhất, gia tốc đạt **cực đại** ($a = \pm \omega^2 A$).  
-> * **Bẫy 2:** Nhầm lẫn *"qua VTCB gia tốc bằng 0 thì vận tốc cũng bằng 0"*.  
->   $\rightarrow$ **Thực tế:** Qua VTCB, lực triệt tiêu nên $a = 0$, nhưng vận tốc lại đạt **cực đại** ($|v| = v_{\max} = \omega A$).
+### 7. Hộp Cứu Nguy: 3 "Tử Huyệt" Dễ Mắc Bẫy Nhất Trong Đề Thi
+
+```
+┌────────────────────────────────────────────────────────────────────────┐
+│  ⚠️ CẢNH BÁO BẪY ĐỀ KIỂM TRA & KÌ THI TỐT NGHIỆP THPT                  │
+├────────────────────────────────────────────────────────────────────────┤
+│ TỬ HUYỆT 1: "Ở biên vật đứng lại (v = 0) nên gia tốc cũng bằng 0 (?)" │
+│ ➔ SAI LẦM PHỔ BIẾN NHẤT!                                               │
+│ • Bản chất đúng: Ở biên, vận tốc bằng 0 vì đồ thị x(t) nằm ngang (độ   │
+│   dốc triệt tiêu). Nhưng lúc này vật lệch xa nhất, lò xo bị nén/dãn cực│
+│   đại nên LỰC KÉO VỀ ĐẠT CỰC ĐẠI ➔ Gia tốc đạt ĐỘ LỚN CỰC ĐẠI:        │
+│   |a| = a_max = omega^2 A!                                             │
+├────────────────────────────────────────────────────────────────────────┤
+│ TỬ HUYỆT 2: "Qua VTCB lực bằng 0 (a = 0) nên vật tạm dừng (v = 0) (?)" │
+│ ➔ SAI LẦM TAI HẠI!                                                     │
+│ • Bản chất đúng: Qua VTCB, lò xo không biến dạng nên lực bằng 0 ➔ a = 0.│
+│   Nhưng suốt quãng đường lao dốc trước đó, lực đã liên tục tăng tốc cho│
+│   vật, tích lũy động năng lên mức đỉnh điểm. Do quán tính, vật lao qua │
+│   VTCB với TỐC ĐỘ LỚN NHẤT: |v| = v_max = omega A!                     │
+├────────────────────────────────────────────────────────────────────────┤
+│ TỬ HUYỆT 3: Quên mất dấu âm trong hệ thức gia tốc: a = omega^2 x (?)   │
+│ ➔ SAI VỀ BẢN CHẤT LỰC HỒI PHỤC!                                        │
+│ • Bản chất đúng: Bắt buộc phải là a = - omega^2 x. Dấu trừ mang ý nghĩa│
+│   sống còn: véctơ gia tốc LUÔN LUÔN HƯỚNG VỀ VỊ TRÍ CÂN BẰNG, ngược   │
+│   chiều với véctơ li độ! Nếu mang dấu dương, vật sẽ bị đẩy văng ra xa  │
+│   mãi mãi thay vì dao động!                                            │
+└────────────────────────────────────────────────────────────────────────┘
+```
+
 
 ---
 
