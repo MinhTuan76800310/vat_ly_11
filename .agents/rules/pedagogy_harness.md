@@ -1,10 +1,74 @@
 # Pedagogy Harness — Chuẩn Mực Sư Phạm Dành Cho Học Sinh Lớp 11 Việt Nam
 
-Tài liệu này là "bộ lọc sư phạm" kiểm soát văn phong và mức độ tiếp thu khi biên soạn các chương sách Vật Lí 11 Chuyên Sâu.
+Tài liệu này là "bộ lọc sư phạm" và cẩm nang phương pháp luận kiểm soát văn phong, tư duy dẫn dắt và mức độ tiếp thu khi biên soạn các chương sách Vật Lí 11 Chuyên Sâu.
 
 ---
 
-## 1. Tôn Chỉ Cốt Lõi: Đơn Giản Hóa Bản Chất, Không Đánh Đố Học Sinh
+## 1. Nghệ Thuật Biên Soạn & Cách Dẫn Dắt Tài Liệu (Storytelling & Inductive Discovery Method)
+
+Mọi bài học, mục giải thích lý thuyết hay tài liệu chuyên đề bắt buộc phải tuân thủ nghiêm ngặt 5 trụ cột phương pháp luận sau:
+
+### Trụ cột 1: Dẫn Dắt Khám Phá Tự Nhiên (Inductive Discovery) — CẤM ÁP ĐẶT CÔNG THỨC TRƯỚC
+1. **Quy tắc bất biến**: Tuyệt đối **KHÔNG BAO GIỜ** nhảy vào phát biểu kết quả, định lý hay công thức trước rồi mới đi chứng minh hay kiểm chứng.
+2. **Quy trình 5 bước khám phá**:
+   - *Bước 1: Khởi đầu từ định nghĩa/công cụ nền tảng đã biết*: Đặt bài toán tìm quy luật mới dựa trên nền tảng sẵn có (ví dụ: đã biết vận tốc là độ dốc tiếp tuyến $v(t) = x'(t)$ $\implies$ giờ muốn tìm vận tốc của $x(t) = \cos(t)$ thì giải tích là gì khi chưa biết công thức đạo hàm?).
+   - *Bước 2: Nhập vai trải nghiệm thực tế*: Đặt người đọc vào một bối cảnh trực quan cụ thể (ví dụ: ngồi trên toa tàu lượn siêu tốc chạy trên đường ray $\cos(t)$ và đo độ dốc qua từng chặng đường).
+   - *Bước 3: Tạo nút thắt nhận thức (Mystery / Cognitive Tension)*:
+     - Tại điểm đầu tiên (đỉnh đồi $t = 0$), tiếp tuyến nằm ngang $\implies$ độ dốc bằng $0$. Hàm triệt tiêu tại 0 là $\sin(t)$.
+     - **Bắt buộc nhấn mạnh nút thắt sư phạm**: Vì $(+\sin 0) = 0$ mà $(-\sin 0)$ cũng bằng $0$, **tại đỉnh đồi chúng ta CHƯA THỂ BIẾT dấu của đạo hàm là cộng hay trừ!** Dấu của đạo hàm vẫn là một ẩn số lớn đang chờ giải mã.
+   - *Bước 4: Thời khắc lật mở chân lý (Revelation)*:
+     - Chuyển sang trạng thái tiếp theo (lao dốc qua VTCB tại $t = \pi/2$), mũi xe chúi xuống $\implies$ độ dốc tiếp tuyến chắc chắn mang dấu ÂM ($-1$).
+     - Đối chiếu 2 khả năng: Nếu là $+\sin$ thì tại $\pi/2$ cho $+1$ (Dương $\implies$ mâu thuẫn với thực tế lao dốc); nếu là $-\sin$ thì cho $-1$ (Âm $\implies$ khớp tuyệt đối). Từ đó, dấu trừ được lật mở tự nhiên và tất yếu: $[\cos(t)]' = -\sin(t)$!
+   - *Bước 5: Kiểm chứng củng cố*: Cho xe chạy tiếp qua đáy vực (độ dốc 0) và vọt lên trời qua VTCB (độ dốc $+1$) để củng cố niềm tin tuyệt đối cho người học.
+
+---
+
+### Trụ cột 2: Tính Kế Thừa & Mạch Nối Hữu Cơ Giữa Các Mục (Organic Thread & Cohesion)
+1. **Cấm tư duy ốc đảo**: Tuyệt đối không viết các mục như các bài tiểu luận độc lập, rời rạc.
+2. **Kỹ thuật cầu nối (Bridge Transition)**:
+   - *Cuối mỗi mục*: Luôn kết thúc bằng một câu hỏi bỏ ngỏ, một rào cản tính toán hoặc một nút thắt mà bài toán thực tế đặt ra.
+   - *Đầu mục tiếp theo*: Bắt buộc có tiểu mục **"Bước chuyển / Mối nối từ Mục trước"**, giải thích rõ: mục trước đã đạt được vũ khí gì, vũ khí đó dẫn tới câu hỏi tự nhiên nào, và mục này sẽ dùng nó để giải quyết nút thắt ra sao.
+
+---
+
+### Trụ cột 3: Giải Mã Bản Chất Vật Lý Thay Vì Miêu Tả Hình Thức (Demystifying Physical Essences)
+1. **Khởi đầu bằng Nghịch lý Trực giác (Intuitive Paradox)**:
+   - Luôn bắt đầu bài học bằng quan sát đời sống và đặt ra câu hỏi "lệch trực giác" (Ví dụ: Chiếc màng loa điện thoại chỉ chuyển động thụt thò thẳng tắp, không hề quay tròn, vậy tại sao lại mô tả bằng hàm $\cos$ vốn sinh ra từ đường tròn? Có phải vật quay tròn ngầm không?).
+2. **Không thỏa hiệp với giải thích hình thức**:
+   - Mô hình "bóng của chuyển động tròn" chỉ là hình ảnh phản chiếu hình học, không phải nguyên nhân vật lý!
+3. **Đào sâu đến nguyên nhân động lực học gốc rễ**:
+   - Khi lệch khỏi VTCB bền $\implies$ môi trường sinh ra lực kéo về $F_{kv} = -kx$.
+   - Theo Định luật II Newton: $a = F/m = -(k/m)x = -\omega^2 x$.
+   - Vì gia tốc là đạo hàm cấp hai $a = x''$, tự nhiên bắt buộc hàm số $x(t)$ phải thỏa mãn: $x''(t) = -\omega^2 x(t)$.
+   - Trong toàn bộ toán học, **chỉ có duy nhất hàm lượng giác $\cos$ và $\sin$ mới có siêu năng lực lấy đạo hàm 2 lần quay lại chính nó nhưng đổi dấu trừ**. Chính quy luật lực kéo về đã chọn hàm cosin!
+
+---
+
+### Trụ cột 4: Trực Quan Hóa Đa Trạng Thái (State-Based Pedagogy)
+1. **Chia tiến trình thành các trạng thái mốc then chốt (Milestones)**:
+   - Khi mô tả dao động, động học, năng lượng: không viết chung chung mà bắt buộc chia thành chuỗi trạng thái (Trạng thái 1, 2, 3, 4 tương ứng $t = 0, T/4, T/2, 3T/4$).
+2. **Phân tích đối chiếu 4 chiều tại mỗi trạng thái**:
+   - *Li độ $x$*: Đang ở đâu? (Biên dương, VTCB, Biên âm).
+   - *Vận tốc $v$*: Tiếp tuyến đồ thị dốc thế nào? (Ngang phẳng lì $\implies v=0$, cắm đầu $\implies v = -v_{\max}$, dựng đứng $\implies v = +v_{\max}$).
+   - *Lực & Gia tốc*: Lò xo nén hay dãn? Véc-tơ lực giằng kéo về đâu?
+   - *Năng lượng / Đời sống*: Động năng hay thế năng áp đảo? Trực giác đời sống tương ứng.
+3. **Mỗi trạng thái bắt buộc có hình vẽ tương ứng**: Hình vẽ không được là một đường cong vô tri mà phải đánh dấu tọa độ trạng thái, véc-tơ tiếp tuyến và véc-tơ lực.
+
+---
+
+### Trụ cột 5: Ngôn Ngữ Hình Tượng, Bộ Mã Gen ADN & Phá Bẫy Nhận Thức
+1. **Ẩn dụ sư phạm đắt giá**:
+   - Tần số góc $\omega$: "Cỗ máy nén thời gian" (nén thời gian làm đồ thị dốc gấp $\omega$ lần $\implies [\cos(\omega t)]' = -\omega\sin(\omega t)$).
+   - Vòng tròn pha: "Chiếc đồng hồ vũ trụ với 3 vệ tinh $\vec{u}_1, \vec{u}_2, \vec{u}_3$ rượt đuổi nhau" (chứng minh hệ thức độc lập thời gian thực chất là Định lý Pythagoras; vận tốc bứt phá chạy trước $90^\circ$; gia tốc đối đầu $180^\circ$).
+   - Các đại lượng $A, \omega, \varphi, T, f$: "Bộ mã gen (ADN) định danh trạng thái chuyển động".
+   - Ngược pha: Gắn liền với "Nguyên lý tai nghe chống ồn chủ động ANC phát sóng âm ngược pha $180^\circ$".
+2. **Hộp Cứu Nguy — Phá bẫy nhận thức (Misconception Buster)**:
+   - Nhận diện các bẫy trực giác học sinh hay mắc (ví dụ: ở biên đứng lại $v=0$ tưởng nhầm $a=0$; qua VTCB lực bằng 0 tưởng nhầm dừng lại $v=0$).
+   - Phân tích cội nguồn sai lầm và dùng định luật động lực học để đập tan ngộ nhận.
+
+---
+
+## 2. Tôn Chỉ Sư Phạm Cốt Lõi: Đơn Giản Hóa Bản Chất, Không Đánh Đố Học Sinh
 
 > **Quy tắc vàng**: *"Một nhà vật lý giỏi là người có thể giải thích bản chất sâu xa nhất của vũ trụ cho một học sinh trung học phổ thông hiểu mà không cần núp bóng sau những phương trình phức tạp."*
 
@@ -15,7 +79,7 @@ Mục tiêu của sách không phải là "khoe kiến thức đại học", mà
 
 ---
 
-## 2. Các Giới Hạn Sư Phạm Bắt Buộc
+## 3. Các Giới Hạn Sư Phạm Bắt Buộc
 
 ### Giới hạn 1: Bộ Công Cụ Toán Học Chuẩn Lớp 11
 * **Được dùng tự nhiên**:
@@ -87,7 +151,7 @@ Khi được yêu cầu viết hoặc chuyển ngữ sang tiếng Anh cho đối
 
 ---
 
-## 3. Checklist Tự Kiểm Định Độ Phù Hợp Lớp 11 (Audience-Fit Gate)
+## 4. Checklist Tự Kiểm Định Độ Phù Hợp Lớp 11 (Audience-Fit Gate)
 
 Trước khi xuất bản hoặc hoàn tất chương sách, tự đặt 5 câu hỏi:
 1. *Một học sinh lớp 11 nắm chắc SGK có hiểu được bài viết này mà không cần tra cứu giáo trình đại học không?*

@@ -40,6 +40,12 @@ Tài liệu hướng dẫn quy chuẩn biên soạn và nghiên cứu khoa học
   - *Chủ đề 3*: Tương ứng Bài 6 KNTT (Dao động tắt dần, Dao động duy trì, Dao động cưỡng bức, Hiện tượng cộng hưởng).
 - **Mã nguồn, Scripts, Configs**: Viết bằng tiếng Anh kèm chú thích chi tiết.
 - **Git Commit Messages**: Tiếng Anh theo chuẩn Conventional Commits (`feat:`, `fix:`, `docs:`, `refactor:`, `chore:`).
+- **Phương Pháp Luận Biên Soạn & Dẫn Dắt Sư Phạm (Storytelling & Inductive Discovery)**:
+  - **Cấm tuyệt đối áp đặt công thức trước**: Không bao giờ đưa ra công thức rồi mới đi kiểm chứng; luôn bắt đầu từ công cụ đã biết ở mục trước $\to$ dẫn dắt người đọc nhập vai trải nghiệm $\to$ tạo "nút thắt nhận thức" (tại đỉnh đồi dốc bằng 0 nên chưa thể biết dấu của đạo hàm) $\to$ chuyển trạng thái lật mở chân lý (đổ đèo dốc âm) $\to$ kiểm chứng củng cố.
+  - **Mạch nối hữu cơ giữa các mục**: Cuối mục trước luôn có câu hỏi mở/rào cản thực tế; đầu mục sau bắt buộc có phần "Bước chuyển / Mối nối từ Mục trước" làm điểm tựa giải quyết vấn đề mới. Không viết các mục rời rạc như ốc đảo.
+  - **Đào sâu bản chất động lực học gốc rễ**: Khởi đầu bằng nghịch lý trực giác đời sống; không dừng ở hình thức phản chiếu (bóng chuyển động tròn) mà lý giải bằng lực kéo về $F_{kv} = -kx \implies x''(t) = -\omega^2 x(t)$ (chỉ có hàm điều hòa mới đạo hàm 2 lần đổi dấu).
+  - **Trực quan hóa đa trạng thái (State-Based Pedagogy)**: Mọi chuyển động/chu kì đều chia thành chuỗi trạng thái mốc then chốt ($t = 0, T/4, T/2, 3T/4$). Tại mỗi mốc mổ xẻ 4 chiều: Li độ - Vận tốc (độ dốc) - Lực/Gia tốc (giằng kéo) - Hiện tượng thực tế.
+  - **Ngôn ngữ hình tượng sống động**: "Cỗ máy nén thời gian $\omega$", "Chiếc đồng hồ vũ trụ với 3 vệ tinh", "Bộ mã gen ADN của phương trình", "Tai nghe chống ồn chủ động ANC", "Tử huyệt nhận thức đề thi".
 - **Quy Chuẩn Bảng Biểu & Hình Vẽ Minh Họa**:
   - **Tuyệt đối KHÔNG dùng ký tự khung vẽ ASCII** (`┌──┐`, `│`, `├`, v.v.) trong bản thảo sách (`book/*.md`); bắt buộc dùng bảng Markdown chuẩn (`| ... |`) và khối cảnh báo (`> ⚠️ **...**`).
   - **Bắt buộc phong phú hình ảnh minh họa khoa học**: Mọi phân tích mô hình, đồ thị động học, giải mã sóng và so sánh độ lệch pha đều phải có hình vẽ trực quan chất lượng cao (PNG 300 DPI và vector PDF) xuất từ `scripts/generate_figures.py`.
