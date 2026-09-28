@@ -10,6 +10,7 @@ Outputs both PDF (vector) and PNG (300 DPI) into book/figures/.
 import os
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.patches as patches
 
 # Professional, legible plot styling
 plt.rcParams.update({
@@ -315,6 +316,386 @@ def plot_fig1_0c_trig_circle():
     fig.savefig(os.path.join(FIG_DIR, 'fig1_0c_trig_circle.pdf'))
     plt.close()
     print("Generated: fig1_0c_trig_circle")
+
+# -------------------------------------------------------------
+# Figure 1.1a: Restoring Force Mechanism & Dynamic Equation
+# -------------------------------------------------------------
+def plot_fig1_1a_restoring_force():
+    def draw_spring(ax, x_start, x_end, y, n_coils=9, width=0.15, color='#475569', lw=1.8):
+        length = x_end - x_start
+        lead = 0.22 * min(length, 0.8)
+        coil_len = length - 2 * lead
+        xs = [x_start, x_start + lead]
+        ys = [y, y]
+        for i in range(n_coils):
+            xi = x_start + lead + (i + 0.5) / n_coils * coil_len
+            yi = y + (width if i % 2 == 0 else -width)
+            xs.append(xi)
+            ys.append(yi)
+        xs.extend([x_end - lead, x_end])
+        ys.extend([y, y])
+        ax.plot(xs, ys, color=color, lw=lw)
+
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11.5, 5.0))
+
+    # --- Panel 1: Physical Model ---
+    ax1.set_xlim(-3.6, 2.8)
+    ax1.set_ylim(-0.9, 3.4)
+    ax1.axis('off')
+
+    # Left wall
+    ax1.plot([-3.2, -3.2], [-0.3, 3.2], color='#334155', lw=3.0)
+    for y_hatch in np.linspace(-0.2, 3.1, 15):
+        ax1.plot([-3.45, -3.2], [y_hatch - 0.15, y_hatch], color='#64748B', lw=1.5)
+
+    # Reference dashed lines for -A, O, +A
+    for x_ref, col, lbl in zip([-1.6, 0.0, 1.6], ['#A6192E', '#64748B', '#1B365D'], [r'Biên âm $-A$', r'VTCB $O$', r'Biên dương $+A$']):
+        ax1.plot([x_ref, x_ref], [-0.5, 3.2], color=col, linestyle='--', lw=1.2, alpha=0.7)
+        ax1.text(x_ref, 3.25, lbl, color=col, ha='center', fontsize=9.5, fontweight='bold')
+
+    # State 1: Stretched (Top, y=2.4)
+    y1 = 2.4
+    draw_spring(ax1, -3.2, 1.2, y1, n_coils=10, width=0.14, color='#1E6B52')
+    rect1 = patches.Rectangle((1.2, y1 - 0.25), 0.8, 0.5, facecolor='#1B365D', edgecolor='#0F172A', lw=1.5, zorder=5)
+    ax1.add_patch(rect1)
+    ax1.text(1.6, y1, r'$m$', color='white', ha='center', va='center', fontweight='bold', fontsize=11, zorder=6)
+    # Force arrow from front face of block
+    ax1.annotate('', xy=(0.3, y1), xytext=(1.2, y1), arrowprops=dict(arrowstyle='->', lw=2.2, color='#A6192E'))
+    ax1.text(0.75, y1 + 0.15, r'$\vec{F}_{kv} < 0$', color='#A6192E', ha='center', fontsize=9.5, fontweight='bold')
+    ax1.text(-1.0, y1 + 0.38, 'Lò xo dãn: ' + r'$\vec{F}_{kv}$' + ' giằng ngược về VTCB', color='#1B365D', fontsize=9.0, fontweight='bold')
+
+    # State 2: Equilibrium (Middle, y=1.4)
+    y2 = 1.4
+    draw_spring(ax1, -3.2, -0.4, y2, n_coils=8, width=0.14, color='#64748B')
+    rect2 = patches.Rectangle((-0.4, y2 - 0.25), 0.8, 0.5, facecolor='#475569', edgecolor='#0F172A', lw=1.5, zorder=5)
+    ax1.add_patch(rect2)
+    ax1.text(0.0, y2, r'$m$', color='white', ha='center', va='center', fontweight='bold', fontsize=11, zorder=6)
+    ax1.text(-1.0, y2 + 0.38, 'VTCB: Lò xo tự nhiên, ' + r'$F_{kv} = 0, a = 0$', color='#475569', fontsize=9.0, fontweight='bold')
+
+    # State 3: Compressed (Bottom, y=0.4)
+    y3 = 0.4
+    draw_spring(ax1, -3.2, -2.0, y3, n_coils=6, width=0.14, color='#A6192E')
+    rect3 = patches.Rectangle((-2.0, y3 - 0.25), 0.8, 0.5, facecolor='#A6192E', edgecolor='#0F172A', lw=1.5, zorder=5)
+    ax1.add_patch(rect3)
+    ax1.text(-1.6, y3, r'$m$', color='white', ha='center', va='center', fontweight='bold', fontsize=11, zorder=6)
+    # Force arrow from front face of block
+    ax1.annotate('', xy=(-0.3, y3), xytext=(-1.2, y3), arrowprops=dict(arrowstyle='->', lw=2.2, color='#A6192E'))
+    ax1.text(-0.75, y3 + 0.15, r'$\vec{F}_{kv} > 0$', color='#A6192E', ha='center', fontsize=9.5, fontweight='bold')
+    ax1.text(-1.0, y3 + 0.38, 'Lò xo nén: ' + r'$\vec{F}_{kv}$' + ' đẩy xuôi về VTCB', color='#A6192E', fontsize=9.0, fontweight='bold')
+
+    # Coordinate axis Ox at bottom
+    ax1.annotate('', xy=(2.6, -0.5), xytext=(-3.2, -0.5), arrowprops=dict(arrowstyle='->', lw=1.8, color='black'))
+    ax1.text(2.65, -0.5, r'$x$', color='black', va='center', fontsize=12, fontweight='bold')
+    for x_tick, tick_lbl in zip([-1.6, 0.0, 1.6], [r'$-A$', r'$0$', r'$+A$']):
+        ax1.plot([x_tick, x_tick], [-0.55, -0.45], color='black', lw=1.5)
+        ax1.text(x_tick, -0.72, tick_lbl, ha='center', fontsize=10.5, fontweight='bold')
+
+    ax1.set_title(r'(a) Mô hình vật lý: Lực kéo về luôn hướng về VTCB', fontsize=11.5, fontweight='bold')
+
+    # --- Panel 2: Mathematical Graph F_kv = -kx ---
+    x_pts = np.linspace(-2.0, 2.0, 200)
+    k = 1.5
+    F_pts = -k * x_pts
+
+    ax2.axhline(0, color='black', lw=1.2)
+    ax2.axvline(0, color='black', lw=1.2)
+
+    # Shading quadrants
+    ax2.fill_between([0, 2.0], [0, 0], [-3.2, -3.2], facecolor='#FEF2F2', alpha=0.5, label='Vùng lệch phải ' + r'($x > 0 \Rightarrow F < 0$)')
+    ax2.fill_between([-2.0, 0], [0, 0], [3.2, 3.2], facecolor='#F0FDF4', alpha=0.5, label='Vùng lệch trái ' + r'($x < 0 \Rightarrow F > 0$)')
+
+    # Graph line
+    ax2.plot(x_pts, F_pts, color='#A6192E', lw=2.4, label=r'Lực kéo về $F_{kv} = -k x$')
+
+    # Points -A, +Fmax and +A, -Fmax
+    A_val = 1.6
+    F_max = k * A_val
+    ax2.scatter([-A_val, 0, A_val], [F_max, 0, -F_max], color='#A6192E', s=60, zorder=5)
+
+    # Dashed projections
+    ax2.plot([-A_val, -A_val, 0], [0, F_max, F_max], color='#64748B', linestyle='--', lw=1.0)
+    ax2.plot([A_val, A_val, 0], [0, -F_max, -F_max], color='#64748B', linestyle='--', lw=1.0)
+
+    ax2.set_xticks([-A_val, 0, A_val])
+    ax2.set_xticklabels([r'$-A$', r'$0$', r'$+A$'], fontsize=11)
+    ax2.set_yticks([-F_max, 0, F_max])
+    ax2.set_yticklabels([r'$-F_{\max}$', r'$0$', r'$+F_{\max}$'], fontsize=11)
+
+    ax2.set_xlabel(r'Li độ $x$ (m)', fontsize=11.5)
+    ax2.set_ylabel(r'Lực kéo về $F_{kv}$ (N)', fontsize=11.5)
+    ax2.set_title(r'(b) Đồ thị Lực kéo về: Luôn ngược dấu với li độ', fontsize=11.5, fontweight='bold')
+    ax2.legend(loc='lower left', fontsize=8.8, framealpha=0.92)
+
+    # Explanatory callout
+    ax2.annotate('Bản chất toán học:\n' +
+                 r'$F_{kv} = m a = -k x$' + '\n' +
+                 r'$\Rightarrow a = x^{\prime\prime}(t) = -\omega^2 x(t)$' + '\n' +
+                 r'Chỉ hàm $\cos(\omega t + \varphi)$ mới có' + '\n' +
+                 r'đạo hàm bậc 2 đổi dấu: $(x)^{\prime\prime} = -\omega^2 x$!',
+                 xy=(0.2, 1.4), xytext=(0.15, 0.8),
+                 fontsize=9.0, color='#1B365D', fontweight='bold',
+                 bbox=dict(boxstyle='round,pad=0.35', facecolor='#F8FAFC', edgecolor='#1B365D', alpha=0.95))
+
+    plt.tight_layout()
+    fig.savefig(os.path.join(FIG_DIR, 'fig1_1a_restoring_force.png'), dpi=300)
+    fig.savefig(os.path.join(FIG_DIR, 'fig1_1a_restoring_force.pdf'))
+    plt.close()
+    print("Generated: fig1_1a_restoring_force")
+
+# -------------------------------------------------------------
+# Figure 1.1b: Anatomy of Cosine Waveform
+# -------------------------------------------------------------
+def plot_fig1_1b_cosine_anatomy():
+    fig, ax = plt.subplots(figsize=(11.0, 5.8))
+
+    A = 4.0
+    T = 2.0
+    omega = 2 * np.pi / T  # pi
+    phi = -np.pi / 3
+
+    t = np.linspace(0, 2.6, 600)
+    x = A * np.cos(omega * t + phi)
+
+    ax.plot(t, x, color='#1B365D', lw=2.6, label=r'Đồ thị li độ: $x(t) = A\cos(\omega t + \varphi)$')
+
+    # Horizontal boundary guides
+    ax.axhline(A, color='#1E6B52', linestyle='--', lw=1.2, alpha=0.8)
+    ax.axhline(-A, color='#A6192E', linestyle='--', lw=1.2, alpha=0.8)
+    ax.axhline(0, color='black', lw=1.0)
+
+    # Vertical span: L = 2A and Amplitude A
+    ax.annotate('', xy=(-0.25, A), xytext=(-0.25, -A), arrowprops=dict(arrowstyle='<->', color='#1B365D', lw=1.6))
+    ax.text(-0.28, 0, 'Chiều dài quỹ đạo\n' + r'$L = 2A = 8\text{ cm}$', color='#1B365D', ha='right', va='center', fontsize=8.8, fontweight='bold')
+
+    ax.annotate('', xy=(-0.10, A), xytext=(-0.10, 0), arrowprops=dict(arrowstyle='<->', color='#1E6B52', lw=1.6))
+    ax.text(-0.12, A/2, r'Biên độ $A = 4\text{ cm}$', color='#1E6B52', ha='right', va='center', fontsize=8.8, fontweight='bold')
+
+    # Initial point at t=0
+    x0 = A * np.cos(phi)
+    ax.scatter([0], [x0], color='#D97706', s=70, zorder=6)
+    ax.annotate('Xuất phát lúc ' + r'$t = 0$:' + '\n' +
+                r'$x_0 = A\cos\varphi = 2\text{ cm}$' + '\n' +
+                'Dốc lên ' + r'$\Rightarrow v_0 > 0$',
+                xy=(0, x0), xytext=(0.08, 0.5),
+                fontsize=8.5, color='#B45309', fontweight='bold',
+                arrowprops=dict(arrowstyle='->', color='#D97706', lw=1.2),
+                bbox=dict(boxstyle='round,pad=0.25', facecolor='#FEF3C7', edgecolor='#D97706', alpha=0.95))
+
+    # Peak 1 (t = 1/3)
+    t_p1 = 1.0 / 3.0
+    ax.scatter([t_p1], [A], color='#1E6B52', s=70, zorder=6)
+    ax.plot([t_p1 - 0.2, t_p1 + 0.2], [A, A], color='#1E6B52', lw=2.2)
+    ax.annotate('Biên dương ' + r'($x = +A$):' + '\n' + 'Tiếp tuyến ngang ' + r'$\Rightarrow v = 0$',
+                xy=(t_p1, A), xytext=(t_p1 - 0.15, A + 0.65),
+                fontsize=8.5, color='#166534', fontweight='bold',
+                bbox=dict(boxstyle='round,pad=0.25', facecolor='#F0FDF4', edgecolor='#16A34A', alpha=0.95))
+
+    # Peak 2 (t = 7/3)
+    t_p2 = t_p1 + T
+    ax.scatter([t_p2], [A], color='#1E6B52', s=70, zorder=6)
+    ax.plot([t_p2 - 0.2, t_p2 + 0.2], [A, A], color='#1E6B52', lw=2.2)
+
+    # Period T double arrow between Peak 1 and Peak 2
+    ax.annotate('', xy=(t_p1, A + 0.4), xytext=(t_p2, A + 0.4), arrowprops=dict(arrowstyle='<->', color='#1B365D', lw=1.8))
+    ax.text((t_p1 + t_p2)/2, A + 0.52, r'Chu kì $T = 2\text{ s}$ (1 dao động toàn phần)', color='#1B365D', ha='center', fontsize=9.2, fontweight='bold')
+
+    # Descending VTCB (t = 5/6)
+    t_v1 = t_p1 + T/4
+    ax.scatter([t_v1], [0], color='#A6192E', s=70, zorder=6)
+    dt_tan = 0.15
+    v_slope = -omega * A
+    ax.plot([t_v1 - dt_tan, t_v1 + dt_tan], [-dt_tan * v_slope * 0.35, dt_tan * v_slope * 0.35], color='#A6192E', lw=2.2)
+    ax.annotate('Qua VTCB theo chiều âm ' + r'($x = 0$):' + '\n' +
+                'Dốc xuống nhất ' + r'$\Rightarrow v = -v_{\max} = -\omega A$',
+                xy=(t_v1, 0), xytext=(t_v1 + 0.08, -1.8),
+                fontsize=8.5, color='#991B1B', fontweight='bold',
+                arrowprops=dict(arrowstyle='->', color='#A6192E', lw=1.2),
+                bbox=dict(boxstyle='round,pad=0.25', facecolor='#FEF2F2', edgecolor='#EF4444', alpha=0.95))
+
+    # T/4 arrow between Peak 1 and Descending VTCB
+    ax.plot([t_p1, t_p1], [-0.8, A], color='#94A3B8', linestyle=':', lw=1.0)
+    ax.plot([t_v1, t_v1], [-0.8, 0], color='#94A3B8', linestyle=':', lw=1.0)
+    ax.annotate('', xy=(t_p1, -0.6), xytext=(t_v1, -0.6), arrowprops=dict(arrowstyle='<->', color='#475569', lw=1.4))
+    ax.text((t_p1 + t_v1)/2, -0.45, r'$\frac{T}{4}$', color='#475569', ha='center', fontsize=9.2, fontweight='bold')
+
+    # Trough 1 (t = 4/3)
+    t_tr1 = t_p1 + T/2
+    ax.scatter([t_tr1], [-A], color='#A6192E', s=70, zorder=6)
+    ax.plot([t_tr1 - 0.2, t_tr1 + 0.2], [-A, -A], color='#A6192E', lw=2.2)
+    ax.annotate('Biên âm ' + r'($x = -A$):' + '\n' + 'Tiếp tuyến ngang ' + r'$\Rightarrow v = 0$',
+                xy=(t_tr1, -A), xytext=(t_tr1 - 0.2, -A - 0.95),
+                fontsize=8.5, color='#991B1B', fontweight='bold',
+                bbox=dict(boxstyle='round,pad=0.25', facecolor='#FEF2F2', edgecolor='#EF4444', alpha=0.95))
+
+    # T/2 arrow between Peak 1 and Trough 1
+    ax.plot([t_tr1, t_tr1], [-A, 2.2], color='#94A3B8', linestyle=':', lw=1.0)
+    ax.annotate('', xy=(t_p1, 2.0), xytext=(t_tr1, 2.0), arrowprops=dict(arrowstyle='<->', color='#1E6B52', lw=1.4))
+    ax.text((t_p1 + t_tr1)/2, 2.15, r'Nửa chu kì $\frac{T}{2} = 1\text{ s}$', color='#1E6B52', ha='center', fontsize=9.0, fontweight='bold')
+
+    # Ascending VTCB (t = 11/6)
+    t_v2 = t_p1 + 3*T/4
+    ax.scatter([t_v2], [0], color='#16A34A', s=70, zorder=6)
+    ax.plot([t_v2 - 0.12, t_v2 + 0.12], [-0.12 * v_slope * 0.35, 0.12 * v_slope * 0.35], color='#16A34A', lw=2.2)
+    ax.annotate('Qua VTCB theo chiều dương ' + r'($x = 0$):' + '\n' +
+                'Dốc lên nhất ' + r'$\Rightarrow v = +v_{\max} = +\omega A$',
+                xy=(t_v2, 0), xytext=(t_v2 - 0.38, 1.4),
+                fontsize=8.5, color='#166534', fontweight='bold',
+                arrowprops=dict(arrowstyle='->', color='#16A34A', lw=1.2),
+                bbox=dict(boxstyle='round,pad=0.25', facecolor='#F0FDF4', edgecolor='#16A34A', alpha=0.95))
+
+    # Summary DNA box
+    dna_text = ('BẢNG MÃ GEN (ADN) DAO ĐỘNG:\n' +
+                r'• $x(t)$: Li độ tức thời tại thời điểm $t$' + '\n' +
+                r'• $A = 4\text{ cm}$: Biên độ ($A > 0$), nửa chiều dài quỹ đạo $L = 2A$' + '\n' +
+                r'• $T = 2\text{ s}$: Chu kì; Tần số $f = 1/T = 0.5\text{ Hz}$' + '\n' +
+                r'• $\omega = \pi\text{ rad/s}$: Tần số góc (tốc độ quét góc pha)' + '\n' +
+                r'• $\varphi = -\pi/3$: Pha ban đầu (xác định vị trí và chiều lúc $t=0$)' + '\n' +
+                r'• $(\omega t + \varphi)$: Pha dao động (xác định trạng thái tại thời điểm $t$)')
+
+    ax.text(2.60, -2.8, dna_text, fontsize=8.8, color='#1B365D', ha='right',
+            bbox=dict(boxstyle='round,pad=0.4', facecolor='#F8FAFC', edgecolor='#1B365D', lw=1.2, alpha=0.96))
+
+    ax.set_xlim(-0.6, 2.7)
+    ax.set_ylim(-5.5, 5.5)
+    ax.set_xlabel(r'Thời gian $t$ (giây)', fontsize=11.5)
+    ax.set_ylabel(r'Li độ $x$ (cm)', fontsize=11.5)
+    ax.set_yticks([-A, -A/2, 0, A/2, A])
+    ax.set_yticklabels([r'$-A = -4$', r'$-2$', r'$0$', r'$+2$', r'$+A = +4$'], fontsize=10.5)
+    ax.set_title(r'Giải mã cấu trúc hình học của sóng cosin: $x(t) = A\cos(\omega t + \varphi)$', fontsize=12.5, fontweight='bold')
+
+    plt.tight_layout()
+    fig.savefig(os.path.join(FIG_DIR, 'fig1_1b_cosine_anatomy.png'), dpi=300)
+    fig.savefig(os.path.join(FIG_DIR, 'fig1_1b_cosine_anatomy.pdf'))
+    plt.close()
+    print("Generated: fig1_1b_cosine_anatomy")
+
+# -------------------------------------------------------------
+# Figure 1.1c: 3 Classic Phase Difference Scenarios
+# -------------------------------------------------------------
+def plot_fig1_1c_phase_comparison():
+    fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(13.2, 5.0))
+
+    T = 2.0
+    omega = 2 * np.pi / T  # pi
+    t = np.linspace(0, 2 * T, 500)
+
+    A1 = 3.5
+    A2 = 2.0
+
+    # ----------------- PANEL 1: CÙNG PHA -----------------
+    x1_cung = A1 * np.cos(omega * t)
+    x2_cung = A2 * np.cos(omega * t)
+
+    ax1.plot(t, x1_cung, color='#1B365D', lw=2.2, label=r'$x_1(t) = A_1\cos(\omega t)$')
+    ax1.plot(t, x2_cung, color='#1E6B52', lw=2.0, linestyle='--', label=r'$x_2(t) = A_2\cos(\omega t)$')
+    ax1.axhline(0, color='gray', lw=0.8, linestyle='--')
+
+    ax1.set_title(r'(a) CÙNG PHA: $\Delta\varphi = 2k\pi$', fontsize=11.5, fontweight='bold', color='#1B365D')
+    ax1.set_xlabel(r'Thời gian $t$ (s)')
+    ax1.set_ylabel(r'Li độ $x$ (cm)')
+    ax1.set_ylim(-4.8, 5.2)
+    ax1.legend(loc='lower left', fontsize=8.5, framealpha=0.92)
+
+    # Inset plot for x1 - x2 trajectory
+    ins1 = ax1.inset_axes([0.62, 0.62, 0.34, 0.34])
+    ins1.set_facecolor('#FFFFFF')
+    ins1.set_zorder(10)
+    x1_domain = np.linspace(-A1, A1, 100)
+    ins1.plot(x1_domain, (A2 / A1) * x1_domain, color='#1B365D', lw=2.0)
+    ins1.scatter([-A1, 0, A1], [-A2, 0, A2], color='#1E6B52', s=20)
+    ins1.axhline(0, color='gray', lw=0.5, linestyle=':')
+    ins1.axvline(0, color='gray', lw=0.5, linestyle=':')
+    ins1.set_title(r'Đồ thị $x_1 - x_2$', fontsize=8.5, pad=2)
+    ins1.set_xlabel(r'$x_1$', fontsize=8.0, labelpad=1)
+    ins1.set_ylabel(r'$x_2$', fontsize=8.0, labelpad=1)
+    ins1.tick_params(labelsize=7)
+
+    ax1.annotate('Đặc trưng cùng pha:\n' +
+                 r'• $\Delta\varphi = \varphi_2 - \varphi_1 = 2k\pi$' + '\n' +
+                 r'• $\frac{x_1(t)}{A_1} = \frac{x_2(t)}{A_2}$' + '\n' +
+                 '• Cùng lên đỉnh, cùng về 0,\n  cùng đổi chiều chuyển động!',
+                 xy=(0.05, 0.95), xycoords='axes fraction', va='top',
+                 fontsize=8.5, color='#1B365D',
+                 bbox=dict(boxstyle='round,pad=0.3', facecolor='#F0F9FF', edgecolor='#0284C7', alpha=0.95))
+
+    # ----------------- PANEL 2: NGƯỢC PHA -----------------
+    x1_nguoc = A1 * np.cos(omega * t)
+    x2_nguoc = A2 * np.cos(omega * t + np.pi)  # = -A2 cos(omega t)
+
+    ax2.plot(t, x1_nguoc, color='#1B365D', lw=2.2, label=r'$x_1(t) = A_1\cos(\omega t)$')
+    ax2.plot(t, x2_nguoc, color='#A6192E', lw=2.0, linestyle='--', label=r'$x_2(t) = -A_2\cos(\omega t)$')
+    x_sum = x1_nguoc + x2_nguoc
+    ax2.plot(t, x_sum, color='#64748B', lw=1.4, linestyle=':', label=r'Tổng $x_1 + x_2$ (Triệt tiêu)')
+    ax2.axhline(0, color='gray', lw=0.8, linestyle='--')
+
+    ax2.set_title(r'(b) NGƯỢC PHA: $\Delta\varphi = (2k+1)\pi$', fontsize=11.5, fontweight='bold', color='#A6192E')
+    ax2.set_xlabel(r'Thời gian $t$ (s)')
+    ax2.set_ylim(-4.8, 5.2)
+    ax2.legend(loc='lower left', fontsize=8.2, framealpha=0.92)
+
+    # Inset plot for x1 - x2 trajectory
+    ins2 = ax2.inset_axes([0.62, 0.62, 0.34, 0.34])
+    ins2.set_facecolor('#FFFFFF')
+    ins2.set_zorder(10)
+    ins2.plot(x1_domain, -(A2 / A1) * x1_domain, color='#A6192E', lw=2.0)
+    ins2.scatter([-A1, 0, A1], [A2, 0, -A2], color='#A6192E', s=20)
+    ins2.axhline(0, color='gray', lw=0.5, linestyle=':')
+    ins2.axvline(0, color='gray', lw=0.5, linestyle=':')
+    ins2.set_title(r'Đồ thị $x_1 - x_2$', fontsize=8.5, pad=2)
+    ins2.set_xlabel(r'$x_1$', fontsize=8.0, labelpad=1)
+    ins2.set_ylabel(r'$x_2$', fontsize=8.0, labelpad=1)
+    ins2.tick_params(labelsize=7)
+
+    ax2.annotate('Đặc trưng ngược pha:\n' +
+                 r'• $\Delta\varphi = (2k+1)\pi$' + '\n' +
+                 r'• $\frac{x_1(t)}{A_1} = -\frac{x_2(t)}{A_2}$' + '\n' +
+                 '• Kẻ lên đỉnh, người chạm đáy!\n' +
+                 '• Ứng dụng: Tai nghe chống ồn (ANC)\n  phát sóng âm ngược pha!',
+                 xy=(0.05, 0.95), xycoords='axes fraction', va='top',
+                 fontsize=8.5, color='#991B1B',
+                 bbox=dict(boxstyle='round,pad=0.3', facecolor='#FEF2F2', edgecolor='#EF4444', alpha=0.95))
+
+    # ----------------- PANEL 3: VUÔNG PHA -----------------
+    x1_vuong = A1 * np.cos(omega * t)
+    x2_vuong = A2 * np.cos(omega * t + np.pi/2)  # = -A2 sin(omega t)
+
+    ax3.plot(t, x1_vuong, color='#1B365D', lw=2.2, label=r'$x_1(t) = A_1\cos(\omega t)$')
+    ax3.plot(t, x2_vuong, color='#D97706', lw=2.0, linestyle='--', label=r'$x_2(t) = -A_2\sin(\omega t)$')
+    ax3.axhline(0, color='gray', lw=0.8, linestyle='--')
+
+    ax3.set_title(r'(c) VUÔNG PHA: $\Delta\varphi = (2k+1)\frac{\pi}{2}$', fontsize=11.5, fontweight='bold', color='#D97706')
+    ax3.set_xlabel(r'Thời gian $t$ (s)')
+    ax3.set_ylim(-4.8, 5.2)
+    ax3.legend(loc='lower left', fontsize=8.5, framealpha=0.92)
+
+    # Inset plot for x1 - x2 trajectory (Ellipse)
+    ins3 = ax3.inset_axes([0.62, 0.62, 0.34, 0.34])
+    ins3.set_facecolor('#FFFFFF')
+    ins3.set_zorder(10)
+    theta_el = np.linspace(0, 2*np.pi, 200)
+    ins3.plot(A1 * np.cos(theta_el), -A2 * np.sin(theta_el), color='#D97706', lw=2.0)
+    ins3.axhline(0, color='gray', lw=0.5, linestyle=':')
+    ins3.axvline(0, color='gray', lw=0.5, linestyle=':')
+    ins3.set_title(r'Elip $\frac{x_1^2}{A_1^2} + \frac{x_2^2}{A_2^2} = 1$', fontsize=8.0, pad=2)
+    ins3.set_xlabel(r'$x_1$', fontsize=8.0, labelpad=1)
+    ins3.set_ylabel(r'$x_2$', fontsize=8.0, labelpad=1)
+    ins3.tick_params(labelsize=7)
+
+    ax3.annotate('Đặc trưng vuông pha:\n' +
+                 r'• $\Delta\varphi = (2k+1)\frac{\pi}{2}$' + '\n' +
+                 r'• $(\frac{x_1}{A_1})^2 + (\frac{x_2}{A_2})^2 = 1$' + '\n' +
+                 r'• Kẻ ở biên ($v=0$) thì' + '\n' +
+                 r'  người phóng qua VTCB ($|v|=v_{\max}$)!' + '\n' +
+                 '• Nối kết: Vận tốc vuông pha li độ!',
+                 xy=(0.05, 0.95), xycoords='axes fraction', va='top',
+                 fontsize=8.5, color='#B45309',
+                 bbox=dict(boxstyle='round,pad=0.3', facecolor='#FEF3C7', edgecolor='#D97706', alpha=0.95))
+
+    plt.tight_layout()
+    fig.savefig(os.path.join(FIG_DIR, 'fig1_1c_phase_comparison.png'), dpi=300)
+    fig.savefig(os.path.join(FIG_DIR, 'fig1_1c_phase_comparison.pdf'))
+    plt.close()
+    print("Generated: fig1_1c_phase_comparison")
 
 # -------------------------------------------------------------
 # Figure 1.1: Kinematics of Harmonic Motion (x, v, a)
@@ -677,6 +1058,9 @@ if __name__ == '__main__':
     plot_fig1_0a_derivative()
     plot_fig1_0b_omega_derivative()
     plot_fig1_0c_trig_circle()
+    plot_fig1_1a_restoring_force()
+    plot_fig1_1b_cosine_anatomy()
+    plot_fig1_1c_phase_comparison()
     plot_fig1_kinematics()
     plot_fig1_phase_space()
     plot_fig1_potential_well()

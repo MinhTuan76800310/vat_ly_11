@@ -194,6 +194,8 @@ Bản chất vật lý đích thực không cần bất kỳ chuyển động tr
 > Trong toàn bộ kho tàng các hàm số toán học (hàm đa thức, hàm mũ, hàm logarit), **chỉ có duy nhất hàm lượng giác $\cos$ và $\sin$ mới sở hữu "siêu năng lực": lấy đạo hàm hai lần thì quay trở lại đúng chính nó nhưng đổi dấu trừ!**  
 > Chính quy luật lực kéo về trong tự nhiên đã "chọn" hàm cosin để vẽ nên quỹ đạo của dao động điều hòa, chứ không hề có bàn tay ma thuật nào bắt vật phải "quay tròn ngầm"!
 
+![Hình 1.1a: Cơ chế vật lý và bản chất toán học của dao động điều hòa: (a) Lực kéo về $\vec{F}_{kv}$ của lò xo luôn có xu hướng giằng vật trở về vị trí cân bằng bền $O$; (b) Đồ thị $F_{kv} = -kx$ luôn ngược dấu với li độ, chứng minh phương trình động lực học $x''(t) = -\omega^2 x(t)$ bắt buộc nghiệm phải có dạng sóng lượng giác cosin.](figures/fig1_1a_restoring_force.png)
+
 ---
 
 ### 2. Giải Mã ADN Của Phương Trình Dao Động: $x(t) = A\cos(\omega t + \varphi)$
@@ -226,6 +228,8 @@ Bản chất vật lý đích thực không cần bất kỳ chuyển động tr
 * **6. Pha dao động $(\omega t + \varphi)$ — "Căn cước trạng thái toàn diện":**  
   Tại bất kỳ thời điểm $t$ nào, chỉ cần biết giá trị của góc pha $(\omega t + \varphi)$, các em lập tức suy ra được toàn bộ thông tin: vật đang ở đâu (qua $\cos$) và đang lao theo chiều nào (qua dấu của $\sin$) mà không cần tận mắt nhìn thấy vật!
 
+![Hình 1.1b: Giải mã cấu trúc hình học (ADN) của hàm sóng cosin $x(t) = A\cos(\omega t + \varphi)$: Mối quan hệ trực quan giữa biên độ $A$, chiều dài quỹ đạo $L=2A$, chu kì $T$, tọa độ ban đầu $x_0 = A\cos\varphi$, và độ dốc tiếp tuyến (vận tốc) tại các mốc dao động then chốt.](figures/fig1_1b_cosine_anatomy.png)
+
 ---
 
 ### 3. Cuộc Rượt Đuổi Pha Của Hai Dao Động: Cùng Pha, Ngược Pha & Vuông Pha
@@ -239,22 +243,13 @@ $$\Delta \varphi = \varphi_2 - \varphi_1$$
 
 Hãy hình dung cuộc đua giữa hai chiếc xích đu được đẩy cùng nhịp: tùy thuộc vào $\Delta\varphi$, chúng sẽ tạo nên 3 kịch bản chuyển động kinh điển thường xuyên xuất hiện trong các bài thi:
 
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│ BẢNG SO SÁNH 3 TRẠNG THÁI LỆCH PHA KINH ĐIỂN                           │
-├─────────────────┬──────────────────────┬───────────────────────────────┤
-│ Trạng thái pha  │ Độ lệch pha Delta phi│ Ý nghĩa hình học & Hệ thức    │
-├─────────────────┼──────────────────────┼───────────────────────────────┤
-│ 1. CÙNG PHA     │ Delta phi = 2k pi    │ Cùng dâng lên đỉnh, cùng về 0 │
-│                 │                      │ x1 / A1 = x2 / A2             │
-├─────────────────┼──────────────────────┼───────────────────────────────┤
-│ 2. NGƯỢC PHA    │ Delta phi = (2k+1)pi │ Kẻ lên đỉnh, người cắm đáy    │
-│                 │                      │ x1 / A1 = - x2 / A2           │
-├─────────────────┼──────────────────────┼───────────────────────────────┤
-│ 3. VUÔNG PHA    │ Delta phi = (2k+1)pi/2│ Kẻ dừng ở biên, người phóng VTCB│
-│                 │                      │ (x1 / A1)^2 + (x2 / A2)^2 = 1 │
-└─────────────────┴──────────────────────┴───────────────────────────────┘
-```
+| Trạng thái pha | Độ lệch pha $\Delta \varphi$ | Ý nghĩa hình học & Hệ thức li độ | Đặc trưng chuyển động thực tế |
+| :--- | :--- | :--- | :--- |
+| **1. CÙNG PHA** | $\Delta \varphi = 2k\pi$ ($k \in \mathbb{Z}$) | $\frac{x_1(t)}{A_1} = \frac{x_2(t)}{A_2}$<br>*(Đoạn thẳng dốc lên qua gốc $O$)* | Cùng dâng lên đỉnh, cùng về $0$, cùng đổi chiều chuyển động nhịp nhàng |
+| **2. NGƯỢC PHA** | $\Delta \varphi = (2k+1)\pi$ ($k \in \mathbb{Z}$) | $\frac{x_1(t)}{A_1} = -\frac{x_2(t)}{A_2}$<br>*(Đoạn thẳng dốc xuống qua gốc $O$)* | Kẻ lên đỉnh thì người chạm đáy; ứng dụng triệt tiêu sóng âm chống ồn (ANC) |
+| **3. VUÔNG PHA** | $\Delta \varphi = (2k+1)\frac{\pi}{2}$ ($k \in \mathbb{Z}$) | $\left(\frac{x_1}{A_1}\right)^2 + \left(\frac{x_2}{A_2}\right)^2 = 1$<br>*(Đồ thị quỹ đạo hình Elip)* | Kẻ khựng lại ở biên ($v=0$) thì người phóng vun vút qua VTCB ($|v|=v_{\max}$) |
+
+![Hình 1.1c: So sánh trực quan 3 trạng thái lệch pha kinh điển giữa hai dao động: (a) Cùng pha ($\Delta\varphi = 0$); (b) Ngược pha ($\Delta\varphi = \pi$) với hiện tượng sóng triệt tiêu trong tai nghe ANC; (c) Vuông pha ($\Delta\varphi = \pi/2$) với quỹ đạo trạng thái elip đặc trưng.](figures/fig1_1c_phase_comparison.png)
 
 1. **Hai dao động CÙNG PHA ($\Delta \varphi = 2k\pi$ với $k \in \mathbb{Z}$):**  
    * **Hình ảnh thực tế:** Hai bạn ngồi trên hai chiếc xích đu đu song song chuẩn xác từng li từng tí: cùng bay lên điểm cao nhất, cùng hạ xuống vị trí thấp nhất, cùng lao vút qua vị trí cân bằng theo cùng một hướng.  
@@ -418,32 +413,23 @@ Hệ thức độc lập thời gian mở ra một góc nhìn hình học tuyệ
 
 ### 7. Hộp Cứu Nguy: 3 "Tử Huyệt" Dễ Mắc Bẫy Nhất Trong Đề Thi
 
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│  ⚠️ CẢNH BÁO BẪY ĐỀ KIỂM TRA & KÌ THI TỐT NGHIỆP THPT                  │
-├────────────────────────────────────────────────────────────────────────┤
-│ TỬ HUYỆT 1: "Ở biên vật đứng lại (v = 0) nên gia tốc cũng bằng 0 (?)" │
-│ ➔ SAI LẦM PHỔ BIẾN NHẤT!                                               │
-│ • Bản chất đúng: Ở biên, vận tốc bằng 0 vì đồ thị x(t) nằm ngang (độ   │
-│   dốc triệt tiêu). Nhưng lúc này vật lệch xa nhất, lò xo bị nén/dãn cực│
-│   đại nên LỰC KÉO VỀ ĐẠT CỰC ĐẠI ➔ Gia tốc đạt ĐỘ LỚN CỰC ĐẠI:        │
-│   |a| = a_max = omega^2 A!                                             │
-├────────────────────────────────────────────────────────────────────────┤
-│ TỬ HUYỆT 2: "Qua VTCB lực bằng 0 (a = 0) nên vật tạm dừng (v = 0) (?)" │
-│ ➔ SAI LẦM TAI HẠI!                                                     │
-│ • Bản chất đúng: Qua VTCB, lò xo không biến dạng nên lực bằng 0 ➔ a = 0.│
-│   Nhưng suốt quãng đường lao dốc trước đó, lực đã liên tục tăng tốc cho│
-│   vật, tích lũy động năng lên mức đỉnh điểm. Do quán tính, vật lao qua │
-│   VTCB với TỐC ĐỘ LỚN NHẤT: |v| = v_max = omega A!                     │
-├────────────────────────────────────────────────────────────────────────┤
-│ TỬ HUYỆT 3: Quên mất dấu âm trong hệ thức gia tốc: a = omega^2 x (?)   │
-│ ➔ SAI VỀ BẢN CHẤT LỰC HỒI PHỤC!                                        │
-│ • Bản chất đúng: Bắt buộc phải là a = - omega^2 x. Dấu trừ mang ý nghĩa│
-│   sống còn: véctơ gia tốc LUÔN LUÔN HƯỚNG VỀ VỊ TRÍ CÂN BẰNG, ngược   │
-│   chiều với véctơ li độ! Nếu mang dấu dương, vật sẽ bị đẩy văng ra xa  │
-│   mãi mãi thay vì dao động!                                            │
-└────────────────────────────────────────────────────────────────────────┘
-```
+> ⚠️ **CẢNH BÁO BẪY ĐỀ KIỂM TRA & KÌ THI TỐT NGHIỆP THPT: 3 "TỬ HUYỆT" THƯỜNG GẶP**
+>
+> * **TỬ HUYỆT 1: "Ở biên vật đứng lại ($v = 0$) nên gia tốc cũng bằng $0$ (?)"**  
+>   ➔ **SAI LẦM PHỔ BIẾN NHẤT!**  
+>   • *Bản chất đúng:* Ở biên, vận tốc bằng $0$ vì đồ thị $x(t)$ nằm ngang (độ dốc tiếp tuyến triệt tiêu). Nhưng lúc này vật lệch xa nhất khỏi VTCB, lò xo bị nén/dãn cực đại nên **LỰC KÉO VỀ ĐẠT CỰC ĐẠI** ➔ Gia tốc đạt **ĐỘ LỚN CỰC ĐẠI**:  
+>   $$|a| = a_{\max} = \omega^2 A$$
+>
+> * **TỬ HUYỆT 2: "Qua VTCB lực bằng $0$ ($a = 0$) nên vật tạm dừng ($v = 0$) (?)"**  
+>   ➔ **SAI LẦM TAI HẠI!**  
+>   • *Bản chất đúng:* Qua VTCB, lò xo không bị biến dạng nên lực kéo về bằng $0 \implies a = 0$. Nhưng suốt quãng đường lao dốc trước đó, lực kéo về đã liên tục tăng tốc cho vật, tích lũy động năng lên mức đỉnh điểm. Do quán tính, vật lao vút qua VTCB với **TỐC ĐỘ LỚN NHẤT**:  
+>   $$|v| = v_{\max} = \omega A$$
+>
+> * **TỬ HUYỆT 3: Quên mất dấu âm trong hệ thức gia tốc: $a = \omega^2 x$ (?)**  
+>   ➔ **SAI VỀ BẢN CHẤT LỰC HỒI PHỤC!**  
+>   • *Bản chất đúng:* Bắt buộc phải là:  
+>   $$a(t) = -\omega^2 x(t)$$  
+>   Dấu trừ mang ý nghĩa sống còn: **véc-tơ gia tốc LUÔN LUÔN HƯỚNG VỀ VỊ TRÍ CÂN BẰNG**, ngược chiều với véc-tơ li độ! Nếu mang dấu dương, lực sẽ đẩy vật văng ra xa mãi mãi thay vì tạo ra chuyển động dao động!
 
 
 ---
