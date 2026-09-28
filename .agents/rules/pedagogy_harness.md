@@ -70,11 +70,29 @@ Khi được yêu cầu viết hoặc chuyển ngữ sang tiếng Anh cho đối
 
 ---
 
+### Giới hạn 6: Quy Chuẩn Trực Quan Hóa & Tuyệt Đối Không Dùng Ký Tự Khung Vẽ ASCII (No-ASCII Invariant)
+
+1. **Tuyệt đối KHÔNG sử dụng ký tự vẽ khung ASCII**:
+   - ❌ **Cấm hoàn toàn**: Không dùng các ký tự Unicode/ASCII vẽ hộp (`┌`, `─`, `┐`, `│`, `├`, `┤`, `└`, `┘`, v.v.) bên trong mã nguồn Markdown (`book/*.md`) để tạo bảng so sánh hay hộp cứu nguy. Các khối này khi qua Pandoc và Typst sẽ bị biến thành code block thô ráp, làm tài liệu mất tính học thuật và thiếu thẩm mỹ.
+   - ✅ **Bắt buộc dùng bảng Markdown chuẩn**: Mọi bảng so sánh dữ liệu, đối chiếu trạng thái phải viết bằng cú pháp Markdown tiêu chuẩn (`| Cột 1 | Cột 2 |`).
+   - ✅ **Bắt buộc dùng Khối Cảnh Báo (Alert / Callout Block)**: Mọi hộp lưu ý, bẫy đề thi, mẹo nhớ phải dùng cú pháp blockquote (`> ⚠️ **CẢNH BÁO...**` hoặc `> [!WARNING]`) kèm công thức LaTeX hiển thị sắc nét.
+
+2. **Yêu cầu về Mật độ & Chất lượng Hình ảnh Minh họa (Visual Richness)**:
+   - **Không để bài dài "chay chữ"**: Tuyệt đối không để các phần lý thuyết mô hình hóa hoặc đối chiếu trạng thái kéo dài qua nhiều trang mà không có hình vẽ minh họa.
+   - **Bắt buộc có hình vẽ cho 3 trụ cột**:
+     * *Mô hình vật lý*: Luôn có hình con lắc lò xo / con lắc đơn ở các trạng thái dãn, nén, cân bằng và hướng véc-tơ lực $\vec{F}_{kv}$.
+     * *Cấu trúc sóng*: Đồ thị $x(t)$ phải ghi chú rõ $A, -A, L=2A, T, T/2, T/4, x_0$, và các tiếp tuyến vận tốc tại các mốc then chốt.
+     * *Đối chiếu tương đối*: Mọi so sánh pha (cùng pha, ngược pha, vuông pha) phải có đồ thị sóng thời gian song song kèm quỹ đạo không gian trạng thái (đoạn thẳng, elip).
+   - **Định dạng & Phối màu**: Mọi hình ảnh phải được sinh tự động từ `scripts/generate_figures.py` ở cả 2 định dạng: **PNG 300 DPI** và **vector PDF**. Phối màu chuẩn mực: Navy `#1B365D`, Crimson `#A6192E`, Forest Green `#1E6B52`, Amber `#D97706`.
+
+---
+
 ## 3. Checklist Tự Kiểm Định Độ Phù Hợp Lớp 11 (Audience-Fit Gate)
 
-Trước khi xuất bản hoặc hoàn tất chương sách, tự đặt 4 câu hỏi:
+Trước khi xuất bản hoặc hoàn tất chương sách, tự đặt 5 câu hỏi:
 1. *Một học sinh lớp 11 nắm chắc SGK có hiểu được bài viết này mà không cần tra cứu giáo trình đại học không?*
 2. *Có công thức nào xuất hiện số phức, tích phân hay phương trình vi phân phức tạp không? (Nếu có $\rightarrow$ sửa ngay).*
 3. *Hình vẽ và ví dụ có bám sát đời sống thực tế không?*
 4. *Các ký hiệu có nhất quán với SGK GDPT 2018 không? (Dùng $x, v, a, W, W_đ, W_t, \omega, f, T$).*
+5. *Tài liệu có sót ký tự vẽ khung ASCII nào không? Mỗi mục kiến thức then chốt đã có hình vẽ khoa học tương ứng minh họa chưa?*
 

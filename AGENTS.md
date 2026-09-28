@@ -40,6 +40,9 @@ Tài liệu hướng dẫn quy chuẩn biên soạn và nghiên cứu khoa học
   - *Chủ đề 3*: Tương ứng Bài 6 KNTT (Dao động tắt dần, Dao động duy trì, Dao động cưỡng bức, Hiện tượng cộng hưởng).
 - **Mã nguồn, Scripts, Configs**: Viết bằng tiếng Anh kèm chú thích chi tiết.
 - **Git Commit Messages**: Tiếng Anh theo chuẩn Conventional Commits (`feat:`, `fix:`, `docs:`, `refactor:`, `chore:`).
+- **Quy Chuẩn Bảng Biểu & Hình Vẽ Minh Họa**:
+  - **Tuyệt đối KHÔNG dùng ký tự khung vẽ ASCII** (`┌──┐`, `│`, `├`, v.v.) trong bản thảo sách (`book/*.md`); bắt buộc dùng bảng Markdown chuẩn (`| ... |`) và khối cảnh báo (`> ⚠️ **...**`).
+  - **Bắt buộc phong phú hình ảnh minh họa khoa học**: Mọi phân tích mô hình, đồ thị động học, giải mã sóng và so sánh độ lệch pha đều phải có hình vẽ trực quan chất lượng cao (PNG 300 DPI và vector PDF) xuất từ `scripts/generate_figures.py`.
 
 ---
 
