@@ -4,67 +4,130 @@ Tài liệu này là "bộ lọc sư phạm" và cẩm nang phương pháp luậ
 
 ---
 
-## 1. Nghệ Thuật Biên Soạn & Cách Dẫn Dắt Tài Liệu (Storytelling & Inductive Discovery Method)
+### 1. Hệ Thống 5 Rules Biên Soạn Sư Phạm Chuẩn Hóa (Storytelling & Inductive Discovery)
 
-Mọi bài học, mục giải thích lý thuyết hay tài liệu chuyên đề bắt buộc phải tuân thủ nghiêm ngặt 5 trụ cột phương pháp luận sau:
-
-### Trụ cột 1: Dẫn Dắt Khám Phá Tự Nhiên (Inductive Discovery) — CẤM ÁP ĐẶT CÔNG THỨC TRƯỚC
-1. **Quy tắc bất biến**: Tuyệt đối **KHÔNG BAO GIỜ** nhảy vào phát biểu kết quả, định lý hay công thức trước rồi mới đi chứng minh hay kiểm chứng.
-2. **Quy trình 5 bước khám phá**:
-   - *Bước 1: Khởi đầu từ định nghĩa/công cụ nền tảng đã biết*: Đặt bài toán tìm quy luật mới dựa trên nền tảng sẵn có (ví dụ: đã biết vận tốc là độ dốc tiếp tuyến $v(t) = x'(t)$ $\implies$ giờ muốn tìm vận tốc của $x(t) = \cos(t)$ thì giải tích là gì khi chưa biết công thức đạo hàm?).
-   - *Bước 2: Nhập vai trải nghiệm thực tế*: Đặt người đọc vào một bối cảnh trực quan cụ thể (ví dụ: ngồi trên toa tàu lượn siêu tốc chạy trên đường ray $\cos(t)$ và đo độ dốc qua từng chặng đường).
-   - *Bước 3: Tạo nút thắt nhận thức (Mystery / Cognitive Tension)*:
-     - Tại điểm đầu tiên (đỉnh đồi $t = 0$), tiếp tuyến nằm ngang $\implies$ độ dốc bằng $0$. Hàm triệt tiêu tại 0 là $\sin(t)$.
-     - **Bắt buộc nhấn mạnh nút thắt sư phạm**: Vì $(+\sin 0) = 0$ mà $(-\sin 0)$ cũng bằng $0$, **tại đỉnh đồi chúng ta CHƯA THỂ BIẾT dấu của đạo hàm là cộng hay trừ!** Dấu của đạo hàm vẫn là một ẩn số lớn đang chờ giải mã.
-   - *Bước 4: Thời khắc lật mở chân lý (Revelation)*:
-     - Chuyển sang trạng thái tiếp theo (lao dốc qua VTCB tại $t = \pi/2$), mũi xe chúi xuống $\implies$ độ dốc tiếp tuyến chắc chắn mang dấu ÂM ($-1$).
-     - Đối chiếu 2 khả năng: Nếu là $+\sin$ thì tại $\pi/2$ cho $+1$ (Dương $\implies$ mâu thuẫn với thực tế lao dốc); nếu là $-\sin$ thì cho $-1$ (Âm $\implies$ khớp tuyệt đối). Từ đó, dấu trừ được lật mở tự nhiên và tất yếu: $[\cos(t)]' = -\sin(t)$!
-   - *Bước 5: Kiểm chứng củng cố*: Cho xe chạy tiếp qua đáy vực (độ dốc 0) và vọt lên trời qua VTCB (độ dốc $+1$) để củng cố niềm tin tuyệt đối cho người học.
+Mọi bài học, mục giải thích lý thuyết hay tài liệu chuyên đề bắt buộc phải tuân thủ nghiêm ngặt 5 quy tắc chuẩn hóa theo cấu trúc 3 phần: **(1) Định nghĩa Quy tắc & Điều Cấm/Bắt buộc**, **(2) Ngữ cảnh áp dụng**, và **(3) Ví dụ đối chiếu & Ánh xạ**.
 
 ---
 
-### Trụ cột 2: Tính Kế Thừa & Mạch Nối Hữu Cơ Giữa Các Mục (Organic Thread & Cohesion)
-1. **Cấm tư duy ốc đảo**: Tuyệt đối không viết các mục như các bài tiểu luận độc lập, rời rạc.
-2. **Kỹ thuật cầu nối (Bridge Transition)**:
-   - *Cuối mỗi mục*: Luôn kết thúc bằng một câu hỏi bỏ ngỏ, một rào cản tính toán hoặc một nút thắt mà bài toán thực tế đặt ra.
-   - *Đầu mục tiếp theo*: Bắt buộc có tiểu mục **"Bước chuyển / Mối nối từ Mục trước"**, giải thích rõ: mục trước đã đạt được vũ khí gì, vũ khí đó dẫn tới câu hỏi tự nhiên nào, và mục này sẽ dùng nó để giải quyết nút thắt ra sao.
+### Rule 1: Khám Phá Quy Luật Tự Nhiên (Inductive Discovery Invariant)
+
+#### 1. Định nghĩa Quy tắc (The Core Invariant)
+* Tuyệt đối **KHÔNG BAO GIỜ** áp đặt công thức, định lý hay dấu của kết quả trước rồi mới đi chứng minh hay kiểm tra lại.
+* ❌ **CẤM (Anti-Pattern)**: Viết công thức trước ở đầu mục $\to$ vẽ đồ thị/làm thí nghiệm kiểm chứng $\to$ kết luận.
+* ✅ **BẮT BUỘC (Required Invariant)**: Luôn đi theo chuỗi 5 bước: Khởi đầu từ công cụ đã biết ở bài trước $\to$ Nhập vai trải nghiệm $\to$ **Tạo nút thắt nhận thức (Mystery: Tại điểm mấu chốt, chưa đủ dữ kiện để biết kết quả!)** $\to$ **Thời khắc lật mở chân lý (Revelation: Sang trạng thái mới, loại trừ khả năng sai để tìm ra quy luật tất yếu)** $\to$ Kiểm chứng củng cố ở các trạng thái còn lại.
+
+#### 2. Ngữ cảnh áp dụng (Context & Trigger Conditions)
+* **Thời điểm kích hoạt**: Khi bắt đầu dẫn xuất bất kỳ công thức toán học, định luật vật lý hay quy luật định lượng mới nào trong bài.
+* **Phạm vi áp dụng**: Mọi bài học trong Vật Lí 11 (Đạo hàm dao động, Phương trình sóng, Định luật Coulomb, Cường độ điện trường, Định luật khúc xạ...).
+
+#### 3. Ví dụ đối chiếu (Anti-pattern vs. Good pattern)
+* ❌ **Ví dụ sai (Áp đặt trước)**: *"Đạo hàm của hàm cosin là $[\cos(t)]' = -\sin(t)$. Bây giờ ta hãy vẽ đồ thị tiếp tuyến để kiểm tra công thức này."*
+* ✅ **Ví dụ chuẩn (Chương 1: Dao động điều hòa)**:
+  - *Bước 1*: Đã biết vận tốc là độ dốc tiếp tuyến $v(t) = x'(t)$ (Mục 1). Giờ tìm vận tốc của $x(t) = \cos(t)$ khi chưa biết đạo hàm lượng giác.
+  - *Bước 2*: Đóng vai người đi tàu lượn siêu tốc trên ray $\cos(t)$ đo độ dốc.
+  - *Bước 3 (Nút thắt)*: Tại đỉnh đồi ($t=0$), tiếp tuyến nằm ngang $\implies$ độ dốc bằng $0$. Hàm triệt tiêu tại 0 là $\sin(t)$. **Nhưng vì $(+\sin 0) = (-\sin 0) = 0$, tại đỉnh ta CHƯA THỂ BIẾT dấu của đạo hàm là cộng hay trừ!**
+  - *Bước 4 (Lật mở)*: Sang trạng thái 2 (lao dốc qua VTCB tại $t = \pi/2$), mũi xe chúi xuống $\implies$ độ dốc tiếp tuyến chắc chắn ÂM ($-1$). Thử hai khả năng: $+\sin(\pi/2) = +1$ (Dương $\implies$ loại); $-\sin(\pi/2) = -1$ (Âm $\implies$ khớp). Dấu trừ lộ diện: $[\cos(t)]' = -\sin(t)$!
+  - *Bước 5*: Kiểm chứng tiếp tại đáy vực (dốc 0) và vọt lên qua VTCB (dốc $+1$).
+* 💡 **Ánh xạ sang chương khác (Chương 2: Sóng cơ — Định nghĩa & Công thức Bước sóng $\lambda = v/f$)**:
+  - ❌ *Không viết*: "Bước sóng là khoảng cách sóng truyền trong 1 chu kì $\lambda = v.T = v/f$, giờ ta xét sóng trên mặt nước...".
+  - ✅ *Dẫn dắt theo Rule*: Quan sát người ném đá xuống hồ, gợn sóng tròn lan ra xa $\to$ Thả chiếc phao câu đứng yên một chỗ, phao chỉ nhấp nhô lên xuống tại chỗ với chu kì $T$ $\to$ Đặt câu hỏi tò mò: *Trong đúng 1 nhịp phao lặn xuống rồi ngoi lên trở lại trạng thái cũ, gợn sóng thứ nhất đã kịp bò đi được một quãng đường bao xa trên mặt nước?* $\to$ Quãng đường = Vận tốc $\times$ Thời gian $\implies \lambda = v \times T = \frac{v}{f}$. Khái niệm bước sóng ra đời như một nhu cầu đo lường tất yếu!
 
 ---
 
-### Trụ cột 3: Giải Mã Bản Chất Vật Lý Thay Vì Miêu Tả Hình Thức (Demystifying Physical Essences)
-1. **Khởi đầu bằng Nghịch lý Trực giác (Intuitive Paradox)**:
-   - Luôn bắt đầu bài học bằng quan sát đời sống và đặt ra câu hỏi "lệch trực giác" (Ví dụ: Chiếc màng loa điện thoại chỉ chuyển động thụt thò thẳng tắp, không hề quay tròn, vậy tại sao lại mô tả bằng hàm $\cos$ vốn sinh ra từ đường tròn? Có phải vật quay tròn ngầm không?).
-2. **Không thỏa hiệp với giải thích hình thức**:
-   - Mô hình "bóng của chuyển động tròn" chỉ là hình ảnh phản chiếu hình học, không phải nguyên nhân vật lý!
-3. **Đào sâu đến nguyên nhân động lực học gốc rễ**:
-   - Khi lệch khỏi VTCB bền $\implies$ môi trường sinh ra lực kéo về $F_{kv} = -kx$.
-   - Theo Định luật II Newton: $a = F/m = -(k/m)x = -\omega^2 x$.
-   - Vì gia tốc là đạo hàm cấp hai $a = x''$, tự nhiên bắt buộc hàm số $x(t)$ phải thỏa mãn: $x''(t) = -\omega^2 x(t)$.
-   - Trong toàn bộ toán học, **chỉ có duy nhất hàm lượng giác $\cos$ và $\sin$ mới có siêu năng lực lấy đạo hàm 2 lần quay lại chính nó nhưng đổi dấu trừ**. Chính quy luật lực kéo về đã chọn hàm cosin!
+### Rule 2: Mạch Nối Hữu Cơ Giữa Các Mục (Organic Thread / Bridge Invariant)
+
+#### 1. Định nghĩa Quy tắc (The Core Invariant)
+* Tuyệt đối **KHÔNG** viết các mục như những ốc đảo kiến thức độc lập, rời rạc.
+* ❌ **CẤM (Anti-Pattern)**: Kết thúc mục trước bằng dấu chấm lửng/kẻ vạch ngang, sang mục sau nhảy dù vào một chủ đề mới toanh mà không giải thích mối liên hệ.
+* ✅ **BẮT BUỘC (Required Invariant)**:
+  - *Cuối mục trước*: Luôn kết thúc bằng một câu hỏi bỏ ngỏ, một rào cản tính toán hoặc một nút thắt thực tế.
+  - *Đầu mục sau*: Bắt buộc có phần **"Bước chuyển / Mối nối từ Mục trước"**, nhắc lại vũ khí vừa đạt được và chỉ rõ vũ khí đó dẫn tới câu hỏi tự nhiên nào ở mục này.
+
+#### 2. Ngữ cảnh áp dụng (Context & Trigger Conditions)
+* **Thời điểm kích hoạt**: Tại ranh giới giữa hai mục nội dung liên tiếp (Heading 2, Heading 3) hoặc giữa hai chủ đề kế tiếp nhau.
+
+#### 3. Ví dụ đối chiếu (Anti-pattern vs. Good pattern)
+* ❌ **Ví dụ sai**: Hết Mục 1 (Đạo hàm là tốc độ biến thiên) $\implies$ sang Mục 2 ghi: *"2. Đạo hàm lượng giác. Cho hàm số x = cos(t)..."*
+* ✅ **Ví dụ chuẩn (Chương 1: Dao động điều hòa)**:
+  - Cuối Mục 1: Khẳng định vận tốc là độ dốc tiếp tuyến.
+  - Đầu Mục 2 ghi rõ: *"Bước chuyển từ Mục 1: Ở Mục 1, chúng ta đã rút ra: Vận tốc tức thời chính là độ dốc của tiếp tuyến v(t) = x'(t). Bây giờ, trong dao động điều hòa, li độ biến thiên theo hàm cos(t). Câu hỏi tự nhiên đặt ra: Vận tốc v(t) = [cos(t)]' sẽ có công thức giải tích là gì? Hãy dùng lại công cụ độ dốc vừa học để đi tìm nó..."*
+* 💡 **Ánh xạ sang chương khác (Chương 3: Điện trường — Từ Định luật Coulomb sang Khái niệm Điện trường)**:
+  - *Cuối Mục 1 (Định luật Coulomb)*: Đặt nút thắt: "Công thức $F = k\frac{|q_1 q_2|}{r^2}$ cho thấy hai điện tích hút/đẩy nhau. Nhưng làm thế nào $q_1$ có thể truyền lực tác dụng lên $q_2$ xuyên qua khoảng chân không vũ trụ trống rỗng mà không có bất kỳ dây nối hay vật chất hữu hình nào chạm vào nhau?".
+  - *Đầu Mục 2 (Điện trường)*: *"Bước chuyển từ Mục 1: Để giải quyết bài toán tương tác xuyên không gian ở Mục 1, các nhà vật lý nhận ra điện tích $q_1$ không tác dụng trực tiếp từ xa, mà nó đã tạo ra một môi trường vật chất đặc biệt bao quanh nó gọi là Điện trường..."*
 
 ---
 
-### Trụ cột 4: Trực Quan Hóa Đa Trạng Thái (State-Based Pedagogy)
-1. **Chia tiến trình thành các trạng thái mốc then chốt (Milestones)**:
-   - Khi mô tả dao động, động học, năng lượng: không viết chung chung mà bắt buộc chia thành chuỗi trạng thái (Trạng thái 1, 2, 3, 4 tương ứng $t = 0, T/4, T/2, 3T/4$).
-2. **Phân tích đối chiếu 4 chiều tại mỗi trạng thái**:
-   - *Li độ $x$*: Đang ở đâu? (Biên dương, VTCB, Biên âm).
-   - *Vận tốc $v$*: Tiếp tuyến đồ thị dốc thế nào? (Ngang phẳng lì $\implies v=0$, cắm đầu $\implies v = -v_{\max}$, dựng đứng $\implies v = +v_{\max}$).
-   - *Lực & Gia tốc*: Lò xo nén hay dãn? Véc-tơ lực giằng kéo về đâu?
-   - *Năng lượng / Đời sống*: Động năng hay thế năng áp đảo? Trực giác đời sống tương ứng.
-3. **Mỗi trạng thái bắt buộc có hình vẽ tương ứng**: Hình vẽ không được là một đường cong vô tri mà phải đánh dấu tọa độ trạng thái, véc-tơ tiếp tuyến và véc-tơ lực.
+### Rule 3: Đào Sâu Bản Chất Động Lực Học Gốc Rễ (Root-Cause Dynamics Invariant)
+
+#### 1. Định nghĩa Quy tắc (The Core Invariant)
+* Luôn khởi đầu bằng **Nghịch lý Trực giác (Intuitive Paradox)** từ đời sống. Tuyệt đối **KHÔNG** dừng lại ở sự miêu tả hình thức hay mô hình phản chiếu bề ngoài; **BẮT BUỘC** phải giải thích bằng **Động lực học và Lực tương tác gốc rễ** (Lực hồi phục, Định luật Newton, Chuyển hóa năng lượng).
+* ❌ **CẤM (Anti-Pattern)**: Dùng các hình ảnh phản chiếu hình học làm nguyên nhân vật lý (ví dụ: "vật dao động điều hòa vì nó là bóng của chuyển động tròn đều").
+* ✅ **BẮT BUỘC (Required Invariant)**: Chứng minh bằng phương trình động lực học: Ngoại lực lệch cân bằng sinh ra lực kéo về $F_{kv} = -kx \implies$ Định luật II Newton $a = x'' = -\omega^2 x \implies$ Chỉ có hàm lượng giác mới thỏa mãn tính chất đạo hàm hai lần đổi dấu.
+
+#### 2. Ngữ cảnh áp dụng (Context & Trigger Conditions)
+* **Thời điểm kích hoạt**: Khi giải thích căn nguyên vật lý của một hiện tượng tuần hoàn, cân bằng, hoặc lan truyền năng lượng.
+
+#### 3. Ví dụ đối chiếu (Anti-pattern vs. Good pattern)
+* ❌ **Ví dụ sai**: *"Một điểm chuyển động tròn đều với tốc độ góc $\omega$. Chiếu lên đường kính ta được $x = A\cos(\omega t)$. Vì vậy dao động điều hòa có phương trình là hàm cosin."* (Không trả lời được vì sao cái lò xo không quay mà lại ra hàm cos!).
+* ✅ **Ví dụ chuẩn (Chương 1: Dao động điều hòa)**: Đặt nghịch lý: Màng loa chỉ thụt thò thẳng tắp, tại sao lại dùng hàm $\cos$ của đường tròn? $\to$ Giải mã: Lệch VTCB sinh lực kéo về $F_{kv} = -kx \implies a = -\omega^2 x \implies x''(t) = -\omega^2 x(t)$. Trong toàn bộ toán học, chỉ có hàm $\cos, \sin$ mới đạo hàm 2 lần đổi dấu trừ $\implies$ Tự nhiên chọn hàm cosin vì quy luật lực, không phải vì vật quay tròn ngầm!
+* 💡 **Ánh xạ sang chương khác (Chương 2: Sóng cơ — Bản chất lan truyền sóng)**:
+  - ❌ *Không giải thích bề ngoài*: "Sóng là sự lan truyền dao động theo thời gian trong không gian."
+  - ✅ *Đào sâu gốc rễ*: Đặt nghịch lý: Khi ta gõ vào một đầu thanh kim loại, ta chỉ tác dụng lực vào lớp nguyên tử đầu tiên, tại sao đầu kia lại rung lên? $\to$ Bản chất động lực học: Giữa các nguyên tử luôn có **lực liên kết đàn hồi tĩnh điện**. Lớp 1 bị đẩy lệch khỏi VTCB bền $\implies$ lực đàn hồi giằng lớp 2 chuyển động theo nhưng trễ pha $\Delta t$. Sóng thực chất là sự chuyển giao lực đàn hồi và cơ năng liên tục giữa các phần tử!
 
 ---
 
-### Trụ cột 5: Ngôn Ngữ Hình Tượng, Bộ Mã Gen ADN & Phá Bẫy Nhận Thức
-1. **Ẩn dụ sư phạm đắt giá**:
-   - Tần số góc $\omega$: "Cỗ máy nén thời gian" (nén thời gian làm đồ thị dốc gấp $\omega$ lần $\implies [\cos(\omega t)]' = -\omega\sin(\omega t)$).
-   - Vòng tròn pha: "Chiếc đồng hồ vũ trụ với 3 vệ tinh $\vec{u}_1, \vec{u}_2, \vec{u}_3$ rượt đuổi nhau" (chứng minh hệ thức độc lập thời gian thực chất là Định lý Pythagoras; vận tốc bứt phá chạy trước $90^\circ$; gia tốc đối đầu $180^\circ$).
-   - Các đại lượng $A, \omega, \varphi, T, f$: "Bộ mã gen (ADN) định danh trạng thái chuyển động".
-   - Ngược pha: Gắn liền với "Nguyên lý tai nghe chống ồn chủ động ANC phát sóng âm ngược pha $180^\circ$".
-2. **Hộp Cứu Nguy — Phá bẫy nhận thức (Misconception Buster)**:
-   - Nhận diện các bẫy trực giác học sinh hay mắc (ví dụ: ở biên đứng lại $v=0$ tưởng nhầm $a=0$; qua VTCB lực bằng 0 tưởng nhầm dừng lại $v=0$).
-   - Phân tích cội nguồn sai lầm và dùng định luật động lực học để đập tan ngộ nhận.
+### Rule 4: Trực Quan Hóa Đa Trạng Thái (State-Based Multi-Dimensional Invariant)
+
+#### 1. Định nghĩa Quy tắc (The Core Invariant)
+* Mọi tiến trình biến thiên theo thời gian hoặc chu kì **BẮT BUỘC** phải chia thành chuỗi **trạng thái mốc then chốt (Milestones)**. Tại mỗi mốc, phải phân tích đồng thời **4 chiều đối chiếu**:
+  1. *Li độ / Tọa độ không gian* ($x$).
+  2. *Vận tốc / Xu hướng biến thiên* (Độ dốc tiếp tuyến $v = x'$).
+  3. *Lực tác dụng / Gia tốc* (Xu hướng giằng kéo $F_{kv}, a$).
+  4. *Ý nghĩa cơ học & Năng lượng thực tế* (Động năng, thế năng, cảm nhận đời sống).
+* Bắt buộc có hình vẽ khoa học trực quan (PNG 300 DPI + vector PDF) đi kèm, không được phân tích "chay chữ".
+* ❌ **CẤM (Anti-Pattern)**: Chỉ đưa ra công thức tổng quát mà không phân tích cụ thể hành vi tại các điểm mốc biên, cân bằng.
+* ✅ **BẮT BUỘC (Required Invariant)**: Bảng và hình vẽ phải hiển thị rõ các mốc $t = 0, T/4, T/2, 3T/4$ hoặc các trạng thái pha tương ứng.
+
+#### 2. Ngữ cảnh áp dụng (Context & Trigger Conditions)
+* **Thời điểm kích hoạt**: Khi mô tả một chu kì dao động, đồ thị động học, quá trình chuyển hóa động năng - thế năng, hoặc so sánh tương quan giữa hai dao động (cùng pha, ngược pha, vuông pha).
+
+#### 3. Ví dụ đối chiếu (Anti-pattern vs. Good pattern)
+* ❌ **Ví dụ sai**: Đưa ra công thức $v(t) = -\omega A \sin(\omega t)$ rồi nói chung chung: khi sin = 0 thì v = 0, khi sin = 1 thì v = v_max.
+* ✅ **Ví dụ chuẩn (Chương 1: Dao động điều hòa)**: Phân tích 4 mốc:
+  - $t = 0$: Biên dương ($x = +A$, tiếp tuyến ngang $v = 0$, lò xo dãn cực đại giằng về âm $a = -\omega^2 A$, thế năng cực đại).
+  - $t = T/4$: Qua VTCB theo chiều âm ($x = 0$, tiếp tuyến dốc âm cắm đầu $v = -\omega A$, lực triệt tiêu $a = 0$, động năng cực đại).
+  - $t = T/2$: Biên âm ($x = -A$, tiếp tuyến ngang $v = 0$, lò xo nén chặt đẩy sang dương $a = +\omega^2 A$, thế năng cực đại).
+  - $t = 3T/4$: Qua VTCB theo chiều dương ($x = 0$, tiếp tuyến dốc lên $v = +\omega A$, lực triệt tiêu $a = 0$, động năng cực đại).
+* 💡 **Ánh xạ sang chương khác (Chương 4: Mạch dao động LC — Quá trình phóng nạp điện)**:
+  - Khảo sát 4 mốc:
+    - $t = 0$: Tụ điện tích điện cực đại ($q = Q_0$), dòng điện chưa chạy ($i = 0$), năng lượng điện trường trong tụ cực đại $W_C = \max$, năng lượng từ trường trong cuộn cảm $W_L = 0$.
+    - $t = T/4$: Tụ phóng hết điện ($q = 0$), dòng điện qua cuộn cảm đạt cực đại ($i = I_0$), $W_C = 0, W_L = \max$.
+    - $t = T/2$: Tụ nạp điện ngược chiều ($q = -Q_0$), dòng điện khựng lại $i = 0$, $W_C = \max, W_L = 0$.
+    - $t = 3T/4$: Tụ lại phóng hết điện ($q = 0$), dòng điện đạt cực đại theo chiều ngược lại ($i = -I_0$), $W_C = 0, W_L = \max$.
+
+---
+
+### Rule 5: Ẩn Dụ Hình Tượng & Phá Bẫy Tử Huyệt (Conceptual Anchors & Misconception Busters)
+
+#### 1. Định nghĩa Quy tắc (The Core Invariant)
+* Mọi đại lượng/công thức trừu tượng phải có một **Hình tượng Neo giữ (Conceptual Anchor / Metaphor)** cụ thể để người học ghi nhớ lâu dài.
+* Mọi chuyên đề phải có mục **"Hộp Cứu Nguy: Tử Huyệt Nhận Thức"**: Chỉ rõ học sinh thường suy luận sai ở đâu, vì sao trực giác thường ngày đánh lừa họ, và dùng định luật vật lý để bẻ gãy ngộ nhận đó.
+* **Quy chuẩn hình thức**: Tuyệt đối **CẤM DÙNG MÃ VẼ KHUNG ASCII** (`┌──┐`, `│`, `├`); bắt buộc dùng bảng Markdown (`| ... |`) và Alert Block (`> ⚠️ **...**`).
+
+#### 2. Ngữ cảnh áp dụng (Context & Trigger Conditions)
+* **Thời điểm kích hoạt**: Khi giới thiệu đại lượng mới (để neo giữ trí nhớ); và khi kết thúc phần lý thuyết (để rà soát bẫy thi cử).
+
+#### 3. Ví dụ đối chiếu (Anti-pattern vs. Good pattern)
+* ❌ **Ví dụ sai**: *"Câu 1: Chọn C. Học sinh chú ý không nhầm lẫn giữa tần số góc và tần số."* (Không giải thích được vì sao học sinh hay nhầm và cách khắc phục).
+* ✅ **Ví dụ chuẩn (Chương 1: Dao động điều hòa)**:
+  - *Ẩn dụ*: Tần số góc $\omega$ là "cỗ máy nén thời gian" (nén thời gian làm sườn đồ thị dốc gấp $\omega$ lần $\implies [\cos(\omega t)]' = -\omega\sin(\omega t)$); 3 vệ tinh trên đồng hồ vũ trụ; bộ mã gen ADN; chống ồn ANC.
+  - *Phá bẫy*: Tử huyệt 1: "Ở biên vật đứng lại ($v = 0$) nên gia tốc bằng 0 (?)". Lật tẩy ngộ nhận: Học sinh nhầm giữa *chuyển động* ($v$) và *sự giằng kéo của lực* ($a$). Ở biên đồ thị nằm ngang nên $v = 0$, nhưng lò xo dãn cực đại nên lực giằng kéo mạnh nhất $\implies |a| = a_{\max} = \omega^2 A$!
+* 💡 **Ánh xạ sang chương khác (Chương 3: Cường độ điện trường $E = F/q$)**:
+  - *Ẩn dụ Neo giữ*: Điện trường là "mùi hương nước hoa tỏa ra trong phòng" hoặc "độ dốc của mặt đồi".
+  - *Phá bẫy Tử huyệt*: Học sinh nhìn công thức $E = F/q$ và kết luận: "Khi đưa $q = 0$ vào thì $E = 0$, tức là không có điện tích thử thì không có điện trường (?)". Bẻ gãy bẫy: Điện trường $E$ do điện tích nguồn $Q$ sinh ra và tồn tại sẵn trong không gian (như mùi nước hoa đã có sẵn trong phòng), điện tích thử $q$ chỉ là "chiếc mũi" đặt vào để đo độ nồng của mùi hương. Điện trường $E$ hoàn toàn không phụ thuộc vào độ lớn của $q$!
+
+---
 
 ---
 

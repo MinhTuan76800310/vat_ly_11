@@ -40,45 +40,32 @@ Tài liệu hướng dẫn quy chuẩn biên soạn và nghiên cứu khoa học
   - *Chủ đề 3*: Tương ứng Bài 6 KNTT (Dao động tắt dần, Dao động duy trì, Dao động cưỡng bức, Hiện tượng cộng hưởng).
 - **Mã nguồn, Scripts, Configs**: Viết bằng tiếng Anh kèm chú thích chi tiết.
 - **Git Commit Messages**: Tiếng Anh theo chuẩn Conventional Commits (`feat:`, `fix:`, `docs:`, `refactor:`, `chore:`).
-- **Phương Pháp Luận Biên Soạn & Dẫn Dắt Sư Phạm (Storytelling & Inductive Discovery)**:
-  - **Cấm tuyệt đối áp đặt công thức trước**: Không bao giờ đưa ra công thức rồi mới đi kiểm chứng; luôn bắt đầu từ công cụ đã biết ở mục trước $\to$ dẫn dắt người đọc nhập vai trải nghiệm $\to$ tạo "nút thắt nhận thức" (tại đỉnh đồi dốc bằng 0 nên chưa thể biết dấu của đạo hàm) $\to$ chuyển trạng thái lật mở chân lý (đổ đèo dốc âm) $\to$ kiểm chứng củng cố.
-  - **Mạch nối hữu cơ giữa các mục**: Cuối mục trước luôn có câu hỏi mở/rào cản thực tế; đầu mục sau bắt buộc có phần "Bước chuyển / Mối nối từ Mục trước" làm điểm tựa giải quyết vấn đề mới. Không viết các mục rời rạc như ốc đảo.
-  - **Đào sâu bản chất động lực học gốc rễ**: Khởi đầu bằng nghịch lý trực giác đời sống; không dừng ở hình thức phản chiếu (bóng chuyển động tròn) mà lý giải bằng lực kéo về $F_{kv} = -kx \implies x''(t) = -\omega^2 x(t)$ (chỉ có hàm điều hòa mới đạo hàm 2 lần đổi dấu).
-  - **Trực quan hóa đa trạng thái (State-Based Pedagogy)**: Mọi chuyển động/chu kì đều chia thành chuỗi trạng thái mốc then chốt ($t = 0, T/4, T/2, 3T/4$). Tại mỗi mốc mổ xẻ 4 chiều: Li độ - Vận tốc (độ dốc) - Lực/Gia tốc (giằng kéo) - Hiện tượng thực tế.
-  - **Ngôn ngữ hình tượng sống động**: "Cỗ máy nén thời gian $\omega$", "Chiếc đồng hồ vũ trụ với 3 vệ tinh", "Bộ mã gen ADN của phương trình", "Tai nghe chống ồn chủ động ANC", "Tử huyệt nhận thức đề thi".
+- **Phương Pháp Luận Biên Soạn Chuẩn Hóa Theo Cấu Trúc Tam Đoạn (Tripartite Rule Schema)**:
+  Mọi quy tắc sư phạm trong `.agents/rules/pedagogy_harness.md` bắt buộc phải được định hình thành 3 thành tố độc lập:
+  1. **Rule (Mệnh lệnh cốt lõi)**: Chỉ rõ điều CẤM (Anti-Pattern) và điều BẮT BUỘC (Required Invariant).
+  2. **Ngữ cảnh (Context & Trigger Conditions)**: Khi nào kích hoạt, phạm vi áp dụng xuyên suốt môn học (không chỉ dao động mà khái quát toàn bộ Vật lí 11: Dao động, Sóng cơ, Điện trường, Từ trường, Mạch LC...).
+  3. **Ví dụ & Ánh xạ (Examples & Universal Mappings)**: Cặp ví dụ đối chiếu Anti-pattern vs. Good pattern mẫu (Chương 1 Dao động) kèm Ánh xạ tổng quát sang các chương khác.
+  - *5 Quy tắc cốt lõi*:
+    - **Rule 1 (Khám phá quy luật tự nhiên)**: Cấm áp đặt công thức trước; bắt buộc dẫn dắt 5 bước (Nền tảng $\to$ Nhập vai $\to$ Nút thắt nhận thức Mystery $\to$ Lật mở Revelation $\to$ Kiểm chứng).
+    - **Rule 2 (Mạch nối hữu cơ giữa các mục)**: Cấm viết ốc đảo; cuối mục có câu hỏi mở, đầu mục sau có "Bước chuyển / Mối nối".
+    - **Rule 3 (Đào sâu bản chất động lực học gốc rễ)**: Khởi đầu bằng nghịch lý trực giác; cấm mô hình phản chiếu bề ngoài; bắt buộc lý giải bằng lực kéo về và phương trình động lực học.
+    - **Rule 4 (Trực quan hóa đa trạng thái)**: Chia tiến trình thành chuỗi mốc then chốt ($t = 0, T/4, T/2, 3T/4$); mổ xẻ 4 chiều: Li độ - Vận tốc (độ dốc) - Lực/Gia tốc - Năng lượng thực tế; bắt buộc có hình vẽ.
+    - **Rule 5 (Ẩn dụ hình tượng & Phá bẫy tử huyệt)**: Khắc sâu bằng hình tượng neo giữ; có mục "Hộp Cứu Nguy: Tử Huyệt Nhận Thức" bẻ gãy ngộ nhận; cấm tuyệt đối khung vẽ ASCII.
 - **Quy Chuẩn Bảng Biểu & Hình Vẽ Minh Họa**:
-  - **Tuyệt đối KHÔNG dùng ký tự khung vẽ ASCII** (`┌──┐`, `│`, `├`, v.v.) trong bản thảo sách (`book/*.md`); bắt buộc dùng bảng Markdown chuẩn (`| ... |`) và khối cảnh báo (`> ⚠️ **...**`).
+  - **Tuyệt đối KHÔNG dùng ký tự khung vẽ ASCII** (`┌──┐`, `│`, `├`, v.v.) trong toàn bộ tài liệu và bản thảo sách; bắt buộc dùng bảng Markdown chuẩn (`| ... |`) và khối cảnh báo (`> ⚠️ **...**`).
   - **Bắt buộc phong phú hình ảnh minh họa khoa học**: Mọi phân tích mô hình, đồ thị động học, giải mã sóng và so sánh độ lệch pha đều phải có hình vẽ trực quan chất lượng cao (PNG 300 DPI và vector PDF) xuất từ `scripts/generate_figures.py`.
 
 ---
 
 ## 3. Khung 5 Tầng Sư Phạm Dành Cho Học Sinh Lớp 11
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│  TẦNG 1: HIỆN TƯỢNG ĐỜI SỐNG & CÂU HỎI KHỞI ĐỘNG (SGK KNTT) │
-│  - Màng loa rung, xích đu, cành cây, phuộc xe máy           │
-│  - Nghịch lý trực giác: Tại sao không quay tròn mà lại có cos?│
-├─────────────────────────────────────────────────────────────┤
-│  TẦNG 2: MÔ HÌNH HÓA VẬT LÝ VỪA SỨC                         │
-│  - Con lắc lò xo, con lắc đơn, vị trí cân bằng bền          │
-│  - Lực kéo về xuất hiện khi vật rời khỏi vị trí cân bằng bền │
-├─────────────────────────────────────────────────────────────┤
-│  TẦNG 3: TOÁN HỌC KHAI PHÓNG (ĐẠO HÀM & ĐỒ THỊ KNTT)        │
-│  - Vận tốc là đạo hàm của li độ: v(t) = x'(t)               │
-│  - Gia tốc là đạo hàm của vận tốc: a(t) = v'(t) = -omega^2 x │
-│  - Độ lệch pha delta phi và hệ thức độc lập thời gian        │
-├─────────────────────────────────────────────────────────────┤
-│  TẦNG 4: NĂNG LƯỢNG (W_đ, W_t, W) & CƠ CHẾ THỰC TẾ          │
-│  - Động năng W_đ và Thế năng W_t chuyển hóa qua lại (T' = T/2)│
-│  - Ma sát làm cơ năng chuyển hóa thành nhiệt (tắt dần)      │
-│  - Hiện tượng cộng hưởng khi tần số ngoại lực khớp tần số riêng│
-├─────────────────────────────────────────────────────────────┤
-│  TẦNG 5: VÍ DỤ TÍNH SỐ THỰC TẾ & BÀI TẬP SGK KNTT           │
-│  - Bài tập số liệu thực tế (xe máy, đồng hồ, màng loa)       │
-│  - Cảnh báo các lỗi hiểu sai trong đề kiểm tra và thi cử     │
-└─────────────────────────────────────────────────────────────┘
-```
+| Tầng Sư Phạm | Nội Dung Trọng Tâm & Dẫn Dắt (Chuẩn SGK KNTT) |
+| :--- | :--- |
+| **TẦNG 1: HIỆN TƯỢNG ĐỜI SỐNG & CÂU HỎI KHỞI ĐỘNG** | Màng loa rung, xích đu, cành cây, phuộc xe máy.<br>• *Nghịch lý trực giác*: Tại sao không quay tròn mà lại xuất hiện hàm cos? |
+| **TẦNG 2: MÔ HÌNH HÓA VẬT LÝ VỪA SỨC** | Con lắc lò xo, con lắc đơn, vị trí cân bằng bền.<br>• *Lực kéo về* xuất hiện khi vật rời khỏi vị trí cân bằng bền. |
+| **TẦNG 3: TOÁN HỌC KHAI PHÓNG (ĐẠO HÀM & ĐỒ THỊ)** | • Vận tốc là đạo hàm của li độ: $v(t) = x'(t)$ (độ dốc tiếp tuyến).<br>• Gia tốc là đạo hàm của vận tốc: $a(t) = v'(t) = -\omega^2 x$.<br>• Độ lệch pha $\Delta \varphi$ và hệ thức độc lập thời gian $(x/A)^2 + (v/\omega A)^2 = 1$. |
+| **TẦNG 4: NĂNG LƯỢNG ($W_đ, W_t, W$) & CƠ CHẾ THỰC TẾ** | • Động năng $W_đ$ và Thế năng $W_t$ chuyển hóa tuần hoàn qua lại ($T' = T/2$).<br>• Ma sát làm cơ năng chuyển hóa thành nhiệt (dao động tắt dần).<br>• Hiện tượng cộng hưởng khi tần số ngoại lực khớp tần số riêng ($f = f_0$). |
+| **TẦNG 5: VÍ DỤ TÍNH SỐ THỰC TẾ & BÀI TẬP SGK KNTT** | • Bài tập gắn với số liệu thực tế đời sống (xe máy, đồng hồ quả lắc, loa âm thanh).<br>• Hộp cứu nguy: Cảnh báo và bẻ gãy các lỗi hiểu sai trong đề thi và kiểm tra. |
 
 ---
 
